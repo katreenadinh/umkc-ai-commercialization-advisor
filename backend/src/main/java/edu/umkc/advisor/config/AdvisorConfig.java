@@ -26,8 +26,12 @@ public class AdvisorConfig implements WebMvcConfigurer {
     public AdvisorConfig(AdvisorProperties props) { this.props = props; }
 
     @Bean LlmClient llmClient() {
-        var a = props.anthropic();
-        return new ClaudeClient(a.apiKey(), a.model(), a.baseUrl(), a.timeoutSeconds());
+        var l = props.llm();
+        if ("anthropic".equalsIgnoreCase(l.provider())) {
+            var a = l.anthropic();
+            return new ClaudeClient(a.apiKey(), a.model(), a.baseUrl(), l.timeoutSeconds());
+        }
+        return new edu.umkc.advisor.ai.LocalLlmClient(l.local().baseUrl(), l.local().model(), l.timeoutSeconds());
     }
 
     @Bean ResponseValidator responseValidator() { return new ResponseValidator(); }

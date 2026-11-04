@@ -24,7 +24,7 @@ public class RagConfig {
     }
 
     @Bean AnswerGenerator answerGenerator(DocumentRetrievalService r, LlmClient llm, ResponseValidator v, AdvisorProperties p) {
-        return new RagAdvisorService(r, llm, v, AdvisorConfig.loadPrompt("prompts/answer.txt"), p.anthropic().maxTokens());
+        return new RagAdvisorService(r, llm, v, AdvisorConfig.loadPrompt("prompts/answer.txt"), p.llm().maxTokens());
     }
 
     @Bean IngestionPipeline ingestionPipeline(EmbeddingService e, VectorStore v) {

@@ -72,6 +72,44 @@ public final class ResponseValidator {
         return new AnswerPayload(answer, used, n.get("sufficientEvidence").asBoolean(), n.get("needsStaffFollowUp").asBoolean());
     }
 
+    public InterviewPayload parseInterview(String raw) {
+        JsonNode n = parseJsonObject(raw);
+        String msg = n.path("assistantMessage").asText("").trim();
+        if (msg.isEmpty()) throw new InvalidModelOutputException("missing assistantMessage");
+        if (msg.length() > 1500) msg = msg.substring(0, 1500);
+        if (!n.has("updates") || !n.get("updates").isArray()) throw new InvalidModelOutputException("updates must be an array");
+        if (n.get("updates").size() > 12) throw new InvalidModelOutputException("too many updates");
+        java.util.List<InterviewPayload.Update> ups = new java.util.ArrayList<>();
+        for (JsonNode u : n.get("updates")) {
+            String id = u.path("fieldId").asText("").trim();
+            if (id.isEmpty()) throw new InvalidModelOutputException("update without fieldId");
+            edu.umkc.advisor.model.ResearcherMark mark = edu.umkc.advisor.model.ResearcherMark.NONE;
+            String m = u.path("mark").asText("NONE").trim();
+            try { mark = edu.umkc.advisor.model.ResearcherMark.valueOf(m); }
+            catch (IllegalArgumentException e) { throw new InvalidModelOutputException("invalid mark"); }
+            ups.add(new InterviewPayload.Update(id, u.path("text").asText(""), mark));
+        }
+        java.util.List<String> next = new java.util.ArrayList<>();
+        if (n.has("nextFieldIds") && n.get("nextFieldIds").isArray()) for (JsonNode f : n.get("nextFieldIds")) next.add(f.asText("").trim());
+        return new InterviewPayload(ups, msg, next);
+    }
+
+    public ReviewPayload parseReview(String raw) {
+        JsonNode n = parseJsonObject(raw);
+        if (!n.has("fields") || !n.get("fields").isArray()) throw new InvalidModelOutputException("fields must be an array");
+        java.util.List<ReviewPayload.Entry> out = new java.util.ArrayList<>();
+        for (JsonNode e : n.get("fields")) {
+            String id = e.path("fieldId").asText("").trim();
+            edu.umkc.advisor.model.FieldStatus st;
+            try { st = edu.umkc.advisor.model.FieldStatus.valueOf(e.path("status").asText("").trim()); }
+            catch (IllegalArgumentException ex) { continue; }   // drop malformed entries; Java fills gaps itself
+            if (id.isEmpty()) continue;
+            out.add(new ReviewPayload.Entry(id, st, e.path("currentInformation").asText(""),
+                    e.path("missingDetails").asText(""), e.path("followUpQuestion").asText("")));
+        }
+        return new ReviewPayload(out);
+    }
+
     private static <E extends Enum<E>> E enumValue(JsonNode n, String field, Class<E> type) {
         String v = n.path(field).asText("").trim();
         try {

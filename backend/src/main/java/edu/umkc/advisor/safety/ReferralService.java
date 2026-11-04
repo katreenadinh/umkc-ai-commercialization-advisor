@@ -145,6 +145,15 @@ public final class ReferralService {
 
     public Contact contact() { return contact; }
 
+    /** The researcher's own sentences that mention past or planned public disclosure, verbatim. */
+    public java.util.List<String> disclosureSentences(String rawText) {
+        java.util.List<String> out = new ArrayList<>();
+        if (rawText == null) return out;
+        String text = rawText.replace('\u2019', '\'').replace('\u2018', '\'');
+        for (String s : text.split("(?<=[.!?])\\s+|\\n+")) if (!s.isBlank() && (isImminent(s) || isPast(s))) out.add(s.trim());
+        return out;
+    }
+
     static boolean isImminent(String sentence) {
         if (!FIRST_PERSON.matcher(sentence).find() || !DISCLOSURE_ACT.matcher(sentence).find()) return false;
         if (STRONG_FUTURE.matcher(sentence).find()) return true;
