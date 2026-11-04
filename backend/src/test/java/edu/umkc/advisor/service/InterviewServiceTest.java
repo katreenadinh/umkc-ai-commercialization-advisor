@@ -51,6 +51,69 @@ class InterviewServiceTest {
     }
 
     @Test
+    void topicSwitchClearsEarlierNotesAndKeepsTheNewDescription() {
+        ScriptedLlm llm = new ScriptedLlm();
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        Map<String, FieldAnswer> old = new LinkedHashMap<>();
+        old.put("summary_general", text("I found out that silicon anodes perform better than lithium batteries"));
+        old.put("problem_solved", text("Well they do better than lithium batteries in tasks like charging speed"));
+        old.put("technical_description", text("It measures changes in electrical conductivity"));
+        Draft d2 = kit.withAnswers(d, old);
+        var r = svc.handle(d2, "actually scratch that, i made a device that pings/notifies caretakers when an elderly person needs assistance.");
+        assertEquals(0, llm.calls());
+        Draft after = kit.repo.get(d.id());
+        assertEquals("i made a device that pings/notifies caretakers when an elderly person needs assistance.",
+                after.answer("summary_general").text());
+        assertFalse(after.answer("problem_solved").hasText());
+        assertFalse(after.answer("technical_description").hasText());
+        assertFalse(after.answer("summary_general").text().toLowerCase().contains("silicon"));
+        assertTrue(r.assistantMessage().toLowerCase().contains("cleared"));
+        assertEquals(List.of("problem_solved"), r.askedFieldIds());
+    }
+
+    @Test
+    void differentTopicAnnouncementClearsNotesWithoutKeepingOldWork() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Got it. Could you share the details of your new topic or invention?", "summary_general"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        Map<String, FieldAnswer> old = new LinkedHashMap<>();
+        old.put("summary_general", text("I am researching that silicon anodes are better than lithium ion batteries"));
+        old.put("problem_solved", text("most lithium batteries take a while to charge"));
+        Draft d2 = kit.withAnswers(d, old);
+        var r = svc.handle(d2, "actually, i'd like to talk about a different subject/topic entirely.");
+        Draft after = kit.repo.get(d.id());
+        assertFalse(after.answer("summary_general").hasText());
+        assertFalse(after.answer("problem_solved").hasText());
+        assertEquals(List.of("summary_general"), r.askedFieldIds());
+        assertTrue(r.assistantMessage().toLowerCase().contains("new topic")
+                || r.assistantMessage().toLowerCase().contains("cleared"));
+    }
+
+    @Test
+    void descriptionAfterNewTopicPromptReplacesOldNotes() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("summary_general", "I made a device that pings/notifies caretakers when an elderly person is in need of assistance", "NONE")),
+                "Thanks. How does the device work?", "technical_description"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        Map<String, FieldAnswer> old = new LinkedHashMap<>();
+        old.put("summary_general", text("I am researching that silicon anodes are better than lithium ion batteries"));
+        old.put("problem_solved", text("most lithium batteries take a while to charge"));
+        old.put("technical_description", text("silicon anodes speed up that process"));
+        Draft d2 = kit.withAnswers(d, old);
+        kit.repo.appendTurn(d.id(), Turn.assistant(
+                "Got it. Could you share the details of your new topic or invention?", List.of("technical_description")));
+        svc.handle(d2, "I made a device that pings/notifies caretakers when an elderly person is in need of assistance");
+        Draft after = kit.repo.get(d.id());
+        assertTrue(after.answer("summary_general").text().toLowerCase().contains("caretakers"));
+        assertFalse(after.answer("summary_general").text().toLowerCase().contains("silicon"));
+        assertFalse(after.answer("problem_solved").hasText());
+        assertFalse(after.answer("technical_description").text().toLowerCase().contains("silicon"));
+    }
+
+    @Test
     void researcherCanVolunteerLaterTopicsOutOfOrder() {
         ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(upd("funding", "It was funded by an NSF grant", "NONE")),
                 "Thanks for mentioning the funding. What have you been working on?", "summary_general"));
@@ -202,8 +265,30 @@ class InterviewServiceTest {
         assertEquals(List.of("summary_general"), r.askedFieldIds());
         assertTrue(r.assistantMessage().contains("sharing the invention"));
         assertTrue(r.assistantMessage().toLowerCase().contains("pick the notes back up"));
-        assertEquals(1, r.citations().size());
-        assertEquals("Collected Rules 100.020", r.citations().get(0).title());
+        assertTrue(r.citations().isEmpty());
+        assertFalse(r.assistantMessage().contains("[S1]"));
+    }
+
+    @Test
+    void generalProcessAnswersAreTrimmedToAFewSentences() {
+        String longAnswer = "Public disclosure is sharing the work outside a confidential setting [S1]. "
+                + "Timing can matter for patent options. "
+                + "Staff can walk through your specific situation. "
+                + "There are many exceptions in federal funding. "
+                + "Graduate students are treated differently in some cases. "
+                + "Startups have still more rules.";
+        AskResponse guide = new AskResponse(
+                AskResponse.AnswerType.ANSWER, longAnswer,
+                List.of(), new AskResponse.Referral(false, "NONE", null), null, false, AskResponse.DISCLAIMER);
+        var svc = kit.interview(new ScriptedLlm(), q -> guide);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        svc.start(d);
+        var r = svc.handle(kit.repo.get(d.id()), "What is a public disclosure?");
+        String body = r.assistantMessage().split("\n\n")[0];
+        assertFalse(body.contains("Startups have still more rules"));
+        assertFalse(body.contains("Graduate students"));
+        assertTrue(body.contains("Public disclosure is sharing"));
+        assertTrue(DisclosureInterviewService.keepSentences(body, 4).equals(body));
     }
 
     @Test

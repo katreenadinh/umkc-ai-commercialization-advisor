@@ -50,6 +50,20 @@ public final class DisclosureInterviewService {
             "^(skip(\\s+(this|that)(\\s+(one|question))?)?|pass|next|next\\s+question|move\\s+on|let'?s\\s+move\\s+on|come\\s+back(\\s+to\\s+(this|that))?\\s+later|ask\\s+me\\s+later)$");
     private static final Pattern UNKNOWN_CMD = Pattern.compile(
             "^(i\\s+)?(do\\s+not\\s+know|don'?t\\s+know|have\\s+no\\s+idea|no\\s+idea|not\\s+sure|i'?m\\s+not\\s+sure|unsure|unknown|not\\s+yet|not\\s+known\\s+yet|i\\s+don'?t\\s+know\\s+yet)(\\s+(sorry|honestly|yet))?$");
+    /** Explicit abandonment of the current work, not a later-topic volunteer. */
+    private static final Pattern TOPIC_SWITCH = Pattern.compile(
+            "\\b(scratch\\s+that|let'?s\\s+start\\s+over|start\\s+over"
+          + "|change\\s+(?:the\\s+)?(?:subject|topics?)|switch\\s+(?:the\\s+)?(?:subject|topics?)"
+          + "|forget\\s+(?:all\\s+)?(?:of\\s+)?what\\s+i\\s+said|ignore\\s+what\\s+i\\s+(?:just\\s+)?said"
+          + "|that\\s+was\\s+(?:the\\s+)?wrong\\s+(?:idea|invention|topic|one)"
+          + "|different\\s+(?:subject|topic|idea|invention|work)|talk about (?:a |an )?(?:different|new|another)"
+          + "|something else entirely|new\\s+topic|never\\s*mind(?:\\s+that)?)\\b",
+            Pattern.CASE_INSENSITIVE);
+    private static final Pattern AWAITING_NEW_TOPIC = Pattern.compile(
+            "(?i)(new topic|new invention|start over|cleared the earlier notes"
+          + "|different (?:subject|topic|invention)|share the details of your new)");
+    private static final Pattern WORK_DESCRIPTION = Pattern.compile(
+            "(?i)\\b(i|we|i'?m|we're)\\s+(made|make|built|building|developed|created|designed|found|researched|have|invented|working on)\\b");
     private static final Pattern GUIDE_QUESTION = Pattern.compile(
             "^(what(?:'?s|s)?|how|who|when|why|where|which|can|could|should|is|are|do|does|would|will|explain|define|tell\\s+me)\\b",
             Pattern.CASE_INSENSITIVE);
@@ -144,12 +158,38 @@ public final class DisclosureInterviewService {
             return finish(d, answers, ack, List.of(), changed, rule, null);
         }
 
-        // 3. Process / policy questions go to the grounded advisor, then the notes pick up again.
+        // 3. Topic change: wipe saved notes so the new work is not merged into the old one.
+        boolean switchCue = TOPIC_SWITCH.matcher(msg).find();
+        boolean followUpNewWork = awaitingNewTopic(turns) && hasSavedNotes(answers) && !looksLikeGeneralQuestion(msg);
+        if (switchCue && looksLikeWorkDescription(stripTopicSwitch(msg))) {
+            return resetTopic(d, msg, rule);
+        }
+        if (switchCue) {
+            answers = new LinkedHashMap<>();
+            repo.saveAnswers(d.id(), answers);
+            repo.saveSummary(d.id(), null);
+            repo.saveReview(d.id(), null);
+            String firstId = openingField(d);
+            InterviewPayload payload = callModel(d, answers, turns, List.of(firstId), msg);
+            String text = payload == null
+                    ? "Got it. Could you share the details of your new topic or invention?"
+                    : payload.assistantMessage();
+            return finish(d, answers, text, List.of(firstId), List.of(), rule, payload);
+        }
+        if (followUpNewWork) {
+            answers = new LinkedHashMap<>();
+            repo.saveAnswers(d.id(), answers);
+            repo.saveSummary(d.id(), null);
+            repo.saveReview(d.id(), null);
+            lastAsked = List.of(openingField(d));
+        }
+
+        // 4. Process / policy questions go to the grounded advisor, then the notes pick up again.
         if (guideAsk != null && looksLikeGeneralQuestion(msg)) {
             return answerFromGuide(d, msg, lastAsked, answers, rule);
         }
 
-        // 4. LLM extraction + next question, validated in Java.
+        // 5. LLM extraction + next question, validated in Java.
         InterviewPayload payload = callModel(d, answers, turns, lastAsked, msg);
         List<String> updated = payload == null ? List.of() : applyUpdates(d, answers, payload.updates(), msg);
         repo.saveAnswers(d.id(), answers);
@@ -202,7 +242,51 @@ public final class DisclosureInterviewService {
         return GUIDE_QUESTION.matcher(t).find() || (t.endsWith("?") && t.length() < 280);
     }
 
+    static String stripTopicSwitch(String msg) {
+        String rest = TOPIC_SWITCH.matcher(msg).replaceAll(" ");
+        rest = rest.replaceAll("(?i)^\\s*(actually|ok(?:ay)?|well|sorry|so|um|uh)[,.\\s]+", "");
+        return rest.replaceAll("\\s+", " ").replaceAll("^[\\s,;:—-]+", "").strip();
+    }
+
+    static boolean looksLikeWorkDescription(String rest) {
+        if (rest == null || rest.length() < 24) return false;
+        return WORK_DESCRIPTION.matcher(rest).find() || rest.length() > 80;
+    }
+
+    static boolean awaitingNewTopic(List<Turn> turns) {
+        for (int i = turns.size() - 1; i >= 0; i--) {
+            if (turns.get(i).role().equals("ASSISTANT")) return AWAITING_NEW_TOPIC.matcher(turns.get(i).content()).find();
+        }
+        return false;
+    }
+
+    private static boolean hasSavedNotes(Map<String, FieldAnswer> answers) {
+        return answers.values().stream().anyMatch(FieldAnswer::isAddressed);
+    }
+
+    private static String openingField(Draft d) {
+        return d.workflow() == Workflow.UPDATE_EXISTING ? "what_changed" : "summary_general";
+    }
+
     // ------------------------------------------------------------------ internals
+
+    private Reply resetTopic(Draft d, String msg, ReferralDecision rule) {
+        Map<String, FieldAnswer> answers = new LinkedHashMap<>();
+        List<String> changed = new ArrayList<>();
+        String rest = stripTopicSwitch(msg);
+        String firstId = openingField(d);
+        if (!rest.isBlank()) {
+            answers.put(firstId, new FieldAnswer(rest, ResearcherMark.NONE));
+            changed.add(firstId);
+        }
+        repo.saveAnswers(d.id(), answers);
+        repo.saveSummary(d.id(), null);
+        repo.saveReview(d.id(), null);
+        String ack = rest.isBlank()
+                ? "No problem, we'll start over. I've cleared the earlier notes."
+                : "Got it — we'll start over with this. I've cleared the earlier notes.";
+        return finish(d, answers, ack, List.of(), changed, rule, null);
+    }
 
     private Reply answerFromGuide(Draft d, String msg, List<String> lastAsked, Map<String, FieldAnswer> answers,
                                   ReferralDecision rule) {
@@ -221,7 +305,7 @@ public final class DisclosureInterviewService {
         List<ChecklistField> rem = remaining(d.workflow(), answers);
         List<String> next = new ArrayList<>(lastAsked);
         if (next.isEmpty() && !rem.isEmpty()) next = List.of(rem.get(0).id());
-        String text = a.message() == null ? "" : a.message().strip();
+        String text = keepSentences(stripSourceMarkers(a.message() == null ? "" : a.message().strip()), 4);
         if (!rem.isEmpty()) {
             String pending = next.isEmpty() ? rem.get(0).label() : checklist.find(next.get(0)).map(ChecklistField::label).orElse(rem.get(0).label());
             text = text + "\n\nWe can pick the notes back up whenever you're ready — still on " + pending.toLowerCase() + ".";
@@ -229,8 +313,7 @@ public final class DisclosureInterviewService {
         AskResponse.Referral ref = a.referral() != null ? a.referral()
                 : new AskResponse.Referral(rule.referralRequired(), rule.primary().name(), rule.referralNote());
         repo.appendTurn(d.id(), Turn.assistant(text, next));
-        return new Reply(text, List.of(), next, ref, false, progress(d.workflow(), answers), false,
-                a.citations() == null ? List.of() : a.citations());
+        return new Reply(text, List.of(), next, ref, false, progress(d.workflow(), answers), false);
     }
 
     private Reply blocked(Draft d, ReferralDecision rule, String msg, Map<String, FieldAnswer> answers, List<String> lastAsked) {
@@ -392,4 +475,16 @@ public final class DisclosureInterviewService {
     private static String normalize(String s) { return s.toLowerCase().replaceAll("[^a-z0-9]+", " ").strip(); }
     private static String clean(String s) { return s.replace("<", "\u2039").replace(">", "\u203a"); }
     private static String clip(String s, int n) { return s.length() <= n ? s : s.substring(0, n) + "…"; }
+    static String stripSourceMarkers(String text) {
+        if (text == null || text.isBlank()) return "";
+        return text.replaceAll("\\s*\\[S\\d+]", "").replaceAll(" {2,}", " ").strip();
+    }
+
+    /** Keeps a short conversational answer. Splits on sentence boundaries, ignoring initials such as U.S. */
+    static String keepSentences(String text, int max) {
+        if (text == null || text.isBlank() || max < 1) return "";
+        String[] parts = text.strip().split("(?<=[.!?])\\s+(?=[A-Z\"“])");
+        if (parts.length <= max) return text.strip();
+        return String.join(" ", java.util.Arrays.copyOf(parts, max)).strip();
+    }
 }
