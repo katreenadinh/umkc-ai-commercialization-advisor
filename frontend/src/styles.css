@@ -129,11 +129,6 @@ button:disabled { opacity: 0.55; cursor: wait; }
 .note-tag em { font-style: normal; text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--ink); }
 .note-tag.usable { background: #e7f3ec; color: var(--good); }
 .note-tag.mentioned { background: #f6efd8; color: var(--thin); }
-.discuss {
-  color: var(--navy) !important;
-  font-size: 14px;
-  padding: 4px 0 8px;
-}
 .bubble ul { margin: 0 0 12px; padding-left: 18px; }
 .bubble li { margin: 4px 0; }
 .follow { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 8px 0 4px; }
@@ -274,9 +269,9 @@ textarea:focus, button:focus-visible { outline: 2px solid var(--gold); outline-o
 .source-list h3 { margin: 0; font-size: 18px; }
 .source-card {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 16px;
-  align-items: start;
+  align-items: center;
   width: 100%;
   text-align: left;
   color: inherit;

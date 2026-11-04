@@ -63,6 +63,20 @@ public class PgVectorStore implements VectorStore {
                     rs.getString("source_type"), rs.getString("content_hash"), rs.getBoolean("enabled"))));
     }
 
+    @Override
+    public List<Chunk> listChunks(String sourceId) {
+        UUID sid = UUID.fromString(sourceId);
+        return jdbc.query("""
+            SELECT id, source_id, chunk_index, section, page, text
+            FROM chunks WHERE source_id = ?
+            ORDER BY chunk_index
+            """, (rs, n) -> {
+                int page = rs.getInt("page");
+                return new Chunk(rs.getString("id"), rs.getString("source_id"), rs.getInt("chunk_index"),
+                        rs.getString("section"), rs.wasNull() ? null : page, rs.getString("text"));
+            }, sid);
+    }
+
     @Override public void setEnabled(String id, boolean enabled) {
         jdbc.update("UPDATE sources SET enabled = ? WHERE id = ?", enabled, UUID.fromString(id));
     }

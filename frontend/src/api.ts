@@ -74,9 +74,10 @@ export interface Reply {
 export interface SourceView {
   id: string;
   title: string;
-  url: string;
+  url: string | null;
   type: string;
   enabled: boolean;
+  fileName?: string | null;
 }
 
 export interface PassageView {
@@ -195,4 +196,32 @@ export async function listSources(): Promise<SourceView[]> {
 
 export async function searchSources(q: string): Promise<PassageView[]> {
   return read<PassageView[]>(await fetch(`/api/sources/search?q=${encodeURIComponent(q)}`));
+}
+
+export async function getSourceText(id: string): Promise<string> {
+  const data = await read<{ text?: string }>(await fetch(`/api/sources/${id}/text`));
+  return data.text ?? "";
+}
+
+export function sourceFileUrl(id: string): string {
+  return `/api/sources/${id}/file`;
+}
+
+export function officialPage(url: string | null | undefined): string | null {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") return url;
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+export function sourceFileKind(source: SourceView): "pdf" | "docx" | null {
+  if (!source.fileName) return null;
+  const name = source.fileName.toLowerCase();
+  if (source.type === "PDF" || name.endsWith(".pdf")) return "pdf";
+  if (source.type === "DOCX" || name.endsWith(".docx")) return "docx";
+  return null;
 }

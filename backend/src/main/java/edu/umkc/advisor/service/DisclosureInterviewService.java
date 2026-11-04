@@ -86,7 +86,7 @@ public final class DisclosureInterviewService {
 
     public DisclosureInterviewService(ChecklistService checklist, ReferralService referral, LlmClient llm,
                                       ResponseValidator validator, DraftRepository repo, String systemPrompt, int maxTokens) {
-        this(checklist, referral, llm, validator, repo, systemPrompt, maxTokens, null);
+        this(checklist, referral, llm, validator, repo, systemPrompt, maxTokens, (Function<String, AskResponse>) null);
     }
 
     public DisclosureInterviewService(ChecklistService checklist, ReferralService referral, LlmClient llm,
@@ -306,10 +306,6 @@ public final class DisclosureInterviewService {
         List<String> next = new ArrayList<>(lastAsked);
         if (next.isEmpty() && !rem.isEmpty()) next = List.of(rem.get(0).id());
         String text = keepSentences(stripSourceMarkers(a.message() == null ? "" : a.message().strip()), 4);
-        if (!rem.isEmpty()) {
-            String pending = next.isEmpty() ? rem.get(0).label() : checklist.find(next.get(0)).map(ChecklistField::label).orElse(rem.get(0).label());
-            text = text + "\n\nWe can pick the notes back up whenever you're ready — still on " + pending.toLowerCase() + ".";
-        }
         AskResponse.Referral ref = a.referral() != null ? a.referral()
                 : new AskResponse.Referral(rule.referralRequired(), rule.primary().name(), rule.referralNote());
         repo.appendTurn(d.id(), Turn.assistant(text, next));

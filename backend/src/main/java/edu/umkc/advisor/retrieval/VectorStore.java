@@ -7,6 +7,7 @@ public interface VectorStore {
     void replaceSource(SourceRecord source, List<Chunk> chunks, List<float[]> embeddings);
     List<ScoredChunk> search(float[] queryEmbedding, int k);
     List<SourceRecord> listSources();
+    List<Chunk> listChunks(String sourceId);
     void setEnabled(String sourceId, boolean enabled);
     void deleteSource(String sourceId);
 }

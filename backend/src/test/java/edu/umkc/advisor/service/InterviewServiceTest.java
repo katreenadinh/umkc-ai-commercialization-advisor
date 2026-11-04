@@ -264,7 +264,8 @@ class InterviewServiceTest {
         assertTrue(kit.repo.get(d.id()).answers().isEmpty());
         assertEquals(List.of("summary_general"), r.askedFieldIds());
         assertTrue(r.assistantMessage().contains("sharing the invention"));
-        assertTrue(r.assistantMessage().toLowerCase().contains("pick the notes back up"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("pick the notes back up"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("still on"));
         assertTrue(r.citations().isEmpty());
         assertFalse(r.assistantMessage().contains("[S1]"));
     }

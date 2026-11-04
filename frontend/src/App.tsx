@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { renderAsync } from "docx-preview";
 import {
   createDraft,
   exportSummary,
@@ -6,16 +7,17 @@ import {
   generateSummary,
   getDraft,
   getContact,
+  getSourceText,
   listSources,
+  officialPage,
   savedDraftId,
-  searchSources,
   sendInterview,
   skipField,
+  sourceFileKind,
+  sourceFileUrl,
   type DraftView,
   type FieldView,
-  type PassageView,
   type ContactInfo,
-  type Referral,
   type SourceView,
 } from "./api";
 import { SCENARIOS } from "./scenarios";
@@ -27,9 +29,6 @@ interface Msg {
   role: "user" | "advisor";
   text?: string;
   paragraphs?: string[];
-  fieldLabels?: string[];
-  referral?: Referral;
-  urgent?: boolean;
 }
 
 function fieldDepth(field: FieldView): "empty" | "mentioned" | "usable" {
@@ -103,7 +102,7 @@ function suggestionChips(
   lastAdvisor: string,
   turn: number,
 ): string[] {
-  const processReply = /pick the notes back up/i.test(lastAdvisor);
+  const processReply = /^(what|how|who|when|why|where|which|can|could|should|is|are|do|does)\b/i.test(lastUser.trim());
   if (processReply) {
     const chips = pickRotated(PROCESS_CHIPS, `${lastUser}|${lastAdvisor}|${turn}`, 3, [lastUser]);
     chips.push("Let's continue with the notes.");
@@ -124,14 +123,10 @@ function fromTranscript(draft: DraftView): Msg[] {
     if (turn.role === "USER") {
       return { id: `${draft.id}-u-${index}`, role: "user" as const, text: turn.content };
     }
-    const labels = turn.fieldIds
-      .map((id) => draft.fields.find((field) => field.id === id)?.label)
-      .filter((label): label is string => Boolean(label));
     return {
       id: `${draft.id}-a-${index}`,
       role: "advisor" as const,
       paragraphs: paragraphsFrom(turn.content),
-      fieldLabels: labels,
     };
   });
 }
@@ -232,9 +227,6 @@ export function App() {
         id: `${created.draft.id}-open`,
         role: "advisor",
         paragraphs: paragraphsFrom(created.opening.assistantMessage),
-        fieldLabels: created.opening.askedFieldIds
-          .map((id) => created.draft.fields.find((field) => field.id === id)?.label)
-          .filter((label): label is string => Boolean(label)),
       },
     ]);
     setCompose("");
@@ -276,23 +268,13 @@ export function App() {
     try {
       const reply = await sendInterview(id, clean);
       askedFieldRef.current = reply.askedFieldIds;
-      const next = await refreshDraft(id);
-      const guide = /pick the notes back up/i.test(reply.assistantMessage);
-      const labels = guide
-        ? []
-        : reply.askedFieldIds
-            .concat(reply.updatedFieldIds)
-            .map((fieldId) => next.fields.find((field) => field.id === fieldId)?.label)
-            .filter((label): label is string => Boolean(label));
+      await refreshDraft(id);
       setMessages((curr) => [
         ...curr,
         {
           id: `${Date.now()}-a`,
           role: "advisor",
           paragraphs: paragraphsFrom(reply.assistantMessage),
-          fieldLabels: [...new Set(labels)],
-          referral: reply.referral,
-          urgent: reply.urgent,
         },
       ]);
     } catch (err) {
@@ -445,21 +427,6 @@ export function App() {
               ) : (
                 <article key={msg.id} className="bubble advisor">
                   <p className="who">Coach</p>
-                  {msg.fieldLabels && msg.fieldLabels.length > 0 && (
-                    <div className="note-tags">
-                      {msg.fieldLabels.map((label) => (
-                        <span key={label} className="note-tag mentioned">
-                          Note<em>{label}</em>
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {msg.urgent && (
-                    <p className="discuss">Timing can matter here — worth a quick check with Technology Transfer before presenting.</p>
-                  )}
-                  {msg.referral?.required && !msg.urgent && msg.referral.note && (
-                    <p className="discuss">{msg.referral.note}</p>
-                  )}
                   {(msg.paragraphs || []).map((paragraph, index) => (
                     <p key={`${msg.id}-${index}`}>{paragraph}</p>
                   ))}
@@ -628,32 +595,64 @@ function ScenarioPage({ onPick }: { onPick: (text: string) => void }) {
   );
 }
 
+function sourceTypeRank(type: string): number {
+  const kind = (type || "").toUpperCase();
+  if (kind === "HTML") return 0;
+  if (kind === "DOCX") return 1;
+  if (kind === "PDF") return 2;
+  return 3;
+}
+
+function sortSources(sources: SourceView[]): SourceView[] {
+  return [...sources].sort((a, b) => {
+    const byType = sourceTypeRank(a.type) - sourceTypeRank(b.type);
+    if (byType !== 0) return byType;
+    return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" });
+  });
+}
+
 function SourcePage() {
   const [sources, setSources] = useState<SourceView[]>([]);
-  const [error, setError] = useState("");
+  const [listError, setListError] = useState("");
   const [open, setOpen] = useState<SourceView | null>(null);
-  const [passages, setPassages] = useState<PassageView[]>([]);
+  const [view, setView] = useState<"doc" | "text">("doc");
+  const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const docxRef = useRef<HTMLDivElement>(null);
+
+  const kind = open ? sourceFileKind(open) : null;
+  const pageUrl = open ? officialPage(open.url) : null;
+  const fileUrl = open ? sourceFileUrl(open.id) : "";
+  const hasDoc = Boolean(kind);
+  const listed = useMemo(() => sortSources(sources), [sources]);
 
   useEffect(() => {
     listSources()
       .then(setSources)
-      .catch((err: unknown) => setError(err instanceof Error ? err.message : "Could not load sources."));
+      .catch((err: unknown) => setListError(err instanceof Error ? err.message : "Could not load sources."));
   }, []);
 
   useEffect(() => {
     if (!open) return;
+    const nextKind = sourceFileKind(open);
+    setView(nextKind ? "doc" : "text");
+    setText("");
+    setError("");
+    setLoading(!nextKind || nextKind === "docx");
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || view !== "text") return;
     let cancelled = false;
     setLoading(true);
-    setPassages([]);
-    searchSources(open.title)
-      .then((hits) => {
-        if (cancelled) return;
-        const own = hits.filter((hit) => hit.title === open.title || hit.url === open.url);
-        setPassages(own.length ? own : hits);
+    setError("");
+    getSourceText(open.id)
+      .then((next) => {
+        if (!cancelled) setText(next);
       })
-      .catch(() => {
-        if (!cancelled) setPassages([]);
+      .catch((err: unknown) => {
+        if (!cancelled) setError(err instanceof Error ? err.message : "Could not load this source.");
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -661,7 +660,41 @@ function SourcePage() {
     return () => {
       cancelled = true;
     };
-  }, [open]);
+  }, [open, view]);
+
+  useEffect(() => {
+    if (!open || kind !== "docx" || view !== "doc" || !docxRef.current) return;
+    const host = docxRef.current;
+    let cancelled = false;
+    host.innerHTML = "";
+    setLoading(true);
+    setError("");
+    fetch(fileUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error("Word file not found.");
+        return response.arrayBuffer();
+      })
+      .then((buffer) => {
+        if (cancelled || !docxRef.current) return;
+        return renderAsync(buffer, docxRef.current, undefined, {
+          className: "docx-preview",
+          inWrapper: true,
+          breakPages: true,
+          ignoreWidth: false,
+          ignoreHeight: false,
+        });
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) setError(err instanceof Error ? err.message : "Could not open this Word file.");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+      host.innerHTML = "";
+    };
+  }, [open, kind, view, fileUrl]);
 
   useEffect(() => {
     if (!open) return;
@@ -678,18 +711,17 @@ function SourcePage() {
         <p className="eyebrow">Approved for this prototype</p>
         <h2>What the answers are allowed to use</h2>
         <p>
-          Responses cite these documents. Click any source to open the official page and the passages this advisor indexed.
+          Responses cite these documents. Click a source to read it. PDFs and Word files open with their original layout; web pages are linked when a public URL exists.
         </p>
       </header>
-      {error && <p className="fine">{error}</p>}
+      {listError && <p className="fine">{listError}</p>}
       <div className="source-list">
-        {sources.map((source) => (
+        {listed.map((source) => (
           <button key={source.id} type="button" className="source-card" onClick={() => setOpen(source)}>
             <div>
               <h3>{source.title}</h3>
               <p className="eyebrow">{source.type}</p>
             </div>
-            <p>{source.url}</p>
             <span className="source-open" aria-hidden>
               ›
             </span>
@@ -700,31 +732,61 @@ function SourcePage() {
       {open && (
         <div className="source-modal" role="dialog" aria-modal="true" aria-labelledby="source-modal-title">
           <button type="button" className="source-backdrop" aria-label="Close source" onClick={() => setOpen(null)} />
-          <div className="source-sheet">
+          <div className={`source-sheet${hasDoc && view === "doc" ? " has-pdf" : ""}`}>
             <header className="source-sheet-head">
               <div>
                 <p className="eyebrow">{open.type}</p>
                 <h2 id="source-modal-title">{open.title}</h2>
-                <p>{open.url}</p>
+                <p>{pageUrl || open.fileName}</p>
               </div>
               <div className="source-sheet-actions">
-                <a className="source-link" href={open.url} target="_blank" rel="noreferrer">
-                  Open official page
-                </a>
+                {hasDoc && (
+                  <>
+                    <button type="button" className={view === "doc" ? "on" : ""} onClick={() => setView("doc")}>
+                      {kind === "pdf" ? "PDF" : "Word"}
+                    </button>
+                    <button type="button" className={view === "text" ? "on" : ""} onClick={() => setView("text")}>
+                      Text extract
+                    </button>
+                  </>
+                )}
+                {kind === "pdf" && (
+                  <a className="source-link" href={fileUrl} download={open.fileName ?? undefined}>
+                    Download PDF
+                  </a>
+                )}
+                {kind === "docx" && (
+                  <a className="source-link" href={fileUrl} download={open.fileName ?? undefined}>
+                    Download Word
+                  </a>
+                )}
+                {pageUrl && (
+                  <a className="source-link" href={pageUrl} target="_blank" rel="noreferrer">
+                    Open official page
+                  </a>
+                )}
                 <button type="button" className="ghost" onClick={() => setOpen(null)}>
                   Close
                 </button>
               </div>
             </header>
             <div className="source-body">
-              {loading && <p className="fine">Loading indexed excerpts…</p>}
-              {!loading && passages.length === 0 && <p className="fine">No indexed excerpts for this source yet.</p>}
-              {passages.map((passage) => (
-                <article key={passage.chunkId} className="gap present">
-                  <strong>{passage.section || open.title}</strong>
-                  <p>{passage.excerpt}</p>
-                </article>
-              ))}
+              {view === "doc" && kind === "pdf" ? (
+                <iframe title={open.title} src={fileUrl} className="source-pdf" />
+              ) : view === "doc" && kind === "docx" ? (
+                <>
+                  {loading && <p className="fine source-loading">Opening Word file…</p>}
+                  {error && <p className="fine">{error}</p>}
+                  <div ref={docxRef} className="source-docx" />
+                </>
+              ) : (
+                <>
+                  {loading && <p className="fine">Loading source…</p>}
+                  {error && <p className="fine">{error}</p>}
+                  {!loading && !error && !text && <p className="fine">No indexed text for this source yet.</p>}
+                  {!loading && !error && text && <pre>{text}</pre>}
+                </>
+              )}
             </div>
           </div>
         </div>

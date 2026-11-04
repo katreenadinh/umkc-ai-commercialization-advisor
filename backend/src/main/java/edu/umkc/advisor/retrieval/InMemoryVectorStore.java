@@ -26,6 +26,10 @@ public final class InMemoryVectorStore implements VectorStore {
 
     @Override public synchronized List<SourceRecord> listSources() { return new ArrayList<>(sources.values()); }
 
+    @Override public synchronized List<Chunk> listChunks(String id) {
+        return chunks.getOrDefault(id, List.of());
+    }
+
     @Override public synchronized void setEnabled(String id, boolean enabled) {
         SourceRecord s = sources.get(id);
         if (s != null) sources.put(id, new SourceRecord(s.id(), s.title(), s.url(), s.type(), s.contentHash(), enabled));
