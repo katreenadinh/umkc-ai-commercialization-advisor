@@ -4,6 +4,7 @@ import edu.umkc.advisor.retrieval.DocumentRetrievalService;
 import edu.umkc.advisor.retrieval.ScoredChunk;
 import edu.umkc.advisor.retrieval.SourceRecord;
 import edu.umkc.advisor.retrieval.VectorStore;
+import edu.umkc.advisor.safety.ReferralService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +16,22 @@ import java.util.Map;
 public class SourceController {
     private final DocumentRetrievalService retrieval;
     private final VectorStore store;
+    private final ReferralService referral;
 
-    public SourceController(DocumentRetrievalService retrieval, VectorStore store) {
-        this.retrieval = retrieval; this.store = store;
+    public SourceController(DocumentRetrievalService retrieval, VectorStore store, ReferralService referral) {
+        this.retrieval = retrieval; this.store = store; this.referral = referral;
     }
+
+    public record ContactView(String officeName, String email, String url) {}
 
     public record SourceView(String id, String title, String url, String type, boolean enabled) {}
     public record PassageView(String chunkId, String title, String url, String section, Integer page, String excerpt, double score) {}
+
+    @GetMapping("/contact")
+    public ContactView contact() {
+        ReferralService.Contact c = referral.contact();
+        return new ContactView(c.officeName(), c.email(), c.url());
+    }
 
     @GetMapping("/sources")
     public List<SourceView> sources() {

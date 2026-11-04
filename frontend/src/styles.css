@@ -191,6 +191,20 @@ button:disabled { opacity: 0.55; cursor: wait; }
 .ready li.mentioned em { color: var(--thin); background: #f6efd8; }
 .ready p { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
 .panel-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.contact-panel {
+  border-top: 1px solid var(--line);
+  background: #f3eee6;
+}
+.contact-panel h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+.contact-office { margin: 0 0 8px; font-weight: 600; }
+.contact-person { margin: 0 0 8px; }
+.contact-panel p { margin: 0 0 8px; }
+.contact-panel a { color: var(--navy); }
 
 .composer {
   grid-column: 1;

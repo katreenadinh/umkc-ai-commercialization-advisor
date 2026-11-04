@@ -179,6 +179,16 @@ export async function exportSummary(id: string, format: "docx" | "md"): Promise<
   URL.revokeObjectURL(url);
 }
 
+export interface ContactInfo {
+  officeName: string;
+  email: string;
+  url: string | null;
+}
+
+export async function getContact(): Promise<ContactInfo> {
+  return read<ContactInfo>(await fetch("/api/contact"));
+}
+
 export async function listSources(): Promise<SourceView[]> {
   return read<SourceView[]>(await fetch("/api/sources"));
 }

@@ -12,12 +12,20 @@ import edu.umkc.advisor.safety.ReferralService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * Orchestrates one question: mandatory Java rules first, then LLM relevance, then grounded answer, then output guard.
  * Referral decisions never depend on the answer-generation prompt.
  */
 public final class AdvisorService {
+
+    private static final Pattern CONTACT_QUESTION = Pattern.compile(
+            "(?i)(how\\s+(?:do\\s+i|can\\s+i|to)\\s+(?:contact|reach|email|call)"
+          + "|\\b(?:contact|email|phone)\\s+(?:info(?:rmation)?|details)"
+          + "|office'?s?\\s+contact"
+          + "|what(?:'?s|\\s+is)\\s+(?:the\\s+)?(?:office|ott|otts?)'?s?\\s+contact"
+          + "|email\\s+(?:for|of)\\s+(?:the\\s+)?(?:office|tech(?:nology)?\\s*transfer))");
 
     static final String OUT_OF_SCOPE_MESSAGE =
             "That looks outside what I can help with. I'm here for questions about intellectual property, invention "
@@ -46,6 +54,10 @@ public final class AdvisorService {
                     new AskResponse.Referral(type == AnswerType.REFERRAL, rule.primary().name(),
                             type == AnswerType.REFERRAL ? rule.blockingMessage() : null),
                     null, false, AskResponse.DISCLAIMER);
+        }
+
+        if (CONTACT_QUESTION.matcher(question).find()) {
+            return contactAnswer();
         }
 
         // 2. LLM relevance check (validated JSON).
@@ -90,5 +102,16 @@ public final class AdvisorService {
         if (note != null) text = text + "\n\n" + note;
         return new AskResponse(AnswerType.ANSWER, text, cites, refInfo, relInfo,
                 ans.insufficientEvidence() || checked.violated(), AskResponse.DISCLAIMER);
+    }
+
+    private AskResponse contactAnswer() {
+        ReferralService.Contact c = referral.contact();
+        String office = c.officeName() == null || c.officeName().isBlank() ? "the commercialization office" : c.officeName();
+        String mail = c.email() == null || c.email().isBlank() ? null : c.email().trim();
+        StringBuilder text = new StringBuilder("You can reach ").append(office);
+        if (mail != null) text.append(" at ").append(mail);
+        text.append(". Early, informal questions are welcome — you do not need a polished write-up.");
+        return new AskResponse(AnswerType.ANSWER, text.toString(), List.of(),
+                new AskResponse.Referral(false, "NONE", null), null, false, AskResponse.DISCLAIMER);
     }
 }

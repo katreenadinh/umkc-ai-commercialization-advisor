@@ -23,8 +23,8 @@ advisor:
       base-url: https://api.anthropic.com
   referral:
     # Defaults come from official UMKC pages. The project team must confirm them.
-    office-name: ${REFERRAL_OFFICE_NAME:UMKC Office of Technology Transfer}
-    email: ${REFERRAL_EMAIL:techcomm@umkc.edu}
+    office-name: ${REFERRAL_OFFICE_NAME:UMKC Office of Technology Commercialization}
+    email: ${REFERRAL_EMAIL:ericwa@umkc.edu}
     url: ${REFERRAL_URL:https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php}
   limits:
     max-question-chars: 2000

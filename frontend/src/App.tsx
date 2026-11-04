@@ -5,6 +5,7 @@ import {
   forgetDraftId,
   generateSummary,
   getDraft,
+  getContact,
   listSources,
   savedDraftId,
   searchSources,
@@ -13,6 +14,7 @@ import {
   type DraftView,
   type FieldView,
   type PassageView,
+  type ContactInfo,
   type Referral,
   type SourceView,
 } from "./api";
@@ -142,6 +144,7 @@ export function App() {
   const [copied, setCopied] = useState(false);
   const [pending, setPending] = useState(false);
   const [bootError, setBootError] = useState("");
+  const [contact, setContact] = useState<ContactInfo | null>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLTextAreaElement>(null);
   const draftIdRef = useRef<string | null>(null);
@@ -158,6 +161,15 @@ export function App() {
 
   useEffect(() => {
     void boot();
+    getContact()
+      .then(setContact)
+      .catch(() => {
+        setContact({
+          officeName: "UMKC Office of Technology Commercialization",
+          email: "ericwa@umkc.edu",
+          url: "https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php",
+        });
+      });
   }, []);
 
   useEffect(() => {
@@ -417,7 +429,12 @@ export function App() {
             {bootError && (
               <article className="bubble advisor">
                 <p className="who">Coach</p>
-                <p>{bootError} Start the Java API on port 8081, then refresh.</p>
+                <p>
+                  {bootError}
+                  {/could not reach|failed to fetch|network|unavailable/i.test(bootError)
+                    ? " Start the Java API on port 8081, then refresh."
+                    : ""}
+                </p>
               </article>
             )}
             {messages.map((msg) =>
@@ -529,6 +546,25 @@ export function App() {
                 Eight notes for a first conversation, not the whole UM form. Skip freely. Early disclosure is encouraged, and these notes are not a confidential submission.
               </p>
             </div>
+            {contact && (
+              <div className="panel contact-panel">
+                <h2 className="contact-office">{contact.officeName}</h2>
+                <p className="contact-person">Eric Anderson - Director</p>
+                {contact.email && (
+                  <p>
+                    <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  </p>
+                )}
+                {contact.url && (
+                  <p>
+                    <a href={contact.url} target="_blank" rel="noreferrer">
+                      Invention disclosure process
+                    </a>
+                  </p>
+                )}
+                <p className="fine">Early, informal questions are welcome. This chat is not a submission.</p>
+              </div>
+            )}
           </aside>
 
           <form
@@ -743,7 +779,7 @@ function DeployPage() {
             <li>No retention of invention details outside that tenant. The real form is attorney-client privileged.</li>
             <li>Logs that store the question type and the handoff, not the scientific content, unless counsel approves a confidential store.</li>
             <li>A staff review loop when whitepapers or the form change, plus a small evaluation set like the scenarios in this prototype.</li>
-            <li>Human contact in the interface: ericwa@umkc.edu for the disclosure, techcomm@umkc.edu for use and partnerships.</li>
+            <li>Human contact in the interface: ericwa@umkc.edu (Eric Anderson, Office of Technology Commercialization).</li>
           </ul>
         </article>
       </div>

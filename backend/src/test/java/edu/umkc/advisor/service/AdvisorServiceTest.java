@@ -37,6 +37,18 @@ class AdvisorServiceTest {
     }
 
     @Test
+    void contactQuestionsReturnConfiguredOfficeWithoutLlm() {
+        CountingLlm llm = new CountingLlm(rel("UNCERTAIN", "ASK_CLARIFYING_QUESTION", false, 0.2));
+        AskResponse r = build(llm, gen("x")).ask("what is the office's contact information?");
+        assertEquals(0, llm.calls);
+        assertEquals(AnswerType.ANSWER, r.type());
+        assertTrue(r.message().contains("office@example.edu"));
+        assertTrue(r.message().contains("Test Office"));
+        AskResponse r2 = build(llm, gen("x")).ask("how do i contact the office?");
+        assertTrue(r2.message().contains("office@example.edu"));
+    }
+
+    @Test
     void imminentDisclosureNeverCallsLlm() {
         CountingLlm llm = new CountingLlm(rel("IP_GENERAL", "ANSWER_WITH_RAG", false, 0.9));
         AskResponse r = build(llm, gen("x")).ask("I'm presenting my invention tomorrow.");
