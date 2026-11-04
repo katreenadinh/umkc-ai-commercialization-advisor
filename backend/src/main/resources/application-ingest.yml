@@ -1,0 +1,5 @@
+spring:
+  main:
+    web-application-type: none
+ingest:
+  dir: ../data/imports      # optional local PDF/DOCX/TXT/MD files to add

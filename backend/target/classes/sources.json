@@ -1,0 +1,31 @@
+[
+  {
+    "id": "8e0c719b-7912-5a41-a7e9-0e12804708e4",
+    "title": "UMKC: Submit an Invention Disclosure",
+    "url": "https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php",
+    "type": "HTML",
+    "verifiedOn": "2026-10-30"
+  },
+  {
+    "id": "48853c7e-7e1f-5225-8081-4a1b6a91579c",
+    "title": "UMKC: Disclose Your Invention, Software or Creation",
+    "url": "https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/tech-commercialization/disclose-your-invention,-software-or-creation.html",
+    "type": "HTML",
+    "verifiedOn": "2026-10-30",
+    "note": "Page og:title is broken by a CMS bug, so the title is set here."
+  },
+  {
+    "id": "230cebda-ed55-58aa-b791-b8238a643e0a",
+    "title": "UM System: 100.020 Invention and Patent Regulations",
+    "url": "https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations",
+    "type": "HTML",
+    "verifiedOn": "2026-10-30"
+  },
+  {
+    "id": "185762b8-2324-5551-b15b-8fa4f9c16543",
+    "title": "UMKC: Commercialization Process",
+    "url": "https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/index.php",
+    "type": "HTML",
+    "verifiedOn": "2026-10-30"
+  }
+]
