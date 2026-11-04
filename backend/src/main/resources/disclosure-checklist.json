@@ -1,0 +1,567 @@
+{
+ "version": "1.0",
+ "formVersion": "UM 16C (rev. September 2025)",
+ "verifiedOn": "2026-10-30",
+ "note": "Derived from the UM System Invention Disclosure Form UM 16C and UMKC/UM System pages. Fields with origin PROJECT_GUIDANCE are NOT on the form and are never presented as required. inCoach=true is the short first-conversation set (eight notes for a new invention). The rest stay on the form for later review and are not asked in the coach.",
+ "fields": [
+  {
+   "id": "existing_disclosure_ref",
+   "section": "Existing disclosure",
+   "label": "Which existing disclosure this updates",
+   "description": "The title or disclosure number of the disclosure you already submitted.",
+   "whyItHelps": "The university regulations ask inventors to notify the technology transfer office and update a disclosure if the invention is modified or improved after submission.",
+   "starterQuestion": "Which disclosure are you updating? A title or disclosure number is enough.",
+   "origin": "OFFICIAL_REGULATION",
+   "sourceRef": "UM System CRR 100.020, D.2.b",
+   "verified": true,
+   "appliesTo": [
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 1,
+   "order": 0,
+   "inCoach": true
+  },
+  {
+   "id": "what_changed",
+   "section": "Existing disclosure",
+   "label": "What changed since the last disclosure",
+   "description": "What has been modified, improved, or newly developed since the earlier disclosure.",
+   "whyItHelps": "Staff decide whether a change is an update to the existing disclosure or something that should be disclosed separately. This tool does not make that call.",
+   "starterQuestion": "What has changed or improved since you submitted the earlier disclosure?",
+   "origin": "OFFICIAL_REGULATION",
+   "sourceRef": "UM System CRR 100.020, D.2.b",
+   "verified": true,
+   "appliesTo": [
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Whether a change needs a new disclosure is for university staff to decide.",
+   "notApplicableAllowed": false,
+   "priority": 1,
+   "order": 0,
+   "inCoach": true
+  },
+  {
+   "id": "title",
+   "section": "A.1 Invention description",
+   "label": "Non-confidential title",
+   "description": "A brief title that leaves out confidential information, acronyms and trademarks.",
+   "whyItHelps": "The form asks for a title that can be used without revealing confidential details.",
+   "starterQuestion": "If you had to give this work a short, plain title, what would it be? Please leave out anything confidential, acronyms, and trademarks.",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 5,
+   "inCoach": false
+  },
+  {
+   "id": "summary_general",
+   "section": "A.1 Invention description",
+   "label": "General description",
+   "description": "A plain description of what the invention is.",
+   "whyItHelps": "This is the starting point staff use to understand the work.",
+   "starterQuestion": "In your own words, what have you built, discovered, or created?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1.a",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 1,
+   "order": 1,
+   "inCoach": true
+  },
+  {
+   "id": "technical_description",
+   "section": "A.1 Invention description",
+   "label": "How it works, and advantages over existing approaches",
+   "description": "The technical description and any advantages or improvements over existing methods, devices or materials.",
+   "whyItHelps": "Staff need enough technical detail to understand how it works.",
+   "starterQuestion": "Can you walk me through how it works technically?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1.b",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 1,
+   "order": 3,
+   "inCoach": true
+  },
+  {
+   "id": "novel_aspects",
+   "section": "A.1 Invention description",
+   "label": "Aspects you see as new",
+   "description": "Which aspects you personally believe are new.",
+   "whyItHelps": "The form asks for your view. This tool does not judge whether anything is new.",
+   "starterQuestion": "Which parts of this do you think are new or different?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1.c",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Whether anything is actually new is assessed by the university and its patent counsel, not by this tool.",
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 7,
+   "inCoach": false
+  },
+  {
+   "id": "problem_solved",
+   "section": "A.1 Invention description",
+   "label": "Problem it addresses",
+   "description": "The problem the invention solves and why it matters.",
+   "whyItHelps": "Explains why the work could matter to others.",
+   "starterQuestion": "What problem does this address, and who runs into it?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1.d",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 1,
+   "order": 2,
+   "inCoach": true
+  },
+  {
+   "id": "difference_from_others",
+   "section": "A.1 Invention description",
+   "label": "How it differs from what others are doing",
+   "description": "How the work differs from other approaches in the field.",
+   "whyItHelps": "Helps staff see where the work sits relative to existing approaches.",
+   "starterQuestion": "How is this different from what others in your field are doing?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1.e",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 1,
+   "order": 4,
+   "inCoach": true
+  },
+  {
+   "id": "limitations",
+   "section": "A.1 Invention description",
+   "label": "Disadvantages or limitations",
+   "description": "Known disadvantages or limitations.",
+   "whyItHelps": "The form asks for these. Being upfront is normal and expected.",
+   "starterQuestion": "Are there any known limitations or drawbacks so far?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1.f",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 8,
+   "inCoach": false
+  },
+  {
+   "id": "keywords",
+   "section": "A.1 Invention description",
+   "label": "Keywords",
+   "description": "Keywords associated with the invention.",
+   "whyItHelps": "The form asks for keywords to help staff categorize the work.",
+   "starterQuestion": "What keywords would you use to describe this work?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 6,
+   "inCoach": false
+  },
+  {
+   "id": "supporting_documents",
+   "section": "A.1 Invention description",
+   "label": "Documents you could attach",
+   "description": "Published or unpublished abstracts, presentations, manuscripts or grant proposals, even preliminary drafts.",
+   "whyItHelps": "The form asks you to attach these when they exist.",
+   "starterQuestion": "Do you have any abstracts, manuscripts, slides, or proposals about this that could be attached, even rough drafts?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 4,
+   "inCoach": false
+  },
+  {
+   "id": "evidence_testing",
+   "section": "Helpful extras",
+   "label": "Evidence, experiments and testing",
+   "description": "What has been built or tested, how, and what was observed.",
+   "whyItHelps": "Not a separate section on the form, but it helps staff understand how mature the work is.",
+   "starterQuestion": "Have you tested this in any way? If so, how, and what did you observe?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 2,
+   "order": 1,
+   "inCoach": true
+  },
+  {
+   "id": "development_stage",
+   "section": "Helpful extras",
+   "label": "Current development stage",
+   "description": "Where the work stands today, such as idea, early prototype or working system.",
+   "whyItHelps": "Not a separate section on the form. The form does ask when a first model or prototype was made.",
+   "starterQuestion": "Where does the work stand right now: an idea, a prototype, something more developed?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 2,
+   "order": 2,
+   "inCoach": false
+  },
+  {
+   "id": "applications_users",
+   "section": "Helpful extras",
+   "label": "Potential applications and intended users",
+   "description": "Where the work could be used and by whom, described as possibilities.",
+   "whyItHelps": "Not a separate section on the form, but it helps staff understand possible uses.",
+   "starterQuestion": "Who might use this, and for what? Early guesses are fine.",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 2,
+   "order": 3,
+   "inCoach": false
+  },
+  {
+   "id": "date_conceived",
+   "section": "A.2 Key dates",
+   "label": "When it was conceived",
+   "description": "Best-estimate date the idea was conceived.",
+   "whyItHelps": "The form asks for key dates, best estimates are fine.",
+   "starterQuestion": "Roughly when did the idea first come together?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 9,
+   "inCoach": false
+  },
+  {
+   "id": "date_first_written",
+   "section": "A.2 Key dates",
+   "label": "First written description",
+   "description": "When the first written description was made.",
+   "whyItHelps": "Part of the key dates on the form.",
+   "starterQuestion": "When did you first write the idea down, for example in a notebook, draft, or proposal?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 10,
+   "inCoach": false
+  },
+  {
+   "id": "date_first_prototype",
+   "section": "A.2 Key dates",
+   "label": "First model or prototype",
+   "description": "When a first model or prototype was made.",
+   "whyItHelps": "Part of the key dates on the form.",
+   "starterQuestion": "Has a first model or prototype been made yet, and roughly when?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 11,
+   "inCoach": false
+  },
+  {
+   "id": "date_first_public_disclosure",
+   "section": "A.2 Key dates",
+   "label": "First public disclosure",
+   "description": "When the work was first shared publicly (oral, written, online, or public use).",
+   "whyItHelps": "Timing of public sharing can matter. This is one of the most useful dates for staff.",
+   "starterQuestion": "Has this been shared publicly in any way yet, such as a talk, paper, poster, website, or demo? If so, when?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Timing of public disclosure can matter. Please discuss any past or planned dates with the commercialization office.",
+   "notApplicableAllowed": true,
+   "priority": 1,
+   "order": 6,
+   "inCoach": false
+  },
+  {
+   "id": "date_first_offer_to_sell",
+   "section": "A.2 Key dates",
+   "label": "First offer to sell",
+   "description": "When the invention was first offered for sale, if ever.",
+   "whyItHelps": "Part of the key dates on the form.",
+   "starterQuestion": "Has it ever been offered for sale or licensed to anyone?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 12,
+   "inCoach": false
+  },
+  {
+   "id": "export_control",
+   "section": "A.2 Key dates",
+   "label": "Export control or controlled information",
+   "description": "Whether the technology is subject to an export control plan or is controlled unclassified information.",
+   "whyItHelps": "The form asks, and says to contact Research Security and Compliance before submitting if it relates to a Technology Control Plan.",
+   "starterQuestion": "Do you know whether this work is covered by an export control plan or involves controlled unclassified information?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Export control status is determined by Research Security and Compliance. Please contact them before submitting.",
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 13,
+   "inCoach": false
+  },
+  {
+   "id": "public_disclosures_list",
+   "section": "A.3 Disclosures and publications",
+   "label": "Past and planned public disclosures",
+   "description": "Every actual or planned public disclosure: abstracts, posters, manuscripts, websites, theses, grant proposals, talks, meetings with industry, with best-estimate dates.",
+   "whyItHelps": "The form asks for past and future disclosures and says to keep the office updated. Timing can matter.",
+   "starterQuestion": "Besides anything you've already mentioned, are any papers, talks, posters, theses, or website posts planned? Roughly when?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) A.3",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Timing of public disclosure can matter. Please discuss any past or planned dates with the commercialization office.",
+   "notApplicableAllowed": true,
+   "priority": 1,
+   "order": 5,
+   "inCoach": true
+  },
+  {
+   "id": "funding",
+   "section": "B. External support",
+   "label": "Funding and sponsors",
+   "description": "External funding used to support the work (federal, state, industry, foundation, consortium, SBIR/STTR, other) with sources, award numbers and the principal investigator, or confirmation that there was none.",
+   "whyItHelps": "The form says the office needs this to determine obligations to funders and must report federally funded inventions to the agency.",
+   "starterQuestion": "Was any outside funding involved, such as a federal grant, industry money, or a foundation? If not, just say so.",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) B.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 2,
+   "inCoach": true
+  },
+  {
+   "id": "third_party",
+   "section": "B. External support",
+   "label": "Third-party materials, data and agreements",
+   "description": "Whether materials, data, technology or collaborators from outside parties were used, and whether agreements (NDA, collaboration, research, consortium, consulting, MOU) govern them.",
+   "whyItHelps": "Third-party involvement can create obligations the office needs to know about.",
+   "starterQuestion": "Did you use any materials, data, tools, or collaborators from outside your group? If so, was there a signed agreement?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) B.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 3,
+   "inCoach": false
+  },
+  {
+   "id": "potential_inventors",
+   "section": "C. People",
+   "label": "Contributors and what they contributed",
+   "description": "Everyone who contributed materially, from inside or outside the university, their affiliations, whether any is a non-employee student, and why they are listed.",
+   "whyItHelps": "The form asks for potential inventors with a reason for each. Whether someone legally qualifies is decided later.",
+   "starterQuestion": "Who contributed to the ideas behind this, and what did each person contribute? Please include outside collaborators and students.",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) C.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Whether someone legally qualifies as an inventor is a legal determination. The form only asks for potential inventors.",
+   "notApplicableAllowed": false,
+   "priority": 3,
+   "order": 1,
+   "inCoach": true
+  },
+  {
+   "id": "closest_products",
+   "section": "D. Commercial context",
+   "label": "Closest known products or technologies",
+   "description": "Known products on the market or technologies under development that are similar.",
+   "whyItHelps": "The form asks what you know of. It is fine to say you are not sure.",
+   "starterQuestion": "What are the closest existing products or approaches you're aware of?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) D.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 2,
+   "order": 4,
+   "inCoach": false
+  },
+  {
+   "id": "prior_art",
+   "section": "D. Commercial context",
+   "label": "Prior art you are aware of",
+   "description": "Publications or patents you know of that describe something similar.",
+   "whyItHelps": "The form asks for ones you are aware of. The form also notes searches on non-government sites like Google Patents may be tracked.",
+   "starterQuestion": "Are you aware of any papers or patents that describe something similar?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) D.1",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 2,
+   "order": 5,
+   "inCoach": false
+  },
+  {
+   "id": "potential_licensees",
+   "section": "D. Commercial context",
+   "label": "Companies that might be interested",
+   "description": "Companies or entrepreneurs you think or know could be interested, with contacts if known.",
+   "whyItHelps": "The form asks for these. It is fine if you do not know any yet.",
+   "starterQuestion": "Do you know of any companies or people who might be interested in this?",
+   "origin": "OFFICIAL_FORM",
+   "sourceRef": "UM 16C (rev. September 2025) D.2",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 14,
+   "inCoach": false
+  },
+  {
+   "id": "conflicts_of_interest",
+   "section": "D. Commercial context",
+   "label": "Possible conflicts of interest with commercial contacts",
+   "description": "Any potential conflicts of interest you may have with commercial contacts.",
+   "whyItHelps": "UMKC's disclosure page says the disclosure covers commercial contacts and any potential conflicts of interest.",
+   "starterQuestion": "Do you have any personal or financial ties to companies that might be interested in this?",
+   "origin": "OFFICIAL_PAGE",
+   "sourceRef": "UMKC: Submit an Invention Disclosure",
+   "verified": true,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Conflict of interest questions are handled by the university's conflict of interest process, not by this tool.",
+   "notApplicableAllowed": true,
+   "priority": 3,
+   "order": 15,
+   "inCoach": false
+  }
+ ],
+ "inspectionStatus": "PARTIAL. Built from the extracted text of Form UM 16C (rev. September 2025) as hosted at docs.research.missouri.edu: sections A-E, tables and checkbox labels were visible. NOT verified: (1) the copy hosted on UMKC's own site, which could not be fetched; (2) the form's instruction page, which was not present in the extracted text; (3) any required-versus-optional markings. No field is therefore labelled required. Interview priority/order is a project strategy, not an official ranking."
+}

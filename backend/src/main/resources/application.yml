@@ -5,27 +5,33 @@ spring:
     username: ${DB_USER:advisor}
     password: ${DB_PASSWORD:}
   flyway.enabled: true
-  servlet.multipart.max-file-size: 10MB
 server:
-  port: 8080
+  port: ${SERVER_PORT:8081}      # 8081 because mlx_lm.server defaults to 8080
   error.include-message: never
 advisor:
-  anthropic:
-    api-key: ${ANTHROPIC_API_KEY:}
-    model: ${ANTHROPIC_MODEL:claude-sonnet-4-6}
-    base-url: https://api.anthropic.com
-    max-tokens: 1500
-    timeout-seconds: 60
+  llm:
+    provider: ${LLM_PROVIDER:local}       # local | anthropic
+    max-tokens: 1200
+    timeout-seconds: 180                  # local inference on a laptop can be slow
+    local:
+      # CONFIRM against your running MLX server; these are placeholders, not verified values.
+      base-url: ${LOCAL_LLM_BASE_URL:http://127.0.0.1:8080/v1}
+      model: ${LOCAL_LLM_MODEL:CONFIGURE_MODEL_NAME}
+    anthropic:                            # optional, off by default
+      api-key: ${ANTHROPIC_API_KEY:}
+      model: ${ANTHROPIC_MODEL:claude-sonnet-4-6}
+      base-url: https://api.anthropic.com
   referral:
-    # Defaults come from the official UMKC pages. The project team must confirm them before real use.
-    office-name: ${REFERRAL_OFFICE_NAME:UMKC Office of Technology Transfer}
-    email: ${REFERRAL_EMAIL:techcomm@umkc.edu}
-    url: ${REFERRAL_URL:https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.html}
+    # Defaults come from official UMKC pages. The project team must confirm them.
+    office-name: ${REFERRAL_OFFICE_NAME:UMKC Office of Technology Commercialization}
+    email: ${REFERRAL_EMAIL:ericwa@umkc.edu}
+    url: ${REFERRAL_URL:https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php}
   limits:
     max-question-chars: 2000
+    max-message-chars: 3000
+    max-drafts-per-owner: 25
   rag:
     top-k: 6
-    min-score: 0.30     # cosine similarity; tune with the Colab notebook
-  admin-token: ${ADMIN_TOKEN:}   # empty = admin endpoints disabled
+    min-score: 0.30
   cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
 logging.level.edu.umkc.advisor: INFO

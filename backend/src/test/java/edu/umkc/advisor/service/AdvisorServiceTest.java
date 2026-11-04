@@ -37,6 +37,18 @@ class AdvisorServiceTest {
     }
 
     @Test
+    void contactQuestionsReturnConfiguredOfficeWithoutLlm() {
+        CountingLlm llm = new CountingLlm(rel("UNCERTAIN", "ASK_CLARIFYING_QUESTION", false, 0.2));
+        AskResponse r = build(llm, gen("x")).ask("what is the office's contact information?");
+        assertEquals(0, llm.calls);
+        assertEquals(AnswerType.ANSWER, r.type());
+        assertTrue(r.message().contains("office@example.edu"));
+        assertTrue(r.message().contains("Test Office"));
+        AskResponse r2 = build(llm, gen("x")).ask("how do i contact the office?");
+        assertTrue(r2.message().contains("office@example.edu"));
+    }
+
+    @Test
     void imminentDisclosureNeverCallsLlm() {
         CountingLlm llm = new CountingLlm(rel("IP_GENERAL", "ANSWER_WITH_RAG", false, 0.9));
         AskResponse r = build(llm, gen("x")).ask("I'm presenting my invention tomorrow.");
@@ -61,6 +73,15 @@ class AdvisorServiceTest {
         AskResponse unc = build(new CountingLlm(rel("UNCERTAIN", "ASK_CLARIFYING_QUESTION", false, 0.3)), gen("x")).ask("help");
         assertEquals(AnswerType.CLARIFICATION, unc.type());
         assertNotNull(unc.message());
+    }
+
+    @Test
+    void terseProcessQuestionsSkipClarification() {
+        AskResponse r = build(new CountingLlm(rel("UNCERTAIN", "ASK_CLARIFYING_QUESTION", false, 0.3)),
+                gen("A public disclosure is sharing the invention outside a confidential setting."))
+                .ask("what is public disclosure?");
+        assertEquals(AnswerType.ANSWER, r.type());
+        assertTrue(r.message().contains("sharing the invention"));
     }
 
     @Test

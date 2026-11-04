@@ -4,6 +4,7 @@ import edu.umkc.advisor.ai.RelevanceResult;
 import edu.umkc.advisor.dto.AskResponse;
 import edu.umkc.advisor.dto.AskResponse.AnswerType;
 import edu.umkc.advisor.dto.Citation;
+import edu.umkc.advisor.model.NextAction;
 import edu.umkc.advisor.safety.OutputGuard;
 import edu.umkc.advisor.safety.ReferralDecision;
 import edu.umkc.advisor.safety.ReferralService;
@@ -11,12 +12,20 @@ import edu.umkc.advisor.safety.ReferralService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * Orchestrates one question: mandatory Java rules first, then LLM relevance, then grounded answer, then output guard.
  * Referral decisions never depend on the answer-generation prompt.
  */
 public final class AdvisorService {
+
+    private static final Pattern CONTACT_QUESTION = Pattern.compile(
+            "(?i)(how\\s+(?:do\\s+i|can\\s+i|to)\\s+(?:contact|reach|email|call)"
+          + "|\\b(?:contact|email|phone)\\s+(?:info(?:rmation)?|details)"
+          + "|office'?s?\\s+contact"
+          + "|what(?:'?s|\\s+is)\\s+(?:the\\s+)?(?:office|ott|otts?)'?s?\\s+contact"
+          + "|email\\s+(?:for|of)\\s+(?:the\\s+)?(?:office|tech(?:nology)?\\s*transfer))");
 
     static final String OUT_OF_SCOPE_MESSAGE =
             "That looks outside what I can help with. I'm here for questions about intellectual property, invention "
@@ -47,6 +56,10 @@ public final class AdvisorService {
                     null, false, AskResponse.DISCLAIMER);
         }
 
+        if (CONTACT_QUESTION.matcher(question).find()) {
+            return contactAnswer();
+        }
+
         // 2. LLM relevance check (validated JSON).
         RelevanceResult rel = relevance.classify(question);
         AskResponse.Relevance relInfo = new AskResponse.Relevance(rel.category().name(), rel.nextAction().name(), rel.reason());
@@ -55,7 +68,13 @@ public final class AdvisorService {
                 : rel.humanReferralNeeded() ? referral.genericReferralNote() : null;
         AskResponse.Referral refInfo = new AskResponse.Referral(referralNeeded, rule.primary().name(), note);
 
-        switch (rel.nextAction()) {
+        NextAction action = rel.nextAction();
+        // Casual "what is public disclosure?" wording is already in-scope. Do not stall on a vague-routing guess.
+        if (action == NextAction.ASK_CLARIFYING_QUESTION
+                && DisclosureInterviewService.looksLikeGeneralQuestion(question)) {
+            action = NextAction.ANSWER_WITH_RAG;
+        }
+        switch (action) {
             case DECLINE_OUT_OF_SCOPE:
                 return new AskResponse(AnswerType.OUT_OF_SCOPE, OUT_OF_SCOPE_MESSAGE, List.of(),
                         new AskResponse.Referral(false, "NONE", null), relInfo, false, AskResponse.DISCLAIMER);
@@ -83,5 +102,16 @@ public final class AdvisorService {
         if (note != null) text = text + "\n\n" + note;
         return new AskResponse(AnswerType.ANSWER, text, cites, refInfo, relInfo,
                 ans.insufficientEvidence() || checked.violated(), AskResponse.DISCLAIMER);
+    }
+
+    private AskResponse contactAnswer() {
+        ReferralService.Contact c = referral.contact();
+        String office = c.officeName() == null || c.officeName().isBlank() ? "the commercialization office" : c.officeName();
+        String mail = c.email() == null || c.email().isBlank() ? null : c.email().trim();
+        StringBuilder text = new StringBuilder("You can reach ").append(office);
+        if (mail != null) text.append(" at ").append(mail);
+        text.append(". Early, informal questions are welcome — you do not need a polished write-up.");
+        return new AskResponse(AnswerType.ANSWER, text.toString(), List.of(),
+                new AskResponse.Referral(false, "NONE", null), null, false, AskResponse.DISCLAIMER);
     }
 }
