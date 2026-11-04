@@ -64,6 +64,15 @@ class AdvisorServiceTest {
     }
 
     @Test
+    void terseProcessQuestionsSkipClarification() {
+        AskResponse r = build(new CountingLlm(rel("UNCERTAIN", "ASK_CLARIFYING_QUESTION", false, 0.3)),
+                gen("A public disclosure is sharing the invention outside a confidential setting."))
+                .ask("what is public disclosure?");
+        assertEquals(AnswerType.ANSWER, r.type());
+        assertTrue(r.message().contains("sharing the invention"));
+    }
+
+    @Test
     void guardReplacesDefinitiveAnswerAndDropsCitations() {
         AskResponse r = build(new CountingLlm(rel("IP_GENERAL", "ANSWER_WITH_RAG", false, 0.9)),
                 gen("Your invention is patentable, so file now.")).ask("What is a patent?");

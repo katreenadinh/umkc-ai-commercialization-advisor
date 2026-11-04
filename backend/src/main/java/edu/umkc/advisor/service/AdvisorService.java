@@ -4,6 +4,7 @@ import edu.umkc.advisor.ai.RelevanceResult;
 import edu.umkc.advisor.dto.AskResponse;
 import edu.umkc.advisor.dto.AskResponse.AnswerType;
 import edu.umkc.advisor.dto.Citation;
+import edu.umkc.advisor.model.NextAction;
 import edu.umkc.advisor.safety.OutputGuard;
 import edu.umkc.advisor.safety.ReferralDecision;
 import edu.umkc.advisor.safety.ReferralService;
@@ -55,7 +56,13 @@ public final class AdvisorService {
                 : rel.humanReferralNeeded() ? referral.genericReferralNote() : null;
         AskResponse.Referral refInfo = new AskResponse.Referral(referralNeeded, rule.primary().name(), note);
 
-        switch (rel.nextAction()) {
+        NextAction action = rel.nextAction();
+        // Casual "what is public disclosure?" wording is already in-scope. Do not stall on a vague-routing guess.
+        if (action == NextAction.ASK_CLARIFYING_QUESTION
+                && DisclosureInterviewService.looksLikeGeneralQuestion(question)) {
+            action = NextAction.ANSWER_WITH_RAG;
+        }
+        switch (action) {
             case DECLINE_OUT_OF_SCOPE:
                 return new AskResponse(AnswerType.OUT_OF_SCOPE, OUT_OF_SCOPE_MESSAGE, List.of(),
                         new AskResponse.Referral(false, "NONE", null), relInfo, false, AskResponse.DISCLAIMER);

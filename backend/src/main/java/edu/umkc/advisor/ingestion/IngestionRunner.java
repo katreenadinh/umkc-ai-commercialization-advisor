@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 /**
  * Separate from the request pipeline. Run with:
  *   mvn spring-boot:run -Dspring-boot.run.profiles=ingest
+ * Optional notebook handoff: add -Dspring-boot.run.arguments=--ingest.jsonl=../data/chunks.jsonl
  * Fetches sources.json entries and ingests any PDF/DOCX/TXT/MD files found in ingest.dir.
  * Prints extracted-text previews so empty or malformed documents are caught.
  */
@@ -23,9 +24,11 @@ import java.util.stream.Stream;
 public class IngestionRunner implements CommandLineRunner {
     private final IngestionPipeline pipeline;
     private final String dir;
+    private final String jsonl;
 
-    public IngestionRunner(IngestionPipeline pipeline, @Value("${ingest.dir:../data/imports}") String dir) {
-        this.pipeline = pipeline; this.dir = dir;
+    public IngestionRunner(IngestionPipeline pipeline, @Value("${ingest.dir:../data/imports}") String dir,
+                           @Value("${ingest.jsonl:}") String jsonl) {
+        this.pipeline = pipeline; this.dir = dir; this.jsonl = jsonl;
     }
 
     @Override
@@ -34,11 +37,26 @@ public class IngestionRunner implements CommandLineRunner {
         try (InputStream in = getClass().getClassLoader().getResourceAsStream("sources.json")) {
             for (JsonNode s : mapper.readTree(in)) {
                 try {
-                    ExtractedDocument doc = new HtmlLoader().fetch(s.get("url").asText(), s.get("title").asText());
-                    print(pipeline.ingest(s.get("id").asText(), doc, s.get("url").asText(), "HTML"), doc);
+                    String type = s.path("type").asText("HTML");
+                    ExtractedDocument doc;
+                    if ("DOCX_URL".equals(type)) {
+                        var res = java.net.http.HttpClient.newBuilder().followRedirects(java.net.http.HttpClient.Redirect.NORMAL).build()
+                                .send(java.net.http.HttpRequest.newBuilder(java.net.URI.create(s.get("url").asText())).build(),
+                                        java.net.http.HttpResponse.BodyHandlers.ofByteArray());
+                        doc = new DocxLoader().load(new java.io.ByteArrayInputStream(res.body()), s.get("title").asText());
+                        type = "DOCX";
+                    } else {
+                        doc = new HtmlLoader().fetch(s.get("url").asText(), s.get("title").asText());
+                    }
+                    print(pipeline.ingest(s.get("id").asText(), doc, s.get("url").asText(), type), doc);
                 } catch (Exception e) {
                     System.out.println("FAILED " + s.get("url").asText() + ": " + e.getClass().getSimpleName() + " (" + e.getMessage() + ")");
                 }
+            }
+        }
+        if (jsonl != null && !jsonl.isBlank()) {
+            try (var reader = java.nio.file.Files.newBufferedReader(Path.of(jsonl))) {
+                for (var r : new JsonlImporter(pipeline).importJsonl(reader)) System.out.printf("JSONL %s: %d chunks%n", r.title(), r.chunks());
             }
         }
         Path d = Path.of(dir);

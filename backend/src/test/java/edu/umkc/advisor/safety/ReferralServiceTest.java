@@ -21,7 +21,11 @@ class ReferralServiceTest {
         "We plan to post our preprint on arXiv in two weeks.",
         "I'm giving a talk on Friday about our sensor.",
         "Our group is going to open-source the code this month.",
-        "I plan to publish the results in the spring."
+        "I plan to publish the results in the spring.",
+        "at the same time, i want to present this finding",
+        "I want to present this finding",
+        "I'd like to present these results",
+        "We are looking to publish this work"
     })
     void imminentDisclosureBlocksLlm(String msg) {
         ReferralDecision d = svc.evaluate(msg);
