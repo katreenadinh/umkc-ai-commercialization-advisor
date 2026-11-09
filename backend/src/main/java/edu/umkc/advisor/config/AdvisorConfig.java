@@ -27,7 +27,7 @@ public class AdvisorConfig implements WebMvcConfigurer {
 
     @Bean LlmClient llmClient() {
         var l = props.llm();
-        if ("anthropic".equalsIgnoreCase(l.provider())) {
+        if ("hosted".equalsIgnoreCase(l.provider()) || "anthropic".equalsIgnoreCase(l.provider())) {
             var a = l.anthropic();
             return new ClaudeClient(a.apiKey(), a.model(), a.baseUrl(), l.timeoutSeconds());
         }

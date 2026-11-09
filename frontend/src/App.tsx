@@ -20,10 +20,9 @@ import {
   type ContactInfo,
   type SourceView,
 } from "./api";
-import { SCENARIOS } from "./scenarios";
 import { notesToHtml, notesToPlain } from "./notesFormat";
 
-type Page = "coach" | "scenarios" | "sources" | "deploy";
+type Page = "coach" | "sources";
 
 interface Msg {
   id: string;
@@ -34,7 +33,7 @@ interface Msg {
 
 const INLINE_MARKDOWN = /\*\*(.+?)\*\*|\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^)\s]+)\)/g;
 
-/** Renders the coach's **bold** and [text](link) markup; only web and email links become clickable. */
+/** Renders the advisor's **bold** and [text](link) markup; only web and email links become clickable. */
 function richText(text: string): ReactNode[] {
   const out: ReactNode[] = [];
   let last = 0;
@@ -207,10 +206,6 @@ export function App() {
   const currentSectionId = sections.find((section) => section.fieldIds.includes(currentAsk))?.id;
   const isOpen = (id: string) => openSections[id] ?? id === currentSectionId;
   const allOpen = sections.length > 0 && sections.every((section) => isOpen(section.id));
-  const placeholder = currentField?.label
-    ? `Tell me about ${currentField.label.toLowerCase()}, or skip this note.`
-    : "Ask a question, or tell me more about your work.";
-
   async function boot() {
     setPending(true);
     pendingRef.current = true;
@@ -422,17 +417,14 @@ export function App() {
       <header className="top">
         <div className="brand">
           <div>
-            <p className="eyebrow">Prototype for Hackaroo</p>
             <h1>Commercialization Advisor</h1>
           </div>
         </div>
         <nav>
           {(
             [
-              ["coach", "Disclosure coach"],
-              ["scenarios", "Faculty scenarios"],
-              ["sources", "Source library"],
-              ["deploy", "For the future"],
+              ["coach", "Disclosure Advisor"],
+              ["sources", "Source Library"],
             ] as [Page, string][]
           ).map(([id, label]) => (
             <button
@@ -452,36 +444,14 @@ export function App() {
         </nav>
       </header>
 
-      {page === "scenarios" ? (
-        <ScenarioPage
-          onPick={(text) => {
-            void (async () => {
-              try {
-                forgetDraftId();
-                await startCoach();
-                pendingRef.current = false;
-                await ask(text);
-              } catch (err) {
-                setBootError(err instanceof Error ? err.message : "Could not start that scenario.");
-                pendingRef.current = false;
-                setPending(false);
-              }
-            })();
-          }}
-        />
-      ) : page === "sources" ? (
+      {page === "sources" ? (
         <SourcePage />
-      ) : page === "deploy" ? (
-        <DeployPage />
       ) : (
         <main className="workspace">
           <section className="thread" ref={threadRef} aria-live="polite">
-            <p className="coach-flag">
-              First conversation · {completed} of {sections.length} sections completed
-            </p>
             {bootError && (
               <article className="bubble advisor">
-                <p className="who">Coach</p>
+                <p className="who">Advisor</p>
                 <p>
                   {bootError}
                   {/could not reach|failed to fetch|network|unavailable/i.test(bootError)
@@ -497,7 +467,7 @@ export function App() {
                 </article>
               ) : (
                 <article key={msg.id} className="bubble advisor">
-                  <p className="who">Coach</p>
+                  <p className="who">Advisor</p>
                   {(msg.paragraphs || []).map((paragraph, index) => {
                     const lines = paragraph.split("\n");
                     const items = lines.filter((line) => line.startsWith("- "));
@@ -532,8 +502,15 @@ export function App() {
             )}
             {pending && (
               <article className="bubble advisor">
-                <p className="who">Coach</p>
-                <p>Listening…</p>
+                <p className="who">Advisor</p>
+                <p className="thinking">
+                  Thinking
+                  <span className="thinking-dots" aria-hidden="true">
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                  </span>
+                </p>
               </article>
             )}
           </section>
@@ -618,9 +595,6 @@ export function App() {
                   Start over
                 </button>
               </div>
-              <p className="fine">
-                Nine sections for a first conversation, not the whole UM form. Open a section to see its notes. Skip freely. Early disclosure is encouraged, and these notes are not a confidential submission.
-              </p>
             </div>
             {contact && (
               <div className="panel contact-panel">
@@ -646,7 +620,6 @@ export function App() {
                     </a>
                   </p>
                 )}
-                <p className="fine">Early, informal questions are welcome. This chat is not a submission.</p>
               </div>
             )}
           </aside>
@@ -658,57 +631,34 @@ export function App() {
               void ask(compose);
             }}
           >
-            <textarea
-              id="ask"
-              ref={boxRef}
-              rows={3}
-              value={compose}
-              disabled={pending || !draft}
-              aria-label="Your answer"
-              placeholder={placeholder}
-              onChange={(event) => setCompose(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" && !event.shiftKey) {
-                  event.preventDefault();
-                  void ask(compose);
-                }
-              }}
-            />
-            <div className="composer-bar">
-              <p>Keep enabling detail, sequences, and unpublished figures out of this student prototype.</p>
-              <button type="submit" disabled={pending || !draft}>
+            <div className="composer-box">
+              <textarea
+                id="ask"
+                ref={boxRef}
+                rows={3}
+                value={compose}
+                disabled={pending || !draft}
+                aria-label="Your answer"
+                placeholder="Ask a question or tell me about your work."
+                onChange={(event) => setCompose(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    void ask(compose);
+                  }
+                }}
+              />
+              <button type="submit" className="composer-send" disabled={pending || !draft}>
                 {pending ? "Drafting" : "Send"}
               </button>
             </div>
+            <p className="fine">
+              Use this conversation to prepare for a meeting with the office. Early, informal questions are welcome. This does not count as a disclosure submission.
+            </p>
           </form>
         </main>
       )}
     </div>
-  );
-}
-
-function ScenarioPage({ onPick }: { onPick: (text: string) => void }) {
-  return (
-    <section className="page scenarios-page">
-      <header className="page-intro">
-        <p className="eyebrow">Demonstration set</p>
-        <h2>Realistic faculty situations</h2>
-        <p>
-          Each one is handled from the mentor materials. The useful outcome is a clearer description and a correct handoff, not a yes on patentability.
-        </p>
-      </header>
-      <div className="scenario-cards">
-        {SCENARIOS.map((scenario) => (
-          <article key={scenario.id} className="card">
-            <p className="eyebrow">{scenario.audience}</p>
-            <h3>{scenario.label}</h3>
-            <p>{scenario.shows}</p>
-            <blockquote>{scenario.prompt}</blockquote>
-            <button onClick={() => onPick(scenario.prompt)}>Run this scenario</button>
-          </article>
-        ))}
-      </div>
-    </section>
   );
 }
 
@@ -829,10 +779,10 @@ function SourcePage() {
   return (
     <section className="page">
       <header className="page-intro">
-        <p className="eyebrow">Approved for this prototype</p>
-        <h2>What the answers are allowed to use</h2>
+        <h2>Source library</h2>
         <p>
-          Responses cite these documents. Click a source to read it. PDFs and Word files open with their original layout; web pages are linked when a public URL exists.
+          These are the UMKC and UM System documents the advisor uses for process questions. Open a source to read it.
+          PDFs and Word files keep their original layout; official web pages are linked when available.
         </p>
       </header>
       {listError && <p className="fine">{listError}</p>}
@@ -911,62 +861,6 @@ function SourcePage() {
           </div>
         </div>
       )}
-    </section>
-  );
-}
-
-function DeployPage() {
-  return (
-    <section className="page deploy deploy-page">
-      <header className="page-intro">
-        <p className="eyebrow">Recommendation, not a production system</p>
-        <h2>What a university-supported version would need</h2>
-        <p>
-          This prototype organizes a first conversation into nine note sections and answers process questions from the approved UMKC and UM documents. A university version would use the same pattern inside the UM System ChatGPT environment, with staff still making every legal and commercialization decision.
-        </p>
-      </header>
-      <div className="deploy-grid">
-        <article>
-          <h3>Keep</h3>
-          <ul>
-            <li>Nine note sections for a first conversation, each marked Not Discussed, More Information Needed, Completed, or Not Yet Known. People can skip a note or come back to one. The conversation is not a step-by-step form.</li>
-            <li>Plain-language answers to process questions, without citations in the chat. The source library is where the documents are read.</li>
-            <li>A caution when someone is about to present, publish, or otherwise share the work, without asking again for a date, venue, or title they already gave.</li>
-            <li>Informal answers left as they were given. Funding from the school or the government is enough. No award number or principal investigator is required.</li>
-            <li>Notes that can be copied or downloaded as a Word file. No button that submits a disclosure.</li>
-            <li>The coach keeps listening after the notes are filled.</li>
-            <li>Jeff Blackwood, Senior Director, and Eric Anderson, Director, of the Office of Technology Commercialization, shown in the coach at jblackwood@umkc.edu and ericwa@umkc.edu.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>Do not add</h3>
-          <ul>
-            <li>A completed UM disclosure, claim drafting, or a button that submits the form.</li>
-            <li>Royalty quotes, inventorship lists, ownership rulings, patentability scores, or freedom-to-operate opinions.</li>
-            <li>Open-web browsing as a source of policy.</li>
-            <li>Training on faculty conversations. The market guide already warns that some AI tools reuse what you paste.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>Corpus and instructions</h3>
-          <ul>
-            <li>UMKC Impact & Translation Series whitepapers, the disclosure form’s questions and privilege notice, CR&R 100.020, and the UMKC startup licensing guide.</li>
-            <li>Peer documents such as the KU license guide only if they are labeled as not UM policy.</li>
-            <li>A system instruction that early disclosure is encouraged, especially before publication, and that uncertainty is an acceptable answer.</li>
-            <li>A standing refusal for export-control classification, conflicts, and regulatory pathway selection.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>Technical shape</h3>
-          <ul>
-            <li>Retrieval over the approved corpus inside the UM tenant, so answers quote current policy rather than model memory.</li>
-            <li>No retention of invention details outside that tenant. The real form is attorney-client privileged.</li>
-            <li>Logs that store the question type and the handoff, not the scientific content, unless counsel approves a confidential store.</li>
-            <li>A staff review loop when whitepapers or the form change, plus a small evaluation set like the scenarios in this prototype.</li>
-            <li>Human contacts in the interface: jblackwood@umkc.edu (Jeff Blackwood) and ericwa@umkc.edu (Eric Anderson), Office of Technology Commercialization.</li>
-          </ul>
-        </article>
-      </div>
     </section>
   );
 }
