@@ -26,7 +26,10 @@ public final class ConversationStyle {
             "(?:,\\s*(?:and|or)\\s+(?:who|what|where|how|why|which|when|can|could|is|are|do|does)"
           + "|(?:,\\s*|\\s+)and\\s+why\\s+it'?s\\s+important"
           + "|\\s+and\\s+how\\s+it\\s+(?:sends|transmits|connects|works|functions)"
-          + "|(?:,\\s*|\\s+)and\\s+who\\s+(?:runs\\s+into|faces|experiences|it'?s\\s+for))\\b[^?]*\\?", CI);
+          + "|(?:,\\s*|\\s+)and\\s+who\\s+(?:runs\\s+into|faces|experiences|it'?s\\s+for))\\b[^?.!\\n]*\\?", CI);
+
+    private static final Pattern QUESTION_STARTER = Pattern.compile(
+            "^\\s*(?:what|how|who|when|why|where|which|can|could|should|would|is|are|do|does|did|have|has)\\b", CI);
 
     private static final Pattern REDUNDANT_DISCLAIMER = Pattern.compile(
             "\\s*(?:official determinations are made by [^\n.!?]*|only (?:university|patent|qualified) staff can (?:make|determine)[^\n.!?]*)[.!?]", CI);
@@ -89,10 +92,25 @@ public final class ConversationStyle {
     }
 
     static String simplifyCompoundQuestion(String text) {
-        if (text == null) return "";
-        Matcher m = COMPOUND_QUESTION.matcher(text);
+        if (text == null || !text.contains("?")) return text;
+        int lastQ = text.lastIndexOf('?');
+        int start = 0;
+        for (int i = lastQ - 1; i >= 0; i--) {
+            char c = text.charAt(i);
+            if (c == '.' || c == '!' || c == '\n') {
+                start = i + 1;
+                break;
+            }
+        }
+        String prefix = text.substring(0, start);
+        String question = text.substring(start, lastQ + 1);
+        if (!QUESTION_STARTER.matcher(question).find()) {
+            return text;
+        }
+        Matcher m = COMPOUND_QUESTION.matcher(question);
         if (m.find()) {
-            return text.substring(0, m.start()) + "?";
+            String simplifiedQuestion = question.substring(0, m.start()).stripTrailing() + "?";
+            return prefix + simplifiedQuestion + text.substring(lastQ + 1);
         }
         return text;
     }
