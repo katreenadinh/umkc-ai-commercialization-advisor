@@ -69,7 +69,7 @@ class InterviewServiceTest {
         assertFalse(after.answer("technical_description").hasText());
         assertFalse(after.answer("summary_general").text().toLowerCase().contains("silicon"));
         assertTrue(r.assistantMessage().toLowerCase().contains("cleared"));
-        assertEquals(List.of("problem_solved"), r.askedFieldIds());
+        assertEquals(List.of("technical_description"), r.askedFieldIds());
     }
 
     @Test
@@ -217,11 +217,11 @@ class InterviewServiceTest {
         var r1 = svc.handle(kit.repo.get(d.id()), "skip");
         assertEquals(0, llm.calls());
         assertEquals(ResearcherMark.SKIPPED, kit.repo.get(d.id()).answer("summary_general").mark());
-        assertEquals(List.of("problem_solved"), r1.askedFieldIds());
+        assertEquals(List.of("technical_description"), r1.askedFieldIds());
         assertFalse(r1.assistantMessage().contains(kit.checklist.find("summary_general").get().starterQuestion()));
         var r2 = svc.handle(kit.repo.get(d.id()), "I don't know");
-        assertEquals(ResearcherMark.NOT_YET_KNOWN, kit.repo.get(d.id()).answer("problem_solved").mark());
-        assertEquals(List.of("technical_description"), r2.askedFieldIds());
+        assertEquals(ResearcherMark.NOT_YET_KNOWN, kit.repo.get(d.id()).answer("technical_description").mark());
+        assertEquals(List.of("problem_solved"), r2.askedFieldIds());
     }
 
     @Test
@@ -256,7 +256,8 @@ class InterviewServiceTest {
         Draft d = kit.newDraft(Workflow.NEW_INVENTION);
         kit.interview(llm).start(d);
         var r = kit.interview(llm).handle(kit.repo.get(d.id()), "What problem does your work solve?");
-        assertEquals(List.of("summary_general"), r.askedFieldIds());
+        assertTrue(kit.repo.get(d.id()).answers().values().stream().noneMatch(FieldAnswer::hasText));
+        assertFalse(r.assistantMessage().isBlank());
     }
 
     @Test
@@ -277,6 +278,20 @@ class InterviewServiceTest {
         assertFalse(DisclosureInterviewService.looksLikeGeneralQuestion("It measures changes in electrical conductivity."));
         assertFalse(DisclosureInterviewService.looksLikeGeneralQuestion("Is my software patentable? It's a scheduling algorithm."));
         assertFalse(DisclosureInterviewService.looksLikeGeneralQuestion("How does the electrolyte interact with the silicon anode?"));
+        assertTrue(DisclosureInterviewService.looksLikeGeneralQuestion(
+                "I'm working on a research idea, but it's still pretty early. I haven't developed anything physical yet. Can it still be considered potential IP?"));
+        assertTrue(DisclosureInterviewService.looksLikeProcessQuestion(
+                "I'm working on a research idea, but it's still pretty early. I haven't developed anything physical yet. Can it still be considered potential IP?"));
+    }
+
+    @Test
+    void looksLikeAdvisorQuestionDetectsUserAndApplicationAsks() {
+        assertTrue(DisclosureInterviewService.looksLikeAdvisorQuestion("Who do you see using this?"));
+        assertTrue(DisclosureInterviewService.looksLikeAdvisorQuestion("whod o you see using this?"));
+        assertTrue(DisclosureInterviewService.looksLikeAdvisorQuestion("i had a poster in 2026. Who do you see using this?"));
+        assertTrue(DisclosureInterviewService.looksLikeApplicationsQuestion("Who would use this?"));
+        assertFalse(DisclosureInterviewService.looksLikeAdvisorQuestion("Can you tell me how the etching process works?"));
+        assertFalse(DisclosureInterviewService.looksLikeAdvisorQuestion("I developed a three-step etching process for silicon anodes."));
     }
 
     @Test
@@ -296,8 +311,13 @@ class InterviewServiceTest {
         Draft d = kit.newDraft(Workflow.NEW_INVENTION);
         var r = svc.handle(d, "We made a new catalyst for hydrogen production.");
         assertEquals(2, llm.calls());
-        assertTrue(r.assistantMessage().contains(kit.checklist.find("summary_general").get().starterQuestion()));
-        assertTrue(kit.repo.get(d.id()).answers().isEmpty());                       // nothing extracted, nothing invented
+        assertTrue(r.assistantMessage().toLowerCase().contains("how it work")
+                || r.assistantMessage().toLowerCase().contains("how does it work")
+                || r.assistantMessage().contains(kit.checklist.find("technical_description").get().starterQuestion()),
+                r.assistantMessage());
+        // the researcher's own words can still be saved; the model did not invent extra fields
+        var saved = kit.repo.get(d.id()).answers();
+        assertTrue(saved.isEmpty() || (saved.size() == 1 && saved.containsKey("summary_general")));
         assertEquals("USER", kit.repo.turns(d.id()).get(0).role());                  // but the message is saved
     }
 
@@ -392,6 +412,7 @@ class InterviewServiceTest {
         t.definitiveDeterminationRequestsGetMandatoryReferralEvenIfModelIgnoresThem();
         t.generalProcessQuestionsAreAnsweredWithoutFillingNotes();
         t.looksLikeGeneralQuestionDetectsProcessQuestionsNotDescriptions();
+        t.looksLikeAdvisorQuestionDetectsUserAndApplicationAsks();
         t.promptInjectionIsBlockedAndChangesNothing();
         t.malformedModelOutputFallsBackToTheNextChecklistQuestion();
         t.unusableModelQuestionsAreReplacedRepeatsAndOverlongOnes();

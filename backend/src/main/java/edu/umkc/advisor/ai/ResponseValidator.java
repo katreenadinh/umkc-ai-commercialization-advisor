@@ -15,18 +15,43 @@ public final class ResponseValidator {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
-    /** Extracts the JSON object from raw model text, tolerating code fences and surrounding prose. */
+    /** Extracts the first JSON object from raw model text, tolerating code fences and trailing junk. */
     public JsonNode parseJsonObject(String raw) {
         if (raw == null || raw.isBlank()) throw new InvalidModelOutputException("empty model output");
-        int start = raw.indexOf('{'), end = raw.lastIndexOf('}');
-        if (start < 0 || end <= start) throw new InvalidModelOutputException("no JSON object in model output");
+        String slice = firstJsonObject(raw);
+        if (slice == null) throw new InvalidModelOutputException("no JSON object in model output");
         try {
-            JsonNode n = mapper.readTree(raw.substring(start, end + 1));
+            JsonNode n = mapper.readTree(slice);
             if (!n.isObject()) throw new InvalidModelOutputException("model output is not a JSON object");
             return n;
         } catch (java.io.IOException e) {
             throw new InvalidModelOutputException("model output is not valid JSON", e);
         }
+    }
+
+    /** First complete `{...}` object, so extra tokens after valid JSON do not force a retry. */
+    static String firstJsonObject(String raw) {
+        int start = raw.indexOf('{');
+        if (start < 0) return null;
+        int depth = 0;
+        boolean inString = false, escape = false;
+        for (int i = start; i < raw.length(); i++) {
+            char c = raw.charAt(i);
+            if (inString) {
+                if (escape) escape = false;
+                else if (c == '\\') escape = true;
+                else if (c == '"') inString = false;
+                continue;
+            }
+            if (c == '"') inString = true;
+            else if (c == '{') depth++;
+            else if (c == '}') {
+                depth--;
+                if (depth == 0) return raw.substring(start, i + 1);
+            }
+        }
+        int end = raw.lastIndexOf('}');
+        return end > start ? raw.substring(start, end + 1) : null;
     }
 
     public RelevanceResult parseRelevance(String raw) {

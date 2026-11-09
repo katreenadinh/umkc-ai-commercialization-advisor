@@ -12,6 +12,10 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +28,6 @@ import java.util.regex.Pattern;
 public final class NotesOrganizer {
     private static final int MAX_NOTE_CHARS = 400;
     private static final int MAX_TURNS = 40;
-    private static final int MAX_COACH_CHARS = 300;
     private static final int SECTIONS_PER_CALL = 3;
     private static final double MIN_SUPPORTED_WORDS = 0.5;
     private static final Pattern CONTENT_WORD = Pattern.compile("[a-z][a-z'’-]{3,}");
@@ -37,6 +40,8 @@ public final class NotesOrganizer {
             Pattern.CASE_INSENSITIVE);
     private static final Pattern NO_INFO = Pattern.compile(
             "(?i)(n/?a|none|unknown|not (yet )?(mentioned|discussed|provided|specified|stated|known|applicable)|no (information|details?|mention)( (given|provided|mentioned))?)\\.?");
+    private static final Pattern PLACEHOLDER_PHRASE = Pattern.compile(
+            "(?i)not specified(?: in the conversation)?|implied importance|not (?:yet )?(?:mentioned|discussed|provided|stated) in the conversation");
     private static final Pattern FUTURE_SHARING = Pattern.compile(
             "\\b(will|plan|plans|planned|planning|going to|next|upcoming|soon|intends?|hopes?)\\b", Pattern.CASE_INSENSITIVE);
     private static final Set<String> DISCLOSURE_FIELDS = Set.of(
@@ -48,6 +53,10 @@ public final class NotesOrganizer {
     private static final Pattern LOOKS_LIKE_SUMMARY = Pattern.compile(
             "(?i)\\b(device|sensor|app(?:lication)?|method|packaging|invention|system|algorithm|filter)\\b");
     private static final Pattern LOOKS_LIKE_PROTOTYPE = Pattern.compile("(?i)\\bprototype");
+    private static final Pattern PROBLEM_STATED = Pattern.compile(
+            "(?i)\\b(the problem|problem is|the need|need being|challenge|limitation|who (?:has|faces|experiences)|struggle|forget because)\\b");
+    private static final Set<String> PROBLEM_FIELDS = Set.of(
+            "problem_solved", "problem_who", "problem_importance", "problem_challenges");
     /** Coach headings people skip away from; a bare "prototype" description may move from these to summary_general. */
     private static final Set<String> PROTOTYPE_TO_SUMMARY = Set.of(
             "funding", "agreements", "potential_inventors", "inventor_contributions", "difference_from_others",
@@ -90,6 +99,14 @@ public final class NotesOrganizer {
     });
     private final Set<String> running = ConcurrentHashMap.newKeySet();
     private final Set<String> again = ConcurrentHashMap.newKeySet();
+    private final Map<String, ScheduledFuture<?>> waiting = new ConcurrentHashMap<>();
+    private final AtomicBoolean hold = new AtomicBoolean();
+    private final ScheduledExecutorService delay = Executors.newSingleThreadScheduledExecutor(r -> {
+        Thread t = new Thread(r, "notes-organizer-delay");
+        t.setDaemon(true);
+        return t;
+    });
+    static final long DEBOUNCE_MS = 8_000;
     private static final Logger log = LoggerFactory.getLogger(NotesOrganizer.class);
 
     public NotesOrganizer(ChecklistService checklist, DraftRepository repo, LlmClient llm, String systemPrompt, int maxTokens) {
@@ -98,10 +115,20 @@ public final class NotesOrganizer {
 
     public boolean isOrganizing(String draftId) { return running.contains(draftId); }
 
-    /** Queues a reorganization. Requests that arrive while one is running are folded into a single rerun. */
+    /** Pause background LLM work so the next interview turn can use the local model immediately. */
+    public void holdForInterview() { hold.set(true); }
+
+    /** Queues a reorganization after a short pause so rapid chat does not compete for the local GPU. */
     public synchronized void organizeLater(String draftId, String owner) {
-        if (!running.add(draftId)) { again.add(draftId); return; }
-        pool.execute(() -> loop(draftId, owner));
+        hold.set(false);
+        ScheduledFuture<?> prev = waiting.remove(draftId);
+        if (prev != null) prev.cancel(false);
+        waiting.put(draftId, delay.schedule(() -> {
+            waiting.remove(draftId);
+            if (hold.get()) return;
+            if (!running.add(draftId)) { again.add(draftId); return; }
+            pool.execute(() -> loop(draftId, owner));
+        }, DEBOUNCE_MS, TimeUnit.MILLISECONDS));
     }
 
     private void loop(String draftId, String owner) {
@@ -136,6 +163,7 @@ public final class NotesOrganizer {
         List<JsonNode> notes = new ArrayList<>();
         boolean anyReply = false;
         for (List<ChecklistService.Section> group : groups(d.workflow())) {
+            if (hold.get()) break;
             try {
                 String reply = llm.complete(systemPrompt, prompt(d, group, fields, turns), maxTokens);
                 log.debug("Organizer reply for draft {}: {}", d.id(), reply);
@@ -161,7 +189,7 @@ public final class NotesOrganizer {
             String id = n.path("fieldId").asText("");
             if (!byId.containsKey(id) || !seen.add(id)) continue;
             String text = n.path("text").asText("").replaceAll("\\s+", " ").strip();
-            if (NO_INFO.matcher(text).matches()) { seen.remove(id); continue; }
+            if (NO_INFO.matcher(text).matches() || isPlaceholderNote(text)) { seen.remove(id); continue; }
             FieldAnswer old = d.answer(id);
             if (text.isEmpty()) {
                 if (old.hasText()) {
@@ -170,10 +198,18 @@ public final class NotesOrganizer {
                 }
                 continue;
             }
-            if (text.length() > MAX_NOTE_CHARS || !NotesSummaryWriter.grounded(text, said.toString()) || !supported(text, said.toString())) {
+            if (text.length() > MAX_NOTE_CHARS || !NotesSummaryWriter.grounded(text, said.toString()) || !supported(text, said.toString())
+                    || leakedFromCoach(text, said.toString(), turns)) {
                 log.debug("Organizer dropped note for {}: {}", id, text);
                 continue;
             }
+            if (isProblemField(id) && !PROBLEM_STATED.matcher(said).find()) {
+                if (old.hasText() && !PROBLEM_STATED.matcher(old.text()).find() && old.mark() == ResearcherMark.NONE) {
+                    out.remove(id);
+                }
+                continue;
+            }
+            text = dedupeSentences(text);
             if (id.equals("public_disclosures_list") && byId.containsKey("previous_public_disclosures")
                     && PAST_SHARING.matcher(text).find() && !FUTURE_SHARING.matcher(text).find()) {
                 if (!seen.contains("previous_public_disclosures") && !out.getOrDefault("previous_public_disclosures", FieldAnswer.EMPTY).hasText()) {
@@ -188,6 +224,13 @@ public final class NotesOrganizer {
         }
         applyNamedTitle(out, byId, said.toString());
         rehomeMismatched(out, byId);
+        for (String id : List.copyOf(out.keySet())) {
+            FieldAnswer a = out.get(id);
+            if (a != null && a.hasText()) {
+                String cleaned = dedupeSentences(a.text());
+                if (!cleaned.equals(a.text())) out.put(id, new FieldAnswer(cleaned, a.mark()));
+            }
+        }
         return out.equals(d.answers()) ? null : out;
     }
 
@@ -205,7 +248,7 @@ public final class NotesOrganizer {
             FieldAnswer there = out.getOrDefault(dest, FieldAnswer.EMPTY);
             if (!there.hasText()) out.put(dest, new FieldAnswer(a.text(), ResearcherMark.NONE));
             else if (!there.text().toLowerCase(Locale.ROOT).contains(a.text().toLowerCase(Locale.ROOT)))
-                out.put(dest, new FieldAnswer(there.text() + " " + a.text(), ResearcherMark.NONE));
+                out.put(dest, new FieldAnswer(dedupeSentences(there.text() + " " + a.text()), ResearcherMark.NONE));
             if (a.mark() == ResearcherMark.NONE) out.remove(id);
             else out.put(id, new FieldAnswer("", a.mark()));
         }
@@ -328,10 +371,70 @@ public final class NotesOrganizer {
         sb.append(String.join(", ", mine.stream().filter(f -> d.answer(f.id()).hasText()).map(ChecklistField::id).toList()));
         sb.append("</headings_with_notes>\n<conversation>\n");
         for (Turn t : turns.subList(Math.max(0, turns.size() - MAX_TURNS), turns.size())) {
-            String text = t.content().replaceAll("\\s+", " ").strip();
-            if (t.role().equals("USER")) sb.append("RESEARCHER: ").append(text).append('\n');
-            else sb.append("COACH: ").append(text.length() > MAX_COACH_CHARS ? text.substring(0, MAX_COACH_CHARS) + "…" : text).append('\n');
+            if (!t.role().equals("USER")) continue;
+            sb.append("RESEARCHER: ").append(t.content().replaceAll("\\s+", " ").strip()).append('\n');
         }
         return sb.append("</conversation>").toString();
+    }
+
+    private static boolean isProblemField(String id) {
+        return PROBLEM_FIELDS.contains(id);
+    }
+
+    /** True when the note uses content words that appear only in advisor questions, not in the researcher's words. */
+    static boolean leakedFromCoach(String note, String researcher, List<Turn> turns) {
+        if (note == null || researcher == null || turns == null) return false;
+        Set<String> user = stems(researcher);
+        Set<String> coach = new HashSet<>();
+        for (Turn t : turns) {
+            if (t.role().equals("ASSISTANT")) coach.addAll(stems(t.content()));
+        }
+        coach.removeAll(user);
+        if (coach.isEmpty()) return false;
+        Matcher m = CONTENT_WORD.matcher(note.toLowerCase(Locale.ROOT));
+        while (m.find()) {
+            if (STOPWORDS.contains(m.group())) continue;
+            String stem = m.group().substring(0, Math.min(4, m.group().length()));
+            if (coach.contains(stem) && !user.contains(stem)) return true;
+        }
+        return false;
+    }
+
+    static String dedupeSentences(String text) {
+        if (text == null || text.isBlank()) return text == null ? "" : text;
+        List<String> kept = new ArrayList<>();
+        for (String part : text.split("(?<=[.!?])\\s+")) {
+            String s = part.replaceAll("\\s+", " ").strip();
+            if (s.isEmpty()) continue;
+            boolean dup = false;
+            for (String k : kept) {
+                if (TextOverlap.coverage(s, k) >= 0.72 && TextOverlap.coverage(k, s) >= 0.45) {
+                    dup = true;
+                    break;
+                }
+            }
+            if (!dup) kept.add(s);
+        }
+        return String.join(" ", kept);
+    }
+
+    private static Set<String> stems(String text) {
+        Set<String> out = new HashSet<>();
+        if (text == null) return out;
+        Matcher m = CONTENT_WORD.matcher(text.toLowerCase(Locale.ROOT));
+        while (m.find()) {
+            if (STOPWORDS.contains(m.group())) continue;
+            out.add(m.group().substring(0, Math.min(4, m.group().length())));
+        }
+        return out;
+    }
+
+    static boolean isPlaceholderNote(String text) {
+        if (text == null || text.isBlank()) return true;
+        String stripped = text.strip();
+        if (NO_INFO.matcher(stripped).matches()) return true;
+        if (!PLACEHOLDER_PHRASE.matcher(stripped).find()) return false;
+        String leftover = PLACEHOLDER_PHRASE.matcher(stripped).replaceAll(" ").replaceAll("\\s+", " ").strip();
+        return leftover.length() < 40;
     }
 }

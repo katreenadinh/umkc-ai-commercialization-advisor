@@ -31,10 +31,11 @@ public final class LocalLlmClient implements LlmClient {
     }
 
     @Override
-    public String complete(String systemPrompt, String userPrompt, int maxTokens) {
+    public synchronized String complete(String systemPrompt, String userPrompt, int maxTokens) {
         try {
             String body = mapper.writeValueAsString(Map.of(
                     "model", model, "max_tokens", maxTokens, "temperature", 0, "stream", false,
+                    "stop", List.of("<|im_end|>", "<|endoftext|>"),
                     "messages", List.of(Map.of("role", "system", "content", systemPrompt),
                                         Map.of("role", "user", "content", userPrompt))));
             HttpRequest req = HttpRequest.newBuilder(URI.create(baseUrl + "/chat/completions")).timeout(timeout)

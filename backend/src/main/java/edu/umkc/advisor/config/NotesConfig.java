@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class NotesConfig {
     private static final int SUMMARY_MAX_TOKENS = 900;
-    private static final int ORGANIZE_MAX_TOKENS = 1200;
+    private static final int ORGANIZE_MAX_TOKENS = 400;
 
     @Bean NotesSummaryWriter notesSummaryWriter(LlmClient llm) {
         return new NotesSummaryWriter(llm, AdvisorConfig.loadPrompt("prompts/notes-summary.txt"), SUMMARY_MAX_TOKENS);

@@ -45,6 +45,14 @@ class ResponseValidatorTest {
     }
 
     @Test
+    void usesTheFirstJsonObjectAndIgnoresTrailingJunk() {
+        InterviewPayload p = v.parseInterview(
+                "{\"assistantMessage\":\"Hello there.\",\"updates\":[],\"nextFieldIds\":[]} extra {\"assistantMessage\":\"nope\"}");
+        assertEquals("Hello there.", p.assistantMessage());
+        assertTrue(p.updates().isEmpty());
+    }
+
+    @Test
     void parsesAndValidatesAnswerPayload() {
         AnswerPayload a = v.parseAnswer("{\"answer\":\"Hi [S1]\",\"usedSources\":[\"S1\"],\"sufficientEvidence\":true,\"needsStaffFollowUp\":false}");
         assertEquals(java.util.List.of("S1"), a.usedSources());

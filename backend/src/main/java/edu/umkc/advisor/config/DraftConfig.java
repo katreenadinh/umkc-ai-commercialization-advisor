@@ -26,7 +26,9 @@ public class DraftConfig {
 
     @Bean DisclosureInterviewService interviewService(ChecklistService c, ReferralService r, LlmClient llm, ResponseValidator v,
                                                       DraftRepository repo, AdvisorProperties p) {
-        return new DisclosureInterviewService(c, r, llm, v, repo, AdvisorConfig.loadPrompt("prompts/interview.txt"), p.llm().maxTokens());
+        // Cap chat replies so a local model cannot spend minutes filling a 1200-token budget.
+        return new DisclosureInterviewService(c, r, llm, v, repo, AdvisorConfig.loadPrompt("prompts/interview.txt"),
+                Math.min(700, p.llm().maxTokens()));
     }
 
     @Bean DisclosureReviewService reviewService(ChecklistService c, ReferralService r, LlmClient llm, ResponseValidator v, AdvisorProperties p) {

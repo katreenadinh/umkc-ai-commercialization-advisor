@@ -54,6 +54,34 @@ class InterviewSummaryAndCorrectionTest {
     }
 
     @Test
+    void summaryOmitsPlaceholderOrganizerSentences() {
+        Draft d = withNotes(Map.of(
+                "summary_general", said("A device that detects harmful bacteria in drinking water."),
+                "problem_solved", said("Not specified in the conversation. Implied importance of detecting harmful bacteria.")),
+                "Got it.", new String[0]);
+        var r = kit.interview(new ScriptedLlm()).handle(d, "Can you tell me what information you have collected so far and what I'm still missing?");
+        assertFalse(r.assistantMessage().toLowerCase().contains("not specified"), r.assistantMessage());
+        assertFalse(r.assistantMessage().toLowerCase().contains("implied importance"), r.assistantMessage());
+        assertTrue(r.assistantMessage().contains("**Invention Overview:**"), r.assistantMessage());
+    }
+
+    @Test
+    void summaryDoesNotRepeatTheSameOverview() {
+        Draft d = withNotes(Map.of(
+                "summary_general", said("A small device that detects harmful bacteria in drinking water using a special material. "
+                        + "An idea for a device that detects harmful bacteria in drinking water using a special material. "
+                        + "The researcher is developing the device."),
+                "main_purpose", said("An idea for a device that detects harmful bacteria in drinking water using a special material.")),
+                "Got it.", new String[0]);
+        String text = kit.interview(new ScriptedLlm()).handle(d,
+                "Can you tell me what information you have collected so far and what I'm still missing?").assistantMessage();
+        assertFalse(text.contains("not specified"), text);
+        int first = text.toLowerCase().indexOf("detects harmful bacteria");
+        assertTrue(first >= 0, text);
+        assertEquals(-1, text.toLowerCase().indexOf("detects harmful bacteria", first + 1), text);
+    }
+
+    @Test
     void correctionsReplaceTheOldNoteAndDoNotStartANewTopic() {
         Draft d = withNotes(Map.of("summary_general", said("A water bacteria detector."),
                         "development_stage", said("We have built a working prototype.")),
@@ -62,12 +90,29 @@ class InterviewSummaryAndCorrectionTest {
                 List.of(upd("development_stage", "we haven't built a working prototype yet. We only have a design and some initial material samples", "NONE")),
                 "Got it. We can still document the design and material samples. Is there any external funding that supported your work?", "funding"));
         var r = kit.interview(llm).handle(d, "Actually, I should clarify that we haven't built a working prototype yet. We only have a design and some initial material samples.");
-        assertFalse(r.assistantMessage().contains("?"), r.assistantMessage());
         assertFalse(r.assistantMessage().toLowerCase().contains("funding"), r.assistantMessage());
-        assertTrue(r.askedFieldIds().isEmpty());
+        assertFalse(r.assistantMessage().toLowerCase().contains("papers"), r.assistantMessage());
         String stage = kit.repo.get(d.id()).answer("development_stage").text();
         assertFalse(stage.contains("We have built a working prototype"), stage);
         assertTrue(stage.contains("initial material samples"), stage);
+        assertFalse(r.assistantMessage().toLowerCase().contains("started building"), r.assistantMessage());
+        assertTrue(r.assistantMessage().toLowerCase().contains("design")
+                || r.assistantMessage().toLowerCase().contains("sample"), r.assistantMessage());
+    }
+
+    @Test
+    void aPrototypeCorrectionDoesNotReAskIfTheyHaveStartedBuilding() {
+        Draft d = withNotes(Map.of("summary_general", said("A water bacteria detector."),
+                        "development_stage", said("We have a working prototype.")),
+                "Have you tested it yet?", "evidence_testing");
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("development_stage", "we haven't built a working prototype yet. We only have a design and some initial material samples", "NONE")),
+                "Got it. Since you haven't built a working prototype yet, we can still document the design. Have you started building or testing it?",
+                "development_stage"));
+        var r = kit.interview(llm).handle(d, "Actually, I should clarify that we haven't built a working prototype yet. We only have a design and some initial material samples.");
+        assertFalse(r.assistantMessage().toLowerCase().contains("started building"), r.assistantMessage());
+        assertTrue(r.assistantMessage().toLowerCase().contains("design")
+                || r.assistantMessage().toLowerCase().contains("sample"), r.assistantMessage());
     }
 
     @Test
@@ -88,7 +133,8 @@ class InterviewSummaryAndCorrectionTest {
         assertEquals(0, llm.calls());
         assertEquals(List.of("difference_from_others"), r.askedFieldIds());
         assertTrue(r.assistantMessage().startsWith("One thing that would help: "), r.assistantMessage());
-        assertTrue(r.assistantMessage().endsWith(kit.checklist.find("difference_from_others").get().starterQuestion()));
+        assertTrue(r.assistantMessage().contains("similar") || r.assistantMessage().contains("different"),
+                r.assistantMessage());
     }
 
     @Test

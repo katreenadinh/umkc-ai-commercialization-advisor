@@ -69,67 +69,6 @@ function paragraphsFrom(text: string): string[] {
     .filter(Boolean);
 }
 
-const PROCESS_CHIPS = [
-  "What is a public disclosure?",
-  "How does licensing usually work?",
-  "What is prior art?",
-  "When should I contact the office?",
-  "Who usually owns university inventions?",
-  "What belongs in an invention disclosure?",
-];
-
-const FIELD_CHIPS: Record<string, string[]> = {
-  summary_general: ["It's still an early-stage idea.", "I can give a one-sentence overview."],
-  problem_solved: ["It addresses a bottleneck we see in the lab.", "I'm still figuring out the exact problem."],
-  technical_description: ["I can walk through how it works at a high level.", "The mechanism is still a bit fuzzy."],
-  difference_from_others: ["I'm not sure yet how it compares.", "It does something existing tools don't."],
-  public_disclosures_list: ["Nothing has been shared publicly yet.", "I want to present this finding."],
-  evidence_testing: ["We haven't tested it yet.", "We have some early lab results."],
-  potential_inventors: ["It was just me so far.", "A student helped with the experiments."],
-  funding: ["There was no outside funding.", "It was supported by a grant."],
-  existing_disclosure_ref: ["I don't have the disclosure number handy.", "I can describe which one it is."],
-  what_changed: ["The main change is a new method.", "I'm not sure what counts as a change."],
-};
-
-function hashSeed(value: string): number {
-  let hash = 0;
-  for (let i = 0; i < value.length; i += 1) hash = (hash * 31 + value.charCodeAt(i)) | 0;
-  return Math.abs(hash);
-}
-
-function pickRotated(pool: string[], seed: string, count: number, skip: string[] = []): string[] {
-  const filtered = pool.filter((item) => !skip.some((s) => s.toLowerCase() === item.toLowerCase()));
-  if (filtered.length === 0) return [];
-  const start = hashSeed(seed) % filtered.length;
-  const out: string[] = [];
-  for (let i = 0; i < Math.min(count, filtered.length); i += 1) {
-    out.push(filtered[(start + i * 2) % filtered.length]);
-  }
-  return [...new Set(out)];
-}
-
-function suggestionChips(
-  currentField: FieldView | undefined,
-  lastUser: string,
-  lastAdvisor: string,
-  turn: number,
-): string[] {
-  const processReply = /^(what|how|who|when|why|where|which|can|could|should|is|are|do|does)\b/i.test(lastUser.trim());
-  if (processReply) {
-    const chips = pickRotated(PROCESS_CHIPS, `${lastUser}|${lastAdvisor}|${turn}`, 3, [lastUser]);
-    chips.push("Let's continue with the notes.");
-    if (currentField) chips.unshift("Skip this for now.");
-    return chips.slice(0, 4);
-  }
-  const chips: string[] = [];
-  if (currentField) chips.push("Skip this for now.");
-  const fieldPool = FIELD_CHIPS[currentField?.id || ""] ?? ["I don't know yet", "That's not applicable"];
-  chips.push(...pickRotated(fieldPool, `${lastUser}|${currentField?.id || ""}|${turn}`, 2));
-  chips.push(...pickRotated(PROCESS_CHIPS, lastAdvisor || lastUser || String(turn), 1, [lastUser, ...chips]));
-  if (!chips.includes("I don't know yet")) chips.push("I don't know yet");
-  return [...new Set(chips)].slice(0, 5);
-}
-
 function fromTranscript(draft: DraftView): Msg[] {
   return draft.transcript.map((turn, index) => {
     if (turn.role === "USER") {
@@ -405,13 +344,6 @@ export function App() {
     }
   }
 
-  const lastUserText = [...messages].reverse().find((msg) => msg.role === "user")?.text || "";
-  const lastAdvisorText = [...messages].reverse().find((msg) => msg.role === "advisor")?.paragraphs?.join(" ") || "";
-  const suggestions = useMemo(
-    () => suggestionChips(currentField, lastUserText, lastAdvisorText, messages.length),
-    [currentField, lastUserText, lastAdvisorText, messages.length],
-  );
-
   return (
     <div className="app">
       <header className="top">
@@ -484,17 +416,11 @@ export function App() {
                       </div>
                     );
                   })}
-                  {msg.id === lastAdvisorId && !pending && (
+                  {msg.id === lastAdvisorId && !pending && currentField && (
                     <div className="follow">
-                      <p className="who">You could say</p>
-                      {suggestions.map((question) => (
-                        <button
-                          key={question}
-                          onClick={() => (question.startsWith("Skip") ? skipCurrent() : ask(question))}
-                        >
-                          {question}
-                        </button>
-                      ))}
+                      <button type="button" onClick={() => void skipCurrent()}>
+                        Skip this question
+                      </button>
                     </div>
                   )}
                 </article>

@@ -78,9 +78,13 @@ public class DraftController {
     @PostMapping("/drafts/{id}/interview/messages")
     public DisclosureInterviewService.Reply message(@RequestHeader("X-Owner-Token") String token, @PathVariable String id, @RequestBody MessageRequest req) {
         String owner = owner(token);
-        var reply = interview.handle(drafts.require(id, owner), req.message());
-        organizer.organizeLater(id, owner);
-        return reply;
+        organizer.holdForInterview();
+        try {
+            var reply = interview.handle(drafts.require(id, owner), req.message());
+            return reply;
+        } finally {
+            organizer.organizeLater(id, owner);
+        }
     }
 
     @PostMapping("/drafts/{id}/interview/skip/{fieldId}")

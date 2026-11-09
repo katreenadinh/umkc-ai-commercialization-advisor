@@ -187,4 +187,53 @@ class NotesOrganizerTest {
         assertFalse(organizer(llm).organizeNow(empty.id(), OWNER));
         assertEquals(0, llm.calls());
     }
+
+    @Test
+    void placeholderNotesAreDropped() {
+        assertTrue(NotesOrganizer.isPlaceholderNote("Not specified in the conversation."));
+        assertTrue(NotesOrganizer.isPlaceholderNote("Not specified, but implied importance of detecting bacteria."));
+        assertFalse(NotesOrganizer.isPlaceholderNote("A special material reacts when certain bacteria are present."));
+        Draft d = conversation(Map.of("problem_solved", text(PROBLEM)), DEVICE, PROBLEM);
+        var llm = new ScriptedLlm("{\"notes\":[{\"fieldId\":\"problem_solved\",\"text\":\"Not specified in the conversation.\"},"
+                + "{\"fieldId\":\"summary_general\",\"text\":\"A device that pings caretakers when an elderly person needs assistance.\"}]}");
+        organizer(llm).organizeNow(d.id(), OWNER);
+        Draft after = kit.repo.get(d.id());
+        assertEquals(PROBLEM, after.answer("problem_solved").text());
+        assertEquals("A device that pings caretakers when an elderly person needs assistance.", after.answer("summary_general").text());
+    }
+
+    @Test
+    void coachExamplesAreNotCopiedIntoNotes() {
+        String said = "It uses a special material that reacts when certain bacteria are present.";
+        Draft d = conversation(Map.of("technical_description", text(said)), said);
+        kit.repo.appendTurn(d.id(), Turn.assistant(
+                "When that effect happens, how can you tell? For example, is there a visible change, a signal, or a measurement?",
+                java.util.List.of()));
+        var llm = new ScriptedLlm("{\"notes\":[{\"fieldId\":\"technical_description\","
+                + "\"text\":\"The device uses a special material that reacts when certain bacteria are present, producing a visible change.\"}]}");
+        organizer(llm).organizeNow(d.id(), OWNER);
+        assertFalse(kit.repo.get(d.id()).answer("technical_description").text().toLowerCase().contains("visible change"));
+    }
+
+    @Test
+    void aDeviceDescriptionIsNotStoredAsTheProblem() {
+        String said = "I'm developing a small device that can detect harmful bacteria in drinking water.";
+        Draft d = conversation(Map.of(), said);
+        var llm = new ScriptedLlm("{\"notes\":[{\"fieldId\":\"summary_general\",\"text\":\"A small device that detects harmful bacteria in drinking water.\"},"
+                + "{\"fieldId\":\"problem_solved\",\"text\":\"Harmful bacteria in drinking water.\"}]}");
+        organizer(llm).organizeNow(d.id(), OWNER);
+        assertTrue(kit.repo.get(d.id()).answer("summary_general").hasText());
+        assertFalse(kit.repo.get(d.id()).answer("problem_solved").hasText());
+    }
+
+    @Test
+    void nearDuplicateSentencesAreCollapsed() {
+        String collapsed = NotesOrganizer.dedupeSentences(
+                "A small device that detects harmful bacteria in drinking water using a special material. "
+                        + "An idea for a device that detects harmful bacteria in drinking water using a special material. "
+                        + "The researcher is developing the device.");
+        assertFalse(collapsed.contains("An idea for a device"), collapsed);
+        assertTrue(collapsed.contains("A small device that detects harmful bacteria"), collapsed);
+        assertEquals(2, collapsed.split("(?<=[.!?])\\s+").length);
+    }
 }
