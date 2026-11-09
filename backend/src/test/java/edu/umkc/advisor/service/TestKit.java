@@ -3,14 +3,12 @@ package edu.umkc.advisor.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.umkc.advisor.ai.LlmClient;
 import edu.umkc.advisor.ai.ResponseValidator;
-import edu.umkc.advisor.dto.AskResponse;
 import edu.umkc.advisor.model.*;
 import edu.umkc.advisor.repository.DraftRepository;
 import edu.umkc.advisor.safety.ReferralService;
 
 import java.time.Instant;
 import java.util.*;
-import java.util.function.Function;
 
 /** Shared fixtures. All data here is SYNTHETIC. */
 final class TestKit {
@@ -56,11 +54,7 @@ final class TestKit {
     Draft withAnswers(Draft d, Map<String, FieldAnswer> a) { repo.saveAnswers(d.id(), a); return repo.get(d.id()); }
 
     DisclosureInterviewService interview(ScriptedLlm llm) {
-        return interview(llm, null);
-    }
-
-    DisclosureInterviewService interview(ScriptedLlm llm, Function<String, AskResponse> guideAsk) {
-        return new DisclosureInterviewService(checklist, referral, llm, new ResponseValidator(), repo, "sys", 800, guideAsk);
+        return new DisclosureInterviewService(checklist, referral, llm, new ResponseValidator(), repo, "sys", 800);
     }
 
     DisclosureReviewService reviewer(ScriptedLlm llm) {

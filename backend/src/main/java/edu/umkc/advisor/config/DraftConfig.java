@@ -25,8 +25,8 @@ public class DraftConfig {
     @Bean DraftRepository draftRepository(JdbcTemplate jdbc) { return new JdbcDraftRepository(jdbc); }
 
     @Bean DisclosureInterviewService interviewService(ChecklistService c, ReferralService r, LlmClient llm, ResponseValidator v,
-                                                      DraftRepository repo, AdvisorService advisor, AdvisorProperties p) {
-        return new DisclosureInterviewService(c, r, llm, v, repo, AdvisorConfig.loadPrompt("prompts/interview.txt"), p.llm().maxTokens(), advisor);
+                                                      DraftRepository repo, AdvisorProperties p) {
+        return new DisclosureInterviewService(c, r, llm, v, repo, AdvisorConfig.loadPrompt("prompts/interview.txt"), p.llm().maxTokens());
     }
 
     @Bean DisclosureReviewService reviewService(ChecklistService c, ReferralService r, LlmClient llm, ResponseValidator v, AdvisorProperties p) {
