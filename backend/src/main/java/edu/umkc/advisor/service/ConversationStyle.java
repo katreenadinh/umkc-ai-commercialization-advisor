@@ -18,8 +18,18 @@ public final class ConversationStyle {
     private static final Pattern STOCK_OPENER = Pattern.compile(
             "^(?:(?:thank you|thanks)(?: so much)?(?: for (?:sharing|that|explaining|the (?:details?|information|explanation)|letting me know|your (?:answer|response|explanation))(?: that| this| it| all that)?)?"
           + "|(?:that'?s|that is|this is) (?:really |very |so |such an? )?(?:interesting|fascinating|great|wonderful|impressive|helpful)(?: (?:point|question|idea|work|information))?"
+          + "|(?:that'?s |that is |this is )?noted(?: with thanks)?"
           + "|(?:great|excellent|wonderful|fantastic|awesome|interesting|fascinating)(?: (?:question|answer|point|work))?"
           + "|what an? (?:interesting|great|fascinating) (?:idea|project|question))\\s*[.!,:;\\-\u2013\u2014]+\\s*", CI);
+
+    private static final Pattern COMPOUND_QUESTION = Pattern.compile(
+            "(?:,\\s*(?:and|or)\\s+(?:who|what|where|how|why|which|when|can|could|is|are|do|does)"
+          + "|(?:,\\s*|\\s+)and\\s+why\\s+it'?s\\s+important"
+          + "|\\s+and\\s+how\\s+it\\s+(?:sends|transmits|connects|works|functions)"
+          + "|(?:,\\s*|\\s+)and\\s+who\\s+(?:runs\\s+into|faces|experiences|it'?s\\s+for))\\b[^?]*\\?", CI);
+
+    private static final Pattern REDUNDANT_DISCLAIMER = Pattern.compile(
+            "\\s*(?:official determinations are made by [^\n.!?]*|only (?:university|patent|qualified) staff can (?:make|determine)[^\n.!?]*)[.!?]", CI);
 
     private static final Pattern LIST_LINE = Pattern.compile("(?m)^\\s*(?:[-*\u2022]|\\d+[.)])\\s+\\S");
     private static final Pattern CHECKLIST_TALK = Pattern.compile(
@@ -43,10 +53,53 @@ public final class ConversationStyle {
             "closest_products", "That's understandable.",
             "prior_art", "That's understandable.");
 
-    /** Removes stock openers and a first sentence that repeats the previous turns' opener. */
+    /** Removes stock openers, echoes, compound questions, and repeated openers. */
     public static String polish(String text, List<String> previousAssistantMessages) {
+        return polish(text, previousAssistantMessages, null);
+    }
+
+    public static String polish(String text, List<String> previousAssistantMessages, String userMessage) {
         String t = stripStockOpeners(text == null ? "" : text.strip());
+        t = stripEcho(t, userMessage);
+        t = simplifyCompoundQuestion(t);
         return varyRepeatedOpener(t, previousAssistantMessages);
+    }
+
+    static String stripEcho(String text, String userMessage) {
+        if (text == null || userMessage == null || userMessage.isBlank()) return text;
+        String first = firstSentence(text);
+        if (first.length() == text.length() || first.contains("?")) return text;
+        String normUser = norm(userMessage);
+        String normFirst = norm(first);
+        boolean isEchoIntro = normFirst.startsWith("so ") || normFirst.startsWith("you mentioned that ")
+                || normFirst.startsWith("sounds like ") || normFirst.startsWith("it sounds like ")
+                || normFirst.startsWith("as you mentioned ") || normFirst.startsWith("as you said ");
+        if (isEchoIntro) {
+            int matches = 0;
+            String[] words = normUser.split("\\s+");
+            for (String w : words) {
+                if (w.length() > 3 && normFirst.contains(w)) matches++;
+            }
+            if (matches >= 2) {
+                String rest = text.substring(first.length()).strip();
+                return rest.isEmpty() ? text : Character.toUpperCase(rest.charAt(0)) + rest.substring(1);
+            }
+        }
+        return text;
+    }
+
+    static String simplifyCompoundQuestion(String text) {
+        if (text == null) return "";
+        Matcher m = COMPOUND_QUESTION.matcher(text);
+        if (m.find()) {
+            return text.substring(0, m.start()) + "?";
+        }
+        return text;
+    }
+
+    public static String stripRedundantDisclaimer(String text) {
+        if (text == null || text.isBlank()) return text;
+        return REDUNDANT_DISCLAIMER.matcher(text).replaceAll("").replaceAll(" {2,}", " ").strip();
     }
 
     static String stripStockOpeners(String text) {

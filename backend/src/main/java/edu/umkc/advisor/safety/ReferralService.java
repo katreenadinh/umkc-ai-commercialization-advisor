@@ -17,10 +17,11 @@ public final class ReferralService {
 
     public record Contact(String officeName, String email, String url) {
         String render() {
-            String office = blank(officeName) ? "[CONFIGURE: referral office name]" : officeName.trim();
-            String mail = blank(email) ? "[CONFIGURE: referral email]" : email.trim();
-            String link = blank(url) ? "" : " More information: " + url.trim();
-            return office + " at " + mail + "." + link;
+            String office = blank(officeName) ? "UMKC Office of Technology Commercialization" : officeName.replaceAll("^[\"']|[\"']$", "").trim();
+            String mail = blank(email) ? "ericwa@umkc.edu" : email.replaceAll("^[\"']|[\"']$", "").trim();
+            String mailLink = mail.contains("@") ? "[" + mail + "](mailto:" + mail + ")" : mail;
+            String link = blank(url) ? "" : " Learn more on the [UMKC Invention Disclosure Portal](" + url.trim() + ").";
+            return "**" + office + "** at " + mailLink + "." + link;
         }
         private static boolean blank(String s) { return s == null || s.isBlank(); }
     }
@@ -69,9 +70,10 @@ public final class ReferralService {
             + "|\\bshould\\s+(?:i|we)\\s+(?:file\\s+(?:for\\s+)?(?:a\\s+)?patent|patent)\\b"
             + "|\\bwill\\s+(?:i|we)\\s+(?:get|receive|be\\s+granted)\\s+a\\s+patent\\b")),
         new TopicRule(Topic.OWNERSHIP, p(
-            "\\bwho\\s+(?:owns|will\\s+own|has\\s+(?:the\\s+)?rights\\s+to)\\b[^.?!]{0,60}\\b(?:my|our|this|the\\s+(?:code|software|invention|prototype|device|discovery))\\b"
+            "\\bwho\\s+(?:owns|will\\s+own|has\\s+(?:the\\s+)?rights\\s+to)\\b[^.?!]{0,60}\\b(?:my|our|this|an?|the)\\b"
+            + "|\\bwho\\s+owns\\b"
             + "|\\bdo\\s+(?:i|we)\\s+(?:still\\s+)?(?:own|have\\s+(?:the\\s+)?rights)\\b"
-            + "|\\bdoes\\s+(?:the\\s+university|umkc|um|the\\s+curators|otc|ott)\\s+(?:own|have\\s+(?:the\\s+)?rights)\\b[^.?!]{0,60}\\b(?:my|our|this)\\b"
+            + "|\\bdoes\\s+(?:the\\s+university|umkc|um|the\\s+curators|otc|ott)\\s+(?:own|have\\s+(?:the\\s+)?rights)\\b[^.?!]{0,60}\\b(?:my|our|this|an?|the)\\b"
             + "|\\bcan\\s+(?:i|we)\\s+(?:keep|retain)\\s+(?:the\\s+)?(?:rights|ownership)\\b")),
         new TopicRule(Topic.INVENTORSHIP, p(
             "\\b(?:am|are)\\s+(?:i|we|they)\\s+(?:an?\\s+|the\\s+)?(?:co-?\\s?|sole\\s+|joint\\s+)?inventors?\\b"

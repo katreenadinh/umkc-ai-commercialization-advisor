@@ -90,7 +90,21 @@ public final class DisclosureInterviewService {
         ReferralDecision rule = referral.evaluate(msg);
 
         // 1. Mandatory rules run first and cannot be overridden by the model.
-        if (rule.blockLlm()) return blocked(d, rule, msg, answers, lastAsked);
+        boolean alreadyReferredImminent = turns.stream()
+                .anyMatch(t -> t.role().equals("ASSISTANT") && t.content().contains("Timing can matter"));
+        if (rule.blockLlm()) {
+            if (rule.primary() == ReferralDecision.Trigger.IMMINENT_DISCLOSURE && alreadyReferredImminent) {
+                // Save additional disclosure details and let the conversation proceed with the staff review flag active
+                String sentences = String.join(" ", referral.disclosureSentences(msg));
+                if (sentences.isBlank()) sentences = msg;
+                FieldAnswer old = answers.getOrDefault("public_disclosures_list", FieldAnswer.EMPTY);
+                String merged = old.hasText() && !old.text().contains(sentences) ? old.text() + "\n" + sentences : sentences;
+                answers.put("public_disclosures_list", new FieldAnswer(merged, ResearcherMark.NONE));
+                repo.saveAnswers(d.id(), answers);
+            } else {
+                return blocked(d, rule, msg, answers, lastAsked);
+            }
+        }
 
         // 2. Deterministic skip / "I don't know" handling.
         String norm = msg.toLowerCase().replaceAll("[^a-z' ]", " ").replaceAll("\\s+", " ").strip();
@@ -110,19 +124,19 @@ public final class DisclosureInterviewService {
             String firstChanged = changed.isEmpty() ? null : changed.get(0);
             String ack = skip ? ConversationStyle.skipAck(turnsSoFar) : ConversationStyle.unknownAck(firstChanged);
             String preferred = !skip && firstChanged != null ? ConversationStyle.COMPANION.get(firstChanged) : null;
-            return finish(d, answers, ack, List.of(), changed, rule, null, preferred);
+            return finish(d, answers, ack, List.of(), changed, rule, null, preferred, msg);
         }
 
         // 3. LLM extraction + next question, validated in Java.
         InterviewPayload payload = callModel(d, answers, turns, lastAsked, msg);
-        List<String> updated = payload == null ? List.of() : applyUpdates(d, answers, payload.updates(), msg);
+        List<String> updated = payload == null || looksLikeGeneralQuestion(msg) ? List.of() : applyUpdates(d, answers, payload.updates(), msg);
         repo.saveAnswers(d.id(), answers);
         String text = payload == null
                 ? "Thanks, I've saved that in our conversation. I had trouble sorting it into your disclosure fields automatically, "
                 + "so you may want to check or add it later under Review."
                 : payload.assistantMessage();
         List<String> next = payload == null ? List.of() : payload.nextFieldIds();
-        return finish(d, answers, text, next, updated, rule, payload, null);
+        return finish(d, answers, text, next, updated, rule, payload, null, msg);
     }
 
     public Reply skip(Draft d, String fieldId) {
@@ -131,7 +145,7 @@ public final class DisclosureInterviewService {
         Map<String, FieldAnswer> answers = new LinkedHashMap<>(d.answers());
         if (!answers.getOrDefault(f.id(), FieldAnswer.EMPTY).hasText()) answers.put(f.id(), new FieldAnswer("", ResearcherMark.SKIPPED));
         repo.saveAnswers(d.id(), answers);
-        return finish(d, answers, ConversationStyle.skipAck(repo.turns(d.id()).size()), List.of(), List.of(f.id()), referral.evaluate(""), null, null);
+        return finish(d, answers, ConversationStyle.skipAck(repo.turns(d.id()).size()), List.of(), List.of(f.id()), referral.evaluate(""), null, null, "");
     }
 
     public Progress progress(Draft d) { return progress(d.workflow(), d.answers()); }
@@ -168,7 +182,7 @@ public final class DisclosureInterviewService {
                 repo.saveAnswers(d.id(), answers);
                 updated = List.of("public_disclosures_list");
             }
-            text = rule.blockingMessage() + "\n\nYour progress is saved. Whenever you're ready, we can pick up where we left off.";
+            text = rule.blockingMessage() + "\n\nWhat information, results, or demonstrations do you plan to share at the event, and when? We can note that for the office and continue talking through your work.";
         } else {
             text = rule.blockingMessage() + " Whenever you're ready, we can continue with questions about your work.";
         }
@@ -234,7 +248,7 @@ public final class DisclosureInterviewService {
             if (mark == ResearcherMark.NOT_APPLICABLE && !(f.get().notApplicableAllowed() && NA_CUE.matcher(msg).find())) mark = ResearcherMark.NONE;
             if (mark == ResearcherMark.SKIPPED && !SKIP_CUE.matcher(msg).find()) mark = ResearcherMark.NONE;
             // Text must be the researcher's own words: reject anything not grounded in the message.
-            if (!text.isEmpty() && (TextOverlap.coverage(text, msg) < 0.85 || !GroundingCheck.unsupportedNumbers(text, msg, "").isEmpty())) text = "";
+            if (!text.isEmpty() && (TextOverlap.coverage(text, msg) < 0.70 || !GroundingCheck.unsupportedNumbers(text, msg, "").isEmpty())) text = "";
             if (text.isEmpty() && mark == ResearcherMark.NONE) continue;
 
             FieldAnswer old = answers.getOrDefault(f.get().id(), FieldAnswer.EMPTY);
@@ -254,7 +268,7 @@ public final class DisclosureInterviewService {
      * information, and it must read like conversation rather than a form.
      */
     private Reply finish(Draft d, Map<String, FieldAnswer> answers, String modelText, List<String> modelNext,
-                         List<String> updated, ReferralDecision rule, InterviewPayload payload, String preferredNext) {
+                         List<String> updated, ReferralDecision rule, InterviewPayload payload, String preferredNext, String msg) {
         List<ChecklistField> remaining = remaining(d.workflow(), answers);
         boolean complete = remaining.isEmpty();
         Set<String> allowedNext = new HashSet<>();
@@ -273,22 +287,33 @@ public final class DisclosureInterviewService {
             text = COMPLETE_MESSAGE;
             next = List.of();
         } else if (payload != null) {
-            String base = ConversationStyle.polish(cap(modelText), previous);
+            String base = ConversationStyle.polish(cap(modelText), previous, msg);
             ReferralService.Contact c = referral.contact();
             Set<String> allowed = new HashSet<>();
             if (c.url() != null) allowed.add(c.url());
             if (c.email() != null) allowed.add(c.email());
-            boolean usable = !base.isBlank() && !next.isEmpty() && !ConversationStyle.isFormLike(base)
+            boolean userAskedQuestion = msg.trim().endsWith("?") || looksLikeGeneralQuestion(msg) || !rule.topics().isEmpty();
+            boolean hasQuestion = base.contains("?");
+            boolean usable = !base.isBlank() && (userAskedQuestion || hasQuestion || !next.isEmpty()) && !ConversationStyle.isFormLike(base)
                     && !guard.scan(base, allowed).violated() && !repeatsRecent(d, base);
             if (usable) {
                 text = base;
+                if (next.isEmpty()) {
+                    // Pick a meaningful next field from remaining without resetting
+                    String fallbackField = !lastAssistantFields(history).isEmpty() && allowedNext.contains(lastAssistantFields(history).get(0))
+                            ? lastAssistantFields(history).get(0)
+                            : (remaining.isEmpty() ? null : selectNextField(remaining, assistantTurns).id());
+                    if (fallbackField != null) next = List.of(fallbackField);
+                }
             } else {
-                ChecklistField nf = remaining.get(0);
-                text = ConversationStyle.bridge(assistantTurns) + " " + nf.starterQuestion();
+                ChecklistField nf = selectNextField(remaining, assistantTurns);
+                String soft = ConversationStyle.softQuestion(nf.id());
+                String question = soft != null ? soft : nf.starterQuestion();
+                text = ConversationStyle.bridge(assistantTurns) + " " + question;
                 next = List.of(nf.id());
             }
         } else {
-            ChecklistField nf = remaining.get(0);
+            ChecklistField nf = selectNextField(remaining, assistantTurns);
             String question = nf.starterQuestion();
             if (preferredNext != null) {
                 for (ChecklistField f : remaining) {
@@ -304,11 +329,27 @@ public final class DisclosureInterviewService {
             next = List.of(nf.id());
         }
         boolean needsReferral = rule.referralRequired();
-        if (needsReferral && rule.referralNote() != null) text = text + "\n\n" + rule.referralNote();
+        if (needsReferral && rule.referralNote() != null) {
+            text = ConversationStyle.stripRedundantDisclaimer(text) + "\n\n" + rule.referralNote();
+        }
         repo.appendTurn(d.id(), Turn.assistant(text, next));
         return new Reply(text, updated, next,
                 new AskResponse.Referral(needsReferral, rule.primary().name(), needsReferral ? rule.referralNote() : null),
                 false, progress(d.workflow(), answers), complete);
+    }
+
+    private ChecklistField selectNextField(List<ChecklistField> remaining, int assistantTurns) {
+        if (remaining.isEmpty()) return null;
+        ChecklistField nf = remaining.get(0);
+        // If the conversation is already underway, never ask the initial starter question ("In your own words...")
+        if (assistantTurns >= 1 && nf.id().equals("summary_general")) {
+            for (ChecklistField f : remaining) {
+                if (!f.id().equals("summary_general") && !f.id().equals("title")) {
+                    return f;
+                }
+            }
+        }
+        return nf;
     }
 
     private boolean repeatsRecent(Draft d, String text) {
@@ -347,7 +388,7 @@ public final class DisclosureInterviewService {
             "\\b(patent\\w*|disclos\\w*|invent\\w*|licen[sc]\\w*|commerc\\w*|prior\\s+art"
           + "|preprint\\w*|trl|royalt\\w*|own(?:s|ed|ership)|copyright\\w*|trademark\\w*|tech(?:nology)?\\s*transfer"
           + "|intellectual\\s+property|\\bip\\b|otts?\\b|office|umkc|university|publish\\w*"
-          + "|conference|public(?:ly)?\\s+shar\\w*)\\b",
+          + "|conference|public(?:ly)?\\s+shar\\w*|prototype\\w*|submit\\w*|require\\w*|form\\w*)\\b",
             Pattern.CASE_INSENSITIVE);
 
     static boolean looksLikeGeneralQuestion(String msg) {
