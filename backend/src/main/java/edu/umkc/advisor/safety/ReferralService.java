@@ -50,7 +50,7 @@ public final class ReferralService {
             + "|soon|shortly|upcoming|(?:on|by)\\s+(?:" + DAYS + ")|scheduled|due)\\b", CI);
     private static final Pattern WEAK_FUTURE = Pattern.compile(
             "\\b(will|going\\s+to|gonna|about\\s+to|set\\s+to|plan(?:ning|s)?\\s+to|planned|intend(?:s|ing)?\\s+to|want(?:s|ing)?\\s+to"
-            + "|expected\\s+to|hope\\s+to)\\b|'ll\\b", CI);
+            + "|(?:would|'d)\\s+like\\s+to|looking\\s+to|expected\\s+to|hope\\s+to)\\b|'ll\\b", CI);
     private static final Pattern QUESTION_START = Pattern.compile(
             "^\\s*(what|how|why|when|where|who|which|should|can|could|would|will|do|does|is|are|am)\\b", CI);
 
@@ -65,7 +65,7 @@ public final class ReferralService {
     private record TopicRule(Topic topic, Pattern pattern) {}
     private static final List<TopicRule> TOPIC_RULES = List.of(
         new TopicRule(Topic.PATENTABILITY, p(
-            "\\b(?:is|are|was|would|will|could|can|might)\\s+(?:it|this|that|my|our|the|these|something)\\b[^.?!]{0,60}\\b(?:patent(?:able|ed)?|qualify\\s+(?:for\\s+)?(?:a\\s+)?patent)\\b"
+            "\\b(?:is|are|was|would|will|could|can|might)\\s+(?:it|this|that|my|our|the|these|something)\\b[^.?!]{0,60}\\b(?:patent(?:able|ed)|qualify\\s+(?:for\\s+)?(?:a\\s+)?patent)\\b"
             + "|\\bqualify\\s+(?:for\\s+)?(?:a\\s+)?patent\\b"
             + "|\\bcan\\s+(?:i|we)\\s+(?:get\\s+a\\s+)?patent\\b"
             + "|\\bshould\\s+(?:i|we)\\s+(?:file\\s+(?:for\\s+)?(?:a\\s+)?patent|patent)\\b"

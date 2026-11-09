@@ -17,16 +17,20 @@ public final class ConversationStyle {
     /** Stock openers and praise the interview should not lean on. */
     private static final Pattern STOCK_OPENER = Pattern.compile(
             "^(?:(?:thank you|thanks)(?: so much)?(?: for (?:sharing|that|explaining|the (?:details?|information|explanation)|letting me know|your (?:answer|response|explanation))(?: that| this| it| all that)?)?"
-          + "|(?:that'?s|that is|this is) (?:really |very |so |such an? )?(?:interesting|fascinating|great|wonderful|impressive|helpful)(?: (?:point|question|idea|work|information))?"
+          + "|(?:that'?s|that is|this is) (?:a |an |really |very |so |such an? )?(?:good|great|interesting|fascinating|wonderful|impressive|helpful|excellent)(?: (?:point|question|idea|work|information))?"
           + "|(?:that'?s |that is |this is )?noted(?: with thanks)?"
-          + "|(?:great|excellent|wonderful|fantastic|awesome|interesting|fascinating)(?: (?:question|answer|point|work))?"
-          + "|what an? (?:interesting|great|fascinating) (?:idea|project|question))\\s*[.!,:;\\-\u2013\u2014]+\\s*", CI);
+          + "|(?:good|great|excellent|wonderful|fantastic|awesome|interesting|fascinating)(?: (?:question|answer|point|work))?"
+          + "|what an? (?:interesting|great|good|fascinating) (?:idea|project|question))\\s*[.!,:;\\-\u2013\u2014]+\\s*", CI);
 
     private static final Pattern COMPOUND_QUESTION = Pattern.compile(
             "(?:,\\s*(?:and|or)\\s+(?:who|what|where|how|why|which|when|can|could|is|are|do|does)"
+          + "|\\s+or\\s+(?:who|what|where|how|why|which|when)\\b"
           + "|(?:,\\s*|\\s+)and\\s+why\\s+it'?s\\s+important"
           + "|\\s+and\\s+how\\s+it\\s+(?:sends|transmits|connects|works|functions)"
-          + "|(?:,\\s*|\\s+)and\\s+who\\s+(?:runs\\s+into|faces|experiences|it'?s\\s+for))\\b[^?]*\\?", CI);
+          + "|(?:,\\s*|\\s+)and\\s+who\\s+(?:runs\\s+into|faces|experiences|it'?s\\s+for))\\b[^?.!\\n]*\\?", CI);
+
+    private static final Pattern QUESTION_STARTER = Pattern.compile(
+            "^\\s*(?:what|how|who|when|why|where|which|can|could|should|would|is|are|do|does|did|have|has)\\b", CI);
 
     private static final Pattern REDUNDANT_DISCLAIMER = Pattern.compile(
             "\\s*(?:official determinations are made by [^\n.!?]*|only (?:university|patent|qualified) staff can (?:make|determine)[^\n.!?]*)[.!?]", CI);
@@ -43,10 +47,14 @@ public final class ConversationStyle {
     /** After an "unknown", the most natural next topic is a gentler, related one (see the brief's examples B and C). */
     static final Map<String, String> COMPANION = Map.of(
             "evidence_testing", "development_stage",
-            "difference_from_others", "closest_products");
+            "difference_from_others", "development_stage",
+            "closest_products", "development_stage",
+            "potential_inventors", "inventor_contributions");
     private static final Map<String, String> SOFT_QUESTION = Map.of(
             "development_stage", "Have you built an early prototype, or is the idea still at the design stage?",
-            "closest_products", "What existing products or approaches have you looked at so far? We can record what you know and leave the comparison open.");
+            "closest_products", "What existing products or approaches have you looked at so far? We can record what you know and leave the comparison open.",
+            "inventor_contributions", "Could you briefly describe what each person contributed to developing it?",
+            "evidence_testing", "Have you tested the current design or material samples, and what did you observe?");
     private static final Map<String, String> UNKNOWN_ACK = Map.of(
             "evidence_testing", "That's okay. We can still document what you've developed so far.",
             "difference_from_others", "That's understandable.",
@@ -59,8 +67,10 @@ public final class ConversationStyle {
     }
 
     public static String polish(String text, List<String> previousAssistantMessages, String userMessage) {
-        String t = stripStockOpeners(text == null ? "" : text.strip());
+        String         t = stripStockOpeners(text == null ? "" : text.strip());
         t = stripEcho(t, userMessage);
+        t = t.replaceAll("(?i)this public disclosure", "what was shared");
+        t = t.replaceAll("(?i)an abstract is considered a form of public disclosure\\.?\\s*", "");
         t = simplifyCompoundQuestion(t);
         return varyRepeatedOpener(t, previousAssistantMessages);
     }
@@ -89,10 +99,25 @@ public final class ConversationStyle {
     }
 
     static String simplifyCompoundQuestion(String text) {
-        if (text == null) return "";
-        Matcher m = COMPOUND_QUESTION.matcher(text);
+        if (text == null || !text.contains("?")) return text;
+        int lastQ = text.lastIndexOf('?');
+        int start = 0;
+        for (int i = lastQ - 1; i >= 0; i--) {
+            char c = text.charAt(i);
+            if (c == '.' || c == '!' || c == '\n') {
+                start = i + 1;
+                break;
+            }
+        }
+        String prefix = text.substring(0, start);
+        String question = text.substring(start, lastQ + 1);
+        if (!QUESTION_STARTER.matcher(question).find()) {
+            return text;
+        }
+        Matcher m = COMPOUND_QUESTION.matcher(question);
         if (m.find()) {
-            return text.substring(0, m.start()) + "?";
+            String simplifiedQuestion = question.substring(0, m.start()).stripTrailing() + "?";
+            return prefix + simplifiedQuestion + text.substring(lastQ + 1);
         }
         return text;
     }

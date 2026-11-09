@@ -55,7 +55,7 @@ class InterviewConversationTest {
             interviewJson(List.of(), "Let's go to the next field in the checklist: funding.", "funding"));
         var svc = kit.interview(llm);
         Draft d = kit.newDraft(Workflow.NEW_INVENTION);
-        var a = svc.handle(d, "Hello.");
+        var a = svc.handle(d, "Let's begin.");
         assertFalse(a.assistantMessage().contains("1."));
         assertTrue(a.assistantMessage().endsWith(kit.checklist.find("summary_general").get().starterQuestion()));
         var b = svc.handle(kit.repo.get(d.id()), "Still here.");
@@ -115,20 +115,36 @@ class InterviewConversationTest {
     }
 
     @Test
-    void exampleC_unsureHowItDiffersLeadsToWhatTheyHaveLookedAt() {
+    void exampleC_unsureHowItDiffersMovesToDevelopmentInsteadOfRepeatingTheComparison() {
         Draft d = asked(kit.newDraft(Workflow.NEW_INVENTION), "How is this different from what others are doing?", "difference_from_others");
         var det = kit.interview(new ScriptedLlm()).handle(d, "I don't know");
-        assertEquals("That's understandable. What existing products or approaches have you looked at so far? We can record what you know and leave the comparison open.",
-                det.assistantMessage());
-        assertEquals(List.of("closest_products"), det.askedFieldIds());
+        assertTrue(det.assistantMessage().startsWith("That's understandable."));
+        assertEquals(List.of("development_stage"), det.askedFieldIds());
+        assertFalse(det.assistantMessage().toLowerCase().contains("existing products"));
 
         Draft d2 = asked(kit.newDraft(Workflow.NEW_INVENTION), "How is this different from what others are doing?", "difference_from_others");
-        String model = "That's understandable. What existing products or approaches have you looked at so far? We can record what you know and leave the comparison open.";
-        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(upd("difference_from_others", "I'm not really sure how it's different from existing products", "NOT_YET_KNOWN")),
-                model, "closest_products"));
-        var r = kit.interview(llm).handle(d2, "I'm not really sure how it's different from existing products.");
-        assertEquals(model, r.assistantMessage());                          // already natural: passed through untouched
+        var r = kit.interview(new ScriptedLlm()).handle(d2, "I'm honestly not sure. I haven't looked into other technologies yet.");
         assertEquals(ResearcherMark.NOT_YET_KNOWN, kit.repo.get(d2.id()).answer("difference_from_others").mark());
+        assertEquals(List.of("development_stage"), r.askedFieldIds());
+    }
+
+    @Test
+    void anAnswerAboutADifferentTopicIsNotLeftUnderTheQuestionOnScreen() {
+        Draft d = asked(kit.newDraft(Workflow.NEW_INVENTION), "Was any outside funding involved?", "funding");
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("funding", "We tested it using a few water samples", "NONE")),
+                "Thanks. Who else worked on this with you?", "potential_inventors"));
+        kit.interview(llm).handle(d, "We tested it using a few water samples.");
+        assertTrue(kit.repo.get(d.id()).answer("evidence_testing").hasText());
+        assertFalse(kit.repo.get(d.id()).answer("funding").isAddressed());
+
+        Draft d2 = asked(kit.newDraft(Workflow.NEW_INVENTION), "Have you presented or published this?", "public_disclosures_list");
+        ScriptedLlm llm2 = new ScriptedLlm(interviewJson(
+                List.of(upd("public_disclosures_list", "Some challenges include making sure the water is safe", "NONE")),
+                "Got it. Has this been funded?", "funding"));
+        kit.interview(llm2).handle(d2, "Some challenges include making sure the water is safe.");
+        assertTrue(kit.repo.get(d2.id()).answer("problem_challenges").hasText());
+        assertFalse(kit.repo.get(d2.id()).answer("public_disclosures_list").isAddressed());
     }
 
     @Test
@@ -230,6 +246,235 @@ class InterviewConversationTest {
         assertEquals(1, rr.progress().notApplicable());
     }
 
+    @Test
+    void researcherSaysGoodbyeClosesNaturallyWithoutAnotherQuestion() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "You're very welcome! Feel free to come back anytime. Have a great day!"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "That's all for today, goodbye!");
+        assertFalse(r.assistantMessage().contains("?"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void researcherSaysOkayThatMakesSenseAcknowledgesWithoutIntroducingNewTopic() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Sounds good! Whenever you're ready, let me know what you'd like to explore next."));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        kit.repo.appendTurn(d.id(), Turn.assistant("Patents protect inventions.", List.of()));
+        var r = svc.handle(d, "Okay, that makes sense.");
+        assertFalse(r.assistantMessage().contains("?"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void researcherCorrectsPreviousInformationUpdatesExistingWithoutOldNotes() {
+        Draft d = kit.withAnswers(kit.newDraft(Workflow.NEW_INVENTION),
+                Map.of("summary_general", text("A wearable wristband for monitoring heart rate")));
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("summary_general", "A mobile application for tracking cardiac recovery", "NONE")),
+                "Got it. I've updated the notes to reflect that it's a mobile application."));
+        var svc = kit.interview(llm);
+        svc.handle(d, "Actually, it's not a wearable wristband, it's a mobile application for tracking cardiac recovery.");
+        Draft after = kit.repo.get(d.id());
+        assertTrue(after.answer("summary_general").text().contains("mobile application"));
+        assertFalse(after.answer("summary_general").text().toLowerCase().contains("wearable wristband"));
+    }
+
+    @Test
+    void researcherSkipsTopicMarksSkippedAndClearsFollowUp() {
+        Draft d = asked(kit.newDraft(Workflow.NEW_INVENTION), "Who else contributed?", "potential_inventors");
+        var svc = kit.interview(new ScriptedLlm());
+        var r = svc.handle(d, "skip");
+        assertEquals(ResearcherMark.SKIPPED, kit.repo.get(d.id()).answer("potential_inventors").mark());
+        assertFalse(r.askedFieldIds().contains("potential_inventors"));
+    }
+
+    @Test
+    void researcherAsksGeneralIpQuestionAnswersWithoutForcingInterviewForward() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Intellectual property refers to creations of the mind, such as inventions, software, and creative works."));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "What is the difference between a patent and copyright?");
+        assertTrue(r.assistantMessage().contains("Intellectual property"));
+        assertFalse(r.assistantMessage().contains("?"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void researcherAsksForSummaryGeneratesSummaryWithoutAppendingQuestion() {
+        Draft d = kit.withAnswers(kit.newDraft(Workflow.NEW_INVENTION),
+                Map.of("summary_general", text("An optical water contaminant sensor")));
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Here is a summary of what we have collected: You developed an optical water contaminant sensor."));
+        var svc = kit.interview(llm);
+        var r = svc.handle(d, "Can you give me a summary of what we have so far?");
+        assertTrue(r.assistantMessage().contains("summary"));
+        assertFalse(r.assistantMessage().contains("?"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding involved"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void researcherChangesTopicsClearsPendingQuestions() {
+        Draft d = kit.withAnswers(kit.newDraft(Workflow.NEW_INVENTION),
+                Map.of("summary_general", text("Silicon anodes for batteries"),
+                       "problem_solved", text("Lithium batteries charge slowly")));
+        var svc = kit.interview(new ScriptedLlm());
+        var r = svc.handle(d, "Actually scratch that, I made a wheelchair navigation sensor.");
+        Draft after = kit.repo.get(d.id());
+        assertTrue(after.answer("summary_general").text().contains("wheelchair"));
+        assertFalse(after.answer("summary_general").text().toLowerCase().contains("silicon"));
+        assertFalse(after.answer("problem_solved").hasText());
+    }
+
+    @Test
+    void researcherDiscussesPotentialApplicationsExploresApplicationsInsteadOfFunding() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("applications_users", "Municipal water treatment plants and beverage companies", "NONE")),
+                "Those are promising applications. Have you reached out to any municipal water plants to test the prototype?", "applications_users"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "This could be used by municipal water treatment plants and beverage companies.");
+        assertTrue(r.assistantMessage().contains("municipal water plants"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertEquals(List.of("applications_users"), r.askedFieldIds());
+    }
+
+    @Test
+    void researcherMentionsMultipleContributorsAvoidsInventorshipDetermination() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("potential_inventors", "Graduate student and postdoc helped build it", "NONE")),
+                "Invention disclosures list all contributors, but legal inventorship is determined under patent law based on conception. UMKC's Office of Technology Commercialization evaluates specific contributions. What roles did each person play?", "potential_inventors"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "My graduate student and postdoc helped build the hardware. Do they count as inventors?");
+        assertTrue(r.assistantMessage().toLowerCase().contains("not necessarily")
+                || r.assistantMessage().toLowerCase().contains("does not automatically"));
+        assertFalse(r.assistantMessage().contains("?"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+    }
+
+    @Test
+    void researcherAsksUnrelatedTechnicalQuestionHandlesOutOfScopeWithoutUnrelatedQuestion() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "I mainly help with intellectual property, research commercialization, and invention disclosures, so I can't write general Python algorithms. If this code is part of an invention, I can help discuss IP."));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "Can you write me a quick Python script for binary search?");
+        assertTrue(r.assistantMessage().contains("intellectual property"));
+        assertFalse(r.assistantMessage().contains("?"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void weatherFoodAndShoppingStayOutOfScopeWithoutAnInterviewQuestion() {
+        ScriptedLlm llm = new ScriptedLlm();
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        kit.repo.saveAnswers(d.id(), Map.of("summary_general", text("A water bacteria detector")));
+        for (String msg : List.of("what is the weather", "kentucky fried chicken", "walmart and costco, which do you prefer")) {
+            var r = svc.handle(kit.repo.get(d.id()), msg);
+            assertTrue(r.assistantMessage().toLowerCase().contains("intellectual property"), r.assistantMessage());
+            assertFalse(r.assistantMessage().contains("?"), r.assistantMessage());
+            assertTrue(r.askedFieldIds().isEmpty(), msg);
+            assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+            assertFalse(r.assistantMessage().toLowerCase().contains("papers"));
+        }
+        assertEquals(0, llm.calls());
+    }
+
+    @Test
+    void chemicalCalculationIsDeclinedAsLabHelp() {
+        String msg = "Can you help me calculate the chemical concentration needed to kill bacteria in drinking water?";
+        assertTrue(DisclosureInterviewService.looksLikeLabHelp(msg), "detector missed: " + msg);
+        var r = kit.interview(new ScriptedLlm()).handle(kit.newDraft(Workflow.NEW_INVENTION), msg);
+        String text = r.assistantMessage().toLowerCase();
+        assertTrue(text.contains("outside what i can help") || text.contains("don't work through lab calculations"), r.assistantMessage());
+        assertTrue(text.contains("equation") || text.contains("expert"), r.assistantMessage());
+        assertFalse(text.contains("i can help you understand the basics of chemical"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void helloDoesNotAdvanceTheInterview() {
+        var r = kit.interview(new ScriptedLlm()).handle(kit.newDraft(Workflow.NEW_INVENTION), "hello");
+        assertTrue(r.assistantMessage().toLowerCase().contains("hello"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void regressionFundingQuestionNotAppendedToUnrelatedTurns() {
+        // Fallback or model turns without questions must never append "Was any outside funding involved..."
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Got it, thank you for letting me know."));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        kit.repo.appendTurn(d.id(), Turn.assistant("Hello", List.of()));
+        var r = svc.handle(d, "I'm heading out now, see you later!");
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("federal grant"));
+        assertFalse(r.assistantMessage().contains("?"));
+    }
+
+    @Test
+    void multiQuestionSentencesAreCappedAtTwoQuestions() {
+        String threeQuestions = "How does it work? Who uses it? Have you tested it?";
+        assertEquals("How does it work? Who uses it?", DisclosureInterviewService.cap(threeQuestions));
+
+        String withClarification = "Was any outside funding involved, such as a federal grant, industry money, or a foundation? If not, just say so.";
+        assertEquals(withClarification, DisclosureInterviewService.cap(withClarification));
+    }
+
+    @Test
+    void goodToKnowAcknowledgmentDoesNotTriggerFundingQuestion() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Sounds good! Whenever you're ready, let me know what you'd like to explore next."));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        kit.repo.appendTurn(d.id(), Turn.assistant("The purpose of submitting an invention disclosure is to inform the university.", List.of()));
+        var r = svc.handle(d, "Good to know.");
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("federal grant"));
+        assertFalse(r.assistantMessage().contains("?"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void companyInterestPreservedAndDoesNotFallBackToFunding() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("potential_licensees", "A company recently contacted us", "NONE")),
+                "That's exciting! What company reached out, or what kind of collaboration are they looking for?",
+                "potential_licensees"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "A company recently contacted us because they might be interested in using our device.");
+        assertTrue(r.assistantMessage().contains("What company reached out"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertEquals(List.of("potential_licensees"), r.askedFieldIds());
+    }
+
+    @Test
+    void ruralCommunitiesApplicationPreservedAndDoesNotFallBackToFunding() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("applications_users", "useful in rural communities", "NONE")),
+                "Serving rural communities is a great use case. Are there specific constraints for those communities, such as operating without clean power?",
+                "applications_users"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "I think this device could be useful in rural communities that don't have reliable access to clean drinking water.");
+        assertTrue(r.assistantMessage().contains("Serving rural communities"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertEquals(List.of("applications_users"), r.askedFieldIds());
+    }
+
     public static void main(String[] args) {
         InterviewConversationTest t = new InterviewConversationTest();
         t.stockOpenersFromTheModelNeverReachTheResearcher();
@@ -240,7 +485,7 @@ class InterviewConversationTest {
         t.exampleA_followUpsBuildOnWhatWasJustSaid();
         t.exampleB_notTestedGetsAnEncouragingNextQuestionAboutWhatExists();
         t.exampleB_viaTheModelTheUnknownIsRecordedAccuratelyAndNotTreatedAsAProblem();
-        t.exampleC_unsureHowItDiffersLeadsToWhatTheyHaveLookedAt();
+        t.exampleC_unsureHowItDiffersMovesToDevelopmentInsteadOfRepeatingTheComparison();
         t.skippingFeelsLikeAConversationNotARepeatedStockReply();
         t.safetyBehaviourIsUnchangedByTheStyleRules();
         t.naturalConversationStillCollectsEverythingTheCompletenessReviewNeeds();

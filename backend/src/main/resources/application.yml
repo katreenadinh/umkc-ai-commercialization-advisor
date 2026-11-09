@@ -14,17 +14,17 @@ server:
   error.include-message: never
 advisor:
   llm:
-    provider: ${LLM_PROVIDER:local}       # local | anthropic
+    provider: ${LLM_PROVIDER:local}       # local | hosted
     max-tokens: 1200
     timeout-seconds: 180                  # local inference on a laptop can be slow
     local:
       # CONFIRM against your running MLX server; these are placeholders, not verified values.
       base-url: ${LOCAL_LLM_BASE_URL:http://127.0.0.1:8080/v1}
       model: ${LOCAL_LLM_MODEL:CONFIGURE_MODEL_NAME}
-    anthropic:                            # optional, off by default
-      api-key: ${ANTHROPIC_API_KEY:}
-      model: ${ANTHROPIC_MODEL:claude-sonnet-4-6}
-      base-url: https://api.anthropic.com
+    anthropic:                            # optional hosted provider; off by default
+      api-key: ${LLM_API_KEY:${ANTHROPIC_API_KEY:}}
+      model: ${LLM_MODEL:${ANTHROPIC_MODEL:}}
+      base-url: ${LLM_BASE_URL:https://api.anthropic.com}
   referral:
     # Defaults come from official UMKC pages. The project team must confirm them.
     office-name: ${REFERRAL_OFFICE_NAME:UMKC Office of Technology Commercialization}

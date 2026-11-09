@@ -32,7 +32,7 @@ public final class ClaudeClient implements LlmClient {
     @Override
     public String complete(String systemPrompt, String userPrompt, int maxTokens) {
         if (apiKey == null || apiKey.isBlank()) {
-            throw new LlmUnavailableException("ANTHROPIC_API_KEY is not configured");
+            throw new LlmUnavailableException("LLM_API_KEY is not configured");
         }
         try {
             String body = mapper.writeValueAsString(Map.of(

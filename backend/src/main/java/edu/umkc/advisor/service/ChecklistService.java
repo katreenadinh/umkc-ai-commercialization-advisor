@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.umkc.advisor.model.ChecklistField;
+import edu.umkc.advisor.model.ChecklistSection;
 import edu.umkc.advisor.model.Workflow;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.*;
 /** Loads the configurable checklist. Fields marked PROJECT_GUIDANCE are never presented as official requirements. */
 public final class ChecklistService {
     private final List<ChecklistField> fields;
+    private final List<ChecklistSection> sections;
     private final Map<String, ChecklistField> byId = new LinkedHashMap<>();
     private final String formVersion, inspectionStatus;
 
@@ -24,6 +26,17 @@ public final class ChecklistService {
         list.sort(Comparator.comparingInt((ChecklistField f) -> f.priority() * 100 + f.order()));
         for (ChecklistField f : list) if (byId.put(f.id(), f) != null) throw new IllegalStateException("Duplicate field id " + f.id());
         this.fields = List.copyOf(list);
+        List<ChecklistSection> secs = new ArrayList<>();
+        Set<String> placed = new HashSet<>();
+        for (JsonNode n : root.path("sections")) {
+            ChecklistSection s = m.treeToValue(n, ChecklistSection.class);
+            for (String id : s.fields()) {
+                if (!byId.containsKey(id)) throw new IllegalStateException("Section " + s.id() + " lists unknown field " + id);
+                if (!placed.add(id)) throw new IllegalStateException("Field " + id + " is in more than one section");
+            }
+            secs.add(s);
+        }
+        this.sections = List.copyOf(secs);
         this.formVersion = root.path("formVersion").asText("");
         this.inspectionStatus = root.path("inspectionStatus").asText("");
     }
@@ -42,6 +55,18 @@ public final class ChecklistService {
     public List<ChecklistField> coach(Workflow w) {
         return applicable(w).stream().filter(ChecklistField::inCoach).toList();
     }
+    /** Disclosure-note sections in display order, each holding only the notes that apply to this workflow. */
+    public List<Section> sections(Workflow w) {
+        List<Section> out = new ArrayList<>();
+        for (ChecklistSection s : sections) {
+            List<ChecklistField> fs = s.fields().stream().map(byId::get).filter(f -> f.appliesTo(w)).toList();
+            if (!fs.isEmpty()) out.add(new Section(s, fs));
+        }
+        return out;
+    }
+
+    public record Section(ChecklistSection section, List<ChecklistField> fields) {}
+
     public Optional<ChecklistField> find(String id) { return Optional.ofNullable(byId.get(id)); }
     public List<ChecklistField> all() { return fields; }
     public String formVersion() { return formVersion; }
