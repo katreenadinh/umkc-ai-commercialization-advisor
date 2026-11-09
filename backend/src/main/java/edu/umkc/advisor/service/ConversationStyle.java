@@ -17,10 +17,10 @@ public final class ConversationStyle {
     /** Stock openers and praise the interview should not lean on. */
     private static final Pattern STOCK_OPENER = Pattern.compile(
             "^(?:(?:thank you|thanks)(?: so much)?(?: for (?:sharing|that|explaining|the (?:details?|information|explanation)|letting me know|your (?:answer|response|explanation))(?: that| this| it| all that)?)?"
-          + "|(?:that'?s|that is|this is) (?:really |very |so |such an? )?(?:interesting|fascinating|great|wonderful|impressive|helpful)(?: (?:point|question|idea|work|information))?"
+          + "|(?:that'?s|that is|this is) (?:a |an |really |very |so |such an? )?(?:good|great|interesting|fascinating|wonderful|impressive|helpful|excellent)(?: (?:point|question|idea|work|information))?"
           + "|(?:that'?s |that is |this is )?noted(?: with thanks)?"
-          + "|(?:great|excellent|wonderful|fantastic|awesome|interesting|fascinating)(?: (?:question|answer|point|work))?"
-          + "|what an? (?:interesting|great|fascinating) (?:idea|project|question))\\s*[.!,:;\\-\u2013\u2014]+\\s*", CI);
+          + "|(?:good|great|excellent|wonderful|fantastic|awesome|interesting|fascinating)(?: (?:question|answer|point|work))?"
+          + "|what an? (?:interesting|great|good|fascinating) (?:idea|project|question))\\s*[.!,:;\\-\u2013\u2014]+\\s*", CI);
 
     private static final Pattern COMPOUND_QUESTION = Pattern.compile(
             "(?:,\\s*(?:and|or)\\s+(?:who|what|where|how|why|which|when|can|could|is|are|do|does)"

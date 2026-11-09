@@ -47,7 +47,7 @@ public final class DisclosureInterviewService {
     private static final Pattern SUMMARY_CUE = Pattern.compile(
             "(?i)\\b(summar(?:y|ize)|how far along|what(?:'s| is) (?:left|missing|remaining|collected)|current status)\\b");
     private static final Pattern ACK_CUE = Pattern.compile(
-            "(?i)^(okay|ok|sounds good|makes sense|that makes sense|got it|understood|i see|alright|cool|great|thank you|thanks)[.!]?$");
+            "(?i)^(okay|ok|sounds good|sounds great|makes sense|that makes sense|got it|understood|i see|alright|cool|great|good to know|noted|perfect|sure thing|will do|thank you(?: so much)?|thanks(?: a lot)?(?: for (?:that|explaining|the explanation|clarifying))?)(?:[,.]?\\s*(?:thanks|thank you))?[.!]?$");
     private static final Pattern CORRECTION_CUE = Pattern.compile(
             "(?i)\\b(actually|correction|i meant|i mean|not\\s+\\w+,?\\s+(?:it'?s|it is|but)|instead of|scratch that|replace|i made a mistake|rather than)\\b");
     /** Explicit abandonment of the current work, not a later-topic volunteer. */
@@ -322,15 +322,19 @@ public final class DisclosureInterviewService {
         List<ChecklistField> remaining = remaining(d.workflow(), answers);
         boolean complete = remaining.isEmpty();
         Set<String> allowedNext = new HashSet<>();
-        remaining.forEach(f -> allowedNext.add(f.id()));
-        allowedNext.addAll(updated);                       // a clarifying follow-up on what was just said is allowed
+        for (ChecklistField f : checklist.applicable(d.workflow())) {
+            FieldAnswer a = answers.getOrDefault(f.id(), FieldAnswer.EMPTY);
+            if (!a.isAddressed() || updated.contains(f.id())) {
+                allowedNext.add(f.id());
+            }
+        }
         if (preferredNext != null) allowedNext.add(preferredNext);
         for (String u : updated) {
             String comp = ConversationStyle.COMPANION.get(u);
             if (comp != null) allowedNext.add(comp);
         }
         List<String> next = new ArrayList<>();
-        for (String id : modelNext) if (allowedNext.contains(id) && !next.contains(id) && next.size() < 2) next.add(id);
+        for (String id : modelNext) if (allowedNext.contains(id) && !next.contains(id) && next.size() < 1) next.add(id);
 
         List<Turn> history = repo.turns(d.id());
         int assistantTurns = (int) history.stream().filter(t -> t.role().equals("ASSISTANT")).count();
@@ -384,7 +388,7 @@ public final class DisclosureInterviewService {
                     next = List.of();
                 }
             } else {
-                boolean invalidTarget = !modelNext.isEmpty() && next.isEmpty();
+                boolean invalidTarget = hasQuestion && !modelNext.isEmpty() && next.isEmpty();
                 boolean usable = !base.isBlank() && !isForm && !guardViolation && !invalidTarget
                         && (!hasQuestion || (validNext && !isRepeat)) && (assistantTurns > 0 || hasQuestion);
                 if (usable) {

@@ -20,6 +20,16 @@ public class ConversationStyleTest {
         assertEquals("Have you built a prototype?", ConversationStyle.polish("Thanks for explaining that. Have you built a prototype?", List.of()));
         assertEquals("Who contributed?", ConversationStyle.polish("Thank you for sharing. That's interesting. Who contributed?", List.of()));
         assertEquals("What problem does this solve?", ConversationStyle.polish("That's noted. What problem does this solve?", List.of()));
+        assertEquals("Invention disclosures typically list all contributors.",
+                ConversationStyle.polish("That's a good question. Invention disclosures typically list all contributors.", List.of()));
+        assertEquals("To explore the potential for real-world use, we can discuss the stage.",
+                ConversationStyle.polish("That's a great question! To explore the potential for real-world use, we can discuss the stage.", List.of()));
+        assertEquals("What are the results?",
+                ConversationStyle.polish("That is a great question. What are the results?", List.of()));
+        assertEquals("Could you explain more?",
+                ConversationStyle.polish("Good question. Could you explain more?", List.of()));
+        assertEquals("What did you find?",
+                ConversationStyle.polish("Great question! What did you find?", List.of()));
     }
 
     @Test

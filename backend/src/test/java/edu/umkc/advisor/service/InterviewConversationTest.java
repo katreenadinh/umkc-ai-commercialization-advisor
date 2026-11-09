@@ -370,6 +370,57 @@ class InterviewConversationTest {
         assertFalse(r.assistantMessage().contains("?"));
     }
 
+    @Test
+    void multiQuestionSentencesAreCappedAtTwoQuestions() {
+        String threeQuestions = "How does it work? Who uses it? Have you tested it?";
+        assertEquals("How does it work? Who uses it?", DisclosureInterviewService.cap(threeQuestions));
+
+        String withClarification = "Was any outside funding involved, such as a federal grant, industry money, or a foundation? If not, just say so.";
+        assertEquals(withClarification, DisclosureInterviewService.cap(withClarification));
+    }
+
+    @Test
+    void goodToKnowAcknowledgmentDoesNotTriggerFundingQuestion() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(),
+                "Sounds good! Whenever you're ready, let me know what you'd like to explore next."));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        kit.repo.appendTurn(d.id(), Turn.assistant("The purpose of submitting an invention disclosure is to inform the university.", List.of()));
+        var r = svc.handle(d, "Good to know.");
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("federal grant"));
+        assertFalse(r.assistantMessage().contains("?"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void companyInterestPreservedAndDoesNotFallBackToFunding() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("potential_licensees", "A company recently contacted us", "NONE")),
+                "That's exciting! What company reached out, or what kind of collaboration are they looking for?",
+                "potential_licensees"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "A company recently contacted us because they might be interested in using our device.");
+        assertTrue(r.assistantMessage().contains("What company reached out"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertEquals(List.of("potential_licensees"), r.askedFieldIds());
+    }
+
+    @Test
+    void ruralCommunitiesApplicationPreservedAndDoesNotFallBackToFunding() {
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("applications_users", "useful in rural communities", "NONE")),
+                "Serving rural communities is a great use case. Are there specific constraints for those communities, such as operating without clean power?",
+                "applications_users"));
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        var r = svc.handle(d, "I think this device could be useful in rural communities that don't have reliable access to clean drinking water.");
+        assertTrue(r.assistantMessage().contains("Serving rural communities"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("outside funding"));
+        assertEquals(List.of("applications_users"), r.askedFieldIds());
+    }
+
     public static void main(String[] args) {
         InterviewConversationTest t = new InterviewConversationTest();
         t.stockOpenersFromTheModelNeverReachTheResearcher();
