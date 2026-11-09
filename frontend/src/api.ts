@@ -39,11 +39,23 @@ export interface Turn {
   fieldIds: string[];
 }
 
+export type InformationStatus = "NOT_DISCUSSED" | "PARTIAL" | "COMPLETE" | "UNKNOWN";
+
+export interface SectionView {
+  id: string;
+  title: string;
+  status: InformationStatus;
+  statusLabel: string;
+  fieldIds: string[];
+}
+
 export interface DraftView {
   id: string;
   title: string;
   workflow: string;
   fields: FieldView[];
+  sections: SectionView[];
+  organizing: boolean;
   transcript: Turn[];
   progress: Progress;
   summaryMd: string | null;
@@ -163,6 +175,14 @@ export async function generateSummary(id: string): Promise<string> {
     await fetch(`/api/drafts/${id}/summary`, { method: "POST", headers: headers(false) }),
   );
   return data.markdown;
+}
+
+/** Builds fresh notes and returns them as a Word document. */
+export async function exportWord(id: string): Promise<Blob> {
+  await generateSummary(id);
+  const res = await fetch(`/api/drafts/${id}/export?format=docx`, { headers: headers(false) });
+  if (!res.ok) await read(res);
+  return res.blob();
 }
 
 export interface ContactInfo {

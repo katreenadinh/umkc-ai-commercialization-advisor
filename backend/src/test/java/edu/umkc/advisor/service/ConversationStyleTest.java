@@ -49,6 +49,9 @@ public class ConversationStyleTest {
 
         String compound3 = "Could you explain a bit more about how the sensor works and how it sends the results to the mobile app?";
         assertEquals("Could you explain a bit more about how the sensor works?", ConversationStyle.polish(compound3, List.of()));
+
+        String compound4 = "Could you tell me a bit more about how the device works or what makes it different from existing methods?";
+        assertEquals("Could you tell me a bit more about how the device works?", ConversationStyle.polish(compound4, List.of()));
     }
 
     @Test

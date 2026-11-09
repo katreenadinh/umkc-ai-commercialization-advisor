@@ -1,13 +1,13 @@
 {
- "version": "1.0",
+ "version": "1.1",
  "formVersion": "UM 16C (rev. September 2025)",
  "verifiedOn": "2026-10-30",
- "note": "Derived from the UM System Invention Disclosure Form UM 16C and UMKC/UM System pages. Fields with origin PROJECT_GUIDANCE are NOT on the form and are never presented as required. inCoach=true is the short first-conversation set (eight notes for a new invention). The rest stay on the form for later review and are not asked in the coach.",
+ "note": "Derived from the UM System Invention Disclosure Form UM 16C and UMKC/UM System pages. Fields with origin PROJECT_GUIDANCE are NOT on the form and are never presented as required. inCoach=true is the original short first-conversation set. 'sections' groups the notes into the nine disclosure-note sections shown to researchers. A section counts as completed only when every note in it is answered or marked not applicable.",
  "fields": [
   {
    "id": "existing_disclosure_ref",
    "section": "Existing disclosure",
-   "label": "Which existing disclosure this updates",
+   "label": "Existing disclosure being updated",
    "description": "The title or disclosure number of the disclosure you already submitted.",
    "whyItHelps": "The university regulations ask inventors to notify the technology transfer office and update a disclosure if the invention is modified or improved after submission.",
    "starterQuestion": "Which disclosure are you updating? A title or disclosure number is enough.",
@@ -45,7 +45,7 @@
   {
    "id": "title",
    "section": "A.1 Invention description",
-   "label": "Non-confidential title",
+   "label": "Title or working title",
    "description": "A brief title that leaves out confidential information, acronyms and trademarks.",
    "whyItHelps": "The form asks for a title that can be used without revealing confidential details.",
    "starterQuestion": "If you had to give this work a short, plain title, what would it be? Please leave out anything confidential, acronyms, and trademarks.",
@@ -85,7 +85,7 @@
   {
    "id": "technical_description",
    "section": "A.1 Invention description",
-   "label": "How it works, and advantages over existing approaches",
+   "label": "Technical description",
    "description": "The technical description and any advantages or improvements over existing methods, devices or materials.",
    "whyItHelps": "Staff need enough technical detail to understand how it works.",
    "starterQuestion": "Can you walk me through how it works technically?",
@@ -105,7 +105,7 @@
   {
    "id": "novel_aspects",
    "section": "A.1 Invention description",
-   "label": "Aspects you see as new",
+   "label": "What is new or different",
    "description": "Which aspects you personally believe are new.",
    "whyItHelps": "The form asks for your view. This tool does not judge whether anything is new.",
    "starterQuestion": "Which parts of this do you think are new or different?",
@@ -125,8 +125,8 @@
   {
    "id": "problem_solved",
    "section": "A.1 Invention description",
-   "label": "Problem it addresses",
-   "description": "The problem the invention solves and why it matters.",
+   "label": "Problem or need being addressed",
+   "description": "The problem or need the invention addresses.",
    "whyItHelps": "Explains why the work could matter to others.",
    "starterQuestion": "What problem does this address, and who runs into it?",
    "origin": "OFFICIAL_FORM",
@@ -145,7 +145,7 @@
   {
    "id": "difference_from_others",
    "section": "A.1 Invention description",
-   "label": "How it differs from what others are doing",
+   "label": "How it differs from existing approaches",
    "description": "How the work differs from other approaches in the field.",
    "whyItHelps": "Helps staff see where the work sits relative to existing approaches.",
    "starterQuestion": "How is this different from what others in your field are doing?",
@@ -165,8 +165,8 @@
   {
    "id": "limitations",
    "section": "A.1 Invention description",
-   "label": "Disadvantages or limitations",
-   "description": "Known disadvantages or limitations.",
+   "label": "Known limitations of the invention",
+   "description": "Known disadvantages or limitations of the invention itself.",
    "whyItHelps": "The form asks for these. Being upfront is normal and expected.",
    "starterQuestion": "Are there any known limitations or drawbacks so far?",
    "origin": "OFFICIAL_FORM",
@@ -205,8 +205,8 @@
   {
    "id": "supporting_documents",
    "section": "A.1 Invention description",
-   "label": "Documents you could attach",
-   "description": "Published or unpublished abstracts, presentations, manuscripts or grant proposals, even preliminary drafts.",
+   "label": "Supporting documentation, photographs, or experimental results",
+   "description": "Abstracts, presentations, manuscripts, grant proposals, photographs, or experimental results, even preliminary drafts.",
    "whyItHelps": "The form asks you to attach these when they exist.",
    "starterQuestion": "Do you have any abstracts, manuscripts, slides, or proposals about this that could be attached, even rough drafts?",
    "origin": "OFFICIAL_FORM",
@@ -225,8 +225,8 @@
   {
    "id": "evidence_testing",
    "section": "Helpful extras",
-   "label": "Evidence, experiments and testing",
-   "description": "What has been built or tested, how, and what was observed.",
+   "label": "Testing conducted",
+   "description": "What has been tested, how, and what was observed.",
    "whyItHelps": "Not a separate section on the form, but it helps staff understand how mature the work is.",
    "starterQuestion": "Have you tested this in any way? If so, how, and what did you observe?",
    "origin": "PROJECT_GUIDANCE",
@@ -265,8 +265,8 @@
   {
    "id": "applications_users",
    "section": "Helpful extras",
-   "label": "Potential applications and intended users",
-   "description": "Where the work could be used and by whom, described as possibilities.",
+   "label": "Potential uses",
+   "description": "Where the work could be used, described as possibilities.",
    "whyItHelps": "Not a separate section on the form, but it helps staff understand possible uses.",
    "starterQuestion": "Who might use this, and for what? Early guesses are fine.",
    "origin": "PROJECT_GUIDANCE",
@@ -285,7 +285,7 @@
   {
    "id": "date_conceived",
    "section": "A.2 Key dates",
-   "label": "When it was conceived",
+   "label": "Conceived date",
    "description": "Best-estimate date the idea was conceived.",
    "whyItHelps": "The form asks for key dates, best estimates are fine.",
    "starterQuestion": "Roughly when did the idea first come together?",
@@ -305,7 +305,7 @@
   {
    "id": "date_first_written",
    "section": "A.2 Key dates",
-   "label": "First written description",
+   "label": "First written or recorded description date",
    "description": "When the first written description was made.",
    "whyItHelps": "Part of the key dates on the form.",
    "starterQuestion": "When did you first write the idea down, for example in a notebook, draft, or proposal?",
@@ -325,7 +325,7 @@
   {
    "id": "date_first_prototype",
    "section": "A.2 Key dates",
-   "label": "First model or prototype",
+   "label": "First prototype date",
    "description": "When a first model or prototype was made.",
    "whyItHelps": "Part of the key dates on the form.",
    "starterQuestion": "Has a first model or prototype been made yet, and roughly when?",
@@ -345,7 +345,7 @@
   {
    "id": "date_first_public_disclosure",
    "section": "A.2 Key dates",
-   "label": "First public disclosure",
+   "label": "First public disclosure date",
    "description": "When the work was first shared publicly (oral, written, online, or public use).",
    "whyItHelps": "Timing of public sharing can matter. This is one of the most useful dates for staff.",
    "starterQuestion": "Has this been shared publicly in any way yet, such as a talk, paper, poster, website, or demo? If so, when?",
@@ -365,7 +365,7 @@
   {
    "id": "date_first_offer_to_sell",
    "section": "A.2 Key dates",
-   "label": "First offer to sell",
+   "label": "First offer for sale and its date",
    "description": "When the invention was first offered for sale, if ever.",
    "whyItHelps": "Part of the key dates on the form.",
    "starterQuestion": "Has it ever been offered for sale or licensed to anyone?",
@@ -405,8 +405,8 @@
   {
    "id": "public_disclosures_list",
    "section": "A.3 Disclosures and publications",
-   "label": "Past and planned public disclosures",
-   "description": "Every actual or planned public disclosure: abstracts, posters, manuscripts, websites, theses, grant proposals, talks, meetings with industry, with best-estimate dates.",
+   "label": "Planned public disclosures",
+   "description": "Any planned public disclosure: abstracts, posters, manuscripts, websites, theses, grant proposals, talks, meetings with industry, with best-estimate dates.",
    "whyItHelps": "The form asks for past and future disclosures and says to keep the office updated. Timing can matter.",
    "starterQuestion": "Besides anything you've already mentioned, are any papers, talks, posters, theses, or website posts planned? Roughly when?",
    "origin": "OFFICIAL_FORM",
@@ -425,8 +425,8 @@
   {
    "id": "funding",
    "section": "B. External support",
-   "label": "Funding and sponsors",
-   "description": "External funding used to support the work (federal, state, industry, foundation, consortium, SBIR/STTR, other) with sources, award numbers and the principal investigator, or confirmation that there was none.",
+   "label": "University funding or research grants",
+   "description": "University funds or research grants that supported the work (federal, state, industry, foundation, consortium, SBIR/STTR, other), or confirmation that there was none.",
    "whyItHelps": "The form says the office needs this to determine obligations to funders and must report federally funded inventions to the agency.",
    "starterQuestion": "Was any outside funding involved, such as a federal grant, industry money, or a foundation? If not, just say so.",
    "origin": "OFFICIAL_FORM",
@@ -445,8 +445,8 @@
   {
    "id": "third_party",
    "section": "B. External support",
-   "label": "Third-party materials, data and agreements",
-   "description": "Whether materials, data, technology or collaborators from outside parties were used, and whether agreements (NDA, collaboration, research, consortium, consulting, MOU) govern them.",
+   "label": "Outside materials, equipment, software, or data used",
+   "description": "Materials, equipment, software, data or technology from outside parties that were used in the work.",
    "whyItHelps": "Third-party involvement can create obligations the office needs to know about.",
    "starterQuestion": "Did you use any materials, data, tools, or collaborators from outside your group? If so, was there a signed agreement?",
    "origin": "OFFICIAL_FORM",
@@ -465,8 +465,8 @@
   {
    "id": "potential_inventors",
    "section": "C. People",
-   "label": "Contributors and what they contributed",
-   "description": "Everyone who contributed materially, from inside or outside the university, their affiliations, whether any is a non-employee student, and why they are listed.",
+   "label": "Names of potential inventors and contributors",
+   "description": "Everyone who may have contributed materially, from inside or outside the university, including any non-employee students.",
    "whyItHelps": "The form asks for potential inventors with a reason for each. Whether someone legally qualifies is decided later.",
    "starterQuestion": "Who contributed to the ideas behind this, and what did each person contribute? Please include outside collaborators and students.",
    "origin": "OFFICIAL_FORM",
@@ -485,7 +485,7 @@
   {
    "id": "closest_products",
    "section": "D. Commercial context",
-   "label": "Closest known products or technologies",
+   "label": "Closest existing products or technologies",
    "description": "Known products on the market or technologies under development that are similar.",
    "whyItHelps": "The form asks what you know of. It is fine to say you are not sure.",
    "starterQuestion": "What are the closest existing products or approaches you're aware of?",
@@ -505,8 +505,8 @@
   {
    "id": "prior_art",
    "section": "D. Commercial context",
-   "label": "Prior art you are aware of",
-   "description": "Publications or patents you know of that describe something similar.",
+   "label": "Known prior art, publications, or related research",
+   "description": "Publications, patents, or related research you know of that describe something similar.",
    "whyItHelps": "The form asks for ones you are aware of. The form also notes searches on non-government sites like Google Patents may be tracked.",
    "starterQuestion": "Are you aware of any papers or patents that describe something similar?",
    "origin": "OFFICIAL_FORM",
@@ -525,7 +525,7 @@
   {
    "id": "potential_licensees",
    "section": "D. Commercial context",
-   "label": "Companies that might be interested",
+   "label": "Potential licensees or interested companies",
    "description": "Companies or entrepreneurs you think or know could be interested, with contacts if known.",
    "whyItHelps": "The form asks for these. It is fine if you do not know any yet.",
    "starterQuestion": "Do you know of any companies or people who might be interested in this?",
@@ -561,6 +561,657 @@
    "priority": 3,
    "order": 15,
    "inCoach": false
+  },
+  {
+   "id": "main_purpose",
+   "section": "Additional detail",
+   "label": "Main purpose",
+   "description": "What the invention is meant to do or achieve.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What is the main thing this is meant to do?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 1,
+   "inCoach": false
+  },
+  {
+   "id": "underlying_research",
+   "section": "Additional detail",
+   "label": "Underlying research or scientific finding",
+   "description": "The research, discovery, or scientific finding the invention builds on.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What research or finding is this built on?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 2,
+   "inCoach": false
+  },
+  {
+   "id": "problem_who",
+   "section": "Additional detail",
+   "label": "Who experiences the problem",
+   "description": "The people, groups, or organizations that run into the problem.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Who runs into this problem most?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 3,
+   "inCoach": false
+  },
+  {
+   "id": "problem_challenges",
+   "section": "Additional detail",
+   "label": "Existing challenges or limitations",
+   "description": "Challenges or limitations people face today with the current ways of handling the problem.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What makes the problem hard to deal with today?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 4,
+   "inCoach": false
+  },
+  {
+   "id": "problem_importance",
+   "section": "Additional detail",
+   "label": "Why the problem matters",
+   "description": "Why solving the problem is important, and for whom.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Why does solving this matter?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 5,
+   "inCoach": false
+  },
+  {
+   "id": "components",
+   "section": "Additional detail",
+   "label": "Main components, materials, or processes",
+   "description": "The main parts, materials, or process steps that make up the invention.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What are the main parts, materials, or steps involved?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 6,
+   "inCoach": false
+  },
+  {
+   "id": "component_interaction",
+   "section": "Additional detail",
+   "label": "How the components work together",
+   "description": "How the parts, materials, or steps fit together to produce the result.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "How do those parts work together?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 7,
+   "inCoach": false
+  },
+  {
+   "id": "technical_methods",
+   "section": "Additional detail",
+   "label": "Technical methods or mechanisms",
+   "description": "The technical methods, algorithms, or mechanisms the invention relies on.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Is there a particular method, algorithm, or mechanism that makes it work?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 8,
+   "inCoach": false
+  },
+  {
+   "id": "diagrams",
+   "section": "Additional detail",
+   "label": "Diagrams or illustrations",
+   "description": "Any diagrams, sketches, figures, or illustrations that show how it works.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Do you have any diagrams or sketches that show how it works?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 9,
+   "inCoach": false
+  },
+  {
+   "id": "existing_solution_limits",
+   "section": "Additional detail",
+   "label": "Limitations of existing solutions",
+   "description": "Where current products, methods, or approaches fall short.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Where do the current options fall short?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 10,
+   "inCoach": false
+  },
+  {
+   "id": "previous_public_disclosures",
+   "section": "Additional detail",
+   "label": "Previous public disclosures",
+   "description": "Any past public sharing of the work: talks, papers, posters, theses, websites, demos, or meetings with industry.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Has any of this already been shared outside your group, such as in a talk, paper, poster, website, or demo?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Timing of public disclosure can matter. Please discuss any past or planned dates with the commercialization office.",
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 11,
+   "inCoach": false
+  },
+  {
+   "id": "disclosure_type",
+   "section": "Additional detail",
+   "label": "Type of disclosure",
+   "description": "The kind of public disclosure, such as a conference talk, publication, poster, demonstration, website, or thesis.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What kind of sharing was it, or will it be: a talk, paper, poster, demo, or something else?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 12,
+   "inCoach": false
+  },
+  {
+   "id": "disclosure_content",
+   "section": "Additional detail",
+   "label": "What information was or will be shared",
+   "description": "Which details of the invention were, or will be, shared publicly.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "How much of the invention was, or will be, described?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 13,
+   "inCoach": false
+  },
+  {
+   "id": "disclosure_details",
+   "section": "Additional detail",
+   "label": "Relevant public disclosure or commercial activity details",
+   "description": "Any other details about public sharing or commercial activity, such as demos to companies or sales discussions.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Is there anything else about public sharing or commercial activity the office should know?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 14,
+   "inCoach": false
+  },
+  {
+   "id": "prototype_status",
+   "section": "Additional detail",
+   "label": "Prototype status",
+   "description": "Whether a prototype exists and how far along it is.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Is there a prototype yet? If so, how far along is it?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 15,
+   "inCoach": false
+  },
+  {
+   "id": "preliminary_results",
+   "section": "Additional detail",
+   "label": "Preliminary results and supporting data",
+   "description": "Early results or data that show what the invention can do.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What have the early results or data shown so far?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 16,
+   "inCoach": false
+  },
+  {
+   "id": "intended_users",
+   "section": "Additional detail",
+   "label": "Intended users or customers",
+   "description": "The people or organizations expected to use or buy it, described as possibilities.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Who would most likely use or buy this?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 17,
+   "inCoach": false
+  },
+  {
+   "id": "industries",
+   "section": "Additional detail",
+   "label": "Industries or fields where it could be applied",
+   "description": "Industries or fields where the invention could be useful, described as possibilities.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Which industries or fields could use this?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 18,
+   "inCoach": false
+  },
+  {
+   "id": "benefits",
+   "section": "Additional detail",
+   "label": "Potential benefits",
+   "description": "The benefits the invention could offer users, described as possibilities.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What benefits could this offer the people who use it?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 19,
+   "inCoach": false
+  },
+  {
+   "id": "commercialization_opportunities",
+   "section": "Additional detail",
+   "label": "Commercialization or translation opportunities",
+   "description": "Ways the work could reach practical use, such as licensing, a startup, or a partnership, described as possibilities.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Have you thought about how this could reach real-world use?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 20,
+   "inCoach": false
+  },
+  {
+   "id": "inventor_contributions",
+   "section": "Additional detail",
+   "label": "Individual contributions",
+   "description": "What each potential inventor or contributor contributed.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "What did each person contribute?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": "Whether someone legally qualifies as an inventor is a legal determination. The form only asks for potential inventors.",
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 21,
+   "inCoach": false
+  },
+  {
+   "id": "concept_participants",
+   "section": "Additional detail",
+   "label": "Who participated in developing the underlying concepts",
+   "description": "The people involved in developing the core ideas, as opposed to carrying out the work.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Who helped shape the core ideas behind this?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 22,
+   "inCoach": false
+  },
+  {
+   "id": "inventor_departments",
+   "section": "Additional detail",
+   "label": "Relevant departments or institutions",
+   "description": "The departments, universities, or other institutions the contributors belong to.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Which departments or institutions are the contributors from?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": false,
+   "priority": 4,
+   "order": 23,
+   "inCoach": false
+  },
+  {
+   "id": "external_sponsors",
+   "section": "Additional detail",
+   "label": "External sponsors or funding agencies",
+   "description": "Outside organizations or agencies that funded or sponsored the work.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Did any outside sponsor or agency support this work?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 24,
+   "inCoach": false
+  },
+  {
+   "id": "grant_numbers",
+   "section": "Additional detail",
+   "label": "Grant or project identification numbers",
+   "description": "Award, grant, or project numbers for any funding, if known.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Do you have the grant or project number handy? It's fine if not.",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 25,
+   "inCoach": false
+  },
+  {
+   "id": "external_collaborators",
+   "section": "Additional detail",
+   "label": "External collaborators or institutions",
+   "description": "Collaborators or institutions outside UMKC that were involved.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Did anyone outside UMKC collaborate on this?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 26,
+   "inCoach": false
+  },
+  {
+   "id": "agreements",
+   "section": "Additional detail",
+   "label": "Relevant agreements",
+   "description": "Agreements that may apply, such as sponsored research, material transfer, collaboration, NDA, or consulting agreements.",
+   "whyItHelps": "Not a separate field on the form, but it helps staff understand the work.",
+   "starterQuestion": "Were there any agreements involved, such as sponsored research, material transfer, or collaboration agreements?",
+   "origin": "PROJECT_GUIDANCE",
+   "sourceRef": null,
+   "verified": false,
+   "appliesTo": [
+    "NEW_INVENTION",
+    "UPDATE_EXISTING"
+   ],
+   "humanReviewNote": null,
+   "notApplicableAllowed": true,
+   "priority": 4,
+   "order": 27,
+   "inCoach": false
+  }
+ ],
+ "sections": [
+  {
+   "id": "overview",
+   "title": "Invention Overview",
+   "fields": [
+    "existing_disclosure_ref",
+    "what_changed",
+    "title",
+    "summary_general",
+    "main_purpose",
+    "keywords",
+    "underlying_research"
+   ]
+  },
+  {
+   "id": "problem",
+   "title": "Problem",
+   "fields": [
+    "problem_solved",
+    "problem_who",
+    "problem_challenges",
+    "problem_importance"
+   ]
+  },
+  {
+   "id": "how_it_works",
+   "title": "How It Works",
+   "fields": [
+    "technical_description",
+    "components",
+    "component_interaction",
+    "technical_methods",
+    "diagrams"
+   ]
+  },
+  {
+   "id": "differentiation",
+   "title": "Differentiation",
+   "summaryNote": "This is how the researcher sees it, not an assessment of novelty.",
+   "fields": [
+    "novel_aspects",
+    "difference_from_others",
+    "closest_products",
+    "prior_art",
+    "existing_solution_limits",
+    "limitations"
+   ]
+  },
+  {
+   "id": "public_disclosure",
+   "title": "Public Disclosure",
+   "fields": [
+    "previous_public_disclosures",
+    "public_disclosures_list",
+    "date_first_public_disclosure",
+    "disclosure_type",
+    "disclosure_content",
+    "date_first_offer_to_sell",
+    "disclosure_details"
+   ]
+  },
+  {
+   "id": "development_evidence",
+   "title": "Development and Evidence",
+   "fields": [
+    "development_stage",
+    "prototype_status",
+    "evidence_testing",
+    "preliminary_results",
+    "date_conceived",
+    "date_first_written",
+    "date_first_prototype",
+    "supporting_documents"
+   ]
+  },
+  {
+   "id": "applications",
+   "title": "Applications",
+   "summaryNote": "These are possibilities described by the researcher, not established outcomes.",
+   "fields": [
+    "applications_users",
+    "intended_users",
+    "industries",
+    "benefits",
+    "potential_licensees",
+    "commercialization_opportunities"
+   ]
+  },
+  {
+   "id": "inventors",
+   "title": "Inventors",
+   "fields": [
+    "potential_inventors",
+    "inventor_contributions",
+    "concept_participants",
+    "inventor_departments"
+   ]
+  },
+  {
+   "id": "funding_support",
+   "title": "Funding and Outside Support",
+   "fields": [
+    "funding",
+    "external_sponsors",
+    "grant_numbers",
+    "external_collaborators",
+    "third_party",
+    "agreements"
+   ]
   }
  ],
  "inspectionStatus": "PARTIAL. Built from the extracted text of Form UM 16C (rev. September 2025) as hosted at docs.research.missouri.edu: sections A-E, tables and checkbox labels were visible. NOT verified: (1) the copy hosted on UMKC's own site, which could not be fetched; (2) the form's instruction page, which was not present in the extracted text; (3) any required-versus-optional markings. No field is therefore labelled required. Interview priority/order is a project strategy, not an official ranking."

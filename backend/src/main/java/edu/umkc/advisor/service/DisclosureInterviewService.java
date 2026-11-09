@@ -13,6 +13,7 @@ import edu.umkc.advisor.safety.ReferralService;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 /**
  * Conversational, priority-guided interview. The LLM extracts and phrases; Java owns safety, state and validation:
@@ -25,6 +26,32 @@ public final class DisclosureInterviewService {
                         AskResponse.Referral referral, boolean urgent, Progress progress, boolean complete) {}
 
     public static final int MAX_MESSAGE_CHARS = 3000;
+    static final String CORRECTION_ACK = "Thanks for clarifying. I've updated your notes to use the corrected information.";
+    static final String OFF_TOPIC_ACK =
+            "I mainly help with intellectual property, research commercialization, and invention disclosures, so I can't help with that. "
+          + "If you have a question about your research or potential IP, I can help with that.";
+    static final String LAB_HELP_ACK =
+            "That's outside what I can help with — I don't work through lab calculations or equations. Someone in your department, "
+          + "or a water-quality or chemical safety expert, would be the right person to do that kind of equation. If you have a question "
+          + "about your research or potential IP, I can help with that.";
+    static final String GREETING_ACK =
+            "Hello! I'm here to help with intellectual property, research commercialization, and UMKC's invention disclosure process. "
+          + "You can ask a general question or tell me about something you've developed.";
+    static final String INVENTORSHIP_ANSWER =
+            "Not necessarily. Being involved in a research project does not automatically make someone an inventor. Inventorship depends on "
+          + "who contributed to the conception of the invention, and the university can review that. It's helpful to document what each person contributed.";
+    private static final Pattern GREETING_ONLY = Pattern.compile("(?i)^(hi|hello|hey|hi again|good (?:morning|afternoon|evening))[!., ]*$");
+    private static final Pattern LAB_HELP = Pattern.compile(
+            "(?i)((?:can you |could you )?(?:help me )?calculate\\b|\\bcalculation\\b|\\bequation\\b|solve (?:this |the )?(?:equation|calculation)|how much (?:chemical|chlorine|bleach)\\b)");
+    private static final Pattern OFF_TOPIC = Pattern.compile(
+            "(?i)\\b(weather|forecast|sports? scores?|who won|recipe|pizza|kfc|kentucky fried|mcdonald|burger|walmart|costco|netflix|homework|\\bpython\\b|binary search|write me (?:a )?(?:quick )?(?:script|code|program)|which do you prefer|favorite (?:food|team|movie|color|restaurant))\\b");
+    private static final Pattern IN_SCOPE_HINT = Pattern.compile(
+            "(?i)\\b(invent\\w*|patent\\w*|disclos\\w*|licen[sc]\\w*|commerc\\w*|prototype|my (?:device|research|work|invention)|\\bip\\b|umkc)\\b");
+    private static final Pattern PROCESS_CUE = Pattern.compile(
+            "(?i)\\b(purpose of|same (?:thing|as)|difference between|what(?:'?s| is)|explain what|what does .{0,24} mean"
+          + "|do i need .{0,50}(before|to submit)|is it the same)\\b");
+    private static final Pattern INVENTORSHIP_ASK = Pattern.compile(
+            "(?i)\\b((?:should|does that mean).{0,48}inventors?|do they count as inventors|are we (?:all )?inventors)\\b");
     static final String COMPLETE_MESSAGE =
             "Thank you — that covers the notes I use for a first conversation. Some may be marked as not yet known or skipped, "
           + "and that is completely fine. When you're ready, open Review to see what's complete and what could use more detail, or "
@@ -45,11 +72,31 @@ public final class DisclosureInterviewService {
     private static final Pattern CLOSING_CUE = Pattern.compile(
             "(?i)\\b(goodbye|bye|bye-bye|see you|have a good (?:day|one)|i'?m (?:done|finished)|that'?s (?:all|everything)|talk to you later|catch you later|stop for now|that is all|signing off)\\b");
     private static final Pattern SUMMARY_CUE = Pattern.compile(
-            "(?i)\\b(summar(?:y|ize)|how far along|what(?:'s| is) (?:left|missing|remaining|collected)|current status)\\b");
+            "(?i)\\b(summar(?:y|ize|ise)|recap|how far along|what(?:'s| is) (?:left|missing|remaining|collected)|current status"
+          + "|(?:collected|gathered|recorded|covered|discussed|saved|have) so far"
+          + "|what (?:am i|i'?m|i am) (?:still )?missing"
+          + "|what (?:else )?(?:do you|you) (?:still )?need from me"
+          + "|what (?:information|info|details|notes) (?:do )?(?:you )?(?:have|'ve|have you|you'?ve))\\b");
+    /** The researcher is coming back to an earlier conversation. */
+    private static final Pattern RESUME_CUE = Pattern.compile(
+            "(?i)\\b(i'?m back|i am back|(?:continue|pick up|resume|carry on)(?: from)? where (?:we|i) left off|where were we"
+          + "|let'?s (?:continue|keep going|pick (?:it |this )?(?:back )?up)|can we (?:continue|keep going|pick (?:it |this )?(?:back )?up))\\b");
+    /** "What else do you need to know?": answered with one concrete question about the work itself. */
+    private static final Pattern NEED_CUE = Pattern.compile(
+            "(?i)\\bwhat (?:else |more )?(?:do|would|should) (?:you|i) (?:still )?need (?:to know|from me|to (?:add|share|tell))"
+          + "|what (?:else|more) (?:should|can|could) i (?:tell|share|add)");
+    /** Open questions about the work itself, in the order they are most useful. */
+    private static final List<String> WORK_QUESTIONS = List.of(
+            "technical_description", "difference_from_others", "evidence_testing", "development_stage", "closest_products", "problem_solved");
+    /** A clear correction of something said earlier, as opposed to a passing "actually". */
+    private static final Pattern STRONG_CORRECTION = Pattern.compile(
+            "(?i)\\b(clarify|correction|correct (?:that|myself|something)|to be clear|i misspoke|i was wrong|i made a mistake|i meant"
+          + "|that'?s (?:not right|wrong|incorrect)|(?:that|this) (?:was|is) (?:not right|wrong|incorrect)"
+          + "|actually,? (?:we|i|it|they|there)(?:'?ve|'?re|'?s| have| are| is| was| were)? (?:haven'?t|have not|hasn'?t|didn'?t|did not|don'?t|do not|never|only|aren'?t|weren'?t|wasn'?t|isn'?t|not))\\b");
     private static final Pattern ACK_CUE = Pattern.compile(
             "(?i)^(okay|ok|sounds good|sounds great|makes sense|that makes sense|got it|understood|i see|alright|cool|great|good to know|noted|perfect|sure thing|will do|thank you(?: so much)?|thanks(?: a lot)?(?: for (?:that|explaining|the explanation|clarifying))?)(?:[,.]?\\s*(?:thanks|thank you))?[.!]?$");
     private static final Pattern CORRECTION_CUE = Pattern.compile(
-            "(?i)\\b(actually|correction|i meant|i mean|not\\s+\\w+,?\\s+(?:it'?s|it is|but)|instead of|scratch that|replace|i made a mistake|rather than)\\b");
+            "(?i)\\b(actually|correction|clarify|i meant|i mean|not\\s+\\w+,?\\s+(?:it'?s|it is|but)|instead of|scratch that|replace|i made a mistake|rather than)\\b");
     /** Explicit abandonment of the current work, not a later-topic volunteer. */
     private static final Pattern TOPIC_SWITCH = Pattern.compile(
             "\\b(scratch\\s+that|let'?s\\s+start\\s+over|start\\s+over"
@@ -114,9 +161,21 @@ public final class DisclosureInterviewService {
         // 1. Mandatory rules run first and cannot be overridden by the model.
         if (rule.blockLlm()) return blocked(d, rule, msg, answers, lastAsked);
 
+        // Summary and "I'm back" requests are answered from the saved notes, with no interview question added.
+        if (isSummaryRequest(msg)) return finish(d, answers, "", List.of(), List.of(), rule, null, null, msg);
+        if (RESUME_CUE.matcher(msg).find() && hasSavedNotes(answers)) return resume(d, answers, turns, rule, msg);
+        if (NEED_CUE.matcher(msg).find()) {
+            return finish(d, answers, "One thing that would help:", List.of(), List.of(), rule, null,
+                    nextOpenWorkQuestion(d.workflow(), answers), msg);
+        }
+        if (GREETING_ONLY.matcher(msg).matches()) return finish(d, answers, GREETING_ACK, List.of(), List.of(), rule, null, null, msg);
+        if (looksLikeLabHelp(msg)) return finish(d, answers, LAB_HELP_ACK, List.of(), List.of(), rule, null, null, msg);
+        if (looksOffTopic(msg)) return finish(d, answers, OFF_TOPIC_ACK, List.of(), List.of(), rule, null, null, msg);
+        if (INVENTORSHIP_ASK.matcher(msg).find()) return finish(d, answers, INVENTORSHIP_ANSWER, List.of(), List.of(), rule, null, null, msg);
+
         // 2. Deterministic skip / "I don't know" handling.
         String norm = msg.toLowerCase().replaceAll("[^a-z' ]", " ").replaceAll("\\s+", " ").strip();
-        boolean skip = SKIP_CMD.matcher(norm).matches(), unknown = UNKNOWN_CMD.matcher(norm).matches();
+        boolean skip = SKIP_CMD.matcher(norm).matches(), unknown = UNKNOWN_CMD.matcher(norm).matches() || isUnknownReply(msg);
         if ((skip || unknown) && !lastAsked.isEmpty()) {
             List<String> changed = new ArrayList<>();
             for (String id : lastAsked) {
@@ -163,14 +222,18 @@ public final class DisclosureInterviewService {
 
         // 4. LLM extraction + next question, validated in Java.
         InterviewPayload payload = callModel(d, answers, turns, lastAsked, msg);
-        List<String> updated = payload == null || looksLikeGeneralQuestion(msg) ? List.of() : applyUpdates(d, answers, payload.updates(), msg);
+        List<String> updated = payload == null || looksLikeGeneralQuestion(msg) || looksLikeProcessQuestion(msg)
+                ? List.of() : applyUpdates(d, answers, payload.updates(), msg);
         repo.saveAnswers(d.id(), answers);
         String text = payload == null
                 ? "Thanks, I've saved that in our conversation. I had trouble sorting it into your disclosure fields automatically, "
                 + "so you may want to check or add it later under Review."
                 : payload.assistantMessage();
         List<String> next = payload == null ? List.of() : payload.nextFieldIds();
-        return finish(d, answers, text, next, updated, rule, payload, null, msg);
+        String preferred = null;
+        if (updated.contains("potential_inventors") && !answers.getOrDefault("inventor_contributions", FieldAnswer.EMPTY).isAddressed())
+            preferred = "inventor_contributions";
+        return finish(d, answers, text, next, updated, rule, payload, preferred, msg);
     }
 
     public Reply skip(Draft d, String fieldId) {
@@ -294,7 +357,12 @@ public final class DisclosureInterviewService {
             if (!text.isEmpty() && (TextOverlap.coverage(text, msg) < 0.70 || !GroundingCheck.unsupportedNumbers(text, msg, "").isEmpty())) text = "";
             if (text.isEmpty() && mark == ResearcherMark.NONE) continue;
 
-            FieldAnswer old = answers.getOrDefault(f.get().id(), FieldAnswer.EMPTY);
+            String id = f.get().id();
+            if (!text.isEmpty()) {
+                String home = NotesOrganizer.homeFor(id, text);
+                if (!home.equals(id) && checklist.find(home).filter(x -> x.appliesTo(d.workflow())).isPresent()) id = home;
+            }
+            FieldAnswer old = answers.getOrDefault(id, FieldAnswer.EMPTY);
             String merged = old.text();
             boolean isCorrection = CORRECTION_CUE.matcher(msg).find();
             if (!text.isEmpty()) {
@@ -305,8 +373,8 @@ public final class DisclosureInterviewService {
                 }
             }
             ResearcherMark newMark = mark != ResearcherMark.NONE ? mark : (text.isEmpty() ? old.mark() : ResearcherMark.NONE);
-            answers.put(f.get().id(), new FieldAnswer(merged, newMark));
-            changed.add(f.get().id());
+            answers.put(id, new FieldAnswer(merged, newMark));
+            changed.add(id);
         }
         return changed;
     }
@@ -342,11 +410,15 @@ public final class DisclosureInterviewService {
         for (int i = history.size() - 1; i >= 0 && previous.size() < 2; i--) if (history.get(i).role().equals("ASSISTANT")) previous.add(history.get(i).content());
 
         boolean isClosing = CLOSING_CUE.matcher(msg).find();
-        boolean isSummary = SUMMARY_CUE.matcher(msg).find();
+        boolean isSummary = isSummaryRequest(msg);
         boolean isAck = ACK_CUE.matcher(msg.trim()).find();
+        boolean isCorrection = isCorrection(msg);
+        boolean isOffTopic = looksOffTopic(msg) || looksLikeLabHelp(msg) || GREETING_ONLY.matcher(msg).matches()
+                || INVENTORSHIP_ASK.matcher(msg).find();
+        boolean isProcess = looksLikeProcessQuestion(msg);
 
         String text;
-        if (complete) {
+        if (complete && !isSummary) {
             text = COMPLETE_MESSAGE;
             next = List.of();
         } else if (payload != null) {
@@ -368,8 +440,19 @@ public final class DisclosureInterviewService {
                         : (!base.isBlank() && !guardViolation && !hasQuestion) ? base
                         : "Goodbye! I've saved our progress. Feel free to come back anytime to continue working on your disclosure notes. Have a great day!";
                 next = List.of();
+            } else if (isOffTopic) {
+                text = modelText;
+                next = List.of();
+            } else if (isProcess) {
+                String exp = extractExplanation(base);
+                text = !exp.isBlank() && !guardViolation ? exp : base;
+                next = List.of();
             } else if (isSummary) {
-                text = (!base.isBlank() && !guardViolation) ? base : buildDraftSummary(d, answers);
+                text = buildDraftSummary(d, answers);
+                next = List.of();
+            } else if (isCorrection) {
+                String exp = extractExplanation(base);
+                text = !exp.isBlank() && !guardViolation && !isForm ? exp : CORRECTION_ACK;
                 next = List.of();
             } else if (isAck) {
                 text = (!base.isBlank() && !guardViolation && !hasQuestion) ? base
@@ -408,8 +491,17 @@ public final class DisclosureInterviewService {
             if (isClosing) {
                 text = "Goodbye! I've saved our progress. Feel free to come back anytime to continue working on your disclosure notes. Have a great day!";
                 next = List.of();
+            } else if (isOffTopic) {
+                text = modelText;
+                next = List.of();
+            } else if (isProcess) {
+                text = modelText;
+                next = List.of();
             } else if (isSummary) {
                 text = buildDraftSummary(d, answers);
+                next = List.of();
+            } else if (isCorrection && preferredNext == null) {
+                text = CORRECTION_ACK;
                 next = List.of();
             } else if (isAck) {
                 text = "Sounds good! Whenever you're ready, let me know what you'd like to explore next.";
@@ -427,6 +519,16 @@ public final class DisclosureInterviewService {
                 }
                 text = modelText + " " + question;
                 next = nf != null ? List.of(nf.id()) : List.of();
+            }
+        }
+        if (preferredNext != null && !isOffTopic && !isProcess && !isClosing && !isSummary && !isAck) {
+            Optional<ChecklistField> pf = checklist.find(preferredNext).filter(x -> x.appliesTo(d.workflow()));
+            if (pf.isPresent() && (next.isEmpty() || !next.get(0).equals(preferredNext))) {
+                String q = ConversationStyle.softQuestion(preferredNext);
+                if (q == null) q = pf.get().starterQuestion();
+                String exp = extractExplanation(text);
+                text = (exp.isBlank() ? "" : exp + " ") + q;
+                next = List.of(preferredNext);
             }
         }
         boolean needsReferral = rule.referralRequired();
@@ -579,6 +681,29 @@ public final class DisclosureInterviewService {
           + "|conference|public(?:ly)?\\s+shar\\w*|prototype\\w*|submit\\w*|require\\w*|form\\w*)\\b",
             Pattern.CASE_INSENSITIVE);
 
+    static boolean looksOffTopic(String msg) {
+        if (msg == null || msg.isBlank()) return false;
+        if (looksLikeWorkDescription(msg)) return false;
+        return OFF_TOPIC.matcher(msg).find() && !IN_SCOPE_HINT.matcher(msg).find();
+    }
+
+    static boolean looksLikeLabHelp(String msg) {
+        return msg != null && LAB_HELP.matcher(msg).find();
+    }
+
+    static boolean looksLikeProcessQuestion(String msg) {
+        return looksLikeGeneralQuestion(msg) && PROCESS_CUE.matcher(msg).find();
+    }
+
+    private static final Pattern UNKNOWN_REPLY = Pattern.compile(
+            "(?i)\\b(not sure|don'?t know|do not know|no idea|haven'?t looked|have not looked|haven'?t compared)\\b");
+
+    static boolean isUnknownReply(String msg) {
+        if (msg == null || msg.length() > 220 || msg.strip().endsWith("?")) return false;
+        if (looksLikeWorkDescription(msg) || looksLikeGeneralQuestion(msg)) return false;
+        return UNKNOWN_REPLY.matcher(msg).find();
+    }
+
     static boolean looksLikeGeneralQuestion(String msg) {
         if (msg == null) return false;
         String t = msg.strip();
@@ -638,22 +763,107 @@ public final class DisclosureInterviewService {
         return finish(d, answers, ack, List.of(), changed, rule, null, null, msg);
     }
 
-    private String buildDraftSummary(Draft d, Map<String, FieldAnswer> answers) {
-        StringBuilder sb = new StringBuilder("Here is a summary of what we have in your notes so far:\n\n");
-        int count = 0;
-        for (ChecklistField f : checklist.coach(d.workflow())) {
-            FieldAnswer a = answers.getOrDefault(f.id(), FieldAnswer.EMPTY);
-            if (a.isAddressed()) {
-                count++;
-                sb.append("- **").append(f.label()).append(":** ")
-                  .append(a.hasText() ? a.text() : a.mark() == ResearcherMark.SKIPPED ? "Skipped for now" : "Not yet known")
-                  .append("\n");
+    static boolean isSummaryRequest(String msg) {
+        return msg != null && SUMMARY_CUE.matcher(msg).find();
+    }
+
+    /** A correction statement (not a question), which is acknowledged without starting a new topic. */
+    static boolean isCorrection(String msg) {
+        if (msg == null) return false;
+        String t = msg.strip();
+        return STRONG_CORRECTION.matcher(t).find() && !t.endsWith("?") && !looksLikeGeneralQuestion(t);
+    }
+
+    /** "I'm back": a short recap of the topics covered, then the question that was still open, or the next one. */
+    private Reply resume(Draft d, Map<String, FieldAnswer> answers, List<Turn> turns, ReferralDecision rule, String msg) {
+        List<String> covered = new ArrayList<>();
+        for (ChecklistService.Section s : checklist.sections(d.workflow()))
+            if (s.fields().stream().anyMatch(f -> answers.getOrDefault(f.id(), FieldAnswer.EMPTY).hasText()))
+                covered.add(s.section().title().toLowerCase(Locale.ROOT));
+        String recap = covered.isEmpty() ? "Welcome back!"
+                : "Welcome back! So far we've covered " + joinWithAnd(covered) + ", and your notes are saved.";
+        String open = lastUnansweredAskedField(turns, d, answers);
+        if (open == null || DEFER_ON_RESUME.contains(open)) {
+            String work = nextOpenWorkQuestion(d.workflow(), answers);
+            if (work != null) open = work;
+        }
+        return finish(d, answers, recap + " Let's pick up where we left off.", List.of(), List.of(), rule, null, open, msg);
+    }
+
+    private static final Set<String> DEFER_ON_RESUME = Set.of(
+            "funding", "public_disclosures_list", "potential_inventors", "third_party");
+
+    private String lastUnansweredAskedField(List<Turn> turns, Draft d, Map<String, FieldAnswer> answers) {
+        for (int i = turns.size() - 1; i >= 0; i--) {
+            if (!turns.get(i).role().equals("ASSISTANT")) continue;
+            for (String id : turns.get(i).fieldIds()) {
+                if (checklist.find(id).filter(f -> f.appliesTo(d.workflow())).isPresent()
+                        && !answers.getOrDefault(id, FieldAnswer.EMPTY).isAddressed()) return id;
             }
         }
-        if (count == 0) {
-            sb.append("We haven't recorded specific disclosure details yet.\n");
+        return null;
+    }
+
+    private String nextOpenWorkQuestion(Workflow w, Map<String, FieldAnswer> answers) {
+        return WORK_QUESTIONS.stream()
+                .filter(id -> checklist.find(id).filter(f -> f.appliesTo(w)).isPresent())
+                .filter(id -> !answers.getOrDefault(id, FieldAnswer.EMPTY).isAddressed())
+                .findFirst().orElse(null);
+    }
+
+    private static String joinWithAnd(List<String> items) {
+        if (items.size() <= 1) return String.join("", items);
+        return String.join(", ", items.subList(0, items.size() - 1)) + (items.size() > 2 ? "," : "") + " and " + items.get(items.size() - 1);
+    }
+
+    /**
+     * Progress summary for the chat, built from the saved notes rather than the model, so it never invents details or
+     * turns into an interview question. Topics follow the nine note sections.
+     */
+    private String buildDraftSummary(Draft d, Map<String, FieldAnswer> answers) {
+        List<String> collected = new ArrayList<>(), partial = new ArrayList<>(), notDiscussed = new ArrayList<>();
+        for (ChecklistService.Section s : checklist.sections(d.workflow())) {
+            String title = s.section().title();
+            List<String> said = new ArrayList<>(), open = new ArrayList<>();
+            for (ChecklistField f : s.fields()) {
+                FieldAnswer a = answers.getOrDefault(f.id(), FieldAnswer.EMPTY);
+                if (a.hasText()) said.add(a.text().replaceAll("\\s+", " ").strip().replaceAll("[.]$", ""));
+                else if (a.mark() == ResearcherMark.NOT_YET_KNOWN) open.add(f.label().toLowerCase(Locale.ROOT) + " (not yet known)");
+                else if (a.mark() != ResearcherMark.NOT_APPLICABLE) open.add(f.label().toLowerCase(Locale.ROOT));
+            }
+            InformationStatus status = InformationStatus.of(s.fields(), id -> answers.getOrDefault(id, FieldAnswer.EMPTY));
+            if (said.isEmpty()) {
+                if (status == InformationStatus.UNKNOWN) partial.add("- **" + title + ":** not yet known");
+                else notDiscussed.add(title);
+                continue;
+            }
+            collected.add("- **" + title + ":** " + clip(String.join(". ", said.subList(0, Math.min(3, said.size()))), 260) + ".");
+            if (status != InformationStatus.COMPLETE && !open.isEmpty())
+                partial.add("- **" + title + ":** " + String.join(", ", open.subList(0, Math.min(2, open.size()))));
         }
-        sb.append("\nWhenever you're ready, let me know what you'd like to discuss next.");
+
+        StringBuilder all = new StringBuilder();
+        answers.values().forEach(a -> all.append(a.text()).append('\n'));
+        List<String> review = new ArrayList<>();
+        boolean disclosed = answers.getOrDefault("previous_public_disclosures", FieldAnswer.EMPTY).hasText()
+                || answers.getOrDefault("public_disclosures_list", FieldAnswer.EMPTY).hasText()
+                || referral.evaluate(all.toString()).triggers().contains(ReferralDecision.Trigger.PAST_DISCLOSURE);
+        if (disclosed) review.add("- **Public disclosure:** you mentioned sharing this work publicly. The office should review what was shared and when.");
+        if (Stream.of("potential_inventors", "inventor_contributions", "concept_participants")
+                .anyMatch(id -> answers.getOrDefault(id, FieldAnswer.EMPTY).hasText()))
+            review.add("- **Inventorship:** each person's contributions should be documented, and the university reviews who qualifies as an inventor.");
+        if (Stream.of("external_sponsors", "external_collaborators", "agreements", "commercialization_opportunities")
+                .anyMatch(id -> answers.getOrDefault(id, FieldAnswer.EMPTY).hasText()))
+            review.add("- **Outside parties:** involvement or interest from companies or other outside groups should be reviewed by the office.");
+
+        if (collected.isEmpty() && partial.isEmpty())
+            return "We haven't recorded any details about your work yet. Whenever you're ready, tell me a little about what you're working on.";
+        StringBuilder sb = new StringBuilder("Here's a summary of what we've discussed so far.");
+        if (!collected.isEmpty()) sb.append("\n\n**Information collected:**\n").append(String.join("\n", collected));
+        if (!partial.isEmpty()) sb.append("\n\n**Could use more discussion:**\n").append(String.join("\n", partial));
+        if (!notDiscussed.isEmpty()) sb.append("\n\n**Not discussed yet:** ").append(String.join(", ", notDiscussed)).append('.');
+        if (!review.isEmpty()) sb.append("\n\n**Items for the university to review:**\n").append(String.join("\n", review));
+        sb.append("\n\nYou don't have to complete everything at once. We can continue with whichever topic you'd like.");
         return sb.toString();
     }
 }

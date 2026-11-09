@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { renderAsync } from "docx-preview";
 import {
   createDraft,
   forgetDraftId,
+  exportWord,
   generateSummary,
   getDraft,
   getContact,
@@ -20,6 +21,7 @@ import {
   type SourceView,
 } from "./api";
 import { SCENARIOS } from "./scenarios";
+import { notesToHtml, notesToPlain } from "./notesFormat";
 
 type Page = "coach" | "scenarios" | "sources" | "deploy";
 
@@ -30,22 +32,34 @@ interface Msg {
   paragraphs?: string[];
 }
 
-function fieldDepth(field: FieldView): "empty" | "mentioned" | "usable" {
-  if (field.mark === "NOT_APPLICABLE") return "usable";
-  if (field.mark === "NOT_YET_KNOWN" || field.mark === "SKIPPED") return "mentioned";
-  const text = field.text?.trim() || "";
-  if (!text) return "empty";
-  return text.length > 40 ? "usable" : "mentioned";
+const INLINE_MARKDOWN = /\*\*(.+?)\*\*|\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^)\s]+)\)/g;
+
+/** Renders the coach's **bold** and [text](link) markup; only web and email links become clickable. */
+function richText(text: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  let last = 0;
+  for (const m of text.matchAll(INLINE_MARKDOWN)) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    if (m[1]) out.push(<strong key={m.index}>{m[1]}</strong>);
+    else
+      out.push(
+        <a key={m.index} href={m[3]} {...(m[3].startsWith("mailto:") ? {} : { target: "_blank", rel: "noreferrer" })}>
+          {m[2]}
+        </a>,
+      );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
 }
 
-function fieldStatus(field: FieldView): string {
+function noteText(field: FieldView): string {
+  const text = field.text?.trim() || "";
+  if (text) return text;
   if (field.mark === "NOT_APPLICABLE") return "Not applicable";
   if (field.mark === "NOT_YET_KNOWN") return "Not yet known";
-  if (field.mark === "SKIPPED") return "Skipped";
-  const depth = fieldDepth(field);
-  if (depth === "usable") return "Enough to discuss";
-  if (depth === "mentioned") return "Mentioned";
-  return "Not yet";
+  if (field.mark === "SKIPPED") return "Skipped for now";
+  return "Not discussed yet";
 }
 
 function paragraphsFrom(text: string): string[] {
@@ -135,15 +149,18 @@ export function App() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState<DraftView | null>(null);
   const [compose, setCompose] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "preparing" | "copied">("idle");
+  const [wordState, setWordState] = useState<"idle" | "preparing">("idle");
   const [pending, setPending] = useState(false);
   const [bootError, setBootError] = useState("");
   const [contact, setContact] = useState<ContactInfo | null>(null);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const threadRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLTextAreaElement>(null);
   const draftIdRef = useRef<string | null>(null);
   const pendingRef = useRef(false);
   const askedFieldRef = useRef<string[]>([]);
+  const notesWatchRef = useRef(0);
 
   useEffect(() => {
     pendingRef.current = pending;
@@ -152,6 +169,17 @@ export function App() {
   useEffect(() => {
     draftIdRef.current = draft?.id ?? null;
   }, [draft]);
+
+  useEffect(() => {
+    if (copyState !== "copied") return;
+    const clear = () => setCopyState("idle");
+    window.addEventListener("pointerdown", clear, true);
+    window.addEventListener("keydown", clear, true);
+    return () => {
+      window.removeEventListener("pointerdown", clear, true);
+      window.removeEventListener("keydown", clear, true);
+    };
+  }, [copyState]);
 
   useEffect(() => {
     void boot();
@@ -171,14 +199,17 @@ export function App() {
   }, [messages, page, pending]);
 
   const items = draft?.fields ?? [];
-  const started = items.filter((item) => fieldDepth(item) !== "empty").length;
-  const usable = items.filter((item) => fieldDepth(item) === "usable").length;
+  const sections = draft?.sections ?? [];
+  const completed = sections.filter((section) => section.status === "COMPLETE").length;
   const lastAdvisorId = [...messages].reverse().find((msg) => msg.role === "advisor")?.id;
   const currentAsk = askedFieldRef.current[0];
   const currentField = items.find((field) => field.id === currentAsk);
+  const currentSectionId = sections.find((section) => section.fieldIds.includes(currentAsk))?.id;
+  const isOpen = (id: string) => openSections[id] ?? id === currentSectionId;
+  const allOpen = sections.length > 0 && sections.every((section) => isOpen(section.id));
   const placeholder = currentField?.label
     ? `Tell me about ${currentField.label.toLowerCase()}, or skip this note.`
-    : "Ask a question, or go back to any note on the right.";
+    : "Ask a question, or tell me more about your work.";
 
   async function boot() {
     setPending(true);
@@ -215,12 +246,30 @@ export function App() {
   async function refreshDraft(id: string) {
     const next = await getDraft(id);
     setDraft(next);
+    if (next.organizing) void watchNotes(id);
     return next;
+  }
+
+  async function watchNotes(id: string) {
+    const watch = ++notesWatchRef.current;
+    for (let i = 0; i < 40; i += 1) {
+      await new Promise((resolve) => window.setTimeout(resolve, 1500));
+      if (watch !== notesWatchRef.current || draftIdRef.current !== id) return;
+      try {
+        const next = await getDraft(id);
+        if (watch !== notesWatchRef.current || draftIdRef.current !== id) return;
+        setDraft(next);
+        if (!next.organizing) return;
+      } catch {
+        return;
+      }
+    }
   }
 
   async function startCoach() {
     const created = await createDraft();
     askedFieldRef.current = created.opening.askedFieldIds;
+    setOpenSections({});
     applyDraft(created.draft, [
       {
         id: `${created.draft.id}-open`,
@@ -324,10 +373,41 @@ export function App() {
   async function copyBrief() {
     const id = draftIdRef.current;
     if (!id) return;
-    const markdown = await generateSummary(id);
-    await navigator.clipboard.writeText(markdown);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    setCopyState("preparing");
+    const markdown = generateSummary(id);
+    try {
+      try {
+        // Passing promises keeps the click's permission to write while the notes are still being written.
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "text/html": markdown.then((md) => new Blob([notesToHtml(md)], { type: "text/html" })),
+            "text/plain": markdown.then((md) => new Blob([notesToPlain(md)], { type: "text/plain" })),
+          }),
+        ]);
+      } catch {
+        await navigator.clipboard.writeText(notesToPlain(await markdown));
+      }
+      setCopyState("copied");
+    } catch (err) {
+      setCopyState("idle");
+      throw err;
+    }
+  }
+
+  async function downloadWord() {
+    const id = draftIdRef.current;
+    if (!id) return;
+    setWordState("preparing");
+    try {
+      const url = URL.createObjectURL(await exportWord(id));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "invention-disclosure-preparation-notes.docx";
+      link.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } finally {
+      setWordState("idle");
+    }
   }
 
   const lastUserText = [...messages].reverse().find((msg) => msg.role === "user")?.text || "";
@@ -397,8 +477,7 @@ export function App() {
         <main className="workspace">
           <section className="thread" ref={threadRef} aria-live="polite">
             <p className="coach-flag">
-              First conversation · {usable} of {items.length || 0} enough to discuss
-              {draft?.progress ? ` · ${draft.progress.percent}% prepared` : ""}
+              First conversation · {completed} of {sections.length} sections completed
             </p>
             {bootError && (
               <article className="bubble advisor">
@@ -419,9 +498,22 @@ export function App() {
               ) : (
                 <article key={msg.id} className="bubble advisor">
                   <p className="who">Coach</p>
-                  {(msg.paragraphs || []).map((paragraph, index) => (
-                    <p key={`${msg.id}-${index}`}>{paragraph}</p>
-                  ))}
+                  {(msg.paragraphs || []).map((paragraph, index) => {
+                    const lines = paragraph.split("\n");
+                    const items = lines.filter((line) => line.startsWith("- "));
+                    if (!items.length) return <p key={`${msg.id}-${index}`}>{richText(paragraph)}</p>;
+                    const lead = lines.filter((line) => !line.startsWith("- ")).join(" ");
+                    return (
+                      <div key={`${msg.id}-${index}`} className="bubble-list">
+                        {lead && <p>{richText(lead)}</p>}
+                        <ul>
+                          {items.map((line, i) => (
+                            <li key={i}>{richText(line.slice(2))}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })}
                   {msg.id === lastAdvisorId && !pending && (
                     <div className="follow">
                       <p className="who">You could say</p>
@@ -451,29 +543,54 @@ export function App() {
               <div className="panel-head">
                 <h2>Disclosure notes</h2>
                 <span>
-                  {started} of {items.length} touched
+                  {draft?.organizing ? "Updating notes…" : `${completed} of ${sections.length} completed`}
                 </span>
               </div>
+              <button
+                type="button"
+                className="expand-all"
+                disabled={sections.length === 0}
+                onClick={() =>
+                  setOpenSections(Object.fromEntries(sections.map((section) => [section.id, !allOpen])))
+                }
+              >
+                {allOpen ? "Collapse all" : "Expand all"}
+              </button>
               <ol className="ready">
-                {items.map((item) => (
-                  <li key={item.id} className={fieldDepth(item)}>
-                    <button
-                      type="button"
-                      className="ready-jump"
-                      disabled={pending}
-                      onClick={() => {
-                        setPage("coach");
-                        void ask(`Let's go back to ${item.label.toLowerCase()}.`);
-                      }}
+                {sections.map((section) => {
+                  const open = isOpen(section.id);
+                  const notes = section.fieldIds
+                    .map((id) => items.find((field) => field.id === id))
+                    .filter((field): field is FieldView => Boolean(field));
+                  return (
+                    <li
+                      key={section.id}
+                      className={`note-section status-${section.status.toLowerCase()}`}
                     >
-                      <div>
-                        <strong>{item.label}</strong>
-                        <em>{fieldStatus(item)}</em>
-                      </div>
-                      <p>{item.text?.trim() || item.whyItHelps || item.description}</p>
-                    </button>
-                  </li>
-                ))}
+                      <button
+                        type="button"
+                        className="section-toggle"
+                        aria-expanded={open}
+                        onClick={() => setOpenSections((curr) => ({ ...curr, [section.id]: !open }))}
+                      >
+                        <div>
+                          <strong>{section.title}</strong>
+                          <em>{section.statusLabel}</em>
+                        </div>
+                      </button>
+                      {open && (
+                        <ul className="section-notes">
+                          {notes.map((note) => (
+                            <li key={note.id} className={note.text?.trim() ? "filled" : "empty"}>
+                              <h3>{note.label}</h3>
+                              <p>{noteText(note)}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                })}
               </ol>
               <div className="panel-actions">
                 <button
@@ -482,27 +599,46 @@ export function App() {
                       setBootError(err instanceof Error ? err.message : "Could not copy notes."),
                     );
                   }}
-                  disabled={pending || !draft}
+                  disabled={pending || !draft || copyState === "preparing"}
                 >
-                  {copied ? "Copied" : "Copy preparation notes"}
+                  {copyState === "preparing" ? "Preparing notes…" : copyState === "copied" ? "Copied" : "Copy preparation notes"}
+                </button>
+                <button
+                  className="ghost"
+                  onClick={() => {
+                    void downloadWord().catch((err: unknown) =>
+                      setBootError(err instanceof Error ? err.message : "Could not download the Word file."),
+                    );
+                  }}
+                  disabled={pending || !draft || wordState === "preparing"}
+                >
+                  {wordState === "preparing" ? "Preparing Word file…" : "Download Word"}
                 </button>
                 <button className="ghost" onClick={() => void reset()} disabled={pending}>
                   Start over
                 </button>
               </div>
               <p className="fine">
-                Eight notes for a first conversation, not the whole UM form. Skip freely. Early disclosure is encouraged, and these notes are not a confidential submission.
+                Nine sections for a first conversation, not the whole UM form. Open a section to see its notes. Skip freely. Early disclosure is encouraged, and these notes are not a confidential submission.
               </p>
             </div>
             {contact && (
               <div className="panel contact-panel">
                 <h2 className="contact-office">{contact.officeName}</h2>
-                <p className="contact-person">Eric Anderson - Director</p>
-                {contact.email && (
+                <div className="contact-person">
+                  <p>Jeff Blackwood - Senior Director</p>
                   <p>
-                    <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                    <a href="mailto:jblackwood@umkc.edu">jblackwood@umkc.edu</a>
                   </p>
-                )}
+                </div>
+                <div className="contact-person">
+                  <p>Eric Anderson - Director</p>
+                  {contact.email && (
+                    <p>
+                      <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                    </p>
+                  )}
+                </div>
                 {contact.url && (
                   <p>
                     <a href={contact.url} target="_blank" rel="noreferrer">
@@ -786,20 +922,20 @@ function DeployPage() {
         <p className="eyebrow">Recommendation, not a production system</p>
         <h2>What a university-supported version would need</h2>
         <p>
-          This prototype keeps eight notes for a first conversation and answers process questions from the approved UMKC and UM documents. A university version would use the same pattern inside the UM System ChatGPT environment, with staff still making every legal and commercialization decision.
+          This prototype organizes a first conversation into nine note sections and answers process questions from the approved UMKC and UM documents. A university version would use the same pattern inside the UM System ChatGPT environment, with staff still making every legal and commercialization decision.
         </p>
       </header>
       <div className="deploy-grid">
         <article>
           <h3>Keep</h3>
           <ul>
-            <li>Eight notes for a first conversation, not the whole UM form. People can skip a note or come back to one. The conversation is not a step-by-step form.</li>
+            <li>Nine note sections for a first conversation, each marked Not Discussed, More Information Needed, Completed, or Not Yet Known. People can skip a note or come back to one. The conversation is not a step-by-step form.</li>
             <li>Plain-language answers to process questions, without citations in the chat. The source library is where the documents are read.</li>
             <li>A caution when someone is about to present, publish, or otherwise share the work, without asking again for a date, venue, or title they already gave.</li>
             <li>Informal answers left as they were given. Funding from the school or the government is enough. No award number or principal investigator is required.</li>
-            <li>Notes that can be copied. No Word download of the notes, and no button that submits a disclosure.</li>
+            <li>Notes that can be copied or downloaded as a Word file. No button that submits a disclosure.</li>
             <li>The coach keeps listening after the notes are filled.</li>
-            <li>Eric Anderson, Director of the Office of Technology Commercialization, shown in the coach at ericwa@umkc.edu.</li>
+            <li>Jeff Blackwood, Senior Director, and Eric Anderson, Director, of the Office of Technology Commercialization, shown in the coach at jblackwood@umkc.edu and ericwa@umkc.edu.</li>
           </ul>
         </article>
         <article>
@@ -827,7 +963,7 @@ function DeployPage() {
             <li>No retention of invention details outside that tenant. The real form is attorney-client privileged.</li>
             <li>Logs that store the question type and the handoff, not the scientific content, unless counsel approves a confidential store.</li>
             <li>A staff review loop when whitepapers or the form change, plus a small evaluation set like the scenarios in this prototype.</li>
-            <li>Human contact in the interface: ericwa@umkc.edu (Eric Anderson, Office of Technology Commercialization).</li>
+            <li>Human contacts in the interface: jblackwood@umkc.edu (Jeff Blackwood) and ericwa@umkc.edu (Eric Anderson), Office of Technology Commercialization.</li>
           </ul>
         </article>
       </div>

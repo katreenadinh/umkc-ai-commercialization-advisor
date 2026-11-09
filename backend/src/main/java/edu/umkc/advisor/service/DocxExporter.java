@@ -66,6 +66,7 @@ public final class DocxExporter {
             if (line.startsWith("# ")) body.append(para("Heading1", 0, run(line.substring(2), false, false)));
             else if (line.startsWith("## ")) body.append(para("Heading2", 0, run(line.substring(3), false, false)));
             else if (line.startsWith("- ")) body.append(para(null, 360, inline("\u2022 " + line.substring(2))));
+            else if (line.startsWith("  - ")) body.append(para(null, 720, inline("\u2013 " + line.substring(4))));
             else if (line.matches("^\\d+\\.\\s.*")) body.append(para(null, 360, inline(line)));
             else body.append(para(null, 0, inline(line)));
         }

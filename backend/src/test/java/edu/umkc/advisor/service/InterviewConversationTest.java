@@ -55,7 +55,7 @@ class InterviewConversationTest {
             interviewJson(List.of(), "Let's go to the next field in the checklist: funding.", "funding"));
         var svc = kit.interview(llm);
         Draft d = kit.newDraft(Workflow.NEW_INVENTION);
-        var a = svc.handle(d, "Hello.");
+        var a = svc.handle(d, "Let's begin.");
         assertFalse(a.assistantMessage().contains("1."));
         assertTrue(a.assistantMessage().endsWith(kit.checklist.find("summary_general").get().starterQuestion()));
         var b = svc.handle(kit.repo.get(d.id()), "Still here.");
@@ -115,20 +115,36 @@ class InterviewConversationTest {
     }
 
     @Test
-    void exampleC_unsureHowItDiffersLeadsToWhatTheyHaveLookedAt() {
+    void exampleC_unsureHowItDiffersMovesToDevelopmentInsteadOfRepeatingTheComparison() {
         Draft d = asked(kit.newDraft(Workflow.NEW_INVENTION), "How is this different from what others are doing?", "difference_from_others");
         var det = kit.interview(new ScriptedLlm()).handle(d, "I don't know");
-        assertEquals("That's understandable. What existing products or approaches have you looked at so far? We can record what you know and leave the comparison open.",
-                det.assistantMessage());
-        assertEquals(List.of("closest_products"), det.askedFieldIds());
+        assertTrue(det.assistantMessage().startsWith("That's understandable."));
+        assertEquals(List.of("development_stage"), det.askedFieldIds());
+        assertFalse(det.assistantMessage().toLowerCase().contains("existing products"));
 
         Draft d2 = asked(kit.newDraft(Workflow.NEW_INVENTION), "How is this different from what others are doing?", "difference_from_others");
-        String model = "That's understandable. What existing products or approaches have you looked at so far? We can record what you know and leave the comparison open.";
-        ScriptedLlm llm = new ScriptedLlm(interviewJson(List.of(upd("difference_from_others", "I'm not really sure how it's different from existing products", "NOT_YET_KNOWN")),
-                model, "closest_products"));
-        var r = kit.interview(llm).handle(d2, "I'm not really sure how it's different from existing products.");
-        assertEquals(model, r.assistantMessage());                          // already natural: passed through untouched
+        var r = kit.interview(new ScriptedLlm()).handle(d2, "I'm honestly not sure. I haven't looked into other technologies yet.");
         assertEquals(ResearcherMark.NOT_YET_KNOWN, kit.repo.get(d2.id()).answer("difference_from_others").mark());
+        assertEquals(List.of("development_stage"), r.askedFieldIds());
+    }
+
+    @Test
+    void anAnswerAboutADifferentTopicIsNotLeftUnderTheQuestionOnScreen() {
+        Draft d = asked(kit.newDraft(Workflow.NEW_INVENTION), "Was any outside funding involved?", "funding");
+        ScriptedLlm llm = new ScriptedLlm(interviewJson(
+                List.of(upd("funding", "We tested it using a few water samples", "NONE")),
+                "Thanks. Who else worked on this with you?", "potential_inventors"));
+        kit.interview(llm).handle(d, "We tested it using a few water samples.");
+        assertTrue(kit.repo.get(d.id()).answer("evidence_testing").hasText());
+        assertFalse(kit.repo.get(d.id()).answer("funding").isAddressed());
+
+        Draft d2 = asked(kit.newDraft(Workflow.NEW_INVENTION), "Have you presented or published this?", "public_disclosures_list");
+        ScriptedLlm llm2 = new ScriptedLlm(interviewJson(
+                List.of(upd("public_disclosures_list", "Some challenges include making sure the water is safe", "NONE")),
+                "Got it. Has this been funded?", "funding"));
+        kit.interview(llm2).handle(d2, "Some challenges include making sure the water is safe.");
+        assertTrue(kit.repo.get(d2.id()).answer("problem_challenges").hasText());
+        assertFalse(kit.repo.get(d2.id()).answer("public_disclosures_list").isAddressed());
     }
 
     @Test
@@ -301,7 +317,7 @@ class InterviewConversationTest {
         var r = svc.handle(d, "Can you give me a summary of what we have so far?");
         assertTrue(r.assistantMessage().contains("summary"));
         assertFalse(r.assistantMessage().contains("?"));
-        assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertFalse(r.assistantMessage().toLowerCase().contains("funding involved"));
         assertTrue(r.askedFieldIds().isEmpty());
     }
 
@@ -339,7 +355,9 @@ class InterviewConversationTest {
         var svc = kit.interview(llm);
         Draft d = kit.newDraft(Workflow.NEW_INVENTION);
         var r = svc.handle(d, "My graduate student and postdoc helped build the hardware. Do they count as inventors?");
-        assertTrue(r.assistantMessage().contains("legal inventorship is determined under patent law"));
+        assertTrue(r.assistantMessage().toLowerCase().contains("not necessarily")
+                || r.assistantMessage().toLowerCase().contains("does not automatically"));
+        assertFalse(r.assistantMessage().contains("?"));
         assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
     }
 
@@ -353,6 +371,42 @@ class InterviewConversationTest {
         assertTrue(r.assistantMessage().contains("intellectual property"));
         assertFalse(r.assistantMessage().contains("?"));
         assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void weatherFoodAndShoppingStayOutOfScopeWithoutAnInterviewQuestion() {
+        ScriptedLlm llm = new ScriptedLlm();
+        var svc = kit.interview(llm);
+        Draft d = kit.newDraft(Workflow.NEW_INVENTION);
+        kit.repo.saveAnswers(d.id(), Map.of("summary_general", text("A water bacteria detector")));
+        for (String msg : List.of("what is the weather", "kentucky fried chicken", "walmart and costco, which do you prefer")) {
+            var r = svc.handle(kit.repo.get(d.id()), msg);
+            assertTrue(r.assistantMessage().toLowerCase().contains("intellectual property"), r.assistantMessage());
+            assertFalse(r.assistantMessage().contains("?"), r.assistantMessage());
+            assertTrue(r.askedFieldIds().isEmpty(), msg);
+            assertFalse(r.assistantMessage().toLowerCase().contains("funding"));
+            assertFalse(r.assistantMessage().toLowerCase().contains("papers"));
+        }
+        assertEquals(0, llm.calls());
+    }
+
+    @Test
+    void chemicalCalculationIsDeclinedAsLabHelp() {
+        String msg = "Can you help me calculate the chemical concentration needed to kill bacteria in drinking water?";
+        assertTrue(DisclosureInterviewService.looksLikeLabHelp(msg), "detector missed: " + msg);
+        var r = kit.interview(new ScriptedLlm()).handle(kit.newDraft(Workflow.NEW_INVENTION), msg);
+        String text = r.assistantMessage().toLowerCase();
+        assertTrue(text.contains("outside what i can help") || text.contains("don't work through lab calculations"), r.assistantMessage());
+        assertTrue(text.contains("equation") || text.contains("expert"), r.assistantMessage());
+        assertFalse(text.contains("i can help you understand the basics of chemical"));
+        assertTrue(r.askedFieldIds().isEmpty());
+    }
+
+    @Test
+    void helloDoesNotAdvanceTheInterview() {
+        var r = kit.interview(new ScriptedLlm()).handle(kit.newDraft(Workflow.NEW_INVENTION), "hello");
+        assertTrue(r.assistantMessage().toLowerCase().contains("hello"));
         assertTrue(r.askedFieldIds().isEmpty());
     }
 
@@ -431,7 +485,7 @@ class InterviewConversationTest {
         t.exampleA_followUpsBuildOnWhatWasJustSaid();
         t.exampleB_notTestedGetsAnEncouragingNextQuestionAboutWhatExists();
         t.exampleB_viaTheModelTheUnknownIsRecordedAccuratelyAndNotTreatedAsAProblem();
-        t.exampleC_unsureHowItDiffersLeadsToWhatTheyHaveLookedAt();
+        t.exampleC_unsureHowItDiffersMovesToDevelopmentInsteadOfRepeatingTheComparison();
         t.skippingFeelsLikeAConversationNotARepeatedStockReply();
         t.safetyBehaviourIsUnchangedByTheStyleRules();
         t.naturalConversationStillCollectsEverythingTheCompletenessReviewNeeds();

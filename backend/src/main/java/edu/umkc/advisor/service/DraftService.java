@@ -30,8 +30,10 @@ public final class DraftService {
         this.referral = referral; this.sources = sources; this.maxDrafts = maxDraftsPerOwner;
     }
 
+    /** Creates a draft. When the owner is at the limit, their least recently updated drafts are deleted to make room. */
     public Draft create(String owner, Workflow workflow, String title) {
-        if (repo.countByOwner(owner) >= maxDrafts) throw new IllegalStateException("Draft limit reached (" + maxDrafts + "). Please delete an old draft first.");
+        List<Draft> oldestFirst = repo.listByOwner(owner).stream().sorted(Comparator.comparing(Draft::updatedAt)).toList();
+        for (int i = 0; i <= oldestFirst.size() - maxDrafts; i++) repo.delete(oldestFirst.get(i).id());
         String t = title == null || title.isBlank() ? "Untitled" : title.strip();
         if (t.length() > 120) t = t.substring(0, 120);
         return repo.create(new Draft(UUID.randomUUID().toString(), owner, t, workflow, Map.of(), null, null, Instant.now()));
@@ -68,11 +70,10 @@ public final class DraftService {
         return r;
     }
 
-    /** Regenerates the preparation summary from the latest saved answers (and the latest review if it is still current). */
+    /** Regenerates the preparation summary from the latest saved answers. */
     public String generateSummary(String id, String owner) {
         Draft d = require(id, owner);
-        var cached = review.parse(d.reviewJson());
-        String md = summary.build(d, review.isFresh(d, cached) ? cached : null, sources);
+        String md = summary.build(d, sources);
         repo.saveSummary(id, md);
         return md;
     }

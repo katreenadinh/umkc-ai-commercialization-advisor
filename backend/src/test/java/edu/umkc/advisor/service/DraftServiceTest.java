@@ -4,7 +4,9 @@ import edu.umkc.advisor.exception.NotFoundException;
 import edu.umkc.advisor.model.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static edu.umkc.advisor.service.TestKit.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,12 +33,17 @@ class DraftServiceTest {
     }
 
     @Test
-    void enforcesPerOwnerDraftLimit() {
+    void atTheLimitTheOldestDraftIsReplacedInsteadOfFailing() throws InterruptedException {
         var s = svc(new ScriptedLlm(), 2);
-        s.create(OWNER, Workflow.NEW_INVENTION, "a");
-        s.create(OWNER, Workflow.NEW_INVENTION, "b");
-        assertThrows(IllegalStateException.class, () -> s.create(OWNER, Workflow.NEW_INVENTION, "c"));
-        s.create(OTHER, Workflow.NEW_INVENTION, "other owner is unaffected");
+        Draft a = s.create(OWNER, Workflow.NEW_INVENTION, "a");
+        Thread.sleep(5);
+        Draft b = s.create(OWNER, Workflow.NEW_INVENTION, "b");
+        Draft other = s.create(OTHER, Workflow.NEW_INVENTION, "other owner is unaffected");
+        Thread.sleep(5);
+        Draft c = s.create(OWNER, Workflow.NEW_INVENTION, "c");
+        assertEquals(Set.of(b.id(), c.id()), new HashSet<>(s.list(OWNER).stream().map(Draft::id).toList()));
+        assertThrows(NotFoundException.class, () -> s.require(a.id(), OWNER));
+        assertEquals(other.id(), s.require(other.id(), OTHER).id());
     }
 
     @Test

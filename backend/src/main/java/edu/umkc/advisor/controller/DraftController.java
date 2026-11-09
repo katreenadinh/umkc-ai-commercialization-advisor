@@ -24,9 +24,11 @@ public class DraftController {
     private final DisclosureInterviewService interview;
     private final ChecklistService checklist;
     private final DraftRepository repo;
+    private final NotesOrganizer organizer;
 
-    public DraftController(DraftService drafts, DisclosureInterviewService interview, ChecklistService checklist, DraftRepository repo) {
-        this.drafts = drafts; this.interview = interview; this.checklist = checklist; this.repo = repo;
+    public DraftController(DraftService drafts, DisclosureInterviewService interview, ChecklistService checklist, DraftRepository repo,
+                           NotesOrganizer organizer) {
+        this.drafts = drafts; this.interview = interview; this.checklist = checklist; this.repo = repo; this.organizer = organizer;
     }
 
     public record CreateRequest(Workflow workflow, String title) {}
@@ -36,8 +38,9 @@ public class DraftController {
     public record FieldView(String id, String section, String label, String description, String whyItHelps, boolean officialFormField,
                             String origin, String sourceRef, String humanReviewNote, boolean notApplicableAllowed, int priority,
                             String text, ResearcherMark mark) {}
-    public record DraftView(String id, String title, Workflow workflow, List<FieldView> fields, List<Turn> transcript, Progress progress,
-                            String summaryMd, String updatedAt) {}
+    public record SectionView(String id, String title, InformationStatus status, String statusLabel, List<String> fieldIds) {}
+    public record DraftView(String id, String title, Workflow workflow, List<FieldView> fields, List<SectionView> sections, boolean organizing,
+                            List<Turn> transcript, Progress progress, String summaryMd, String updatedAt) {}
     public record ListItem(String id, String title, Workflow workflow, Progress progress, String updatedAt) {}
     public record AnswerResult(DraftView draft, AskResponse.Referral referral) {}
     public record CreateResult(DraftView draft, DisclosureInterviewService.Reply opening) {}
@@ -74,7 +77,10 @@ public class DraftController {
 
     @PostMapping("/drafts/{id}/interview/messages")
     public DisclosureInterviewService.Reply message(@RequestHeader("X-Owner-Token") String token, @PathVariable String id, @RequestBody MessageRequest req) {
-        return interview.handle(drafts.require(id, owner(token)), req.message());
+        String owner = owner(token);
+        var reply = interview.handle(drafts.require(id, owner), req.message());
+        organizer.organizeLater(id, owner);
+        return reply;
     }
 
     @PostMapping("/drafts/{id}/interview/skip/{fieldId}")
@@ -118,12 +124,18 @@ public class DraftController {
 
     private DraftView view(Draft d) {
         List<FieldView> fs = new ArrayList<>();
-        for (ChecklistField f : checklist.coach(d.workflow())) {
+        for (ChecklistField f : checklist.applicable(d.workflow())) {
             FieldAnswer a = d.answer(f.id());
             fs.add(new FieldView(f.id(), f.section(), f.label(), f.description(), f.whyItHelps(), f.officialFormField(), f.origin(), f.sourceRef(),
                     f.humanReviewNote(), f.notApplicableAllowed(), f.priority(), a.text(), a.mark()));
         }
-        return new DraftView(d.id(), d.answer("title").hasText() ? d.answer("title").text() : d.title(), d.workflow(), fs, repo.turns(d.id()),
+        List<SectionView> secs = new ArrayList<>();
+        for (ChecklistService.Section s : checklist.sections(d.workflow())) {
+            InformationStatus status = InformationStatus.of(s.fields(), d::answer);
+            secs.add(new SectionView(s.section().id(), s.section().title(), status, status.label,
+                    s.fields().stream().map(ChecklistField::id).toList()));
+        }
+        return new DraftView(d.id(), d.answer("title").hasText() ? d.answer("title").text() : d.title(), d.workflow(), fs, secs, organizer.isOrganizing(d.id()), repo.turns(d.id()),
                 interview.progress(d), d.summaryMd(), d.updatedAt().toString());
     }
 
