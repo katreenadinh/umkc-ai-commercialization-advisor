@@ -42,6 +42,28 @@ public final class DisclosureInterviewService {
             "^(skip(\\s+(this|that)(\\s+(one|question))?)?|pass|next|next\\s+question|move\\s+on|let'?s\\s+move\\s+on|come\\s+back(\\s+to\\s+(this|that))?\\s+later|ask\\s+me\\s+later)$");
     private static final Pattern UNKNOWN_CMD = Pattern.compile(
             "^(i\\s+)?(do\\s+not\\s+know|don'?t\\s+know|have\\s+no\\s+idea|no\\s+idea|not\\s+sure|i'?m\\s+not\\s+sure|unsure|unknown|not\\s+yet|not\\s+known\\s+yet|i\\s+don'?t\\s+know\\s+yet)(\\s+(sorry|honestly|yet))?$");
+    private static final Pattern CLOSING_CUE = Pattern.compile(
+            "(?i)\\b(goodbye|bye|bye-bye|see you|have a good (?:day|one)|i'?m (?:done|finished)|that'?s (?:all|everything)|talk to you later|catch you later|stop for now|that is all|signing off)\\b");
+    private static final Pattern SUMMARY_CUE = Pattern.compile(
+            "(?i)\\b(summar(?:y|ize)|how far along|what(?:'s| is) (?:left|missing|remaining|collected)|current status)\\b");
+    private static final Pattern ACK_CUE = Pattern.compile(
+            "(?i)^(okay|ok|sounds good|sounds great|makes sense|that makes sense|got it|understood|i see|alright|cool|great|good to know|noted|perfect|sure thing|will do|thank you(?: so much)?|thanks(?: a lot)?(?: for (?:that|explaining|the explanation|clarifying))?)(?:[,.]?\\s*(?:thanks|thank you))?[.!]?$");
+    private static final Pattern CORRECTION_CUE = Pattern.compile(
+            "(?i)\\b(actually|correction|i meant|i mean|not\\s+\\w+,?\\s+(?:it'?s|it is|but)|instead of|scratch that|replace|i made a mistake|rather than)\\b");
+    /** Explicit abandonment of the current work, not a later-topic volunteer. */
+    private static final Pattern TOPIC_SWITCH = Pattern.compile(
+            "\\b(scratch\\s+that|let'?s\\s+start\\s+over|start\\s+over"
+          + "|change\\s+(?:the\\s+)?(?:subject|topics?)|switch\\s+(?:the\\s+)?(?:subject|topics?)"
+          + "|forget\\s+(?:all\\s+)?(?:of\\s+)?what\\s+i\\s+said|ignore\\s+what\\s+i\\s+(?:just\\s+)?said"
+          + "|that\\s+was\\s+(?:the\\s+)?wrong\\s+(?:idea|invention|topic|one)"
+          + "|different\\s+(?:subject|topic|idea|invention|work)|talk about (?:a |an )?(?:different|new|another)"
+          + "|something else entirely|new\\s+topic|never\\s*mind(?:\\s+that)?)\\b",
+            Pattern.CASE_INSENSITIVE);
+    private static final Pattern AWAITING_NEW_TOPIC = Pattern.compile(
+            "(?i)(new topic|new invention|start over|cleared the earlier notes"
+          + "|different (?:subject|topic|invention)|share the details of your new)");
+    private static final Pattern WORK_DESCRIPTION = Pattern.compile(
+            "(?i)\\b(i|we|i'?m|we're)\\s+(made|make|built|building|developed|created|designed|found|researched|have|invented|working on)\\b");
 
     private final ChecklistService checklist;
     private final ReferralService referral;
@@ -113,7 +135,33 @@ public final class DisclosureInterviewService {
             return finish(d, answers, ack, List.of(), changed, rule, null, preferred, msg);
         }
 
-        // 3. LLM extraction + next question, validated in Java.
+        // 3. Topic change: wipe saved notes so the new work is not merged into the old one.
+        boolean switchCue = TOPIC_SWITCH.matcher(msg).find();
+        boolean followUpNewWork = awaitingNewTopic(turns) && hasSavedNotes(answers) && !looksLikeGeneralQuestion(msg);
+        if (switchCue && looksLikeWorkDescription(stripTopicSwitch(msg))) {
+            return resetTopic(d, msg, rule);
+        }
+        if (switchCue) {
+            answers = new LinkedHashMap<>();
+            repo.saveAnswers(d.id(), answers);
+            repo.saveSummary(d.id(), null);
+            repo.saveReview(d.id(), null);
+            String firstId = openingField(d);
+            InterviewPayload payload = callModel(d, answers, turns, List.of(firstId), msg);
+            String text = payload == null
+                    ? "Got it. Could you share the details of your new topic or invention?"
+                    : payload.assistantMessage();
+            return finish(d, answers, text, List.of(firstId), List.of(), rule, payload, null, msg);
+        }
+        if (followUpNewWork) {
+            answers = new LinkedHashMap<>();
+            repo.saveAnswers(d.id(), answers);
+            repo.saveSummary(d.id(), null);
+            repo.saveReview(d.id(), null);
+            lastAsked = List.of(openingField(d));
+        }
+
+        // 4. LLM extraction + next question, validated in Java.
         InterviewPayload payload = callModel(d, answers, turns, lastAsked, msg);
         List<String> updated = payload == null || looksLikeGeneralQuestion(msg) ? List.of() : applyUpdates(d, answers, payload.updates(), msg);
         repo.saveAnswers(d.id(), answers);
@@ -248,7 +296,14 @@ public final class DisclosureInterviewService {
 
             FieldAnswer old = answers.getOrDefault(f.get().id(), FieldAnswer.EMPTY);
             String merged = old.text();
-            if (!text.isEmpty()) merged = merged.isEmpty() ? text : normalize(merged).contains(normalize(text)) ? merged : merged + "\n" + text;
+            boolean isCorrection = CORRECTION_CUE.matcher(msg).find();
+            if (!text.isEmpty()) {
+                if (isCorrection || !old.hasText()) {
+                    merged = text;
+                } else if (!normalize(merged).contains(normalize(text))) {
+                    merged = merged + "\n" + text;
+                }
+            }
             ResearcherMark newMark = mark != ResearcherMark.NONE ? mark : (text.isEmpty() ? old.mark() : ResearcherMark.NONE);
             answers.put(f.get().id(), new FieldAnswer(merged, newMark));
             changed.add(f.get().id());
@@ -267,20 +322,28 @@ public final class DisclosureInterviewService {
         List<ChecklistField> remaining = remaining(d.workflow(), answers);
         boolean complete = remaining.isEmpty();
         Set<String> allowedNext = new HashSet<>();
-        remaining.forEach(f -> allowedNext.add(f.id()));
-        allowedNext.addAll(updated);                       // a clarifying follow-up on what was just said is allowed
+        for (ChecklistField f : checklist.applicable(d.workflow())) {
+            FieldAnswer a = answers.getOrDefault(f.id(), FieldAnswer.EMPTY);
+            if (!a.isAddressed() || updated.contains(f.id())) {
+                allowedNext.add(f.id());
+            }
+        }
         if (preferredNext != null) allowedNext.add(preferredNext);
         for (String u : updated) {
             String comp = ConversationStyle.COMPANION.get(u);
             if (comp != null) allowedNext.add(comp);
         }
         List<String> next = new ArrayList<>();
-        for (String id : modelNext) if (allowedNext.contains(id) && !next.contains(id) && next.size() < 2) next.add(id);
+        for (String id : modelNext) if (allowedNext.contains(id) && !next.contains(id) && next.size() < 1) next.add(id);
 
         List<Turn> history = repo.turns(d.id());
         int assistantTurns = (int) history.stream().filter(t -> t.role().equals("ASSISTANT")).count();
         List<String> previous = new ArrayList<>();
         for (int i = history.size() - 1; i >= 0 && previous.size() < 2; i--) if (history.get(i).role().equals("ASSISTANT")) previous.add(history.get(i).content());
+
+        boolean isClosing = CLOSING_CUE.matcher(msg).find();
+        boolean isSummary = SUMMARY_CUE.matcher(msg).find();
+        boolean isAck = ACK_CUE.matcher(msg.trim()).find();
 
         String text;
         if (complete) {
@@ -299,28 +362,40 @@ public final class DisclosureInterviewService {
             boolean guardViolation = guard.scan(base, allowed).violated();
             boolean isForm = ConversationStyle.isFormLike(base);
 
-            if (userAskedQuestion && !base.isBlank() && !isForm && !guardViolation) {
+            if (isClosing) {
+                String exp = extractExplanation(base);
+                text = (!exp.isBlank() && !guardViolation) ? exp
+                        : (!base.isBlank() && !guardViolation && !hasQuestion) ? base
+                        : "Goodbye! I've saved our progress. Feel free to come back anytime to continue working on your disclosure notes. Have a great day!";
+                next = List.of();
+            } else if (isSummary) {
+                text = (!base.isBlank() && !guardViolation) ? base : buildDraftSummary(d, answers);
+                next = List.of();
+            } else if (isAck) {
+                text = (!base.isBlank() && !guardViolation && !hasQuestion) ? base
+                        : (!base.isBlank() && !guardViolation && !extractExplanation(base).isBlank()) ? extractExplanation(base)
+                        : "Sounds good! Whenever you're ready, let me know what you'd like to explore next.";
+                next = List.of();
+            } else if (userAskedQuestion && !base.isBlank() && !isForm && !guardViolation) {
                 String explanation = extractExplanation(base);
-                ChecklistField nf = selectNextField(remaining, assistantTurns, history);
-                String soft = nf != null ? ConversationStyle.softQuestion(nf.id()) : null;
-                String nextQ = soft != null ? soft : (nf != null ? nf.starterQuestion() : "");
-
                 if (!isRepeat && hasQuestion && validNext) {
                     text = base;
-                } else if (!explanation.isBlank() && !nextQ.isBlank()) {
-                    text = explanation + " " + nextQ;
-                    next = nf != null ? List.of(nf.id()) : List.of();
                 } else if (!explanation.isBlank()) {
                     text = explanation;
-                    next = nf != null ? List.of(nf.id()) : List.of();
+                    next = List.of();
                 } else {
-                    text = ConversationStyle.bridge(assistantTurns) + (nextQ.isBlank() ? "" : " " + nextQ);
-                    next = nf != null ? List.of(nf.id()) : List.of();
+                    text = base;
+                    next = List.of();
                 }
             } else {
-                boolean usable = !base.isBlank() && validNext && !isForm && !guardViolation && !isRepeat;
+                boolean invalidTarget = hasQuestion && !modelNext.isEmpty() && next.isEmpty();
+                boolean usable = !base.isBlank() && !isForm && !guardViolation && !invalidTarget
+                        && (!hasQuestion || (validNext && !isRepeat)) && (assistantTurns > 0 || hasQuestion);
                 if (usable) {
                     text = base;
+                    if (!hasQuestion) {
+                        next = List.of();
+                    }
                 } else {
                     ChecklistField nf = selectNextField(remaining, assistantTurns, history);
                     String soft = nf != null ? ConversationStyle.softQuestion(nf.id()) : null;
@@ -330,18 +405,29 @@ public final class DisclosureInterviewService {
                 }
             }
         } else {
-            ChecklistField nf = selectNextField(remaining, assistantTurns, history);
-            String question = nf != null ? nf.starterQuestion() : "";
-            if (preferredNext != null) {
-                Optional<ChecklistField> pf = checklist.find(preferredNext).filter(x -> x.appliesTo(d.workflow()));
-                if (pf.isPresent()) {
-                    nf = pf.get();
-                    String soft = ConversationStyle.softQuestion(nf.id());
-                    question = soft != null ? soft : nf.starterQuestion();
+            if (isClosing) {
+                text = "Goodbye! I've saved our progress. Feel free to come back anytime to continue working on your disclosure notes. Have a great day!";
+                next = List.of();
+            } else if (isSummary) {
+                text = buildDraftSummary(d, answers);
+                next = List.of();
+            } else if (isAck) {
+                text = "Sounds good! Whenever you're ready, let me know what you'd like to explore next.";
+                next = List.of();
+            } else {
+                ChecklistField nf = selectNextField(remaining, assistantTurns, history);
+                String question = nf != null ? nf.starterQuestion() : "";
+                if (preferredNext != null) {
+                    Optional<ChecklistField> pf = checklist.find(preferredNext).filter(x -> x.appliesTo(d.workflow()));
+                    if (pf.isPresent()) {
+                        nf = pf.get();
+                        String soft = ConversationStyle.softQuestion(nf.id());
+                        question = soft != null ? soft : nf.starterQuestion();
+                    }
                 }
+                text = modelText + " " + question;
+                next = nf != null ? List.of(nf.id()) : List.of();
             }
-            text = modelText + " " + question;
-            next = nf != null ? List.of(nf.id()) : List.of();
         }
         boolean needsReferral = rule.referralRequired();
         if (needsReferral && rule.referralNote() != null) {
@@ -506,5 +592,68 @@ public final class DisclosureInterviewService {
         }
         if (descriptive > 0) return false;
         return GUIDE_QUESTION.matcher(t).find() || (t.endsWith("?") && t.length() < 280);
+    }
+
+    static String stripTopicSwitch(String msg) {
+        String rest = TOPIC_SWITCH.matcher(msg).replaceAll(" ");
+        rest = rest.replaceAll("(?i)^\\s*(actually|ok(?:ay)?|well|sorry|so|um|uh)[,.\\s]+", "");
+        return rest.replaceAll("\\s+", " ").replaceAll("^[\\s,;:—-]+", "").strip();
+    }
+
+    static boolean looksLikeWorkDescription(String rest) {
+        if (rest == null || rest.length() < 24) return false;
+        return WORK_DESCRIPTION.matcher(rest).find() || rest.length() > 80;
+    }
+
+    static boolean awaitingNewTopic(List<Turn> turns) {
+        for (int i = turns.size() - 1; i >= 0; i--) {
+            if (turns.get(i).role().equals("ASSISTANT")) return AWAITING_NEW_TOPIC.matcher(turns.get(i).content()).find();
+        }
+        return false;
+    }
+
+    private static boolean hasSavedNotes(Map<String, FieldAnswer> answers) {
+        return answers.values().stream().anyMatch(FieldAnswer::isAddressed);
+    }
+
+    private static String openingField(Draft d) {
+        return d.workflow() == Workflow.UPDATE_EXISTING ? "what_changed" : "summary_general";
+    }
+
+    private Reply resetTopic(Draft d, String msg, ReferralDecision rule) {
+        Map<String, FieldAnswer> answers = new LinkedHashMap<>();
+        List<String> changed = new ArrayList<>();
+        String rest = stripTopicSwitch(msg);
+        String firstId = openingField(d);
+        if (!rest.isBlank()) {
+            answers.put(firstId, new FieldAnswer(rest, ResearcherMark.NONE));
+            changed.add(firstId);
+        }
+        repo.saveAnswers(d.id(), answers);
+        repo.saveSummary(d.id(), null);
+        repo.saveReview(d.id(), null);
+        String ack = rest.isBlank()
+                ? "No problem, we'll start over. I've cleared the earlier notes."
+                : "Got it — we'll start over with this. I've cleared the earlier notes.";
+        return finish(d, answers, ack, List.of(), changed, rule, null, null, msg);
+    }
+
+    private String buildDraftSummary(Draft d, Map<String, FieldAnswer> answers) {
+        StringBuilder sb = new StringBuilder("Here is a summary of what we have in your notes so far:\n\n");
+        int count = 0;
+        for (ChecklistField f : checklist.coach(d.workflow())) {
+            FieldAnswer a = answers.getOrDefault(f.id(), FieldAnswer.EMPTY);
+            if (a.isAddressed()) {
+                count++;
+                sb.append("- **").append(f.label()).append(":** ")
+                  .append(a.hasText() ? a.text() : a.mark() == ResearcherMark.SKIPPED ? "Skipped for now" : "Not yet known")
+                  .append("\n");
+            }
+        }
+        if (count == 0) {
+            sb.append("We haven't recorded specific disclosure details yet.\n");
+        }
+        sb.append("\nWhenever you're ready, let me know what you'd like to discuss next.");
+        return sb.toString();
     }
 }
