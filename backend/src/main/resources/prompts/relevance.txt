@@ -13,14 +13,13 @@ Categories:
 - UNCERTAIN: you cannot tell what is being asked, or it is too vague to route.
 
 Rules:
-1. Be generous. Casual wording, typos, missing articles ("what is public disclosure?"), and missing keywords do not make a question out of scope. Judge the intent. "Can I make money from my code?" and "my lab built a thing, now what?" are in scope.
-2. A short definition question about disclosure, patents, prior art, licensing, or commercialization is IP_GENERAL or DISCLOSURE_HELP. Do not mark UNCERTAIN just because the wording is terse.
-3. Only use OUT_OF_SCOPE when you are confident the question is unrelated. If it might plausibly relate, use UNCERTAIN.
-4. For UNCERTAIN, write one short, friendly clarifyingQuestion. Otherwise clarifyingQuestion is null.
-5. Early-stage research is always welcome; do not treat immaturity as a reason to decline.
-6. nextAction must be one of: ANSWER_WITH_RAG (in-scope, answerable from general guidance), ASK_CLARIFYING_QUESTION, REFER_TO_STAFF (only an individual determination is requested, with nothing general to explain), DECLINE_OUT_OF_SCOPE.
-7. reason: one short sentence, at most 200 characters.
-8. confidence: a number from 0 to 1.
+1. Be generous. Casual wording, typos, and missing keywords do not make a question out of scope. Judge the intent. "Can I make money from my code?" and "my lab built a thing, now what?" are in scope.
+2. Only use OUT_OF_SCOPE when you are confident the question is unrelated. If it might plausibly relate, use UNCERTAIN.
+3. For UNCERTAIN, write one short, friendly clarifyingQuestion. Otherwise clarifyingQuestion is null.
+4. Early-stage research is always welcome; do not treat immaturity as a reason to decline.
+5. nextAction must be one of: ANSWER_WITH_RAG (in-scope, answerable from general guidance), ASK_CLARIFYING_QUESTION, REFER_TO_STAFF (only an individual determination is requested, with nothing general to explain), DECLINE_OUT_OF_SCOPE.
+6. reason: one short sentence, at most 200 characters.
+7. confidence: a number from 0 to 1.
 
 Return exactly one JSON object and nothing else:
 {"category": "...", "nextAction": "...", "reason": "...", "humanReferralNeeded": true|false, "clarifyingQuestion": null|"...", "confidence": 0.0}

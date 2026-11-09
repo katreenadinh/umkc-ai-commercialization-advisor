@@ -49,7 +49,7 @@ public final class ReferralService {
             + "|soon|shortly|upcoming|(?:on|by)\\s+(?:" + DAYS + ")|scheduled|due)\\b", CI);
     private static final Pattern WEAK_FUTURE = Pattern.compile(
             "\\b(will|going\\s+to|gonna|about\\s+to|set\\s+to|plan(?:ning|s)?\\s+to|planned|intend(?:s|ing)?\\s+to"
-            + "|expected\\s+to|hope\\s+to|want(?:s|ing)?\\s+to|would\\s+like\\s+to|i'?d\\s+like\\s+to|looking\\s+to|aim(?:ing)?\\s+to)\\b|'ll\\b", CI);
+            + "|expected\\s+to|hope\\s+to)\\b|'ll\\b", CI);
     private static final Pattern QUESTION_START = Pattern.compile(
             "^\\s*(what|how|why|when|where|who|which|should|can|could|would|will|do|does|is|are|am)\\b", CI);
 
@@ -168,12 +168,14 @@ public final class ReferralService {
     }
 
     private String imminentMessage() {
-        return "Thanks for saying you want to present this. Timing can matter before a talk or paper, so it is worth "
-             + "a quick check with the commercialization office first — you do not need a polished write-up.\n\n"
-             + "UMKC's guidance is that once a discovery is published or publicly disclosed, foreign patent rights "
-             + "can be lost and a one-year window to file in the United States begins. How that applies here is for "
-             + "the office, not for me. I can't tell you that sharing is either safe or harmful; staff can talk through "
-             + "your timeline.\n\nContact: " + contact.render();
+        return "Timing can matter when you plan to publish, present, or publicly share your work, so it is worth "
+             + "contacting the university's commercialization office soon, ideally before the event.\n\n"
+             + "UMKC's guidance says that once a discovery is published or publicly disclosed, foreign patent rights "
+             + "can be lost and a one-year window to file in the United States begins. How that applies to your "
+             + "specific work is something only the office can assess. It is not a reason to panic, and I can't tell you "
+             + "that sharing is either safe or harmful. Staff can talk through your timeline with you.\n\n"
+             + "You do not need to finish this conversation or have a polished description first. An early, rough "
+             + "conversation is welcome.\n\nContact: " + contact.render();
     }
 
     private String injectionMessage() {
