@@ -352,7 +352,7 @@ export function App() {
               ["coach", "Disclosure coach"],
               ["scenarios", "Faculty scenarios"],
               ["sources", "Source library"],
-              ["deploy", "For the university"],
+              ["deploy", "For the future"],
             ] as [Page, string][]
           ).map(([id, label]) => (
             <button
@@ -584,11 +584,15 @@ function sourceTypeRank(type: string): number {
   return 3;
 }
 
+function displaySourceTitle(title: string): string {
+  return title.replace(/\s+v0*426$/i, "").trim();
+}
+
 function sortSources(sources: SourceView[]): SourceView[] {
   return [...sources].sort((a, b) => {
     const byType = sourceTypeRank(a.type) - sourceTypeRank(b.type);
     if (byType !== 0) return byType;
-    return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" });
+    return displaySourceTitle(a.title).localeCompare(displaySourceTitle(b.title), undefined, { numeric: true, sensitivity: "base" });
   });
 }
 
@@ -700,7 +704,7 @@ function SourcePage() {
         {listed.map((source) => (
           <button key={source.id} type="button" className="source-card" onClick={() => setOpen(source)}>
             <div>
-              <h3>{source.title}</h3>
+              <h3>{displaySourceTitle(source.title)}</h3>
               <p className="eyebrow">{source.type}</p>
             </div>
             <span className="source-open" aria-hidden>
@@ -717,8 +721,7 @@ function SourcePage() {
             <header className="source-sheet-head">
               <div>
                 <p className="eyebrow">{open.type}</p>
-                <h2 id="source-modal-title">{open.title}</h2>
-                <p>{pageUrl || open.fileName}</p>
+                <h2 id="source-modal-title">{displaySourceTitle(open.title)}</h2>
               </div>
               <div className="source-sheet-actions">
                 {hasDoc && (
@@ -753,7 +756,7 @@ function SourcePage() {
             </header>
             <div className="source-body">
               {view === "doc" && kind === "pdf" ? (
-                <iframe title={open.title} src={fileUrl} className="source-pdf" />
+                <iframe title={displaySourceTitle(open.title)} src={fileUrl} className="source-pdf" />
               ) : view === "doc" && kind === "docx" ? (
                 <>
                   {loading && <p className="fine source-loading">Opening Word file…</p>}
@@ -783,25 +786,27 @@ function DeployPage() {
         <p className="eyebrow">Recommendation, not a production system</p>
         <h2>What a university-supported version would need</h2>
         <p>
-          This prototype already retrieves passages from the mentor documents and asks a language model to answer from those passages. A university version would use the same pattern inside the UM System ChatGPT environment, with staff still making every legal and commercialization decision.
+          This prototype keeps eight notes for a first conversation and answers process questions from the approved UMKC and UM documents. A university version would use the same pattern inside the UM System ChatGPT environment, with staff still making every legal and commercialization decision.
         </p>
       </header>
       <div className="deploy-grid">
         <article>
           <h3>Keep</h3>
           <ul>
-            <li>Answers limited to approved UM and UMKC materials, with a citation on every substantive reply.</li>
-            <li>Plain-language explanations of novelty, prior art, inventorship, public disclosure, readiness, and application.</li>
-            <li>Follow-up questions mapped to the invention disclosure form.</li>
-            <li>An explicit split between a finding and a use, without a patentability score.</li>
-            <li>Handoffs to Technology Transfer, Commercialization, the IRB, or Research Services.</li>
+            <li>Eight notes for a first conversation, not the whole UM form. People can skip a note or come back to one. The conversation is not a step-by-step form.</li>
+            <li>Plain-language answers to process questions, without citations in the chat. The source library is where the documents are read.</li>
+            <li>A caution when someone is about to present, publish, or otherwise share the work, without asking again for a date, venue, or title they already gave.</li>
+            <li>Informal answers left as they were given. Funding from the school or the government is enough. No award number or principal investigator is required.</li>
+            <li>Notes that can be copied. No Word download of the notes, and no button that submits a disclosure.</li>
+            <li>The coach keeps listening after the notes are filled.</li>
+            <li>Eric Anderson, Director of the Office of Technology Commercialization, shown in the coach at ericwa@umkc.edu.</li>
           </ul>
         </article>
         <article>
           <h3>Do not add</h3>
           <ul>
             <li>A completed UM disclosure, claim drafting, or a button that submits the form.</li>
-            <li>Royalty quotes, inventorship lists, ownership rulings, or freedom-to-operate opinions.</li>
+            <li>Royalty quotes, inventorship lists, ownership rulings, patentability scores, or freedom-to-operate opinions.</li>
             <li>Open-web browsing as a source of policy.</li>
             <li>Training on faculty conversations. The market guide already warns that some AI tools reuse what you paste.</li>
           </ul>
@@ -809,7 +814,7 @@ function DeployPage() {
         <article>
           <h3>Corpus and instructions</h3>
           <ul>
-            <li>UITS whitepapers, the disclosure form’s questions and privilege notice, CR&R 100.020, and the UMKC startup licensing guide.</li>
+            <li>UMKC Impact & Translation Series whitepapers, the disclosure form’s questions and privilege notice, CR&R 100.020, and the UMKC startup licensing guide.</li>
             <li>Peer documents such as the KU license guide only if they are labeled as not UM policy.</li>
             <li>A system instruction that early disclosure is encouraged, especially before publication, and that uncertainty is an acceptable answer.</li>
             <li>A standing refusal for export-control classification, conflicts, and regulatory pathway selection.</li>
