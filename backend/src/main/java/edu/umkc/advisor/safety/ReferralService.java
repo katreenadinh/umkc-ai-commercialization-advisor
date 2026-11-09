@@ -17,8 +17,8 @@ public final class ReferralService {
 
     public record Contact(String officeName, String email, String url) {
         String render() {
-            String office = blank(officeName) ? "UMKC Office of Technology Commercialization" : officeName.replaceAll("^[\"']|[\"']$", "").trim();
-            String mail = blank(email) ? "ericwa@umkc.edu" : email.replaceAll("^[\"']|[\"']$", "").trim();
+            String office = blank(officeName) ? "[CONFIGURE: referral office name]" : officeName.replaceAll("^[\"']|[\"']$", "").trim();
+            String mail = blank(email) ? "[CONFIGURE: referral email]" : email.replaceAll("^[\"']|[\"']$", "").trim();
             String mailLink = mail.contains("@") ? "[" + mail + "](mailto:" + mail + ")" : mail;
             String link = blank(url) ? "" : " Learn more on the [UMKC Invention Disclosure Portal](" + url.trim() + ").";
             return "**" + office + "** at " + mailLink + "." + link;
@@ -49,7 +49,7 @@ public final class ReferralService {
             + "|in\\s+(?:a|an|one|two|three|four|five|six|a\\s+few|a\\s+couple\\s+of|\\d+)\\s+(?:hours?|days?|weeks?|months?)"
             + "|soon|shortly|upcoming|(?:on|by)\\s+(?:" + DAYS + ")|scheduled|due)\\b", CI);
     private static final Pattern WEAK_FUTURE = Pattern.compile(
-            "\\b(will|going\\s+to|gonna|about\\s+to|set\\s+to|plan(?:ning|s)?\\s+to|planned|intend(?:s|ing)?\\s+to"
+            "\\b(will|going\\s+to|gonna|about\\s+to|set\\s+to|plan(?:ning|s)?\\s+to|planned|intend(?:s|ing)?\\s+to|want(?:s|ing)?\\s+to"
             + "|expected\\s+to|hope\\s+to)\\b|'ll\\b", CI);
     private static final Pattern QUESTION_START = Pattern.compile(
             "^\\s*(what|how|why|when|where|who|which|should|can|could|would|will|do|does|is|are|am)\\b", CI);
@@ -65,15 +65,15 @@ public final class ReferralService {
     private record TopicRule(Topic topic, Pattern pattern) {}
     private static final List<TopicRule> TOPIC_RULES = List.of(
         new TopicRule(Topic.PATENTABILITY, p(
-            "\\b(?:is|are|was|would|will|could|can|might)\\s+(?:it|this|that|my|our|the|these)\\b[^.?!]{0,60}\\bpatent(?:able|ed)\\b"
+            "\\b(?:is|are|was|would|will|could|can|might)\\s+(?:it|this|that|my|our|the|these|something)\\b[^.?!]{0,60}\\b(?:patent(?:able|ed)?|qualify\\s+(?:for\\s+)?(?:a\\s+)?patent)\\b"
+            + "|\\bqualify\\s+(?:for\\s+)?(?:a\\s+)?patent\\b"
             + "|\\bcan\\s+(?:i|we)\\s+(?:get\\s+a\\s+)?patent\\b"
             + "|\\bshould\\s+(?:i|we)\\s+(?:file\\s+(?:for\\s+)?(?:a\\s+)?patent|patent)\\b"
             + "|\\bwill\\s+(?:i|we)\\s+(?:get|receive|be\\s+granted)\\s+a\\s+patent\\b")),
         new TopicRule(Topic.OWNERSHIP, p(
-            "\\bwho\\s+(?:owns|will\\s+own|has\\s+(?:the\\s+)?rights\\s+to)\\b[^.?!]{0,60}\\b(?:my|our|this|an?|the)\\b"
-            + "|\\bwho\\s+owns\\b"
+            "\\bwho\\s+(?:owns|will\\s+own|has\\s+(?:the\\s+)?rights\\s+to)\\b[^.?!]{0,60}\\b(?:my|our|this|the\\s+(?:code|software|invention|prototype|device|discovery))\\b"
             + "|\\bdo\\s+(?:i|we)\\s+(?:still\\s+)?(?:own|have\\s+(?:the\\s+)?rights)\\b"
-            + "|\\bdoes\\s+(?:the\\s+university|umkc|um|the\\s+curators|otc|ott)\\s+(?:own|have\\s+(?:the\\s+)?rights)\\b[^.?!]{0,60}\\b(?:my|our|this|an?|the)\\b"
+            + "|\\bdoes\\s+(?:the\\s+university|umkc|um|the\\s+curators|otc|ott)\\s+(?:own|have\\s+(?:the\\s+)?rights)\\b[^.?!]{0,60}\\b(?:my|our|this)\\b"
             + "|\\bcan\\s+(?:i|we)\\s+(?:keep|retain)\\s+(?:the\\s+)?(?:rights|ownership)\\b")),
         new TopicRule(Topic.INVENTORSHIP, p(
             "\\b(?:am|are)\\s+(?:i|we|they)\\s+(?:an?\\s+|the\\s+)?(?:co-?\\s?|sole\\s+|joint\\s+)?inventors?\\b"

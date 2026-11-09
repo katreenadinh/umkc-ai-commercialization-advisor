@@ -16,19 +16,7 @@ class InterviewConversationTest {
     private Draft asked(Draft d, String message, String... fieldIds) {
         kit.repo.appendTurn(d.id(), Turn.assistant(message, List.of(fieldIds)));
         return kit.repo.get(d.id());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void stockOpenersFromTheModelNeverReachTheResearcher() {
@@ -36,19 +24,7 @@ class InterviewConversationTest {
                 "Thank you for sharing. That's interesting! Could you tell me how the sensor detects contaminants?", "technical_description"));
         var r = kit.interview(llm).handle(kit.newDraft(Workflow.NEW_INVENTION), "I developed a sensor.");
         assertEquals("Could you tell me how the sensor detects contaminants?", r.assistantMessage());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void consecutiveTurnsDoNotStartTheSameWay() {
@@ -61,19 +37,7 @@ class InterviewConversationTest {
         var r2 = svc.handle(kit.repo.get(d.id()), "It measures conductivity.");
         assertTrue(r1.assistantMessage().startsWith("Got it."));
         assertEquals("Have you tested it yet?", r2.assistantMessage());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void theModelIsToldWhichOpenersToAvoid() {
@@ -82,19 +46,7 @@ class InterviewConversationTest {
         kit.interview(llm).handle(d, "A water sensor.");
         String prompt = llm.prompts.get(0);
         assertTrue(prompt.contains("<avoid_starting_with>Okay so what have</avoid_starting_with>"), prompt);
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void listLikeOrChecklistLikeModelOutputBecomesOneNaturalQuestion() {
@@ -109,19 +61,7 @@ class InterviewConversationTest {
         var b = svc.handle(kit.repo.get(d.id()), "Still here.");
         assertFalse(b.assistantMessage().toLowerCase().contains("checklist"));
         assertNotEquals(a.assistantMessage().split(" ")[0], b.assistantMessage().split(" ")[0]);    // lead-ins rotate
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void exampleD_theModelCannotReAskSomethingAlreadyCollected() {
@@ -131,19 +71,7 @@ class InterviewConversationTest {
         assertFalse(r.assistantMessage().contains("how it works technically"));
         assertTrue(r.assistantMessage().contains(kit.checklist.find("summary_general").get().starterQuestion()));
         assertEquals(List.of("summary_general"), r.askedFieldIds());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void exampleA_followUpsBuildOnWhatWasJustSaid() {
@@ -160,19 +88,7 @@ class InterviewConversationTest {
         assertTrue(r.assistantMessage().startsWith("Got it. What happens when the conductivity changes?"));
         assertEquals(List.of("technical_description"), r.askedFieldIds());
         assertEquals(2, r.assistantMessage().chars().filter(c -> c == '?').count());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void exampleB_notTestedGetsAnEncouragingNextQuestionAboutWhatExists() {
@@ -184,19 +100,7 @@ class InterviewConversationTest {
         assertEquals("That's okay. We can still document what you've developed so far. Have you built an early prototype, or is the idea still at the design stage?",
                 r.assistantMessage());
         assertEquals(List.of("development_stage"), r.askedFieldIds());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void exampleB_viaTheModelTheUnknownIsRecordedAccuratelyAndNotTreatedAsAProblem() {
@@ -208,19 +112,7 @@ class InterviewConversationTest {
         assertTrue(r.assistantMessage().startsWith("That's okay."));
         assertFalse(r.assistantMessage().toLowerCase().contains("not ready"));
         assertEquals(List.of("development_stage"), r.askedFieldIds());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void exampleC_unsureHowItDiffersLeadsToWhatTheyHaveLookedAt() {
@@ -237,19 +129,7 @@ class InterviewConversationTest {
         var r = kit.interview(llm).handle(d2, "I'm not really sure how it's different from existing products.");
         assertEquals(model, r.assistantMessage());                          // already natural: passed through untouched
         assertEquals(ResearcherMark.NOT_YET_KNOWN, kit.repo.get(d2.id()).answer("difference_from_others").mark());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void skippingFeelsLikeAConversationNotARepeatedStockReply() {
@@ -260,35 +140,11 @@ class InterviewConversationTest {
         for (int i = 0; i < 3; i++) {
             var r = svc.handle(kit.repo.get(d.id()), "skip");
             firstSentences.add(r.assistantMessage().split("(?<=[.!?])\\s")[0]);
-            public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
-    }
-}
+        }
         assertTrue(firstSentences.size() >= 2, firstSentences.toString());
         long skipped = kit.repo.get(d.id()).answers().values().stream().filter(a -> a.mark() == ResearcherMark.SKIPPED).count();
         assertEquals(3, skipped);
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void safetyBehaviourIsUnchangedByTheStyleRules() {
@@ -313,19 +169,7 @@ class InterviewConversationTest {
         assertTrue(det.referral().required());
         assertTrue(det.assistantMessage().contains("can't determine whether your invention is patentable"));
         assertTrue(det.assistantMessage().contains("office@example.edu"));
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
 
     @Test
     void naturalConversationStillCollectsEverythingTheCompletenessReviewNeeds() {
@@ -356,19 +200,7 @@ class InterviewConversationTest {
             String low = a.toLowerCase();
             assertFalse(low.contains("field") || low.contains("checklist") || low.contains("section"), a);
             assertTrue(a.chars().filter(c -> c == '?').count() <= 2, a);
-            public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
-    }
-}
+        }
         // 2. the structured answers needed downstream were all captured from those four ordinary messages
         Draft after = kit.repo.get(d.id());
         for (String id : List.of("summary_general", "problem_solved", "technical_description", "potential_inventors", "evidence_testing", "funding", "development_stage"))
@@ -396,29 +228,22 @@ class InterviewConversationTest {
         assertEquals(FieldStatus.MISSING, st.get("difference_from_others"));
         assertEquals(FieldStatus.MISSING, st.get("public_disclosures_list"));
         assertEquals(1, rr.progress().notApplicable());
-        public static void main(String[] args) {
-        InterviewConversationTest t = new InterviewConversationTest();
-        t.stockOpenersFromTheModelNeverReachTheResearcher();
-        t.consecutiveTurnsDoNotStartTheSameWay();
-        t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
-        System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
-}
+
     public static void main(String[] args) {
         InterviewConversationTest t = new InterviewConversationTest();
         t.stockOpenersFromTheModelNeverReachTheResearcher();
         t.consecutiveTurnsDoNotStartTheSameWay();
         t.theModelIsToldWhichOpenersToAvoid();
-        t.echoesAreNotRepeatedBack();
-        t.compoundQuestionsAreNotAsked();
-        t.formLikeMessagesAreBlockedAndReplaced();
-        t.softPhrasingAfterAnUnknownAnswer();
-        t.generalQuestionDoesNotCorruptChecklist();
+        t.listLikeOrChecklistLikeModelOutputBecomesOneNaturalQuestion();
+        t.exampleD_theModelCannotReAskSomethingAlreadyCollected();
+        t.exampleA_followUpsBuildOnWhatWasJustSaid();
+        t.exampleB_notTestedGetsAnEncouragingNextQuestionAboutWhatExists();
+        t.exampleB_viaTheModelTheUnknownIsRecordedAccuratelyAndNotTreatedAsAProblem();
+        t.exampleC_unsureHowItDiffersLeadsToWhatTheyHaveLookedAt();
+        t.skippingFeelsLikeAConversationNotARepeatedStockReply();
+        t.safetyBehaviourIsUnchangedByTheStyleRules();
+        t.naturalConversationStillCollectsEverythingTheCompletenessReviewNeeds();
         System.out.println("ALL INTERVIEW CONVERSATION TESTS PASSED!");
     }
 }

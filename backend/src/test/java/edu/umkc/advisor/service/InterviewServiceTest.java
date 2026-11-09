@@ -376,4 +376,30 @@ class InterviewServiceTest {
         assertThrows(IllegalArgumentException.class, () -> svc.handle(d, "   "));
         assertThrows(IllegalArgumentException.class, () -> svc.handle(d, "x".repeat(3001)));
     }
+
+    public static void main(String[] args) {
+        InterviewServiceTest t = new InterviewServiceTest();
+        t.sensorConversationAdaptsAndNeverReasksKnownInformation();
+        t.researcherCanVolunteerLaterTopicsOutOfOrder();
+        t.inventedResultsAreRejected();
+        t.unknownAndNotApplicableMarksRequireTheResearchersOwnWords();
+        t.notApplicableOnlyWhereTheFieldAllowsIt();
+        t.upcomingPublicDisclosureReferralsImmediatelyWithoutTheModel();
+        t.wantToPresentIsTreatedAsImminentDisclosure();
+        t.alreadyPresentedWorkIsFlaggedAndInterviewContinues();
+        t.skipAndDontKnowAreHandledDeterministicallyWithoutRepeating();
+        t.skipButtonEndpointMarksFieldAndMovesOn();
+        t.definitiveDeterminationRequestsGetMandatoryReferralEvenIfModelIgnoresThem();
+        t.generalProcessQuestionsAreAnsweredWithoutFillingNotes();
+        t.looksLikeGeneralQuestionDetectsProcessQuestionsNotDescriptions();
+        t.promptInjectionIsBlockedAndChangesNothing();
+        t.malformedModelOutputFallsBackToTheNextChecklistQuestion();
+        t.unusableModelQuestionsAreReplacedRepeatsAndOverlongOnes();
+        t.modelOutputWithInventedContactDetailsIsReplaced();
+        t.updateWorkflowStartsWithTheExistingDisclosureAndDoesNotAssumeANewOne();
+        t.completionIsReportedWhenEveryFieldIsAddressed();
+        t.progressCountsOnlyApplicableFieldsSoNotApplicableNeverLowersIt();
+        t.messagesAreValidated();
+        System.out.println("ALL 21 INTERVIEW SERVICE TESTS PASSED!");
+    }
 }

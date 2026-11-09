@@ -26,8 +26,8 @@ public final class DisclosureInterviewService {
 
     public static final int MAX_MESSAGE_CHARS = 3000;
     static final String COMPLETE_MESSAGE =
-            "Thank you, that covers every item on my checklist. Some may be marked as not yet known or skipped, and that is "
-          + "completely fine. When you're ready, open Review to see what's complete and what could use more detail, or "
+            "Thank you — that covers the notes I use for a first conversation. Some may be marked as not yet known or skipped, "
+          + "and that is completely fine. When you're ready, open Review to see what's complete and what could use more detail, or "
           + "generate your preparation summary. You can come back and add or change anything at any time.";
 
     private static final Pattern UNKNOWN_CUE = Pattern.compile(
@@ -90,21 +90,7 @@ public final class DisclosureInterviewService {
         ReferralDecision rule = referral.evaluate(msg);
 
         // 1. Mandatory rules run first and cannot be overridden by the model.
-        boolean alreadyReferredImminent = turns.stream()
-                .anyMatch(t -> t.role().equals("ASSISTANT") && t.content().contains("Timing can matter"));
-        if (rule.blockLlm()) {
-            if (rule.primary() == ReferralDecision.Trigger.IMMINENT_DISCLOSURE && alreadyReferredImminent) {
-                // Save additional disclosure details and let the conversation proceed with the staff review flag active
-                String sentences = String.join(" ", referral.disclosureSentences(msg));
-                if (sentences.isBlank()) sentences = msg;
-                FieldAnswer old = answers.getOrDefault("public_disclosures_list", FieldAnswer.EMPTY);
-                String merged = old.hasText() && !old.text().contains(sentences) ? old.text() + "\n" + sentences : sentences;
-                answers.put("public_disclosures_list", new FieldAnswer(merged, ResearcherMark.NONE));
-                repo.saveAnswers(d.id(), answers);
-            } else {
-                return blocked(d, rule, msg, answers, lastAsked);
-            }
-        }
+        if (rule.blockLlm()) return blocked(d, rule, msg, answers, lastAsked);
 
         // 2. Deterministic skip / "I don't know" handling.
         String norm = msg.toLowerCase().replaceAll("[^a-z' ]", " ").replaceAll("\\s+", " ").strip();
@@ -152,7 +138,7 @@ public final class DisclosureInterviewService {
 
     public Progress progress(Workflow w, Map<String, FieldAnswer> answers) {
         int total = 0, na = 0, addressed = 0;
-        for (ChecklistField f : checklist.applicable(w)) {
+        for (ChecklistField f : checklist.coach(w)) {
             total++;
             FieldAnswer a = answers.getOrDefault(f.id(), FieldAnswer.EMPTY);
             if (a.mark() == ResearcherMark.NOT_APPLICABLE) { na++; continue; }
@@ -162,7 +148,7 @@ public final class DisclosureInterviewService {
     }
 
     public List<ChecklistField> remaining(Workflow w, Map<String, FieldAnswer> answers) {
-        return checklist.applicable(w).stream().filter(f -> !answers.getOrDefault(f.id(), FieldAnswer.EMPTY).isAddressed()).toList();
+        return checklist.coach(w).stream().filter(f -> !answers.getOrDefault(f.id(), FieldAnswer.EMPTY).isAddressed()).toList();
     }
 
     // ------------------------------------------------------------------ internals
@@ -209,8 +195,17 @@ public final class DisclosureInterviewService {
     private String buildPrompt(Draft d, Map<String, FieldAnswer> answers, List<Turn> turns, List<String> lastAsked, String msg) {
         StringBuilder sb = new StringBuilder("<remaining_fields>\n");
         List<ChecklistField> rem = remaining(d.workflow(), answers);
-        for (int i = 0; i < Math.min(8, rem.size()); i++) {
-            ChecklistField f = rem.get(i);
+        int assistantTurnsSoFar = (int) turns.stream().filter(t -> t.role().equals("ASSISTANT")).count();
+        boolean hasAnyDescription = answers.getOrDefault("summary_general", FieldAnswer.EMPTY).hasText()
+                || answers.getOrDefault("problem_solved", FieldAnswer.EMPTY).hasText()
+                || answers.getOrDefault("technical_description", FieldAnswer.EMPTY).hasText();
+        List<ChecklistField> orderedRem = new ArrayList<>(rem);
+        if (assistantTurnsSoFar >= 1 || hasAnyDescription) {
+            orderedRem.removeIf(f -> f.id().equals("summary_general") || f.id().equals("title"));
+            if (orderedRem.isEmpty() && !rem.isEmpty()) orderedRem = new ArrayList<>(rem);
+        }
+        for (int i = 0; i < Math.min(8, orderedRem.size()); i++) {
+            ChecklistField f = orderedRem.get(i);
             sb.append(f.id()).append(" | ").append(f.label()).append(" | ").append(f.description()).append('\n');
         }
         sb.append("</remaining_fields>\n<already_collected>\n");
@@ -274,6 +269,11 @@ public final class DisclosureInterviewService {
         Set<String> allowedNext = new HashSet<>();
         remaining.forEach(f -> allowedNext.add(f.id()));
         allowedNext.addAll(updated);                       // a clarifying follow-up on what was just said is allowed
+        if (preferredNext != null) allowedNext.add(preferredNext);
+        for (String u : updated) {
+            String comp = ConversationStyle.COMPANION.get(u);
+            if (comp != null) allowedNext.add(comp);
+        }
         List<String> next = new ArrayList<>();
         for (String id : modelNext) if (allowedNext.contains(id) && !next.contains(id) && next.size() < 2) next.add(id);
 
@@ -294,39 +294,54 @@ public final class DisclosureInterviewService {
             if (c.email() != null) allowed.add(c.email());
             boolean userAskedQuestion = msg.trim().endsWith("?") || looksLikeGeneralQuestion(msg) || !rule.topics().isEmpty();
             boolean hasQuestion = base.contains("?");
-            boolean usable = !base.isBlank() && (userAskedQuestion || hasQuestion || !next.isEmpty()) && !ConversationStyle.isFormLike(base)
-                    && !guard.scan(base, allowed).violated() && !repeatsRecent(d, base);
-            if (usable) {
-                text = base;
-                if (next.isEmpty()) {
-                    // Pick a meaningful next field from remaining without resetting
-                    String fallbackField = !lastAssistantFields(history).isEmpty() && allowedNext.contains(lastAssistantFields(history).get(0))
-                            ? lastAssistantFields(history).get(0)
-                            : (remaining.isEmpty() ? null : selectNextField(remaining, assistantTurns).id());
-                    if (fallbackField != null) next = List.of(fallbackField);
+            boolean validNext = !next.isEmpty();
+            boolean isRepeat = repeatsRecent(d, base);
+            boolean guardViolation = guard.scan(base, allowed).violated();
+            boolean isForm = ConversationStyle.isFormLike(base);
+
+            if (userAskedQuestion && !base.isBlank() && !isForm && !guardViolation) {
+                String explanation = extractExplanation(base);
+                ChecklistField nf = selectNextField(remaining, assistantTurns, history);
+                String soft = nf != null ? ConversationStyle.softQuestion(nf.id()) : null;
+                String nextQ = soft != null ? soft : (nf != null ? nf.starterQuestion() : "");
+
+                if (!isRepeat && hasQuestion && validNext) {
+                    text = base;
+                } else if (!explanation.isBlank() && !nextQ.isBlank()) {
+                    text = explanation + " " + nextQ;
+                    next = nf != null ? List.of(nf.id()) : List.of();
+                } else if (!explanation.isBlank()) {
+                    text = explanation;
+                    next = nf != null ? List.of(nf.id()) : List.of();
+                } else {
+                    text = ConversationStyle.bridge(assistantTurns) + (nextQ.isBlank() ? "" : " " + nextQ);
+                    next = nf != null ? List.of(nf.id()) : List.of();
                 }
             } else {
-                ChecklistField nf = selectNextField(remaining, assistantTurns);
-                String soft = ConversationStyle.softQuestion(nf.id());
-                String question = soft != null ? soft : nf.starterQuestion();
-                text = ConversationStyle.bridge(assistantTurns) + " " + question;
-                next = List.of(nf.id());
+                boolean usable = !base.isBlank() && validNext && !isForm && !guardViolation && !isRepeat;
+                if (usable) {
+                    text = base;
+                } else {
+                    ChecklistField nf = selectNextField(remaining, assistantTurns, history);
+                    String soft = nf != null ? ConversationStyle.softQuestion(nf.id()) : null;
+                    String question = soft != null ? soft : (nf != null ? nf.starterQuestion() : "");
+                    text = ConversationStyle.bridge(assistantTurns) + (question.isBlank() ? "" : " " + question);
+                    next = nf != null ? List.of(nf.id()) : List.of();
+                }
             }
         } else {
-            ChecklistField nf = selectNextField(remaining, assistantTurns);
-            String question = nf.starterQuestion();
+            ChecklistField nf = selectNextField(remaining, assistantTurns, history);
+            String question = nf != null ? nf.starterQuestion() : "";
             if (preferredNext != null) {
-                for (ChecklistField f : remaining) {
-                    if (f.id().equals(preferredNext)) {
-                        nf = f;
-                        String soft = ConversationStyle.softQuestion(f.id());
-                        question = soft != null ? soft : f.starterQuestion();
-                        break;
-                    }
+                Optional<ChecklistField> pf = checklist.find(preferredNext).filter(x -> x.appliesTo(d.workflow()));
+                if (pf.isPresent()) {
+                    nf = pf.get();
+                    String soft = ConversationStyle.softQuestion(nf.id());
+                    question = soft != null ? soft : nf.starterQuestion();
                 }
             }
             text = modelText + " " + question;
-            next = List.of(nf.id());
+            next = nf != null ? List.of(nf.id()) : List.of();
         }
         boolean needsReferral = rule.referralRequired();
         if (needsReferral && rule.referralNote() != null) {
@@ -338,30 +353,117 @@ public final class DisclosureInterviewService {
                 false, progress(d.workflow(), answers), complete);
     }
 
-    private ChecklistField selectNextField(List<ChecklistField> remaining, int assistantTurns) {
+    private ChecklistField selectNextField(List<ChecklistField> remaining, int assistantTurns, List<Turn> history) {
         if (remaining.isEmpty()) return null;
-        ChecklistField nf = remaining.get(0);
-        // If the conversation is already underway, never ask the initial starter question ("In your own words...")
-        if (assistantTurns >= 1 && nf.id().equals("summary_general")) {
-            for (ChecklistField f : remaining) {
-                if (!f.id().equals("summary_general") && !f.id().equals("title")) {
-                    return f;
+        List<String> recentFields = new ArrayList<>();
+        if (history != null) {
+            for (int i = history.size() - 1; i >= 0 && recentFields.size() < 4; i--) {
+                if (history.get(i).role().equals("ASSISTANT")) {
+                    recentFields.addAll(history.get(i).fieldIds());
                 }
             }
         }
-        return nf;
+        for (ChecklistField f : remaining) {
+            if (assistantTurns >= 1 && (f.id().equals("summary_general") || f.id().equals("title"))) continue;
+            if (!recentFields.contains(f.id())) return f;
+        }
+        for (ChecklistField f : remaining) {
+            if (assistantTurns >= 1 && (f.id().equals("summary_general") || f.id().equals("title"))) continue;
+            return f;
+        }
+        return remaining.get(0);
     }
 
     private boolean repeatsRecent(Draft d, String text) {
         String n = normalize(text);
+        String qCurr = extractQuestion(text);
+        String normQCurr = normalize(qCurr);
+
         List<Turn> turns = repo.turns(d.id());
         int seen = 0;
-        for (int i = turns.size() - 1; i >= 0 && seen < 3; i--) {
-            if (!turns.get(i).role().equals("ASSISTANT")) continue;
+        for (int i = turns.size() - 1; i >= 0 && seen < 4; i--) {
+            Turn t = turns.get(i);
+            if (!t.role().equals("ASSISTANT")) continue;
             seen++;
-            if (normalize(turns.get(i).content()).startsWith(n) || n.startsWith(normalize(turns.get(i).content()))) return true;
+            String past = t.content();
+            String normPast = normalize(past);
+            String qPast = extractQuestion(past);
+            String normQPast = normalize(qPast);
+
+            if (normPast.equals(n) || (!n.isBlank() && normPast.startsWith(n)) || (!normPast.isBlank() && n.startsWith(normPast))) return true;
+            if (n.length() > 25 && normPast.contains(n)) return true;
+            if (normPast.length() > 25 && n.contains(normPast)) return true;
+
+            if (!normQCurr.isBlank() && !normQPast.isBlank()) {
+                if (normQCurr.equals(normQPast) || normPast.contains(normQCurr) || n.contains(normQPast) || isQuestionRepeat(normQCurr, normQPast)) {
+                    return true;
+                }
+            }
         }
         return false;
+    }
+
+    static String extractQuestion(String text) {
+        if (text == null || !text.contains("?")) return "";
+        int lastQ = text.lastIndexOf('?');
+        int start = 0;
+        for (int i = lastQ - 1; i >= 0; i--) {
+            char c = text.charAt(i);
+            if (c == '.' || c == '!' || c == '\n' || c == '?') {
+                start = i + 1;
+                break;
+            }
+        }
+        return text.substring(start, lastQ + 1).strip();
+    }
+
+    static String extractExplanation(String text) {
+        if (text == null) return "";
+        if (!text.contains("?")) return text.strip();
+        int lastQ = text.lastIndexOf('?');
+        int start = 0;
+        for (int i = lastQ - 1; i >= 0; i--) {
+            char c = text.charAt(i);
+            if (c == '.' || c == '!' || c == '\n' || c == '?') {
+                start = i + 1;
+                break;
+            }
+        }
+        return text.substring(0, start).strip();
+    }
+
+    static boolean isQuestionRepeat(String q1, String q2) {
+        if (q1 == null || q2 == null || q1.isBlank() || q2.isBlank()) return false;
+        if (q1.equals(q2)) return true;
+        Set<String> stop = Set.of("could", "you", "tell", "me", "a", "little", "more", "about", "what", "how", "why", "who", "where", "which", "when", "the", "and", "in", "your", "to", "do", "does", "is", "are", "of", "for", "on", "it", "they", "this", "that");
+        List<String> words1 = new ArrayList<>();
+        for (String w : q1.split("\\s+")) {
+            if (w.length() > 2 && !stop.contains(w)) words1.add(stem(w));
+        }
+        List<String> words2 = new ArrayList<>();
+        for (String w : q2.split("\\s+")) {
+            if (w.length() > 2 && !stop.contains(w)) words2.add(stem(w));
+        }
+        if (words1.isEmpty() || words2.isEmpty()) return false;
+        int common = 0;
+        for (String w1 : words1) {
+            for (String w2 : words2) {
+                if (w1.equals(w2)) {
+                    common++;
+                    break;
+                }
+            }
+        }
+        double sim1 = (double) common / words1.size();
+        double sim2 = (double) common / words2.size();
+        return (sim1 >= 0.75 && sim2 >= 0.60) || (sim2 >= 0.75 && sim1 >= 0.60);
+    }
+
+    private static String stem(String w) {
+        if (w.endsWith("ing") && w.length() > 5) return w.substring(0, w.length() - 3);
+        if (w.endsWith("ed") && w.length() > 4) return w.substring(0, w.length() - 2);
+        if (w.endsWith("s") && w.length() > 3) return w.substring(0, w.length() - 1);
+        return w;
     }
 
     private static List<String> lastAssistantFields(List<Turn> turns) {

@@ -117,4 +117,18 @@ public class ConversationStyleTest {
         assertTrue(p.contains("\"nextFieldIds\""));
         assertTrue(p.contains("NOT_YET_KNOWN") && p.contains("NOT_APPLICABLE") && p.contains("SKIPPED"));
     }
+
+    public static void main(String[] args) throws Exception {
+        ConversationStyleTest t = new ConversationStyleTest();
+        t.stockOpenersAreRemoved();
+        t.echoOfUserMessageIsRemoved();
+        t.compoundQuestionsAreSimplifiedToOneQuestion();
+        t.redundantStaffDisclaimersAreStripped();
+        t.naturalOpenersAndContentAreLeftAlone();
+        t.aRepeatedOpenerIsDroppedWhenAQuestionRemains();
+        t.formLikeMessagesAreRecognised();
+        t.acknowledgementsRotateAndAreContextual();
+        t.promptTeachesTheConversationalStyleAndKeepsItsSafetyAndExtractionRules();
+        System.out.println("CONVERSATION STYLE TESTS PASSED!");
+    }
 }
