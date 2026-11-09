@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { renderAsync } from "docx-preview";
 import {
   createDraft,
-  exportSummary,
   forgetDraftId,
   generateSummary,
   getDraft,
@@ -331,13 +330,6 @@ export function App() {
     window.setTimeout(() => setCopied(false), 1800);
   }
 
-  async function downloadBrief() {
-    const id = draftIdRef.current;
-    if (!id) return;
-    await generateSummary(id);
-    await exportSummary(id, "docx");
-  }
-
   const lastUserText = [...messages].reverse().find((msg) => msg.role === "user")?.text || "";
   const lastAdvisorText = [...messages].reverse().find((msg) => msg.role === "advisor")?.paragraphs?.join(" ") || "";
   const suggestions = useMemo(
@@ -494,17 +486,6 @@ export function App() {
                 >
                   {copied ? "Copied" : "Copy preparation notes"}
                 </button>
-                <button
-                  className="ghost"
-                  onClick={() => {
-                    void downloadBrief().catch((err: unknown) =>
-                      setBootError(err instanceof Error ? err.message : "Could not download the summary."),
-                    );
-                  }}
-                  disabled={pending || !draft}
-                >
-                  Download Word
-                </button>
                 <button className="ghost" onClick={() => void reset()} disabled={pending}>
                   Start over
                 </button>
@@ -525,7 +506,7 @@ export function App() {
                 {contact.url && (
                   <p>
                     <a href={contact.url} target="_blank" rel="noreferrer">
-                      Invention disclosure process
+                      Invention Disclosure Process
                     </a>
                   </p>
                 )}

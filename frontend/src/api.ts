@@ -165,21 +165,6 @@ export async function generateSummary(id: string): Promise<string> {
   return data.markdown;
 }
 
-export async function exportSummary(id: string, format: "docx" | "md"): Promise<void> {
-  const res = await fetch(`/api/drafts/${id}/export?format=${format}`, { headers: headers(false) });
-  if (!res.ok) {
-    const data = (await res.json().catch(() => ({}))) as { error?: string };
-    throw new Error(data.error || "Could not export the summary.");
-  }
-  const blob = await res.blob();
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = format === "md" ? "preparation-summary.md" : "preparation-summary.docx";
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
 export interface ContactInfo {
   officeName: string;
   email: string;
