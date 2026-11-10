@@ -228,7 +228,17 @@ button:disabled { opacity: 0.55; cursor: wait; }
   color: var(--blue-dark);
 }
 .contact-office { margin: 0 0 8px; font-weight: 600; }
+.contact-lead { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.contact-kicker {
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue-dark);
+}
 .contact-person { margin: 0 0 12px; }
+.contact-person.contact-first { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .contact-panel .contact-person p { margin: 0 0 2px; }
 .contact-panel p { margin: 0 0 8px; }
 .contact-panel a { color: var(--blue); }

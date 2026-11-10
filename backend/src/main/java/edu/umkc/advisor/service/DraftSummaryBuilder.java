@@ -86,9 +86,8 @@ public final class DraftSummaryBuilder {
 
         md.append("## Suggested next steps\n\n");
         md.append("1. Read and correct these notes. They are only as accurate as what was entered, and any AI summary should be checked against the answers under it.\n");
-        md.append("2. Contact the commercialization office: ").append(referral.contact().officeName() == null || referral.contact().officeName().isBlank()
-                ? "[CONFIGURE: office name]" : referral.contact().officeName()).append(" at ")
-          .append(referral.contact().email() == null || referral.contact().email().isBlank() ? "[CONFIGURE: email]" : referral.contact().email()).append(". Early, informal questions are welcome.\n");
+        md.append("2. Start with Jeff Blackwood at the Office of Commercialization (jblackwood@umkc.edu), ")
+          .append("Early, informal questions are welcome.\n");
         md.append("3. Complete the university's official Invention Disclosure Form through UMKC's process. These notes are not a submission.\n");
         md.append(d.workflow() == Workflow.UPDATE_EXISTING
                 ? "4. Ask staff whether your changes belong in your existing disclosure or should be a separate disclosure.\n"

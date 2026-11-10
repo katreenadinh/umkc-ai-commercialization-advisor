@@ -21,7 +21,7 @@ public final class ReferralService {
             String mail = blank(email) ? "[CONFIGURE: referral email]" : email.replaceAll("^[\"']|[\"']$", "").trim();
             String mailLink = mail.contains("@") ? "[" + mail + "](mailto:" + mail + ")" : mail;
             String link = blank(url) ? "" : " Learn more on the [UMKC Invention Disclosure Portal](" + url.trim() + ").";
-            return "**" + office + "** at " + mailLink + "." + link;
+            return "Start with **Jeff Blackwood** at the Office of Commercialization at " + mailLink + "."+ link;
         }
         private static boolean blank(String s) { return s == null || s.isBlank(); }
     }

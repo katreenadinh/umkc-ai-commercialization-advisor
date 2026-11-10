@@ -26,9 +26,10 @@ advisor:
       model: ${LLM_MODEL:${ANTHROPIC_MODEL:}}
       base-url: ${LLM_BASE_URL:https://api.anthropic.com}
   referral:
-    # Defaults come from official UMKC pages. The project team must confirm them.
-    office-name: ${REFERRAL_OFFICE_NAME:UMKC Office of Technology Commercialization}
-    email: ${REFERRAL_EMAIL:ericwa@umkc.edu}
+    # First contact is Jeff at the Office of Commercialization. Do not use REFERRAL_* env
+    # placeholders here: a leftover shell export of Eric's address would override .env.
+    office-name: UMKC Office of Commercialization
+    email: jblackwood@umkc.edu
     url: ${REFERRAL_URL:https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php}
   limits:
     max-question-chars: 2000
