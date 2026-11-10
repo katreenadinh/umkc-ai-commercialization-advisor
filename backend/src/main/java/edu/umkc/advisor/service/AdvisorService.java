@@ -105,12 +105,9 @@ public final class AdvisorService {
     }
 
     private AskResponse contactAnswer() {
-        ReferralService.Contact c = referral.contact();
-        String office = c.officeName() == null || c.officeName().isBlank() ? "the commercialization office" : c.officeName();
-        String mail = c.email() == null || c.email().isBlank() ? null : c.email().trim();
-        StringBuilder text = new StringBuilder("You can reach ").append(office);
-        if (mail != null) text.append(" at ").append(mail);
-        text.append(". Early, informal questions are welcome — you do not need a polished write-up.");
+        StringBuilder text = new StringBuilder("Start with Jeff Blackwood at the UMKC Office of Commercialization (jblackwood@umkc.edu). Contact Jeff first, not the Office of Technology Transfer. ");
+        text.append("Eric Anderson at the Office of Technology Transfer (ericwa@umkc.edu) is a later step if needed. ");
+        text.append("Early, informal questions are welcome — you do not need a polished write-up.");
         return new AskResponse(AnswerType.ANSWER, text.toString(), List.of(),
                 new AskResponse.Referral(false, "NONE", null), null, false, AskResponse.DISCLAIMER);
     }

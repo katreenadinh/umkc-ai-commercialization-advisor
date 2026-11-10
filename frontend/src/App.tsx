@@ -125,8 +125,8 @@ export function App() {
       .then(setContact)
       .catch(() => {
         setContact({
-          officeName: "UMKC Office of Technology Commercialization",
-          email: "ericwa@umkc.edu",
+          officeName: "UMKC Office of Commercialization",
+          email: "jblackwood@umkc.edu",
           url: "https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php",
         });
       });
@@ -524,20 +524,20 @@ export function App() {
             </div>
             {contact && (
               <div className="panel contact-panel">
-                <h2 className="contact-office">{contact.officeName}</h2>
-                <div className="contact-person">
-                  <p>Jeff Blackwood - Senior Director</p>
+                <h2 className="contact-office">Contact The Offices</h2>
+                <div className="contact-person contact-first">
+                  <p>Jeff Blackwood</p>
+                  <p>Office of Commercialization</p>
                   <p>
                     <a href="mailto:jblackwood@umkc.edu">jblackwood@umkc.edu</a>
                   </p>
                 </div>
                 <div className="contact-person">
-                  <p>Eric Anderson - Director</p>
-                  {contact.email && (
-                    <p>
-                      <a href={`mailto:${contact.email}`}>{contact.email}</a>
-                    </p>
-                  )}
+                  <p>Eric Anderson</p>
+                  <p>Office of Technology Transfer</p>
+                  <p>
+                    <a href="mailto:ericwa@umkc.edu">ericwa@umkc.edu</a>
+                  </p>
                 </div>
                 {contact.url && (
                   <p>

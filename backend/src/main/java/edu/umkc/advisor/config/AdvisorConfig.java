@@ -38,7 +38,17 @@ public class AdvisorConfig implements WebMvcConfigurer {
 
     @Bean ReferralService referralService() {
         var r = props.referral();
-        return new ReferralService(new ReferralService.Contact(r.officeName(), r.email(), r.url()));
+        String office = r.officeName();
+        String email = r.email();
+        if (office == null || office.isBlank()
+                || office.toLowerCase().contains("technology commercialization")
+                || office.toLowerCase().contains("technology transfer")) {
+            office = "UMKC Office of Commercialization";
+        }
+        if (email == null || email.isBlank() || email.toLowerCase().startsWith("ericwa@")) {
+            email = "jblackwood@umkc.edu";
+        }
+        return new ReferralService(new ReferralService.Contact(office, email, r.url()));
     }
 
     @Bean RelevanceService relevanceService(LlmClient llm, ResponseValidator v) {
