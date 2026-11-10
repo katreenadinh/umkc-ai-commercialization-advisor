@@ -1,0 +1,154 @@
+--- PAGE 1 ---
+1 | P a g e  
+ 
+ 
+UMKC Impact & Translation Series 
+Understanding Public Disclosure and Its Impact on IP Protection 
+Helping you move your work beyond the university  
+ 
+Let’s say you’ve made a breakthrough in your 
+research - something innovative, potentially 
+impactful. Your instinct might be to share it widely: 
+present at a conference, post online, or publish in a 
+journal. 
+That instinct is part of academic work. But if your 
+goal is for that work to create impact beyond the 
+university, timing matters. 
+Sharing too early or without the right protections in 
+place can limit your ability to develop, protect, and 
+ultimately move your work into real-world use. This 
+is where understanding public disclosure becomes 
+critical. 
+This whitepaper is designed to help UMKC 
+researchers and graduate students understand what 
+counts as public disclosure, how it affects your 
+ability to protect intellectual property (IP), and what you can do to avoid unintended 
+consequences—without compromising your academic goals. 
+What Is Public Disclosure? 
+Public disclosure is any non-confidential communication of an idea, invention, or discovery to 
+others. It doesn’t have to be formal or even intentional. If the information is made available to 
+people who are not under a duty of confidentiality, it likely qualifies as public disclosure. 
+Common Forms of Public Disclosure 
+• Journal articles or conference papers (including preprints) 
+• Oral presentations or poster sessions 
+• Theses and dissertations once available in UMKC libraries or online repositories 
+• Social media posts or content shared on personal websites 
+• Product demos, showcases, or pitch competitions open to the public 
+• Conversations with external collaborators if not under a non-disclosure agreement 
+Tip: If you’re about to tell someone about your invention, ask yourself - “Do they have an obligation 
+to keep this confidential?” If not, it’s a public disclosure. 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas: understanding how 
+disclosure affects your IP rights.
+
+--- PAGE 2 ---
+2 | P a g e  
+ 
+ 
+Why Does It Matter? 
+Public disclosure can dramatically affect your ability to secure patent protection. Patent law, 
+especially outside the United States, places a high premium on novelty, which is lost once an 
+invention becomes public. 
+Key Impacts on IP Protection 
+• Loss of Novelty: Once disclosed publicly, your invention is no longer considered "new" 
+under patent law. 
+• Grace Period in the U.S.: The U.S. gives you 12 months from the date of first public 
+disclosure to file a patent application. Miss this window, and you lose your rights. 
+• No Grace Period Internationally: Most other countries such as those in Europe and Asia 
+follow an absolute novelty rule. Even one public mention before filing can make your 
+invention unpatentable. 
+Example: A UMKC grad student presented her novel sensor technology at a national conference. 
+She hadn’t yet filed a provisional patent. Six months later, her international patent application was 
+rejected because the presentation counted as public disclosure. 
+How to Protect Your Work 
+Protecting your work is not about restricting dissemination. It is about sequencing your actions so 
+that you can both share your research and preserve its potential for real-world use. 
+Here’s how UMKC researchers can proactively manage disclosures: 
+1. File a Provisional Patent First - A provisional application is a low-cost way to establish an 
+early filing date and protect your invention before you go public. It gives you 12 months to 
+refine your invention and file a full (non-provisional) patent. 
+2. Use Non-Disclosure Agreements (NDAs) - Before speaking with potential partners, 
+companies, or even external collaborators, use an NDA to ensure confidentiality. The Office 
+of Commercialization can help you prepare one. 
+3. Control the Content of Public Talks - You don’t have to avoid public speaking; just be 
+strategic. Share general concepts or high-level benefits, but avoid diving into technical 
+details or enabling someone to replicate your work. 
+4. Request an Embargo on Your Thesis - UMKC allows students to delay the public release of 
+a thesis or dissertation. This gives you time to secure patent protection before your work 
+becomes accessible through university repositories. 
+5. Consult Early and Often - Before submitting a manuscript, preparing a pitch deck, or 
+sharing slides at a conference, check in with the UMKC Office of Technology Transfer. We’re 
+here to help you find the best path forward.
+
+--- PAGE 3 ---
+3 | P a g e  
+ 
+ 
+Public Disclosure vs. Confidential Communication 
+Understanding whether a particular activity constitutes a public disclosure can sometimes feel 
+murky, especially when academic work often involves collaboration, presentations, and 
+publication. The key distinction lies in who has access to the information and whether a 
+confidentiality agreement is in place.  
+The table below offers a quick guide to help you determine which scenarios are considered public 
+disclosures (and could jeopardize patent rights) versus those that remain confidential and safe 
+from an intellectual property standpoint. 
+Scenario Disclosure Type 
+Journal article published online Public Disclosure 
+Internal group meeting at UMKC Non-Disclosure 
+Presentation at a public conference Public Disclosure 
+Email to a collaborator without NDA Public Disclosure 
+Email to a collaborator with NDA Non-Disclosure 
+Thesis available in UMKC's digital repository Public Disclosure 
+Thesis under embargo Non-Disclosure 
+ 
+What Should You Do? 
+If your work has the potential to create impact 
+beyond the university, the goal is not to slow 
+down your research - it is to make informed 
+decisions that preserve your options. Use this 
+as a brief path forward: 
+1. Submit an Invention Disclosure as 
+early as possible: UMKC Invention 
+Disclosure Form 
+2. Plan your communications. Before 
+submitting, presenting, or posting, 
+consider the IP consequences. 
+3. Ask for guidance. Our office is here to help you navigate the process and protect your 
+innovation every step of the way. 
+Conclusion 
+Sharing your discoveries is an essential part of academic work. But if your goal is for that work to 
+create impact beyond the university, how and when you share it matters. 
+Guiding Question: 
+What impact could this 
+create beyond the university, 
+and what needs to be 
+protected before I share it?
+
+--- PAGE 4 ---
+4 | P a g e  
+ 
+ 
+Understanding public disclosure allows you to balance openness with protection. It helps ensure 
+that your work can move forward - whether through partnerships, licensing, startups, or other 
+pathways to real-world use. 
+This is not about limiting dissemination. It is about preserving the ability for your work to reach its 
+full impact. 
+Resources & Contacts 
+UMKC Office of Commercialization 
+  Website: www.umkcinnovates.com/tech-commercialization 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373 
+ 
+UMKC Office of Technology Transfer 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-5091
+

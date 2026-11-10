@@ -8,3 +8,6 @@ frontend/dist/
 .idea/
 .vscode/
 *.class
+__pycache__/
+*.pyc
+

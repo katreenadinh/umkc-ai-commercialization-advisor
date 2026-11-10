@@ -35,7 +35,7 @@ advisor:
     max-message-chars: 3000
     max-drafts-per-owner: 25
   rag:
-    top-k: 6
-    min-score: 0.30
+    top-k: 8
+    min-score: 0.25
   cors-allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
 logging.level.edu.umkc.advisor: INFO

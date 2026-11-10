@@ -1,0 +1,1152 @@
+[
+  {
+    "id": "Q01",
+    "category": "UM System Patent & IP Regulations",
+    "question": "How are net royalty proceeds distributed between inventors and the university under UM System policy?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 2,
+      "recall": 0.5,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 30.35
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 1,
+      "recall": 0.25,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 13.58
+    }
+  },
+  {
+    "id": "Q02",
+    "category": "UM System Patent & IP Regulations",
+    "question": "What restrictions exist on how the university campus can spend its share of commercialization proceeds?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 3,
+      "latency": 20.88
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.64
+    }
+  },
+  {
+    "id": "Q03",
+    "category": "UM System Patent & IP Regulations",
+    "question": "If multiple inventors contributed to an invention, how is the Inventor Share divided among them?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 2,
+      "recall": 0.5,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 2,
+      "latency": 20.62
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 13.96
+    }
+  },
+  {
+    "id": "Q04",
+    "category": "UM System Patent & IP Regulations",
+    "question": "Who is covered by the UM System Invention and Patent Regulations?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 2,
+      "latency": 17.4
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 7.55
+    }
+  },
+  {
+    "id": "Q05",
+    "category": "UM System Patent & IP Regulations",
+    "question": "Does general student financial aid (like scholarships or tuition waivers) make a student subject to university employee patent ownership?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 1,
+      "recall": 0.5,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 18.82
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 6.86
+    }
+  },
+  {
+    "id": "Q06",
+    "category": "UM System Patent & IP Regulations",
+    "question": "Under what conditions does the University of Missouri own an invention created by an employee?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 3,
+      "latency": 20.27
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 12.83
+    }
+  },
+  {
+    "id": "Q07",
+    "category": "UM System Patent & IP Regulations",
+    "question": "Can the university waive or assign patent rights back to the inventor?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 6,
+      "latency": 23.68
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 13.58
+    }
+  },
+  {
+    "id": "Q08",
+    "category": "UM System Patent & IP Regulations",
+    "question": "When is an employee required to submit an Invention Disclosure Form to the university?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 5,
+      "latency": 20.5
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 10.98
+    }
+  },
+  {
+    "id": "Q09",
+    "category": "UM System Patent & IP Regulations",
+    "question": "What is the role of the UM System Patent Committee?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 8,
+      "latency": 16.32
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 13.08
+    }
+  },
+  {
+    "id": "Q10",
+    "category": "UM System Patent & IP Regulations",
+    "question": "How are 'Gross Proceeds' and 'Net Proceeds' calculated for royalty distributions?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 4,
+      "latency": 31.92
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.07
+    }
+  },
+  {
+    "id": "Q11",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "What is the official form name used across the UM System to disclose a new invention?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 5,
+      "latency": 17.87
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 2.45
+    }
+  },
+  {
+    "id": "Q12",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "What is the legal and confidentiality status of the completed Invention Disclosure Form?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 76.41
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 13.07
+    }
+  },
+  {
+    "id": "Q13",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "What specific information must be provided in the Summary of Invention on Form UM-16C?",
+    "rag": {
+      "key_facts_total": 6,
+      "key_facts_found": 4,
+      "recall": 0.667,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 1,
+      "latency": 19.23
+    },
+    "norag": {
+      "key_facts_total": 6,
+      "key_facts_found": 2,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 17.26
+    }
+  },
+  {
+    "id": "Q14",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "What key historical dates does Form UM-16C ask the inventors to report?",
+    "rag": {
+      "key_facts_total": 5,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 25.26
+    },
+    "norag": {
+      "key_facts_total": 5,
+      "key_facts_found": 2,
+      "recall": 0.4,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 10.02
+    }
+  },
+  {
+    "id": "Q15",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "Does Form UM-16C ask about export controls and controlled unclassified information (CUI)?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 2,
+      "recall": 1.0,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 2,
+      "latency": 16.3
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 1,
+      "recall": 0.5,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 3.87
+    }
+  },
+  {
+    "id": "Q16",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "What kinds of disclosures must be reported in Section A.3 of Form UM-16C?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 2,
+      "recall": 0.5,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 2,
+      "latency": 17.96
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 11.94
+    }
+  },
+  {
+    "id": "Q17",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "What contributor and funding information must be recorded on Form UM-16C?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 1,
+      "latency": 28.67
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 13.99
+    }
+  },
+  {
+    "id": "Q18",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "question": "Who must sign the completed Invention Disclosure Form before submission to the TTO?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 5,
+      "latency": 21.08
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 2,
+      "recall": 0.667,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 3.55
+    }
+  },
+  {
+    "id": "Q19",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "What academic research and publication rights does UMKC always retain in an exclusive license agreement?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 2,
+      "recall": 0.667,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 2,
+      "latency": 13.27
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 2,
+      "recall": 0.667,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 14.16
+    }
+  },
+  {
+    "id": "Q20",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "How does UMKC handle warranties, liability, and sovereign immunity in license agreements?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 2,
+      "recall": 0.5,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 1,
+      "latency": 12.59
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 2,
+      "recall": 0.5,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 17.05
+    }
+  },
+  {
+    "id": "Q21",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "What federal government rights are mandatory in university licenses for federally funded research?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 8,
+      "latency": 17.09
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 16.28
+    }
+  },
+  {
+    "id": "Q22",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "Can a startup sublicense UMKC-licensed technology to commercial partners?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 11.61
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 4.85
+    }
+  },
+  {
+    "id": "Q23",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "What rights and obligations does a standard UMKC exclusive license grant to a startup?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 3,
+      "recall": 0.75,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 70.45
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 2,
+      "recall": 0.5,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.04
+    }
+  },
+  {
+    "id": "Q24",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "Which terms in a UMKC license agreement are flexible and negotiable for startups?",
+    "rag": {
+      "key_facts_total": 5,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 3,
+      "latency": 28.71
+    },
+    "norag": {
+      "key_facts_total": 5,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.16
+    }
+  },
+  {
+    "id": "Q25",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "What should startup founders understand about the difference between core terms and business terms?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 3.93
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.02
+    }
+  },
+  {
+    "id": "Q26",
+    "category": "UMKC Startup Licensing Guidelines",
+    "question": "What happens if a startup's technical development plan changes after signing a license?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 17.71
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 14.73
+    }
+  },
+  {
+    "id": "Q27",
+    "category": "Public Disclosure & Patent Timelines",
+    "question": "What activities constitute a 'public disclosure' that can jeopardize patent rights?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 6,
+      "latency": 29.14
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 12.49
+    }
+  },
+  {
+    "id": "Q28",
+    "category": "Public Disclosure & Patent Timelines",
+    "question": "How does public disclosure affect patent rights in the United States versus internationally?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 28.01
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 18.2
+    }
+  },
+  {
+    "id": "Q29",
+    "category": "Public Disclosure & Patent Timelines",
+    "question": "How can researchers discuss their technology with companies before filing a patent without triggering public disclosure?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 6,
+      "latency": 21.99
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 15.34
+    }
+  },
+  {
+    "id": "Q30",
+    "category": "Public Disclosure & Patent Timelines",
+    "question": "Does submitting a federal grant proposal (e.g., NIH or NSF) count as public disclosure?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 5,
+      "latency": 20.66
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 6.23
+    }
+  },
+  {
+    "id": "Q31",
+    "category": "Public Disclosure & Patent Timelines",
+    "question": "What is a provisional patent application and what timeline does it establish?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 3,
+      "latency": 22.55
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 16.42
+    }
+  },
+  {
+    "id": "Q32",
+    "category": "Public Disclosure & Patent Timelines",
+    "question": "What are the three core legal requirements for an invention to be patentable under US patent law?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 2,
+      "recall": 0.667,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 2,
+      "latency": 21.19
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 2,
+      "recall": 0.667,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 9.25
+    }
+  },
+  {
+    "id": "Q33",
+    "category": "Commercialization Pathways & Startup Formation",
+    "question": "When is licensing to an established company preferable to forming a university startup?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 3,
+      "latency": 28.6
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.56
+    }
+  },
+  {
+    "id": "Q34",
+    "category": "Commercialization Pathways & Startup Formation",
+    "question": "When is creating a startup company the right pathway for university technology?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 25.11
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 18.09
+    }
+  },
+  {
+    "id": "Q35",
+    "category": "Commercialization Pathways & Startup Formation",
+    "question": "Why do venture-backed technology startups typically incorporate as a Delaware C-Corporation rather than an LLC?",
+    "rag": {
+      "key_facts_total": 4,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 4.69
+    },
+    "norag": {
+      "key_facts_total": 4,
+      "key_facts_found": 1,
+      "recall": 0.25,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 17.3
+    }
+  },
+  {
+    "id": "Q36",
+    "category": "Commercialization Pathways & Startup Formation",
+    "question": "What is founder equity vesting and what is the purpose of an IRS Section 83(b) election?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 2,
+      "latency": 30.45
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 17.11
+    }
+  },
+  {
+    "id": "Q37",
+    "category": "Commercialization Pathways & Startup Formation",
+    "question": "Can full-time university faculty serve as full-time CEO of their university spinout startup?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 3,
+      "latency": 15.25
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.01
+    }
+  },
+  {
+    "id": "Q38",
+    "category": "Commercialization Pathways & Startup Formation",
+    "question": "What are Technology Readiness Levels (TRLs) and where does university research typically transition to startup development?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 5,
+      "latency": 43.17
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 14.71
+    }
+  },
+  {
+    "id": "Q39",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "question": "What is the critical difference regarding Principal Investigator (PI) employment between SBIR and STTR grants?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 1,
+      "latency": 17.96
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 12.36
+    }
+  },
+  {
+    "id": "Q40",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "question": "What percentage of research work must be conducted by the small business in SBIR vs STTR Phase I grants?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 6.07
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 7.88
+    }
+  },
+  {
+    "id": "Q41",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "question": "What are the funding amounts and objectives of SBIR/STTR Phase I versus Phase II?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 1,
+      "latency": 22.24
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 17.05
+    }
+  },
+  {
+    "id": "Q42",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "question": "What mandatory agreement must be in place between a university and a startup before submitting an STTR proposal?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": true,
+      "citation_count": 1,
+      "latency": 20.05
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 14.56
+    }
+  },
+  {
+    "id": "Q43",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "question": "What is the difference between a Convertible Note and a SAFE note in startup fundraising?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 3.07
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.05
+    }
+  },
+  {
+    "id": "Q44",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "question": "How do valuation caps and discounts protect early startup angel investors?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 3.86
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.01
+    }
+  },
+  {
+    "id": "Q45",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "question": "What is the difference between a Conflict of Interest (COI) and a Conflict of Commitment (COC)?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 4.48
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 16.32
+    }
+  },
+  {
+    "id": "Q46",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "question": "What rules protect graduate students when faculty members are involved in a startup company?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 1,
+      "latency": 20.19
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.26
+    }
+  },
+  {
+    "id": "Q47",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "question": "Can a university faculty startup freely use university laboratories and equipment?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 4,
+      "latency": 26.88
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 12.98
+    }
+  },
+  {
+    "id": "Q48",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "question": "Who owns intellectual property created by an undergraduate student during regular coursework?",
+    "rag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": true,
+      "citation_count": 0,
+      "latency": 3.21
+    },
+    "norag": {
+      "key_facts_total": 2,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 7.38
+    }
+  },
+  {
+    "id": "Q49",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "question": "What is the Fundamental Research Exclusion in federal export control regulations and how can it be lost?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 5,
+      "latency": 29.38
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.11
+    }
+  },
+  {
+    "id": "Q50",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "question": "How do academic researchers balance commercialization activities with university tenure and promotion requirements?",
+    "rag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": true,
+      "has_specific_policy": false,
+      "citation_count": 8,
+      "latency": 18.54
+    },
+    "norag": {
+      "key_facts_total": 3,
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 17.1
+    }
+  }
+]

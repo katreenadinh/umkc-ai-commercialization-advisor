@@ -1,0 +1,357 @@
+--- PAGE 1 ---
+1 | P a g e  
+  
+UMKC Impact & Translation Series 
+Regulatory Considerations for University Startups 
+Helping you move your work beyond the university  
+ 
+Work that moves beyond the university and into real-
+world use often encounters regulatory 
+requirements. In some cases, this includes forming 
+a startup. In others, it involves partnerships, 
+licensing, or adoption within existing systems.  
+ 
+Whether you’re developing software, launching a 
+medical device, or commercializing a new 
+therapeutic, understanding the legal, institutional, 
+and federal guidelines early can help you avoid 
+delays and build a stronger path to market. 
+ 
+This whitepaper offers a clear, early look at 
+regulatory issues that affect university startups—
+especially those in biotech, medical devices, and 
+life sciences. Our goal is to help you understand 
+what may come up, what to prepare for, and when to 
+seek expert advice.  
+ 
+We'll also dig deeper into the federal pathways for biomedical startups, what compliance really 
+looks like in practice, and how your regulatory strategy can help you raise funds, partner with 
+others, and go to market successfully. 
+ 
+Choosing a Legal Structure and Understanding University 
+Policies 
+One of your earliest decisions will be selecting the right legal structure for your startup. This choice 
+influences your liability, tax obligations, fundraising strategy, and even how you compensate your 
+team. 
+ 
+Most university startups choose a: 
+• Limited Liability Company (LLC) for simplicity, pass-through taxation, and operational 
+flexibility 
+• C-Corporation for scalability and to attract venture capital or equity investors (especially if 
+planning to raise significant funds or offer stock options) 
+ 
+ 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+ 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas: how regulatory 
+requirements shape the path from 
+research to real-world use.
+
+--- PAGE 2 ---
+2 | P a g e  
+  
+Beyond standard business considerations, university-affiliated startups must also follow 
+institutional rules. At UMKC and other research universities, these include: 
+• Conflict of Interest (COI) policies: Financial interests must be disclosed, and faculty/staff 
+must avoid situations where university roles conflict with company roles. 
+• Use of Resources: University labs, equipment, and student time can't be used for company 
+work without proper agreements like Sponsored Research Agreements or Facilities Use 
+Agreements. 
+• Conflict of Commitment (COC): Faculty and researchers must balance university time 
+with outside ventures and stay within effort limits. 
+ 
+If you're a student, postdoc, or faculty member considering launching a startup, contact your Office 
+of Commercialization early. You'll want to be transparent and get help navigating these boundaries 
+before conflicts arise. 
+ 
+Intellectual Property and Licensing 
+Chances are that your innovation is built on IP that originated in a university lab. This means the 
+university likely owns the IP, and your startup will need to license it for commercial use. 
+ 
+At UMKC, intellectual property protection and commercialization are handled by separate but 
+coordinated functions. The Office of Technology Transfer (OTT) manages invention disclosure, 
+patenting, and licensing. The Office of Commercialization (OC) focuses on helping you understand 
+how your work could move into use, including startup pathways, partnerships, and regulatory 
+positioning. 
+ 
+Understanding the terms of this license is crucial to your success. Here are a few concepts to keep 
+in mind: 
+• University Ownership: Most universities automatically own inventions made using 
+significant university resources or created within the scope of employment. 
+• Exclusive vs. Non-exclusive Licensing: Exclusive licenses give your startup a competitive 
+advantage but often include royalty and diligence terms. Non-exclusive licenses may be 
+more affordable but open to competitors. 
+• Equity and Royalties: Licensing deals typically involve upfront fees, milestone payments, 
+royalties on sales, and sometimes university equity in your company. 
+ 
+It's a good idea to discuss expectations early. Ask about: 
+• Royalty rates 
+• Minimum performance milestones 
+• Rights to sublicense 
+• Fields of use and territory 
+ 
+The more you understand your licensing agreement, the better positioned you are to negotiate 
+investor terms and protect your startup’s value.
+
+--- PAGE 3 ---
+3 | P a g e  
+  
+FDA Pathways for Biotech, Drug, and Device Startups 
+If you're developing a product that touches health—from wearable sensors to therapeutics—you'll 
+encounter the FDA. Knowing what to expect from a regulatory standpoint is essential for designing 
+your timeline, budget, and milestones. 
+ 
+Let’s explore the core regulatory pathways for life sciences startups: 
+ 
+Drug and Biologic Development 
+When your startup is working on a new drug, vaccine, or biologic therapy, it enters one of the most 
+highly regulated spaces in all of entrepreneurship. Unlike software or general consumer products, 
+these innovations affect human health directly and are therefore subject to extensive scrutiny by 
+the Food and Drug Administration (FDA).  
+ 
+Understanding the steps involved in drug and biologic development can help you design your R&D 
+activities more effectively and align your funding strategy with regulatory milestones.  
+ 
+Drugs and biologics must be shown to be safe and effective before they can be sold. To begin 
+testing in humans, companies must file an Investigational New Drug (IND) application with the 
+FDA. 
+ 
+The IND must include: 
+• Preclinical animal study data conducted under Good Laboratory Practices (GLP) 
+• Chemistry, manufacturing, and control (CMC) information 
+• Clinical protocols and investigator background 
+ 
+Depending on the product type: 
+• Traditional drugs file a New Drug Application (NDA) with the Center for Drug Evaluation 
+and Research (CDER) 
+• Biologics file a Biologics License Application (BLA) with the Center for Biologics 
+Evaluation and Research (CBER) 
+ 
+Biologics include things like vaccines, cell and gene therapies, and monoclonal antibodies—each 
+with its own complexity and regulatory nuance. 
+ 
+Medical Devices 
+Medical devices present a wide spectrum of regulatory complexity, ranging from simple consumer 
+tools to high-risk, life-sustaining technologies. Understanding where your innovation fits into the 
+FDA’s classification system is critical not only for compliance but also for determining the 
+development timeline, budget, and commercialization strategy.
+
+--- PAGE 4 ---
+4 | P a g e  
+  
+Unlike drugs and biologics, devices are categorized by risk, which influences whether your product 
+goes through a streamlined clearance process or a rigorous approval path. This section outlines the 
+core device classifications and the regulatory routes associated with each. 
+ 
+Devices are classified into three regulatory classes depending on their risk: 
+• Class I: Low risk, often exempt from premarket review (e.g., tongue depressors) 
+• Class II: Moderate risk; usually requires a 510(k) submission showing "substantial 
+equivalence" to an existing approved device 
+• Class III: High risk; needs a full Pre-Market Approval (PMA), including clinical data and 
+rigorous review 
+ 
+Key points for startups: 
+• 510(k) clearance is faster and less expensive than PMA, but requires a clear predicate 
+device 
+• Design controls and validation protocols are necessary from early stages 
+• Human Factors testing, labeling reviews, and software validation can all trigger additional 
+requirements 
+ 
+If you're unsure about your device classification, the FDA offers Pre-Submission (Q-Sub) meetings 
+to clarify expectations. 
+ 
+Regulation Beyond Life Sciences 
+While regulatory pathways are most visible in biotech and medical devices, other fields also 
+encounter forms of regulation. 
+ 
+Examples include: 
+• Data privacy and security requirements in software and AI  
+• Environmental and safety standards in engineering and materials  
+• Professional or accreditation standards in education and practice-based fields  
+ 
+The level of regulation varies, but the underlying principle is the same: real-world use often requires 
+meeting external standards beyond academic validation. 
+ 
+Quality Assurance and Documentation 
+In regulated industries, how you develop your product can be just as important as the product itself. 
+Quality assurance (QA) and quality control (QC) frameworks are designed to ensure safety, 
+repeatability, and compliance throughout the product lifecycle.  
+ 
+Startups in the early stages may not need a full-fledged quality management system, but they do 
+need to understand the fundamentals. Establishing good habits early—such as tracking 
+experiments, validating designs, and documenting protocols—can prevent costly setbacks later.
+
+--- PAGE 5 ---
+5 | P a g e  
+  
+Quality isn't just for big companies—founders must start building documentation habits early. 
+Regulators will want to see traceability, validation, and a commitment to product safety. 
+ 
+You don’t need a full GMP system on day one, but you should: 
+• Maintain lab notebooks and SOPs (standard operating procedures) 
+• Document design decisions and risk analyses 
+• Plan for ICH Q10 (pharma) or 21 CFR Part 820 (devices) compliance over time 
+ 
+Outsourcing quality or regulatory tasks is common, but startups are still responsible for ensuring 
+the work is done correctly. Auditable documentation will serve you well during fundraising, audits, 
+and eventual scale-up. 
+ 
+Regulatory Strategy Shapes Your Business Plan 
+Too often, regulatory planning is treated as a technical detail that gets sorted out late in the game. 
+But for university startups (especially those working in health, life sciences, or data-sensitive 
+fields), your regulatory strategy directly influences nearly every other element of your venture. It 
+determines your capital needs, hiring plan, product roadmap, and even the type of investors you'll 
+attract.  
+ 
+Thinking strategically about regulation from the start allows you to avoid common pitfalls, answer 
+investor questions with confidence, and maintain momentum as your technology matures. 
+ 
+Regulatory planning is not a back-office function; it's central to your startup's risk profile and go-to-
+market strategy. 
+ 
+Work that integrates regulatory thinking early is better positioned to move toward real-world use. 
+For example, it helps to: 
+• Set realistic timelines and milestones 
+• Plan capital raises around major submissions (e.g., IND, 510(k), PMA) 
+• Align reimbursement strategy with product classification 
+• Attract investors with clearer exit potential 
+ 
+Ask yourself: 
+• How long will it take to get market clearance or approval? 
+• What does the total cost of compliance look like? 
+• Do we need a regulatory consultant or full-time head of quality? 
+• Can we design for a lower-risk category? 
+ 
+The earlier you know your pathway, the better you can tailor your development, hiring, and 
+fundraising strategies.
+
+--- PAGE 6 ---
+6 | P a g e  
+  
+NIH, SBIR/STTR, and Government Funding Rules 
+Many university startups pursue federal funding through Small Business Innovation Research (SBIR) 
+and Small Business Technology Transfer (STTR) programs. These can be essential lifelines for early-
+stage R&D but come with compliance 
+responsibilities. 
+ 
+Here’s what to consider: 
+• Principal Investigator Eligibility: STTRs 
+require formal collaboration with a 
+research institution. The PI can be from 
+the university or the company, but their 
+level of effort must be documented. 
+• Financial Conflict of Interest (FCOI): 
+The NIH requires annual disclosures, 
+management plans, and transparency if 
+an investigator holds equity or a 
+leadership role in the company. 
+• Effort Reporting: You must clearly track 
+how much time each funded individual is spending on the project, especially if they are 
+university-affiliated. 
+• Indirect Costs and Subawards: These require prior negotiation with the cognizant federal 
+agency. Many startups fail to budget correctly or mismanage subcontracts. 
+ 
+The NIH Grants Policy Statement (NIHGPS) provides detailed rules, but your university grants office 
+can also assist. 
+ 
+Data Privacy and Security Regulations 
+Even non-healthcare startups today deal with sensitive personal data. Whether it’s patient records, 
+user behavior, or research results, startups must implement safeguards from the start. 
+ 
+Common regulations include: 
+• HIPAA: Applies to any business handling protected health information (PHI) 
+• GDPR: European Union regulation with strict rules on consent, storage, and international 
+transfer 
+• CCPA: California-specific regulation focused on consumer privacy and opt-out rights 
+ 
+Best practices include: 
+• Using encrypted cloud storage 
+• Limiting access to sensitive data 
+• Maintaining data use agreements (DUAs) and privacy policies 
+ 
+If your business model involves AI or machine learning with personal data, pay extra attention. 
+Transparency and explainability are becoming compliance requirements. 
+Guiding Question: 
+What regulatory 
+requirements could shape 
+how your work moves from 
+research into real-world use, 
+and what would you need to 
+prepare for early?
+
+--- PAGE 7 ---
+7 | P a g e  
+  
+ 
+University and Community Resources 
+No founder is expected to be a regulatory expert on day one. That’s why leveraging your university 
+and regional innovation ecosystem is so important. These support systems exist to help you not 
+only navigate compliance but also envision a larger path to impact for your innovation. 
+ 
+At UMKC, the Office of Technology Transfer is your first stop for questions about invention 
+disclosure, IP ownership, and licensing agreements. They ensure that intellectual property is 
+protected and university policies are followed. 
+ 
+The Office of Commercialization builds on that foundation. We help you discover and execute a 
+plan to bring your innovation from lab to impact—through market exploration, startup support, 
+regulatory education, and partner connections. 
+ 
+Helpful resources include: 
+• Office of Technology Transfer: Manages invention disclosure, IP strategy, and licensing 
+• Office of Commercialization: Supports startup development, commercialization strategy, 
+and regulatory readiness 
+• Research Compliance Office: Helps you stay aligned with IRB, COI, and federal rules 
+• Local accelerators and incubators: Many have mentors or partner discounts on legal and 
+regulatory consulting 
+• SBDC or Biotech-focused mentoring groups: These can assist with FDA navigation, pitch 
+readiness, and funding strategy 
+ 
+At UMKC, we encourage startups to reach out early and often. Contact the Office of 
+Commercialization at techcomm@umkc.edu or 816-235-6373. 
+ 
+Conclusion 
+Regulatory requirements are often seen as constraints. In practice, they are part of the structure 
+that allows work to move safely and credibly into real-world use. 
+ 
+Understanding these requirements early does not slow progress. It clarifies what progress actually 
+requires. 
+ 
+As your work begins to move beyond the university, regulatory considerations will influence what is 
+possible, how long it will take, and what resources are needed. 
+ 
+You do not need to have all the answers. But recognizing that these factors exist and engaging early 
+to understand them can significantly improve your ability to move your work toward meaningful 
+impact.
+
+--- PAGE 8 ---
+8 | P a g e  
+  
+Resources 
+UMKC Office of Commercialization 
+Director: Jeff Blackwood, MBA 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373 
+  Website: www.umkcinnovates.com/tech-commercialization  
+ 
+UMKC Office of Technology Transfer 
+Director: Eric Anderson, JD MBA 
+  Email: ericwa@umkc.edu 
+  Phone: 816-235-5091 
+  Website: https://ori.umkc.edu/facilities-compliance-and-
+commercialization/commercialization/process/submit-an-invention-disclosure.html  
+ 
+• FDA: Center for Drug Evaluation and Research (CDER) 
+• FDA: Center for Biologics Evaluation and Research (CBER) 
+• FDA: Center for Devices and Radiological Health (CDRH) 
+• NIH Grants Policy Statement (NIHGPS) 
+• UMKC Research Compliance Office
+

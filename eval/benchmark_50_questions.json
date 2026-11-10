@@ -1,0 +1,452 @@
+[
+  {
+    "id": "Q01",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section J.1.a",
+    "question": "How are net royalty proceeds distributed between inventors and the university under UM System policy?",
+    "reference_answer": "Under UM System Collected Rules and Regulations Section 100.020.J.1.a, Net Proceeds received by the University from commercializing an invention are distributed as follows: 33.3% goes to the Inventor(s) ('Inventor Share'), and 66.7% goes to the campus from which the invention originated ('Campus Share').",
+    "key_facts": ["33.3%", "66.7%", "Inventor Share", "Campus Share"]
+  },
+  {
+    "id": "Q02",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section J.1.b",
+    "question": "What restrictions exist on how the university campus can spend its share of commercialization proceeds?",
+    "reference_answer": "Under Section 100.020.J.1.b, to the extent required by applicable law, the use of the Campus Share is restricted to supporting scientific research or education. Each campus develops an expenditure plan approved by the Chancellor with input from faculty representatives, the campus research office, and academic leadership.",
+    "key_facts": ["scientific research or education", "approved by the Chancellor", "Campus Share"]
+  },
+  {
+    "id": "Q03",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section J.3",
+    "question": "If multiple inventors contributed to an invention, how is the Inventor Share divided among them?",
+    "reference_answer": "Under Section 100.020.J.3, the Inventor Share is divided according to a written agreement signed by all inventors. In the absence of a written agreement, the university may hold the funds for a reasonable period to allow an agreement to be reached, or divide the Inventor Share equally among the inventors. Disputed distributions can be referred to the Patent Committee, with the President making the final non-appealable determination.",
+    "key_facts": ["written agreement signed by all inventors", "divide equally in absence of agreement", "Patent Committee", "President makes final determination"]
+  },
+  {
+    "id": "Q04",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section B.1 & B.2",
+    "question": "Who is covered by the UM System Invention and Patent Regulations?",
+    "reference_answer": "The regulations apply as a term and condition of employment to all university employees (faculty, staff, postdocs). They also apply to students who receive compensation from the university (including graduate research and teaching assistants) if their duties include research or software development leading to the invention, as well as anyone making substantial use of university resources.",
+    "key_facts": ["employees (faculty, staff)", "graduate research/teaching assistants receiving compensation", "substantial use of university resources"]
+  },
+  {
+    "id": "Q05",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section B.2",
+    "question": "Does general student financial aid (like scholarships or tuition waivers) make a student subject to university employee patent ownership?",
+    "reference_answer": "No. Section 100.020.B.2 explicitly clarifies that student financial aid—including scholarships, grants, loans, tuition waivers, and educational fee reductions generally available to students and unrelated to services—shall not be interpreted as compensation for invention ownership purposes.",
+    "key_facts": ["financial aid/scholarships/tuition waivers do not count as compensation", "unrelated to provision of services"]
+  },
+  {
+    "id": "Q06",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section D.1 & D.2",
+    "question": "Under what conditions does the University of Missouri own an invention created by an employee?",
+    "reference_answer": "Under Section 100.020.D.1, the university owns all inventions conceived or first reduced to practice by an employee within their scope of employment, or through substantial use of university resources, or resulting from research supported by university-administered grant/contract funds.",
+    "key_facts": ["scope of employment", "substantial use of university resources", "grant/contract funds administered by university"]
+  },
+  {
+    "id": "Q07",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section D.4",
+    "question": "Can the university waive or assign patent rights back to the inventor?",
+    "reference_answer": "Yes. Under Section 100.020.D.4, if the university decides not to file a patent application or pursue commercialization, or if requested by the inventor and deemed appropriate, the university may waive or re-assign rights back to the inventor, subject to any sponsor rights (such as federal government rights) and retaining a non-exclusive license for research and educational purposes.",
+    "key_facts": ["waive or re-assign rights back to inventor", "subject to sponsor/government rights", "retaining non-exclusive license for university research"]
+  },
+  {
+    "id": "Q08",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section D.3",
+    "question": "When is an employee required to submit an Invention Disclosure Form to the university?",
+    "reference_answer": "Under Section 100.020.D.3, employees must promptly submit a completed Invention Disclosure Form whenever they conceive or reduce to practice an invention, and specifically prior to any public disclosure (oral, written, preprint, conference presentation, or offer for sale) so the university can evaluate and protect patentability.",
+    "key_facts": ["promptly upon conception/reduction to practice", "prior to public disclosure or publication"]
+  },
+  {
+    "id": "Q09",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section F & H",
+    "question": "What is the role of the UM System Patent Committee?",
+    "reference_answer": "The Patent Committee assists the university with policy recommendations and advises on resolving disputes involving inventorship, ownership claims, rights waiver requests, or distribution of the Inventor Share of net proceeds. Recommendations are forwarded to the President for final determination.",
+    "key_facts": ["policy recommendations", "advising on dispute resolution", "inventorship/ownership disputes", "forwards recommendations to President"]
+  },
+  {
+    "id": "Q10",
+    "category": "UM System Patent & IP Regulations",
+    "source_document": "100.020 Invention and Patent Regulations _ UM System.pdf",
+    "source_section": "Section 4 (Definitions)",
+    "question": "How are 'Gross Proceeds' and 'Net Proceeds' calculated for royalty distributions?",
+    "reference_answer": "Gross Proceeds include cash money received from third parties for licensing, options, milestone payments, or earned royalties. Net Proceeds are calculated by subtracting from Gross Proceeds all unreimbursed direct university expenses incurred in preparing, filing, prosecuting, licensing, defending, and maintaining the intellectual property.",
+    "key_facts": ["Gross Proceeds: cash from licensing, options, royalties", "Net Proceeds: Gross Proceeds minus unreimbursed patent/legal/prosecution costs"]
+  },
+  {
+    "id": "Q11",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Header & Notice",
+    "question": "What is the official form name used across the UM System to disclose a new invention?",
+    "reference_answer": "The official document is the 'Invention Disclosure Form for All Employees of the Curators of the University of Missouri' (commonly designated Form UM-16C).",
+    "key_facts": ["Invention Disclosure Form", "Form UM-16C", "Curators of the University of Missouri"]
+  },
+  {
+    "id": "Q12",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Legal Notice",
+    "question": "What is the legal and confidentiality status of the completed Invention Disclosure Form?",
+    "reference_answer": "The Invention Disclosure Form is an attorney-client privileged communication. The information entered is confidential and must not be disclosed to persons outside the UM System or to persons within the System who lack a legitimate need to know.",
+    "key_facts": ["attorney-client privileged communication", "confidential", "must not be disclosed outside UM System"]
+  },
+  {
+    "id": "Q13",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Section A.1",
+    "question": "What specific information must be provided in the Summary of Invention on Form UM-16C?",
+    "reference_answer": "Section A.1 requires: a) General description, b) Technical description and advantages/improvements over existing methods, c) Novel aspects, d) The problem the invention solves, e) Differences from what others are doing, and f) Disadvantages or limitations of the invention.",
+    "key_facts": ["general description", "technical description and advantages", "novel aspects", "problem solved", "differences from existing art", "limitations"]
+  },
+  {
+    "id": "Q14",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Section A.2",
+    "question": "What key historical dates does Form UM-16C ask the inventors to report?",
+    "reference_answer": "Section A.2 asks for best estimates of: when the idea was conceived, when the first written description was generated, when the first public disclosure occurred (oral, written, online, or use), when the first prototype/model was generated, and when the first offer to sell was made.",
+    "key_facts": ["date conceived", "first written description", "first public disclosure", "first prototype/model", "first offer to sell"]
+  },
+  {
+    "id": "Q15",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Section A.2",
+    "question": "Does Form UM-16C ask about export controls and controlled unclassified information (CUI)?",
+    "reference_answer": "Yes. Section A.2 specifically includes a mandatory question asking whether the technology is subject to an export control plan or considered controlled unclassified information (CUI).",
+    "key_facts": ["export control plan", "controlled unclassified information (CUI)"]
+  },
+  {
+    "id": "Q16",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Section A.3",
+    "question": "What kinds of disclosures must be reported in Section A.3 of Form UM-16C?",
+    "reference_answer": "Inventors must list all past and planned public disclosures, including published abstracts, posters, manuscripts, website postings, blogs, theses/dissertations, grant proposals, conference talks, meetings with industry, and offers for sale.",
+    "key_facts": ["past and future public disclosures", "abstracts, posters, papers", "thesis/dissertation", "talks, industry meetings, offers for sale"]
+  },
+  {
+    "id": "Q17",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Section B & C",
+    "question": "What contributor and funding information must be recorded on Form UM-16C?",
+    "reference_answer": "Section B captures each contributor's full legal name, campus, department, citizenship, employment status, home address, and agreed percentage contribution. Section C captures all funding sources (federal agencies, industry sponsors, foundations, internal grants), grant numbers, and principal investigators.",
+    "key_facts": ["contributor names, citizenship, percent contribution", "funding sources (federal, industry, internal)", "grant numbers and PIs"]
+  },
+  {
+    "id": "Q18",
+    "category": "Invention Disclosure Process & Form UM-16C",
+    "source_document": "invention-disclosure-form-um-16c-final.docx",
+    "source_section": "Signature Section",
+    "question": "Who must sign the completed Invention Disclosure Form before submission to the TTO?",
+    "reference_answer": "All contributing inventors must sign the disclosure statement, acknowledging originality and assigning rights per university regulations, along with acknowledgment signatures from the Department Head(s) and Dean(s).",
+    "key_facts": ["all inventors", "department head", "dean"]
+  },
+  {
+    "id": "Q19",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "Terms That Are Fixed - Section 2.04",
+    "question": "What academic research and publication rights does UMKC always retain in an exclusive license agreement?",
+    "reference_answer": "Under Section 2.04 of the UMKC standard agreement, UMKC retains the irrevocable right to use the licensed technology for internal research, teaching, and academic purposes, the right to allow other non-profit entities to use the technology for non-commercial research, and the unrestricted right to publish research results.",
+    "key_facts": ["right to use for research, teaching, and education", "allow other non-profits for non-commercial research", "right to publish research results"]
+  },
+  {
+    "id": "Q20",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "Terms That Are Fixed - Article VI",
+    "question": "How does UMKC handle warranties, liability, and sovereign immunity in license agreements?",
+    "reference_answer": "Under Article VI, UMKC licenses technology strictly 'as is' with complete disclaimers of warranties (including merchantability and non-infringement). Licensees must indemnify the university and maintain comprehensive commercial insurance. As a public institution, UMKC operates under sovereign immunity and does not waive sovereign immunity protections.",
+    "key_facts": ["licensed 'as is'", "no representations or warranties", "licensee must indemnify university", "carries sovereign immunity"]
+  },
+  {
+    "id": "Q21",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "Terms That Are Fixed - Government Rights",
+    "question": "What federal government rights are mandatory in university licenses for federally funded research?",
+    "reference_answer": "Under federal law (Bayh-Dole Act), mandatory terms include: a non-exclusive royalty-free license for government use, march-in rights (if the company fails to develop the technology), and the requirement that products embodying the invention be manufactured substantially in the United States (35 U.S.C. 204).",
+    "key_facts": ["government-use license", "march-in rights", "substantially manufactured in the U.S."]
+  },
+  {
+    "id": "Q22",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "Terms That Are Fixed - Sublicensing (2.03)",
+    "question": "Can a startup sublicense UMKC-licensed technology to commercial partners?",
+    "reference_answer": "Yes, but subject to Section 2.03 core requirements: sublicensing requires university visibility and approval, license obligations must flow down to the sublicensee, and a share of sublicense consideration or running royalties must be paid to the university.",
+    "key_facts": ["requires university visibility and approval", "obligations flow down to sublicensee", "sublicense consideration shared with university"]
+  },
+  {
+    "id": "Q23",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "What a License Grants",
+    "question": "What rights and obligations does a standard UMKC exclusive license grant to a startup?",
+    "reference_answer": "An exclusive license typically grants exclusive rights to develop and commercialize the technology within a defined field of use and territory, paired with diligence obligations to achieve commercialization milestones, submit regular progress reports, and meet financial commitments. Failure to maintain progress allows the university to modify exclusivity or terminate.",
+    "key_facts": ["exclusive rights in defined field of use and territory", "commercialization diligence milestones", "progress reporting", "university can modify exclusivity or terminate"]
+  },
+  {
+    "id": "Q24",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "Where We Can Be Flexible",
+    "question": "Which terms in a UMKC license agreement are flexible and negotiable for startups?",
+    "reference_answer": "Business terms can be customized to the startup's capital position, including: upfront license fee amounts and deferrals, equity percentages, milestone payment triggers, running royalty rates, minimum annual royalties, and patent cost reimbursement schedules.",
+    "key_facts": ["upfront fees and deferral schedules", "equity percentages", "milestone payment triggers", "running royalty rates", "patent cost reimbursement timing"]
+  },
+  {
+    "id": "Q25",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "How to Think About a UMKC License Agreement",
+    "question": "What should startup founders understand about the difference between core terms and business terms?",
+    "reference_answer": "Core terms (indemnification, research reservation, sovereign immunity, government rights) are standardized due to state and federal legal requirements and are not blank-slate negotiations. Founders should focus their negotiation time and attorney resources on flexible business terms (milestones, equity, royalties).",
+    "key_facts": ["core terms are fixed by legal/policy constraints", "focus negotiation on business terms", "not a blank-slate negotiation"]
+  },
+  {
+    "id": "Q26",
+    "category": "UMKC Startup Licensing Guidelines",
+    "source_document": "UMKC Guide to Licensing IP for Startups 062426.docx",
+    "source_section": "Development Plans",
+    "question": "What happens if a startup's technical development plan changes after signing a license?",
+    "reference_answer": "Startups are encouraged to engage with the Commercialization Office early. Agreements can often be amended or adjusted to reflect updated development plans where there is a clear, credible path forward toward commercialization.",
+    "key_facts": ["engage commercialization office early", "agreements can be adjusted/amended", "credible path forward"]
+  },
+  {
+    "id": "Q27",
+    "category": "Public Disclosure & Patent Timelines",
+    "source_document": "UITS 8. Understanding Public Disclosure v0426.pdf",
+    "source_section": "What Counts as Public Disclosure",
+    "question": "What activities constitute a 'public disclosure' that can jeopardize patent rights?",
+    "reference_answer": "Public disclosure includes publishing journal articles, posting preprints (bioRxiv/arXiv), presenting slides or posters at conferences, departmental seminar presentations open to visitors, thesis/dissertation defenses without confidentiality, open-source code postings, websites, and commercial offers for sale.",
+    "key_facts": ["journal papers and preprints", "conference posters and presentations", "thesis defenses without embargo", "commercial offers for sale"]
+  },
+  {
+    "id": "Q28",
+    "category": "Public Disclosure & Patent Timelines",
+    "source_document": "UITS 8. Understanding Public Disclosure v0426.pdf",
+    "source_section": "US vs International Patent Rights",
+    "question": "How does public disclosure affect patent rights in the United States versus internationally?",
+    "reference_answer": "Under 35 U.S.C. 102(b), the United States provides a 1-year grace period from the inventor's first public disclosure to file a patent application. However, almost all international jurisdictions (Europe, Asia) require 'absolute novelty'—meaning any public disclosure before filing immediately destroys all foreign patent rights.",
+    "key_facts": ["US has 1-year grace period", "international requires absolute novelty", "foreign rights destroyed immediately"]
+  },
+  {
+    "id": "Q29",
+    "category": "Public Disclosure & Patent Timelines",
+    "source_document": "UITS 8. Understanding Public Disclosure v0426.pdf",
+    "source_section": "Protecting Discussions",
+    "question": "How can researchers discuss their technology with companies before filing a patent without triggering public disclosure?",
+    "reference_answer": "Researchers must execute a formal Non-Disclosure Agreement (NDA) or Confidential Disclosure Agreement (CDA) through the university commercialization office before sharing non-public technical details with third parties.",
+    "key_facts": ["Non-Disclosure Agreement (NDA / CDA)", "executed through the university commercialization office", "before technical sharing"]
+  },
+  {
+    "id": "Q30",
+    "category": "Public Disclosure & Patent Timelines",
+    "source_document": "UITS 8. Understanding Public Disclosure v0426.pdf",
+    "source_section": "Grant Applications",
+    "question": "Does submitting a federal grant proposal (e.g., NIH or NSF) count as public disclosure?",
+    "reference_answer": "The initial proposal submission is treated confidentially during peer review. However, if funded, the project abstract and title become publicly accessible on federal databases (like NIH RePORTER), and the full application may be subject to Freedom of Information Act (FOIA) requests unless proprietary sections are marked confidential.",
+    "key_facts": ["confidential during peer review", "funded abstracts become public", "subject to FOIA unless marked proprietary"]
+  },
+  {
+    "id": "Q31",
+    "category": "Public Disclosure & Patent Timelines",
+    "source_document": "UITS 11. Strategies for IP Protection v426.pdf",
+    "source_section": "Provisional Patent Applications",
+    "question": "What is a provisional patent application and what timeline does it establish?",
+    "reference_answer": "A provisional patent application establishes an early filing priority date with the USPTO at lower cost and without formal patent claims. It is never examined, does not mature into an enforceable patent on its own, and expires exactly 12 months from filing, by which time a non-provisional (utility) or PCT application must be filed.",
+    "key_facts": ["secures early priority date", "not examined by USPTO", "expires in 12 months", "must convert to non-provisional/PCT"]
+  },
+  {
+    "id": "Q32",
+    "category": "Public Disclosure & Patent Timelines",
+    "source_document": "UITS 11. Strategies for IP Protection v426.pdf",
+    "source_section": "Patentability Requirements",
+    "question": "What are the three core legal requirements for an invention to be patentable under US patent law?",
+    "reference_answer": "Under 35 U.S.C. §§ 101, 102, and 103, an invention must be: 1) Patent-eligible subject matter with practical utility, 2) Novel (new compared to all prior art), and 3) Non-obvious to a person having ordinary skill in the relevant art (PHOSITA).",
+    "key_facts": ["utility (useful subject matter)", "novelty (new)", "non-obviousness"]
+  },
+  {
+    "id": "Q33",
+    "category": "Commercialization Pathways & Startup Formation",
+    "source_document": "UITS 4. Startup or License v426.pdf",
+    "source_section": "Startup vs Licensing Decision",
+    "question": "When is licensing to an established company preferable to forming a university startup?",
+    "reference_answer": "Licensing to an established company is preferable when the invention is an incremental improvement to an existing commercial product line, requires massive capital expenditures for manufacturing/distribution that existing players already have, or when the faculty inventors prefer to remain focused exclusively on academic research.",
+    "key_facts": ["incremental improvement to existing products", "requires existing manufacturing/distribution scale", "inventors prefer not to run a business"]
+  },
+  {
+    "id": "Q34",
+    "category": "Commercialization Pathways & Startup Formation",
+    "source_document": "UITS 4. Startup or License v426.pdf",
+    "source_section": "When to Form a Startup",
+    "question": "When is creating a startup company the right pathway for university technology?",
+    "reference_answer": "A startup is ideal when the technology is a broad platform with multiple potential market applications, is too early-stage or disruptive for risk-averse corporate incumbents to license directly, and has an entrepreneurial champion committed to driving commercialization.",
+    "key_facts": ["platform technology with multiple applications", "too early or disruptive for incumbents", "committed entrepreneurial champion"]
+  },
+  {
+    "id": "Q35",
+    "category": "Commercialization Pathways & Startup Formation",
+    "source_document": "UITS 13. Forming a business v426.pdf",
+    "source_section": "Entity Choice (LLC vs C-Corp)",
+    "question": "Why do venture-backed technology startups typically incorporate as a Delaware C-Corporation rather than an LLC?",
+    "reference_answer": "Venture capital funds generally require C-Corporations because their institutional tax rules prohibit investing in pass-through entities (LLCs), C-Corps allow different classes of preferred stock, stock option plans for employees, and qualified small business stock (QSBS) tax advantages, while Delaware offers specialized chancery courts and predictable corporate law.",
+    "key_facts": ["venture capital funds require C-Corp", "permits preferred stock and stock options", "QSBS tax incentives", "Delaware corporate law predictability"]
+  },
+  {
+    "id": "Q36",
+    "category": "Commercialization Pathways & Startup Formation",
+    "source_document": "UITS 13. Forming a business v426.pdf",
+    "source_section": "Founder Vesting & 83(b)",
+    "question": "What is founder equity vesting and what is the purpose of an IRS Section 83(b) election?",
+    "reference_answer": "Founder vesting (typically 4 years with a 1-year cliff) ensures co-founders earn their equity over time and protects the company if a founder leaves early. An 83(b) election is an IRS tax filing that must be submitted within 30 days of receiving restricted equity, electing to pay tax on the nominal value upfront to avoid massive income taxes as the stock appreciates.",
+    "key_facts": ["4-year vesting with 1-year cliff", "83(b) election filed within 30 days of grant", "prevents ordinary income tax as equity vests"]
+  },
+  {
+    "id": "Q37",
+    "category": "Commercialization Pathways & Startup Formation",
+    "source_document": "UITS 14. Finding Your Founding Team v426.pdf",
+    "source_section": "Faculty Role in Startup",
+    "question": "Can full-time university faculty serve as full-time CEO of their university spinout startup?",
+    "reference_answer": "Typically no. Full-time faculty appointments require a primary commitment of time and effort to the university. Serving as operational CEO creates an unmanageable Conflict of Commitment. Faculty founders usually serve as Chief Scientific Officer (CSO), Chairman of the Scientific Advisory Board (SAB), or board member, while recruiting an experienced external CEO.",
+    "key_facts": ["Conflict of Commitment prevents full-time CEO role", "faculty typically serve as CSO or Scientific Advisory Board head", "recruit external commercial CEO"]
+  },
+  {
+    "id": "Q38",
+    "category": "Commercialization Pathways & Startup Formation",
+    "source_document": "UITS 5. Making Sense of TRLs v426.pdf",
+    "source_section": "Technology Readiness Levels",
+    "question": "What are Technology Readiness Levels (TRLs) and where does university research typically transition to startup development?",
+    "reference_answer": "TRLs range from 1 (basic principles observed) to 9 (operational system deployed). Most university lab research sits at TRL 1–3. Startup formation and translational grant funding (like SBIR/STTR) typically bridge TRL 4–6 ('the valley of death') through laboratory and relevant environment prototyping.",
+    "key_facts": ["TRL scale 1 to 9", "university lab research at TRL 1-3", "startup bridges TRL 4-6 ('valley of death')"]
+  },
+  {
+    "id": "Q39",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "source_document": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+    "source_section": "SBIR vs STTR Principal Investigator Rule",
+    "question": "What is the critical difference regarding Principal Investigator (PI) employment between SBIR and STTR grants?",
+    "reference_answer": "Under SBIR, the PI must be primarily employed (>50%) by the small business at the time of award and cannot be a full-time university employee. Under STTR, the PI can be primarily employed by either the small business or the collaborating research institution (allowing a faculty member to be PI).",
+    "key_facts": ["SBIR: PI must be >50% employed by small business", "STTR: PI can be primarily employed by university"]
+  },
+  {
+    "id": "Q40",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "source_document": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+    "source_section": "Work Allocation Limits",
+    "question": "What percentage of research work must be conducted by the small business in SBIR vs STTR Phase I grants?",
+    "reference_answer": "In SBIR Phase I, the small business must perform at least 67% of the research effort (up to 33% can be subcontracted to the university). In STTR Phase I, the small business must perform at least 40% of the work, and the collaborating research institution must perform at least 30%.",
+    "key_facts": ["SBIR Phase I: minimum 67% by small business", "STTR: minimum 40% by small business and 30% by university"]
+  },
+  {
+    "id": "Q41",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "source_document": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+    "source_section": "Phase I vs Phase II",
+    "question": "What are the funding amounts and objectives of SBIR/STTR Phase I versus Phase II?",
+    "reference_answer": "Phase I provides feasibility and proof-of-concept funding (typically $150,000–$275,000 for 6–12 months). Phase II provides full R&D and commercial prototype development funding (typically $1,000,000–$2,000,000 for 2 years) for successful Phase I awardees.",
+    "key_facts": ["Phase I: feasibility/proof-of-concept ($150k-$275k)", "Phase II: prototype/R&D ($1M-$2M)"]
+  },
+  {
+    "id": "Q42",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "source_document": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+    "source_section": "IP Allocation Agreement",
+    "question": "What mandatory agreement must be in place between a university and a startup before submitting an STTR proposal?",
+    "reference_answer": "An STTR application requires an executed Allocation of Intellectual Property Rights Agreement between the small business and the research institution specifying who owns IP generated during the project and how rights are licensed.",
+    "key_facts": ["Allocation of Intellectual Property Rights Agreement", "signed prior to award/proposal", "governs ownership and licensing of project IP"]
+  },
+  {
+    "id": "Q43",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "source_document": "UITS 16. Startup FInance Guide v426.pdf",
+    "source_section": "Convertible Notes vs SAFEs",
+    "question": "What is the difference between a Convertible Note and a SAFE note in startup fundraising?",
+    "reference_answer": "A Convertible Note is debt that accrues interest, has a maturity date, and converts to equity upon a future qualified priced financing round. A SAFE (Simple Agreement for Future Equity) is not debt, does not carry interest or maturity dates, and represents a contractual right to receive equity in a future financing.",
+    "key_facts": ["Convertible Note: debt with interest and maturity date", "SAFE: non-debt instrument without interest or maturity"]
+  },
+  {
+    "id": "Q44",
+    "category": "Federal Funding, SBIR/STTR & Grants",
+    "source_document": "UITS 16. Startup FInance Guide v426.pdf",
+    "source_section": "Valuation Caps and Discounts",
+    "question": "How do valuation caps and discounts protect early startup angel investors?",
+    "reference_answer": "A discount (typically 15–20%) grants early investors shares at a percentage off the Series A price. A valuation cap sets an upper ceiling on the effective company valuation used to calculate the investor's conversion price, rewarding early risk if the company achieves a high valuation.",
+    "key_facts": ["discount provides 15-20% lower price than next round", "valuation cap sets maximum conversion valuation"]
+  },
+  {
+    "id": "Q45",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "source_document": "UITS 9. Navigating Ethical and Legal Considerations v0426.pdf",
+    "source_section": "Conflict of Interest vs Commitment",
+    "question": "What is the difference between a Conflict of Interest (COI) and a Conflict of Commitment (COC)?",
+    "reference_answer": "A Conflict of Interest occurs when personal financial interests (equity, consulting fees) could bias professional judgment in university research, teaching, or administration. A Conflict of Commitment occurs when outside professional activities (time spent consulting or helping a startup) interfere with fulfilling official university obligations and duties.",
+    "key_facts": ["Conflict of Interest: financial gain biasing university research/decisions", "Conflict of Commitment: outside time/effort interfering with university duties"]
+  },
+  {
+    "id": "Q46",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "source_document": "UITS 9. Navigating Ethical and Legal Considerations v0426.pdf",
+    "source_section": "Student Protections",
+    "question": "What rules protect graduate students when faculty members are involved in a startup company?",
+    "reference_answer": "University policy strictly prohibits faculty from requiring or coercing graduate students to work for faculty-owned startups. Student thesis and dissertation research cannot be restricted or delayed to protect startup commercial trade secrets, and an independent faculty mentor is often appointed.",
+    "key_facts": ["cannot coerce students into startup work", "thesis/dissertation publication cannot be delayed for commercial secrets", "independent faculty mentor required"]
+  },
+  {
+    "id": "Q47",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "source_document": "UITS 9. Navigating Ethical and Legal Considerations v0426.pdf",
+    "source_section": "University Facilities and Supplies",
+    "question": "Can a university faculty startup freely use university laboratories and equipment?",
+    "reference_answer": "No. Faculty startups cannot freely use university facilities, supplies, specialized equipment, or lab personnel. Any use of university resources by a private entity requires a formal, written Facility Use Agreement or Service Agreement with approved market-rate service fees to avoid illegal subsidies and tax compliance violations.",
+    "key_facts": ["cannot freely use university labs/supplies", "requires written Facility Use Agreement", "must pay approved fair-market service fees"]
+  },
+  {
+    "id": "Q48",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "source_document": "UITS 10. Who owns my IP v426.pdf",
+    "source_section": "Undergraduate vs Employed Graduate Students",
+    "question": "Who owns intellectual property created by an undergraduate student during regular coursework?",
+    "reference_answer": "Undergraduate students generally own the IP they create in regular academic coursework using standard university classroom/teaching facilities, provided they are not employed on a university research grant, not using specialized sponsored funds, and not working under an institutional IP agreement.",
+    "key_facts": ["undergraduates generally own coursework IP", "exceptions: employment on research grants or sponsored project agreements"]
+  },
+  {
+    "id": "Q49",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "source_document": "UITS 12. Regulatory Considerations for University Startups v426.pdf",
+    "source_section": "Fundamental Research Exclusion",
+    "question": "What is the Fundamental Research Exclusion in federal export control regulations and how can it be lost?",
+    "reference_answer": "The Fundamental Research Exclusion (FRE) protects basic academic scientific research from ITAR and EAR export control restrictions, allowing foreign nationals to participate without export licenses. However, the FRE is completely destroyed if a researcher or university accepts contract terms restricting publication or limiting the participation of foreign nationals.",
+    "key_facts": ["protects basic university research from export licensing", "allows foreign nationals to participate", "destroyed if publication or foreign participation restrictions are accepted"]
+  },
+  {
+    "id": "Q50",
+    "category": "Ethics, Conflict of Interest & University Facilities",
+    "source_document": "UITS 2. Becoming an Academic Entrepreneur v426.pdf",
+    "source_section": "Managing Dual Roles",
+    "question": "How do academic researchers balance commercialization activities with university tenure and promotion requirements?",
+    "reference_answer": "Researchers must maintain their core academic productivity (peer-reviewed publications, teaching excellence, sponsored grant funding) as evaluated by departmental tenure criteria. Transparent COI management plans and leveraging university commercialization offices allow faculty to commercialize without compromising academic standing.",
+    "key_facts": ["maintain core academic criteria (publications, grants, teaching)", "transparent COI management plan", "work through university commercialization office"]
+  }
+]

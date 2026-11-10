@@ -1,0 +1,306 @@
+--- PAGE 1 ---
+UMKC Impact & Translation Series 
+Financial Basics for UMKC Startups 
+Helping you move your work beyond the university  
+ 
+Financial planning can feel intimidating, especially if 
+your training has focused on research rather than 
+business. But if your work may have potential 
+beyond the university, understanding a few core 
+financial ideas can make a major difference. 
+ 
+Whether your path involves a startup, licensing, 
+external partnership, pilot deployment, or another 
+route to use, financial planning helps you 
+understand what progress will require. It helps you 
+estimate costs, anticipate risks, connect resources 
+to milestones, and make more informed decisions 
+about what path is realistic. 
+ 
+This whitepaper introduces the core financial 
+concepts most relevant to early translation: the 
+three basic financial statements, several key 
+operating metrics, common funding options, and 
+the importance of matching financial planning to the 
+stage and pathway of your work. 
+ 
+Where This Fits in the Translation Process 
+Funding becomes relevant at multiple points in the translation process, but its role changes 
+depending on the stage of the work. 
+ 
+In early stages, funding often supports exploration and validation. This may include feasibility 
+studies, proof-of-concept work, or early customer discovery. At this stage, the goal is not scale. The 
+goal is reducing key uncertainties. 
+ 
+As work progresses, funding begins to support more defined pathways. A licensing strategy, startup 
+pathway, or partnership model may each require different types of capital, timelines, and levels of 
+investment. 
+ 
+Understanding funding in this way shifts the question from “How do I raise money?” to “What does 
+this next step require, and what type of funding actually fits that need?” 
+ 
+ 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+ 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas: how financial planning 
+supports the process of moving 
+research, innovation, and creative 
+work toward real-world impact.
+
+--- PAGE 2 ---
+Why Financial Planning Matters 
+In academic work, we are trained to support ideas with evidence. In translation, financial planning 
+is part of that evidence. It shows that you have started thinking not only about the strength of the 
+idea, but also about what it would take to move that idea into use. 
+ 
+That matters whether you are speaking with a potential licensee, an industry collaborator, an 
+internal university partner, a grant reviewer, or an investor. A realistic financial model helps clarify 
+the scale of the opportunity, the likely cost of progress, the timing of key decisions, and the 
+resources required to reach the next milestone. 
+ 
+Knowing how to use financial information to communicate your innovation can make a meaningful 
+difference when working with partners, funders, or collaborators. It helps you connect funding to a 
+specific next step, identify risks before they become constraints, and demonstrate that your project 
+is being approached with discipline rather than optimism alone. 
+ 
+Done well, financial planning does three things: 
+• Translates science to business. Investors can’t compare “novel polymer” to “ML 
+platform,” but they can compare gross margins and burn. 
+• Flags runway gaps early. A basic cash-flow forecast tells you when to call the Missouri 
+SBDC before panic sets in. 
+• Builds credibility. A tidy income statement suggests you’ll keep grant funds tidy, too. 
+ 
+Reality check: The fastest way to lose a deal isn’t a flawed patent—it’s sloppy numbers. 
+ 
+Meet Your Core Statements 
+As your work begins moving toward external use, three financial statements become increasingly 
+important: the Income Statement, Balance Sheet, and Cash-Flow Statement. 
+ 
+Think of the Income Statement, Balance Sheet, and Cash-Flow Statement as a trio of UMKC 
+basketball stats. One tells you the score, one the roster, and one how gassed the players are. 
+ 
+Statement What It Answers Common Rookie Mistake 
+Income Statement (P&L) 
+Are we making or losing 
+money? 
+Ignoring customer-support or hosting 
+costs, which overstates margins. 
+Balance Sheet 
+What do we own and owe 
+today? 
+Celebrating bookings while 
+receivables age to 90+ days. 
+Cash-Flow Statement 
+Do we have enough gas in the 
+tank to reach the next 
+milestone? 
+Focusing on “profit” while burn 
+accelerates. 
+ 
+UMKC Tip: Keep these linked in one spreadsheet so every assumption ripples automatically.
+
+--- PAGE 3 ---
+Metrics That Help You Evaluate Viability 
+Most external reviewers will not focus equally on every line item. They often look first at a small set 
+of indicators that suggest whether the model is economically plausible, whether costs are 
+understood, and whether growth would become more sustainable over time. 
+ 
+Metric Why It Matters Benchmarks & Watch-outs 
+Gross Margin 
+Shows pricing power and 
+operating leverage. 
+70–90 % for mature SaaS; hardware 
+trends lower. 
+CAC (Customer 
+Acquisition Cost) 
+Measures how much it costs to 
+land a customer. 
+Must fall over time; if CAC > LTV, 
+you’re upside-down. 
+LTV (Lifetime Value) 
+Total revenue per customer 
+minus support costs. 
+Aim for LTV ≥ 3× CAC. 
+Burn Rate & Runway 
+Cash out per month and how 
+long you last. 
+Keep ≥ 12 months runway 
+pre-Series A. 
+ 
+These metrics do not tell the whole story, but they can quickly reveal whether the path you are 
+modeling is becoming more or less viable. 
+ 
+Financial Implications of Different Go-to-Market Paths 
+One of the most important translation decisions is identifying who will adopt, buy, implement, or 
+deploy what you are creating. In some cases, that means selling to organizations. In others, it may 
+involve direct consumer adoption. In still others, the path may involve licensing or institutional 
+implementation rather than immediate sales. 
+ 
+The financial structure of these paths can look very different. Customer acquisition, onboarding, 
+support, and payment timing all affect what kind of model is realistic. Thinking through those 
+differences early can prevent teams from choosing a path that sounds attractive but is financially 
+difficult to sustain. 
+ 
+Whether you’re pitching to hospital systems or TikTok users, success boils down to four cost 
+buckets: acquisition, onboarding, collections, and support. Each behaves differently in B2B and 
+B2C terrain. Model them honestly and you’ll know which go-to-market path your innovation can 
+actually afford. 
+ 
+Cost Bucket B2B Flavor B2C Flavor Keep an Eye On 
+Acquisition 
+Long sales cycle; 
+trade shows, pilots. 
+Digital ads, viral loops; 
+quick but pricey at 
+scale. 
+Track CAC by channel every quarter.
+
+--- PAGE 4 ---
+Onboarding 
+Custom 
+integrations, staff 
+training. 
+Self-serve UX, 
+tutorials. 
+Capitalize eligible setup costs 
+under GAAP. 
+Collections 
+Net-30/60 terms; 
+watch A/R aging. 
+Instant card capture; 
+higher fees. 
+Model days-sales-outstanding. 
+Support & 
+Retention 
+Account managers, 
+lower churn. 
+High ticket volume, 
+higher churn. 
+Treat support headcount as COGS 
+to keep margins honest. 
+ 
+Bottom line: The key question is not whether B2B or B2C sounds more exciting. The key question is 
+whether the economics of that path are realistic for your stage, team, and intended users. 
+ 
+Funding the Next Meaningful Step 
+Funding is often discussed as if it were the goal. In practice, funding is useful only if it helps a 
+project reach a meaningful next milestone. That milestone might be technical validation, regulatory 
+planning, customer discovery, prototype refinement, pilot deployment, or some other step that 
+reduces uncertainty and improves decision-making. 
+ 
+Different kinds of funding support different kinds of progress. Some sources preserve ownership 
+but come with constraints. Others offer speed or flexibility but change control and long-term 
+economics. The right funding approach depends on what you are trying to accomplish next, how 
+much risk has already been reduced, and which pathway to impact appears most realistic. 
+ 
+A useful question to ask is: What is the next concrete milestone, and what kind of capital best fits 
+that milestone? 
+ 
+Debt vs Equity in Plain English 
+• Debt: Cheap control, tax-deductible interest, but you need collateral and cash flow. 
+• Equity: Easier to get for pre-revenue tech, but every share you sell is a share you no longer 
+own. 
+ 
+Non-dilutive & Creative Capital 
+Mix and match: 
+• SBIR/STTR grants for tech milestones. 
+• Pitch contests (UMKC’s Roo Idea events) for quick cash and visibility. 
+• Convertible notes / SAFEs to bridge between grants and priced rounds. 
+ 
+Map each chunk of money to a milestone before you cash the check.
+
+--- PAGE 5 ---
+Building a Model You Can Defend 
+Models aren’t crystal balls; they’re 
+hypothesis-testing labs. The real value is seeing 
+what happens when you nudge a dial—raise 
+price, delay a grant, or spike server costs.  
+ 
+Build an integrated 3-statement model that 
+updates automatically so you’re never caught 
+off-guard. 
+1. Start with hard data - market sizes, 
+conversion rates, supplier quotes. Save 
+each source in a “data room.” 
+2. Mix top-down and bottom-up 
+forecasting so ambition meets reality. 
+3. Add supporting schedules for working 
+capital: receivables, inventory, 
+payables. 
+4. Run at least three scenarios: base, downside, aggressive and know what triggers each. 
+ 
+If you can’t explain an input in 30 seconds, it doesn’t belong in the model. 
+ 
+Avoiding the Faceplants 
+Every month we watch promising projects trip on the same banana peels—over-optimistic sales 
+curves, forgotten support costs, or a cash crunch hiding behind healthy revenue.  
+ 
+This quick-hit checklist will save you painful investor meetings: 
+ 
+Pitfall Quick Fix 
+Ignoring indirect costs Add cloud hosting, compliance, and support to COGS. 
+Over-optimistic revenue Cross-check against market size and sales capacity. 
+Under-staffing forecasts Use revenue-per-employee benchmarks as a sanity check. 
+Skipping working-capital timing Build a 12-month operational cash-flow grid. 
+Sparse communication Send a one-page finance dashboard to stakeholders monthly. 
+ 
+Action Steps (Your 30-Day Plan) 
+If this paper raised useful questions about your work, here are five practical next steps: 
+1. Build a simple pro forma financial model for the next stage of your project, even if the 
+numbers are rough.  
+Guiding Question: 
+What would it actually take 
+to move my work toward 
+real-world use, and how can 
+financial planning help me 
+understand the resources, 
+risks, and next step required 
+to get there?
+
+--- PAGE 6 ---
+2. Identify the next meaningful milestone and estimate the time, cost, and people required to 
+reach it.  
+3. Stress-test your assumptions about pricing, adoption, support costs, and timing.  
+4. Explore what kind of funding best fits your current stage, including non-dilutive options 
+where appropriate.  
+5. Use that financial picture to clarify whether your work is better suited for licensing, 
+partnership, startup formation, or further validation before choosing a path. 
+ 
+Do these and you’ll be ahead of 90% of academic startups. 
+ 
+Conclusion 
+Strong research does not automatically become real-world impact. Moving work beyond the 
+university requires choices about pathway, timing, resources, and risk. Financial planning helps 
+make those choices clearer. 
+ 
+You do not need a perfect model at the outset. But you do need enough clarity to understand what 
+the next step would require, what assumptions you are making, and whether the path you are 
+considering is realistic. 
+ 
+Used well, financial planning is not just a business exercise. It is part of translation. It helps you 
+move from a promising idea to a more grounded understanding of what it would take for that work 
+to create impact beyond the university. 
+ 
+Resources & Contacts 
+UMKC Office of Commercialization 
+Director: Jeff Blackwood, MBA 
+  Website: www.umkcinnovates.com/tech-commercialization 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373 
+ 
+• Missouri SBDC @ UMKC – bookkeeping & cash-flow workshops 
+• Propel Smeal Financial Guides – free templates & tutorials 
+• EY Finance Navigator (academic license) – 3-statement modeling 
+• KCSourceLink – regional funding database and mentor network 
+ 
+(We’re here to help—reach out early and often.)
+

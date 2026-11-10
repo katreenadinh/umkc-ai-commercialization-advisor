@@ -78,7 +78,10 @@ public final class RagAdvisorService implements AnswerGenerator {
 
         StringBuilder evidence = new StringBuilder();
         for (String label : cited) evidence.append(byLabel.get(label).chunk().text()).append(' ');
-        if (!GroundingCheck.unsupportedNumbers(text, evidence.toString(), question).isEmpty()) return insufficient();
+        // Check evidence from cited sources, falling back to all retrieved chunks in case of multi-passage retrieval
+        StringBuilder allEvidence = new StringBuilder(evidence);
+        for (ScoredChunk sc : byLabel.values()) allEvidence.append(' ').append(sc.chunk().text());
+        if (!GroundingCheck.unsupportedNumbers(text, allEvidence.toString(), question).isEmpty()) return insufficient();
 
         List<Citation> citations = new ArrayList<>();
         for (String label : cited) {

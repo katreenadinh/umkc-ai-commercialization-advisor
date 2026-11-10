@@ -1,0 +1,894 @@
+{
+  "evaluation_timestamp": "2026-11-09T22:45:00Z",
+  "model_tested": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+  "benchmark_dataset": "eval/missing_info_benchmark.json",
+  "total_scenarios": 15,
+  "total_evaluated_decisions": 90,
+  "turn_question_accuracy": {
+    "valid_inquiries": 13,
+    "total_questions": 15,
+    "turn_precision_percent": 86.7
+  },
+  "checklist_aggregate_metrics": {
+    "total_TP": 3,
+    "total_FP": 2,
+    "total_FN": 44,
+    "total_TN": 41,
+    "precision_percent": 60.0,
+    "recall_percent": 6.4
+  },
+  "group_breakdowns": {
+    "relatively_complete": {
+      "count": 5,
+      "turn_question_precision": 60.0,
+      "TP": 0,
+      "FP": 2,
+      "FN": 4,
+      "TN": 24,
+      "checklist_precision": 0.0,
+      "checklist_recall": 0.0
+    },
+    "incomplete": {
+      "count": 5,
+      "turn_question_precision": 100.0,
+      "TP": 0,
+      "FP": 0,
+      "FN": 23,
+      "TN": 7,
+      "checklist_precision": 0.0,
+      "checklist_recall": 0.0
+    },
+    "partially_provided": {
+      "count": 5,
+      "turn_question_precision": 100.0,
+      "TP": 3,
+      "FP": 0,
+      "FN": 17,
+      "TN": 10,
+      "checklist_precision": 100.0,
+      "checklist_recall": 15.0
+    }
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "SCEN_01",
+      "group": "relatively_complete",
+      "domain": "Biomedical Research",
+      "title": "Targeted Lipid Nanoparticle for Pancreatic Cancer mRNA Delivery",
+      "raw_response": {
+        "assistant_message": "That's a fascinating project! Your targeted lipid nanoparticle system shows promising results in delivering therapeutic mRNA to pancreatic cancer cells. How does the plectin-1 targeting peptide specifically achieve this targeted delivery?",
+        "actual_question_sentence": "How does the plectin-1 targeting peptide specifically achieve this targeted delivery?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 5
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_02",
+      "group": "relatively_complete",
+      "domain": "Artificial Intelligence & Healthcare",
+      "title": "Privacy-Preserving Federated Foundation Model for Pediatric Rare Diseases",
+      "raw_response": {
+        "assistant_message": "That's a fascinating project, Dr. Rostova. Your federated self-supervised transformer architecture addresses a significant challenge in healthcare privacy while maintaining high diagnostic performance. Could you explain how the model trains across hospital silos without exchanging raw patient data?",
+        "actual_question_sentence": "Could you explain how the model trains across hospital silos without exchanging raw patient data?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 5
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_03",
+      "group": "relatively_complete",
+      "domain": "Materials Science & Clean Energy",
+      "title": "Self-Healing Zirconia-Yttria Thermal Barrier Coating for Gas Turbines",
+      "raw_response": {
+        "assistant_message": "That's a fascinating project! You've developed a self-healing thermal barrier coating that autonomously repairs itself under high-temperature conditions. Could you tell me more about how the coating works, specifically how the titanium dioxide healing precursors are activated and how they fill micro-fractures?",
+        "actual_question_sentence": "Could you tell me more about how the coating works, specifically how the titanium dioxide healing precursors are activated and how they fill micro-fractures?",
+        "asked_field_ids": [
+          "inventor_contributions"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "inventor_contributions",
+        "targeted_category_display": "Inventors (inventor_contributions)",
+        "is_valid_missing_inquiry": false
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 5
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "detected": true,
+          "classification": "FP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_04",
+      "group": "relatively_complete",
+      "domain": "Healthcare Technology & Devices",
+      "title": "Continuous Optical Sensor for Intravascular Catheter Sepsis Monitoring",
+      "raw_response": {
+        "assistant_message": "That's a fascinating project! Your sensor integrates optical surface plasmon resonance (SPR) with fiber-optic technology to detect Staphylococcus aureus endotoxins in real time, which could significantly improve patient outcomes. How does the sensor work to make these real-time detections?",
+        "actual_question_sentence": "How does the sensor work to make these real-time detections?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 5
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_05",
+      "group": "relatively_complete",
+      "domain": "Agriculture & Environmental Technology",
+      "title": "Biodegradable Chitosan Microspheres for Controlled Micronutrient Release",
+      "raw_response": {
+        "assistant_message": "That's a fascinating approach! The cross-linked carboxymethyl chitosan microspheres with chelated zinc and iron nanoparticles sound like a promising solution for sustained nutrient release. How does the biodegradable shell degrade in response to rhizosphere organic acid secretions?",
+        "actual_question_sentence": "How does the biodegradable shell degrade in response to rhizosphere organic acid secretions?",
+        "asked_field_ids": [
+          "previous_public_disclosures"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "previous_public_disclosures",
+        "targeted_category_display": "Public Disclosure (previous_public_disclosures)",
+        "is_valid_missing_inquiry": false
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 1,
+        "FN": 1,
+        "TN": 4
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "detected": true,
+          "classification": "FP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_06",
+      "group": "incomplete",
+      "domain": "Computer Science & Cryptography",
+      "title": "Asymmetric Lattice-Based Cryptographic Accelerator for Edge IoT",
+      "raw_response": {
+        "assistant_message": "That's an interesting approach! Your hardware crypto-accelerator architecture sounds like it could be a significant improvement for resource-constrained smart grid meters. Could you explain how the systolic polynomial multiplier executes post-quantum key exchanges on microcontrollers?",
+        "actual_question_sentence": "Could you explain how the systolic polynomial multiplier executes post-quantum key exchanges on microcontrollers?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 5,
+        "TN": 1
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_07",
+      "group": "incomplete",
+      "domain": "Engineering & Soft Robotics",
+      "title": "Hydraulically Actuated Compliant Endoscopic Surgical Gripper",
+      "raw_response": {
+        "assistant_message": "That's a fascinating project! You've developed a soft robotic gripper that can grasp delicate tissue without causing damage. Could you describe how the microfluidic channels and pressurized saline affect the gripper's behavior?",
+        "actual_question_sentence": "Could you describe how the microfluidic channels and pressurized saline affect the gripper's behavior?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 4,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_08",
+      "group": "incomplete",
+      "domain": "Energy & Environmental Technology",
+      "title": "Porous Graphene Aerogel Electrode for Electrosorption Water Desalination",
+      "raw_response": {
+        "assistant_message": "That's an interesting approach. You've developed a nitrogen-doped 3D porous graphene aerogel monolith for removing sodium chloride from brackish water. How does the nitrogen-doping and the 3D porous structure contribute to its performance in electrosorption?",
+        "actual_question_sentence": "How does the nitrogen-doping and the 3D porous structure contribute to its performance in electrosorption?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 5,
+        "TN": 1
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "applications": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_09",
+      "group": "incomplete",
+      "domain": "Biomedical & Diagnostics",
+      "title": "DNAzyme Molecular Probe for Single-Step Circulating Tumor DNA Detection",
+      "raw_response": {
+        "assistant_message": "That's an interesting approach. Your catalytic DNAzyme beacon sounds like it could offer a faster and more straightforward method for detecting specific mutant DNA sequences. How does the beacon work to emit a fluorescent signal upon cleaving the target sequence?",
+        "actual_question_sentence": "How does the beacon work to emit a fluorescent signal upon cleaving the target sequence?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 5,
+        "TN": 1
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_10",
+      "group": "incomplete",
+      "domain": "Materials Science & Metallurgy",
+      "title": "Ultralight High-Entropy Alloy with Nanotwinned Microstructure",
+      "raw_response": {
+        "assistant_message": "Got it. That's an interesting material with potential for high-strength, high-ductility applications. How does the spark plasma sintering process work to achieve these properties?",
+        "actual_question_sentence": "How does the spark plasma sintering process work to achieve these properties?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 4,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_11",
+      "group": "partially_provided",
+      "domain": "Healthcare Technology & Sensors",
+      "title": "Minimally Invasive Microneedle Patch for Interstitial Cortisol Tracking",
+      "raw_response": {
+        "assistant_message": "That sounds like an innovative approach to monitoring cortisol levels. The wearable microneedle array with electrochemical aptamer sensors is a promising solution for Addison's disease monitoring. How does the electrochemical aptamer sensor work to detect cortisol levels in the interstitial fluid?",
+        "actual_question_sentence": "How does the electrochemical aptamer sensor work to detect cortisol levels in the interstitial fluid?",
+        "asked_field_ids": [
+          "inventor_contributions"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "inventor_contributions",
+        "targeted_category_display": "Inventors (inventor_contributions)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 1,
+        "FP": 0,
+        "FN": 3,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PARTIAL",
+          "detected": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_12",
+      "group": "partially_provided",
+      "domain": "Artificial Intelligence & Robotics",
+      "title": "Vision-Inertial Simultaneous Localization for GPS-Denied Underground Mining",
+      "raw_response": {
+        "assistant_message": "That's an interesting approach. How does the algorithm specifically handle the dust and maintain real-time navigation?",
+        "actual_question_sentence": "How does the algorithm specifically handle the dust and maintain real-time navigation?",
+        "asked_field_ids": [
+          "inventor_contributions"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "inventor_contributions",
+        "targeted_category_display": "Inventors (inventor_contributions)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 1,
+        "FP": 0,
+        "FN": 3,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PARTIAL",
+          "detected": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_13",
+      "group": "partially_provided",
+      "domain": "Agriculture & Bioengineering",
+      "title": "Engineered Biochar Hydrogel for Arid Soil Moisture Retention",
+      "raw_response": {
+        "assistant_message": "That's an interesting approach. You've developed a biochar composite that improves soil moisture retention and carbon sequestration. How does the crosslinked polyacrylamide interact with the pyrolyzed corn-stover biochar to achieve these effects? For example, does it affect the biochar's structure or release water in response to moisture levels?",
+        "actual_question_sentence": "How does the crosslinked polyacrylamide interact with the pyrolyzed corn-stover biochar to achieve these effects? For example, does it affect the biochar's structure or release water in response to moisture levels?",
+        "asked_field_ids": [
+          "previous_public_disclosures"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "previous_public_disclosures",
+        "targeted_category_display": "Public Disclosure (previous_public_disclosures)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 1,
+        "FP": 0,
+        "FN": 3,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PARTIAL",
+          "detected": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_14",
+      "group": "partially_provided",
+      "domain": "Energy & Battery Technology",
+      "title": "Non-Aqueous Organic Redox Flow Battery with Quinone-Derivatized Electrolyte",
+      "raw_response": {
+        "assistant_message": "That's an exciting project! Your battery uses a functionalized dihydroxyanthraquinone electrolyte, which is a significant improvement over traditional vanadium flow batteries. How does the functionalization of the electrolyte affect the battery's performance, such as its cost and cell voltage?",
+        "actual_question_sentence": "How does the functionalization of the electrolyte affect the battery's performance, such as its cost and cell voltage?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 4,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "scenario_id": "SCEN_15",
+      "group": "partially_provided",
+      "domain": "Computer Science & Embedded Systems",
+      "title": "Ultra-Low-Power Neuromorphic Spike Processor for Implantable Cardiac Monitors",
+      "raw_response": {
+        "assistant_message": "That's an impressive achievement! Your asynchronous neuromorphic spiking neural network microcontroller addresses a significant challenge in cardiac monitoring. Could you describe the key components or mechanisms that enable the low-power operation and high accuracy in classifying ventricular arrhythmias?",
+        "actual_question_sentence": "Could you describe the key components or mechanisms that enable the low-power operation and high accuracy in classifying ventricular arrhythmias?",
+        "asked_field_ids": [
+          "technical_description"
+        ]
+      },
+      "turn_question_evaluation": {
+        "targeted_field": "technical_description",
+        "targeted_category_display": "Technical Description (Form UM-16C A.1.b)",
+        "is_valid_missing_inquiry": true
+      },
+      "metrics": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 4,
+        "TN": 2
+      },
+      "category_breakdown": {
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "detected": false,
+          "classification": "FN"
+        },
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "detected": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "detected": false,
+          "classification": "FN"
+        }
+      }
+    }
+  ]
+}

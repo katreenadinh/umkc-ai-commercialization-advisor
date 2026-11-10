@@ -1,0 +1,337 @@
+UMKC Guide to Licensing University IP for Startups
+
+Purpose of This Guide
+
+This document is intended to help founders, entrepreneurs, and startup teams understand how the University of Missouri Kansas City (UMKC) approaches licensing university-owned intellectual property (IP).
+
+Our goal is to provide clarity on how license agreements are structured, where flexibility exists, and how we work with startups to create commercially viable companies built on UMKC technology.
+
+This guide does not replace legal advice. Founders should engage their own attorneys when reviewing and negotiating any agreement. References to sections of the license agreement are provided for convenience only and do not modify or interpret the agreement.
+
+How to Think About a UMKC License Agreement
+
+A UMKC license agreement is not a blank-slate negotiation. It is a structured framework with:
+
+Core terms that are standardized due to legal, policy, and institutional requirements
+
+Business terms that can be structured to align with the needs of a startup
+
+Understanding the difference between these categories will reduce negotiation time and help focus discussions on the areas that matter most.
+
+What a License Grants (in practical terms)
+
+A UMKC startup license typically provides:
+
+Exclusive rights to develop and commercialize the technology within a defined field of use and territory
+
+The ability to sublicense those rights to partners, subject to University approval
+
+Access to the underlying intellectual property as it evolves, subject to the terms of the agreement
+
+In practice, startup development paths often evolve. These rights are paired with obligations related to development progress, reporting, and financial participation, and companies are expected to maintain reasonable progress toward commercialization within their defined field of use.
+
+If development plans change, companies are encouraged to engage with the Office of Commercialization early. In many cases, agreements can be adjusted to reflect updated plans where there is a clear and credible path forward.
+
+If reasonable progress is not maintained, the University may modify exclusivity or terminate the agreement in accordance with its terms.
+
+Terms That Are Fixed
+
+As a public research university operating within the UM System, certain elements are not typically negotiable within UM System agreements. These terms are handled consistently across agreements, subject to applicable federal law, institutional policy, and risk management requirements.
+
+Research and publication rights
+
+Defined in Section 2
+
+UMKC retains the right to use licensed technology for research, teaching, and academic purposes and to allow other non-profit entities to use the licensed technology for non-commercial research purposes (2.04)
+
+The University maintains the right to publish research results
+
+Indemnification, insurance, and liability structure
+
+Defined in Article VI
+
+Licensees must indemnify the University and carry appropriate insurance
+
+The University provides the licensed technology “as is” and does not make representations or warranties regarding performance, commercial viability, or non-infringement
+
+Agreements include standard limitations of liability and warranty disclaimers, including exclusion of consequential damages
+
+As a public institution, the University operates under sovereign immunity and does not waive those protections
+
+Government rights when applicable
+
+Reflected in Section 2 and related provisions
+
+May include government-use rights, march-in rights, and U.S. manufacturing requirements
+
+These are required under federal law or policy and are not typically modified
+
+Reporting and compliance requirements
+
+Defined in Article IV
+
+Licensees must report on development progress, commercialization, and revenue
+
+Core sublicensing framework
+
+Defined in Section 2.03
+
+Requires University visibility and approval
+
+Ensures obligations flow down to sublicensees
+
+These elements are consistent across agreements and tied to legal and policy constraints.
+
+Where We Can Be Flexible
+
+While the legal framework is largely fixed, the business terms of a license agreement can be structured to align with a startup’s stage, capital position, and commercialization strategy.
+
+These elements function as “levers.” They are typically not optimized independently. Instead, they are balanced against each other based on the specifics of the opportunity.
+
+NOTE: The examples below are illustrative and depend on the specific facts of each opportunity and internal approvals.
+
+Financial Structure (Article III)
+
+Includes:
+
+Running royalty rate Section 3.01 to include royalty payment from sublicensee in 3.02(a)
+
+Upfront or license execution fee Section 3.01(a)
+
+Minimum annual royalties Section 3.01(d)
+
+Milestone payments Section 3.01(e)
+
+Sublicense revenue sharing Section 3.02 (b)
+
+Success fee Section 3.03
+
+How this is typically structured:
+
+Early-stage companies with limited capital often have lower upfront costs and back-loaded economics
+
+More validated technologies or later-stage companies may support higher upfront payments or earlier financial commitments
+
+Royalty rates are influenced by risk, market size, and how much additional development is required
+
+Sublicense revenue sharing is influenced by whether the business model depends on partnerships or downstream licensing and is designed to align incentives between the company and the University while supporting partnership-driven growth
+
+UMKC’s approach may include alternative structures such as success-based participation or equity depending on the opportunity
+
+In most cases, these elements are adjusted together. For example, reducing upfront cost may result in higher downstream participation.
+
+Timing of Economic Obligations
+
+Includes:
+
+When payments begin
+
+When milestones are triggered
+
+How obligations align with financing and revenue
+
+How this is typically structured:
+
+For early-stage startups, economic obligations are often deferred until key inflection points such as financing or first commercial sale
+
+For companies closer to market, obligations may begin earlier
+
+Milestones are ideally tied to meaningful business events rather than arbitrary dates
+
+This is often an important lever in startup licensing. Adjusting timing can significantly reduce early pressure without reducing overall economic value.
+
+Scope of Exclusivity
+
+Includes:
+
+Field of use and territory Section 2.01
+
+How this is typically structured:
+
+Narrower fields of use or territories may allow for more favorable economic terms
+
+Broader exclusivity typically requires stronger diligence commitments and more robust financial structure
+
+Exclusivity is granted based on the company’s ability to execute within the defined scope
+
+In practice, this lever is often used to balance risk. The broader the rights granted, the higher the expectation of performance.
+
+Diligence and Commercialization Milestones
+
+Includes:
+
+Development timelines
+
+Commercialization expectations
+
+Revenue or deployment targets
+
+Defined in Article IV and diligence provisions
+
+How this is typically structured:
+
+Milestones are aligned with realistic technical and market development timelines
+
+Early-stage companies may have longer timelines with defined checkpoints
+
+More mature opportunities may require faster progression to market
+
+Diligence provisions are used to ensure forward progress, not to create artificial pressure. It also provides a mechanism to adjust exclusivity if progress is not achieved.
+
+Patent Expense Handling
+
+Includes:
+
+Responsibility for patent prosecution and maintenance costs defined in Section 7 and patent ownership and process control
+
+How this is typically structured:
+
+Licensees are typically responsible for patent costs due to limited University resources
+
+In certain cases (and subject to internal approval), the timing of reimbursement may be adjusted including potential deferral for a defined period, typically not exceeding two years, or until financing or commercialization milestones are met
+
+For better-capitalized companies, reimbursement may begin immediately
+
+This is often a practical constraint rather than a negotiating position. Timing adjustments are common, but the underlying obligation is generally expected.
+
+Key Principle
+
+These “levers” are not used in isolation. The University’s participation reflects its role in developing and providing access to the underlying intellectual property, and terms are structured based on:
+
+Stage of the technology
+
+Capital required to commercialize
+
+Time to revenue
+
+Strength of the team
+
+Commercial model and market opportunity
+
+The goal is to create a structure that supports company success while maintaining a commercially reasonable return on University IP.
+
+In most cases, this means aligning  the approximate timing of economic obligations to occur when the company has the resources to meet them.
+
+How Economics Are Determined
+
+Industry data, including AUTM surveys, provides general benchmarks for license terms. However, no single number applies across all deals. These benchmarks provide general context and do not determine specific deal terms or outcomes.
+
+Where a specific agreement lands depends on:
+
+Stage of technology development
+
+Strength and breadth of the IP
+
+Capital required to commercialize
+
+Time to market and revenue
+
+Size and clarity of the commercial opportunity
+
+Experience and track record of the team
+
+Commercialization model, including use of partnerships or sublicensing
+
+As a general principle: Earlier-stage, higher-risk opportunities are typically structured to defer economic burden but not eliminate it.
+
+Example of Startup-Aligned Structuring
+
+The same underlying economics can be structured differently depending on company stage.
+
+Standard structure
+
+Startup-aligned structure
+
+Patent costs reimbursed as incurred
+
+Patent costs deferred until financing, first commercial sale, or a defined period (typically not exceeding two years)
+
+Milestone payment triggered at a single threshold
+
+Milestone payments split across multiple thresholds
+
+Minimum annual royalties begin on a fixed timeline
+
+Minimum annual royalties tied to commercialization milestones rather than calendar years
+
+In both cases, the total economic value to the University may be similar. The difference is in how obligations are sequenced to support company growth.
+
+What We Look for in a Startup Partner
+
+We are able to move faster and be more flexible when we have confidence in a company’s ability to execute. These factors help inform how agreements are structured across opportunities.
+
+Founders can improve the speed and outcome of the licensing process by demonstrating:
+
+Clear commercialization plan
+
+Defined customer and use case
+
+Path to market
+
+Development roadmap
+
+Key technical and commercial milestones
+
+6-to-18-month execution plan
+
+Capital strategy
+
+Expected funding sources and timing
+
+Alignment between funding and development milestones
+
+Team capability
+
+Relevant technical and business experience
+
+Clear leadership and accountability
+
+Partnership or sublicensing strategy
+
+Whether the model depends on partnerships
+
+Expected structure of those relationships
+
+Engagement with the technology
+
+Understanding of the IP
+
+Awareness of risks and limitations
+
+The more clearly these elements are defined, the more effectively we can structure terms that align with the company’s needs.
+
+How to Move Efficiently Toward an Agreement
+
+To streamline the licensing process, early discussions should focus on:
+
+Commercialization plan
+
+Development timeline and key risks
+
+Capital strategy
+
+Alignment on these elements allows us to:
+
+Structure appropriate economic terms
+
+Avoid unnecessary negotiation cycles
+
+Move more quickly toward execution
+
+Final Note
+
+UMKC’s goal is to enable the successful translation of university research into real-world impact through startup formation and industry engagement.
+
+License agreements are a tool to support that outcome. The most effective agreements:
+
+Provide startups with flexibility to grow
+
+Maintain accountability for commercialization
+
+Ensure a fair and reasonable return while enabling successful commercialization
+
+We look forward to working with founders who are committed to building companies around UMKC innovations.
+
+If you are interested in licensing UMKC IP or would like to discuss a specific opportunity, we encourage you to contact the UMKC Office of Commercialization at techcomm@umkc.edu or (816) 235-6373.
+
+Engaging early allows us to better align on your business model, development plan, and the most appropriate structure for a license agreement.

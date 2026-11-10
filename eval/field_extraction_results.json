@@ -1,0 +1,88 @@
+{
+  "evaluation_target": "Form UM-16C Preparation Notes Field Extraction (Figure 4)",
+  "model": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+  "grounding_guard": "GroundingCheck.java + TextOverlap.java",
+  "total_scenarios": 15,
+  "total_decisions_evaluated": 90,
+  "summary": {
+    "overall_precision_pct": 92.5,
+    "overall_recall_pct": 87.5,
+    "overall_f1_pct": 89.9,
+    "overall_accuracy_pct": 87.8,
+    "grounding_verification_pct": 95.6
+  },
+  "by_category": [
+    {
+      "category": "applications",
+      "name": "Commercial Applications & Target Markets\n(Form UM-16C \u00a7A.4)",
+      "precision": 91.7,
+      "recall": 91.7,
+      "f1": 91.7,
+      "grounding_compliance": 93.3,
+      "tp": 11,
+      "fp": 1,
+      "fn": 1,
+      "tn": 2
+    },
+    {
+      "category": "differentiation",
+      "name": "Differentiation & Novelty\n(Form UM-16C \u00a7A.3)",
+      "precision": 90.9,
+      "recall": 90.9,
+      "f1": 90.9,
+      "grounding_compliance": 93.3,
+      "tp": 10,
+      "fp": 1,
+      "fn": 1,
+      "tn": 3
+    },
+    {
+      "category": "development_stage",
+      "name": "Development Stage & Testing Evidence\n(Form UM-16C \u00a7A.2)",
+      "precision": 90.9,
+      "recall": 83.3,
+      "f1": 87.0,
+      "grounding_compliance": 93.3,
+      "tp": 10,
+      "fp": 1,
+      "fn": 2,
+      "tn": 2
+    },
+    {
+      "category": "inventors",
+      "name": "Inventorship & Research Contributors\n(Form UM-16C \u00a7B.1)",
+      "precision": 100.0,
+      "recall": 87.5,
+      "f1": 93.3,
+      "grounding_compliance": 100.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "tn": 7
+    },
+    {
+      "category": "funding_support",
+      "name": "Funding Sources & Grant Sponsorship\n(Form UM-16C \u00a7C.1)",
+      "precision": 100.0,
+      "recall": 85.7,
+      "f1": 92.3,
+      "grounding_compliance": 100.0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "tn": 8
+    },
+    {
+      "category": "public_disclosure",
+      "name": "Public Disclosure & Timelines\n(Form UM-16C \u00a7D.1)",
+      "precision": 83.3,
+      "recall": 83.3,
+      "f1": 83.3,
+      "grounding_compliance": 93.3,
+      "tp": 5,
+      "fp": 1,
+      "fn": 1,
+      "tn": 8
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+--- PAGE 1 ---
+1 | P a g e  
+ 
+UMKC Impact & Translation Series 
+Making Sense of Technology Readiness Levels 
+A Practical Framework for Moving Your Work Toward Real-World Impact  
+ 
+Technology Readiness Levels (TRLs) provide a 
+structured, universal framework to assess the 
+maturity of innovations as they move from initial 
+discovery to market adoption. Originally developed 
+by NASA, TRLs are now used across federal 
+agencies and industries to evaluate readiness and 
+mitigate risks.  
+ 
+For UMKC researchers, understanding TRLs offers a 
+strategic advantage in project planning, 
+commercialization, and industry engagement. This 
+whitepaper introduces the TRL framework and 
+explores how it applies across diverse academic 
+disciplines, from medicine to the arts. 
+ 
+This guide is not intended to make you an expert in 
+Technology Readiness Levels. It is intended to help 
+you use TRLs as a practical tool to better understand 
+where your work stands today, what risks remain, and what would need to happen for that work to 
+function outside the university. 
+Why TRLs Matter at UMKC 
+At UMKC, faculty members contribute transformative ideas across a wide array of disciplines. 
+Whether developing life-saving therapies, advancing next-generation technologies, or creating 
+groundbreaking artistic works, researchers often face the same question: "How ready is this 
+innovation for real-world application?"  
+ 
+Technology Readiness Levels offer a clear answer. These nine levels, which mark the journey from 
+concept to full deployment, allow innovators to communicate maturity levels with funders, 
+partners, and technology transfer offices.  
+ 
+Importantly, TRLs also help identify necessary steps to advance a project—whether that means 
+prototyping, clinical testing, or regulatory navigation. Understanding this framework positions 
+UMKC researchers to more effectively translate discoveries into societal impact. 
+ 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+ 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas: how to use TRLs to 
+assess the readiness of your work 
+for real-world use.
+
+--- PAGE 2 ---
+2 | P a g e  
+ 
+Within the UMKC Impact & Translation Series, TRLs serve as one way to think about readiness. They 
+do not measure how good or innovative an idea is. They help clarify how much uncertainty has been 
+reduced and how close that work is to functioning in a real-world setting. 
+Understanding the TRL Scale 
+TRLs offer a shared vocabulary to describe the evolution of an idea into a usable, validated solution. 
+Each level marks a critical milestone that builds upon the last, creating a roadmap from research to 
+deployment.  
+ 
+ 
+TRL 1: Foundational Discovery - Basic principles have been observed. This level includes 
+early-stage research and published findings that form the basis for a new idea. 
+ 
+TRL 2: Concept Formulation - Practical applications are identified, but remain speculative. 
+Initial hypotheses and theoretical models begin to take shape. 
+ 
+TRL 3: Experimental Proof of Concept - Laboratory studies validate core assumptions. 
+Experiments demonstrate that the concept works under controlled conditions. 
+ 
+TRL 4: Lab-Based Validation - Key components are built and tested in a laboratory setting. 
+The system or process shows functionality and feasibility in a simplified environment. 
+ 
+TRL 5: Simulated Environment Testing - Prototypes or components are validated in 
+environments that mimic real-world conditions. This marks the beginning of bridging lab 
+and field.
+
+--- PAGE 3 ---
+3 | P a g e  
+ 
+ 
+TRL 6: Relevant Environment Demonstration - A system or prototype is tested in a setting 
+that reflects real operating conditions. This is typically the final step before operational field 
+testing. 
+ 
+TRL 7: Operational Environment Demonstration - The prototype is deployed in an actual 
+operating environment. The system is integrated with real-world infrastructure or workflows. 
+ 
+TRL 8: Final System Qualification - The complete system undergoes rigorous testing and 
+quality assurance to meet all operational criteria. Final refinements are made. 
+ 
+TRL 9: Proven System in Use - The technology is in full use and has proven effective 
+through successful mission operations or market validation. 
+ 
+Most academic research begins in TRL 1–3. Real-world use typically requires reaching TRL 6–9. 
+Each of these levels provides a critical opportunity for UMKC researchers to assess progress, plan 
+next steps, and communicate readiness to stakeholders. 
+How TRLs Apply Across UMKC Research Fields 
+TRLs are not just for aerospace and engineering. Their structured approach to development applies 
+across UMKC's diverse research landscape.  
+ 
+TRLs focus on technical development, but technical readiness alone is not enough to create 
+impact. Work may function in a lab or controlled setting and still fail to translate if it does not align 
+with real-world conditions, users, or constraints. 
+ 
+As you assess your work, it is important to consider both: 
+• Technical readiness (Does it work?)  
+• Real-world readiness (Does it matter? Will it be used?)  
+ 
+Strong translation requires progress on both dimensions. Understanding how TRLs map to your 
+field helps clarify goals, timelines, and partnership opportunities. 
+ 
+Drug Development: From Molecules to Medicine 
+Translating laboratory discoveries into safe, effective therapies is a long and complex process. Drug 
+development involves rigorous evaluation to ensure both safety and efficacy before a compound 
+ever reaches a patient.  
+ 
+The TRL framework maps this journey clearly—from understanding molecular mechanisms to 
+navigating human trials and regulatory approvals—helping researchers anticipate the milestones 
+and requirements needed for each stage.
+
+--- PAGE 4 ---
+4 | P a g e  
+ 
+Basic Research (TRL 1-3) - Exploration of disease mechanisms and initial compound 
+screening define early progress in pharmaceuticals. This work establishes theoretical and 
+empirical groundwork. 
+ 
+Preclinical Testing (TRL 4-5) – Candidate drugs undergo lab-based and animal studies to 
+assess safety and efficacy. Validation here supports decisions to move into human trials. 
+ 
+Clinical Trials (TRL 6-7) - Phase I and II trials test the drug in humans, assessing dosage, 
+effectiveness, and side effects. Success indicates real-world feasibility. 
+ 
+Market Readiness (TRL 8-9) - Phase III trials and FDA approval represent system 
+qualification. Once the drug is prescribed and in use, it reaches full TRL 9 maturity. 
+ 
+Medical Devices: Engineering with Impact 
+Medical devices are at the intersection of engineering, health sciences, and regulatory oversight. 
+Whether developing wearable sensors, imaging systems, or surgical tools, innovators must 
+demonstrate both technical performance and patient safety.  
+ 
+TRLs provide a structured lens through which UMKC researchers can advance from a promising 
+concept to a clinically accepted tool, highlighting the steps from benchtop validation to human 
+trials and full deployment in care settings. 
+ 
+Concept and Feasibility (TRL 1-3) - Innovators explore materials, mechanisms, and user 
+needs. Early-stage prototypes and simulations guide the design. 
+ 
+Bench Testing (TRL 4-6) - Devices are tested in labs and simulated environments. FDA 
+design controls often begin during this phase to prepare for regulatory pathways. 
+ 
+Human Trials and Approvals (TRL 7-9) - Clinical trials, 510(k) clearance, or PMA approval 
+bring the technology into clinical practice, validating safety and effectiveness. 
+ 
+Engineering Projects: Building Toward Real-World Solutions 
+Engineering innovation often begins with theoretical models and progresses through iterative 
+design, testing, and deployment. Whether focused on infrastructure, energy systems, or digital 
+platforms, projects must evolve from feasibility to function in real-world environments. TRLs help 
+engineering researchers at UMKC chart a logical path from initial sketches to robust, field-tested 
+solutions—ensuring each stage of development meets increasing levels of rigor and relevance. 
+ 
+Design and Modeling (TRL 1-3) - Engineers use sketches, CAD models, and theoretical 
+analyses to explore a concept's feasibility and potential.
+
+--- PAGE 5 ---
+5 | P a g e  
+ 
+Prototype Development (TRL 4-6) - Physical builds and lab-based performance testing are 
+conducted. Teams begin integrating components into working systems. 
+ 
+Deployment and Optimization (TRL 7-9) - Solutions are tested in the field—on roadways, 
+buildings, or data networks. Refinements occur through real-world performance feedback. 
+ 
+Creative and Digital Works: Innovation in Expression 
+Creative works and digital experiences follow their own arc of development, from inspiration and 
+experimentation to release and audience engagement.  
+ 
+For artists, designers, and digital developers, TRLs offer a way to frame the creative process within a 
+development pathway—recognizing the maturation of ideas through prototyping, refinement, and 
+real-world interaction. This perspective empowers UMKC creators to plan, iterate, and launch with 
+greater strategic clarity. 
+ 
+Ideation and Mockups (TRL 1-3) - Artists, designers, and developers explore themes and 
+create initial drafts, whether musical compositions, visual concepts, or code frameworks. 
+ 
+Prototype and Beta Testing (TRL 4-6) - Works take form in testable formats such as demo 
+recordings, app betas, or interactive installations. 
+ 
+Public Release (TRL 7-9) - Distribution, exhibition, or public use validates impact and 
+readiness. When a digital tool or artistic work is actively engaged with by its intended 
+audience, it reaches maturity. 
+ 
+This cross-sector versatility makes TRLs an invaluable planning and communication tool for 
+UMKC's research community. 
+Integrating TRLs with Manufacturing Readiness 
+Once technologies reach the mid-to-late TRLs, questions of scale, consistency, and supply chain 
+reliability come into focus. That’s where Manufacturing Readiness Levels (MRLs) align with TRLs to 
+guide decisions around production. 
+ 
+Prototype Manufacturing (MRL 4-6) - Processes are developed to produce small batches 
+of the innovation. Key challenges such as quality assurance and repeatability are 
+addressed. 
+ 
+Full Production Capability (MRL 7-9) - Systems are in place for large-scale manufacturing, 
+including process controls, workforce training, and supplier management. This stage aligns 
+closely with TRL 8-9, ensuring the technology is not only usable but also reproducible at 
+scale.
+
+--- PAGE 6 ---
+6 | P a g e  
+ 
+In practice, TRLs and MRLs often advance together as work moves closer to real-world use. Ignoring 
+manufacturing readiness too long can delay or prevent impact. UMKC researchers working on 
+products with commercial potential should begin MRL planning by TRL 5-6 to align timelines and 
+resources effectively. 
+Planning Next Steps Using 
+TRLs at UMKC 
+TRLs are most valuable when used to guide 
+decision-making and project development. At 
+UMKC, researchers can leverage the framework 
+to clarify needs and unlock resources. 
+ 
+1. Self-Assess Your Project - Identify your 
+current TRL and what evidence supports 
+that assessment. Then define what 
+would need to be true to move to the 
+next level. 
+ 
+2. Meet with the Office of Commercialization - Use TRLs as a starting point for conversation, 
+not a conclusion. UMKC’s commercialization staff can help verify your TRL stage, identify 
+funding sources, and connect you with development partners or mentors. 
+ 
+3. Incorporate TRLs into Grant Proposals - Federal agencies increasingly require a TRL 
+assessment in SBIR, STTR, and translational grant applications. Including this framework 
+signals preparedness. 
+ 
+4. Leverage Peer Learning Opportunities - Join faculty learning communities or innovation 
+lunches to workshop TRL strategies and see how others at UMKC have navigated their 
+journey. 
+ 
+The goal is not to assign a number to your work. The goal is to clarify what needs to happen next. By 
+consistently applying this model, researchers can more confidently navigate the path to impact. 
+Conclusion: A Shared Framework for Innovation Success 
+Technology Readiness Levels provide UMKC researchers with a structured lens through which to 
+view their innovation journey. From initial insight to public benefit, TRLs clarify both where you are 
+and what must come next.  
+ 
+Importantly, this model transcends disciplines and makes it easier for faculty to align with industry, 
+investors, and funders.  
+ 
+Guiding Question: 
+Where does your work 
+currently stand in terms of 
+readiness, and what would 
+need to happen for it to 
+function outside the 
+university?
+
+--- PAGE 7 ---
+7 | P a g e  
+ 
+Technology Readiness Levels are most useful when they change how you think about your work. 
+They provide a way to step back, assess what has been proven, identify what remains uncertain, 
+and understand what it would take for your work to function beyond the university. That clarity is 
+what enables impact. 
+Resources & Contacts 
+UMKC Office of Commercialization 
+Director: Jeff Blackwood, MBA 
+  Website: www.umkcinnovates.com/tech-commercialization 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373 
+ 
+• NASA Technology Readiness Level Guidebook 
+• FDA Drug Development Process 
+• Office of the Under Secretary of Defense TRA Guide
+

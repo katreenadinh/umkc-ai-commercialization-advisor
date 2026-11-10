@@ -1,0 +1,496 @@
+--- PAGE 1 ---
+1 | P a g e  
+  
+UMKC Impact & Translation Series 
+Finding Your Founding Team 
+Helping you move your work beyond the university  
+ 
+Forming the right team is one of the most important 
+early decisions when work begins to move beyond 
+the university into real-world use. This whitepaper 
+distills best practices from both national startup 
+ecosystems and UMKC’s own experience to help 
+faculty and graduate students identify, recruit, and 
+structure an effective founding team.  
+ 
+Readers will learn (1) which core roles matter most 
+at the very beginning, (2) how to balance skills, 
+motivation, and culture, and (3) pragmatic steps to 
+move from idea toward a structured effort capable 
+of reaching real-world use.. 
+ 
+Introduction 
+A brilliant invention rarely becomes a successful 
+company without a complementary team behind it.  
+ 
+At UMKC, we regularly see that commercialization 
+efforts accelerate when researchers pair their technical insight with partners who excel in market 
+discovery, product development, and early-stage business building.  
+ 
+Yet many university-based founders struggle to know who they actually need on day one—and how 
+to persuade talented colleagues to join a venture that is still more promise than paycheck. This 
+guide answers those questions and offers UMKC-specific resources to support your search. 
+ 
+Core Roles for an Early-Stage Academic Startup 
+Not all work requires forming a startup team. Some innovations move forward through licensing, 
+partnerships, or adoption within existing organizations. However, when the path involves building 
+something new, team formation becomes a central factor in whether that effort succeeds. 
+ 
+Building a company out of a research breakthrough is equal parts science, story, and hustle. In the 
+frenzy of grant deadlines and publication pressures, faculty founders often default to a 
+lone-inventor model - only to discover that investors and industry partners evaluate ventures first 
+on team completeness, second on technology maturity.  
+ 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+ 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas: forming the right team 
+for impact.
+
+--- PAGE 2 ---
+2 | P a g e  
+  
+Evidence from the Kauffman Foundation and Startup Genome shows that balanced founding 
+teams raise 30–40 % more capital and reach product-market fit twice as fast as solo founders. 
+ 
+The lesson is clear: your first three seats can either multiply or mute the value of your IP. Instead of 
+hiring a full C-suite, focus on covering perspectives that mirror the design-thinking lens - 
+desirability, viability, and feasibility.  
+ 
+At UMKC we frame these perspectives as the Problem Expert, Business Developer, and Technology 
+Developer. One person may initially wear two hats, but explicit ownership of each lens keeps 
+priorities aligned and prevents critical blind spots. 
+1. Problem Expert (Visionary / Idealist) – lives and breathes the user problem, drives 
+customer discovery, and keeps the venture anchored in unmet need. 
+2. Business Developer – designs the business model, validates willingness-to-pay, secures 
+early funding, and builds strategic partnerships. 
+3. Technology Developer – turns lab-scale insights into a functional, scalable prototype 
+under tight resource constraints. 
+ 
+These roles give a startup just enough “3-legged stool” stability to navigate uncertainty without 
+premature hierarchy. 
+ 
+UMKC Insight: In past faculty/student‐founded companies such as EyeVerify, founders reported 
+that aligning on these three roles early prevented later confusion about who owned regulatory 
+strategy, grant writing, and product iterations. 
+ 
+Deciding Who Will Leave the Lab 
+Leaving the security of an academic appointment for a fledgling company can feel risky, 
+but someone must step out of the lab and into the market full‐time if the venture is to gain 
+momentum. This section lays out a structured approach for deciding who that person (or people) 
+should be and how to make the leap with minimal friction. 
+ 
+Why Someone Must Go All‐In 
+Startups move at a tempo universities cannot match. Customer validation, prototype iterations, 
+and investor conversations often happen in cycles measured in days—not semesters.  
+ 
+A founder who is 100 % dedicated can: 
+• Shorten feedback loops by talking with users, suppliers, and regulators daily. 
+• Signal commitment to investors, partners, and future hires. 
+• Catch issues early (e.g., manufacturing glitches, reimbursement hurdles) before they derail 
+project timelines. 
+ 
+UMKC Insight: Many seed funds will not invest until at least one technically knowledgeable founder 
+has left the university and shows "skin in the game."
+
+--- PAGE 3 ---
+3 | P a g e  
+  
+Assessing Personal Fit and Readiness 
+Ask each potential founder to self‐evaluate on three vectors: 
+ 
+Question Indicators You’re Ready Red Flags 
+Motivation 
+Energized by ambiguity; intrinsic drive to 
+see the tech used in the real world 
+Prefers structured milestones and 
+academic recognition 
+Risk Tolerance 
+Comfortable with 12–18 months of 
+variable pay; views setbacks as learning 
+Requires guaranteed salary; highly 
+risk-averse 
+Influence 
+Ability to rally team, mentors, and early 
+adopters 
+Limited network beyond academia 
+ 
+A “yes” across at least two vectors suggests a strong candidate for the pioneering role. 
+ 
+Employment & Leave Pathways at UMKC 
+UMKC offers multiple mechanisms to reduce personal and departmental risk: 
+• Entrepreneurial Leave – Up to one year of unpaid leave while retaining tenure clock status. 
+Departments often allow a part‐time return if the venture fails. 
+• Reduced Appointment (0.50–0.75 FTE) – Faculty retain benefits while freeing critical 
+weekdays for startup duties. 
+• Joint Appointment – Split time between UMKC and the startup; common when grant 
+funding still flows through the university. 
+• Graduate‐Student Fellows – Grad students may dedicate a semester via internship credit 
+or a paid fellowship funded by an SBIR supplement. 
+ 
+Contact OTT and OC early to navigate paperwork and conflict‐of‐interest disclosures. 
+ 
+Funding Bridges for Early Salaries 
+Leaving the lab is easier when initial salary support is lined up: 
+• Phase I SBIR/STTR Grants – Allow up to $264 K (NIH) in technical salary and consultant 
+costs. 
+• FFAR Seeding Solutions or DoD–xTech Prizes – Non‐dilutive cash that can fund 
+6‐12 months of runway. 
+• Founders’ Agreements – Clarify whether university IP licensing fees are deferred to 
+preserve cash. 
+ 
+Handling IP & Conflict‐of‐Interest (COI) 
+The founder‐as‐employee dynamic introduces potential COI concerns. Mitigate by: 
+• Drafting a Management Plan with the Office of Technology Transfer that specifies roles, 
+reporting lines, and disclosure cadence. 
+• Separating lab resources – Use off‐campus servers, tooling, and grant accounts for 
+company work.
+
+--- PAGE 4 ---
+4 | P a g e  
+  
+• Documenting IP boundaries – Identify which data and inventions stay with UMKC versus 
+the startup. 
+ 
+Timing the Spin‐Out 
+A practical rule: spin out once you can explain your value proposition in one sentence and show a 
+benchtop demo that proves feasibility. Waiting for the “perfect” dataset often means missing the 
+market window. On‐campus prototyping resources (e.g., the School of Science and Engineering 
+Machine Shop or the Innovation Studio’s 3‐D printing facilities) can bridge capability gaps during 
+the handoff. 
+ 
+With a clear readiness assessment, structured UMKC pathways, and early funding options, 
+founders can commit fully and confidently to building outside the university walls. 
+ 
+Motivating and Attracting Co-Founders 
+Finding co-founders is less about posting a “help wanted” ad and more about telling an irresistible 
+story of impact and shared upside. High-caliber partners can work anywhere; they join startups 
+that satisfy their drive for autonomy, mastery, and purpose.  
+ 
+Below is a structured approach to locating—and winning—the right people. 
+ 
+Clarify the Value Proposition for Co-Founders 
+Before you recruit, articulate: 
+1. Mission Impact: What societal or industry pain will you relieve? (e.g., "reduce hospital 
+readmissions by 20 % in five years"). 
+2. Unique Advantage: Why is this team uniquely positioned to solve it? Highlight your IP, data 
+sets, or early validation. 
+3. Upside & Timeline: Provide a realistic five-year outlook: milestone-based valuation targets, 
+grant pathways, and liquidity scenarios. 
+UMKC Tip: Draft a one-page “Founder Pitch” that distills these points. It becomes the leave-behind 
+for coffee chats and conference follow-ups. 
+ 
+Where to Find Talent 
+Great co-founders often emerge from overlapping circles of expertise, passion, and opportunity—
+so focus your search where those circles naturally intersect. The table below highlights high-yield 
+talent pools and concrete ways to approach them. 
+ 
+Talent Pool Strengths How to Engage 
+UMKC Ecosystem (graduate 
+programs, E-Scholars, etc.) 
+Technical expertise, local 
+commitment 
+Host info sessions; collaborate 
+on capstone projects
+
+--- PAGE 5 ---
+5 | P a g e  
+  
+UMKC Innovation Center 
+(including Office of 
+Commercialization) 
+Expertise, contacts in 
+ecosystem, resources and 
+funging 
+Contact through Office of 
+Commercialization 
+Regional Industry Pros (KC 
+Animal Health Corridor, Cerner 
+alumni, Garmin engineers) 
+Domain knowledge, 
+commercialization chops 
+Attend niche meetups; leverage 
+LinkedIn warm intros via faculty 
+advisory boards 
+MBA & JD Candidates (Bloch 
+School, Law School) 
+Market strategy, regulatory 
+insight 
+Offer semester-long venture 
+projects; advertise 
+equity-for-sweat roles 
+Online Platforms 
+(CoFoundersLab, Slack groups like 
+#StartupsKC) 
+Diverse, remote 
+candidates 
+Post mission-centric role briefs; 
+conduct async “get-to-know” 
+sprints 
+ 
+Crafting the Outreach 
+Craft an outreach strategy that instantly communicates why your venture matters, what you need, 
+and how a potential co-founder can share in the upside—this first impression should spark 
+curiosity and action. 
+• Role Brief: ½-page description detailing problem space, expected weekly commitment, 
+and equity range (e.g., 10-20 % vesting over four years). 
+• Story Hook: Lead with the mission, not the technology. “Help 300 M diabetics avoid 
+blindness” moves hearts more than “utilize ML for ophthalmic imaging.” 
+• Social Proof: Mention advisors, early grants (e.g., $20 K Digital Sandbox), or pilot partners 
+to de-risk the opportunity. 
+ 
+Evaluating Fit Beyond the Résumé 
+Résumé screening narrows the field, but true alignment emerges only when you probe values, 
+adaptability, and collaboration style through structured, real-world interactions. 
+• Competency Matrix: Rate each candidate (1-5) on technical depth, market acumen, 
+fund-raising comfort, and network reach. 
+• Culture Interviews: Ask scenario-based questions (“Tell me about a time data disproved 
+your hypothesis—what did you do?”) to probe flexibility and ego control. 
+• Trial Project: Engage finalists in a two-week sprint—customer calls, prototype tweak, or 
+NSF I-Corps assignment. Observe follow-through and communication cadence. 
+ 
+Incentive Structures That Work 
+Motivation compounds when compensation reflects contribution; combine equity, modest cash, 
+and professional-growth perks to keep co-founders committed through the roller-coaster of early 
+execution. 
+• Equity with Milestone Vesting: Allocate additional slices when key targets (e.g., FDA 
+510(k) submission) are met.
+
+--- PAGE 6 ---
+6 | P a g e  
+  
+• Hybrid Salary-Equity: Use grant or accelerator stipends (up to $50 K via LaunchKC) for 
+modest pay plus meaningful stock. 
+• Professional Growth: Offer conference travel, co-author credit on publications, or access 
+to cutting-edge lab equipment. 
+ 
+Leverage UMKC & Regional Resources 
+UMKC and Kansas City host a dense support network—tap these programs, mentors, and grants to 
+accelerate team formation and reduce early-stage risk. 
+• UMKC Innovation Center Mentor Network: 40+ alumni founders and investors available 
+for warm referrals. 
+• Bloch School’s Entrepreneurship Scholars (E-Scholars): Allows non-students to audit 
+sessions focused on team dynamics and legal basics. 
+• KCSourceLink Multicultural Business Coalition: Expands reach into under-represented 
+founder talent. 
+ 
+UMKC Insight: EyeVerify secured its CEO through contacts at the UMKC Innovation Center, 
+accelerating Series A by six months. Likewise, Evolution Pervious brought in an ex-construction VP 
+who navigated ASTM standards—something the research team lacked. 
+ 
+By combining a compelling mission narrative with structured outreach, objective fit assessments, 
+and UMKC’s resource stack, you can convert interested contacts into committed co-founders who 
+share both risk and reward. 
+ 
+Building a Trustworthy & Diverse Team Culture 
+Early‐stage startups succeed or fail on the quality of their relationships. Trust fuels fast iteration, 
+honest customer feedback, and the stamina to survive inevitable pivots.  
+ 
+Research from Google’s Project Aristotle and MIT’s Human Dynamics Lab shows that teams with 
+high psychological safety and equal conversational turn‐taking outperform their peers in both 
+execution speed and creativity. 
+ 
+A practical trust‐building playbook for UMKC founders 
+1. Start with a micro‐commitment: Before anyone signs incorporation documents, work 
+together on a time‐boxed experiment—e.g., two weeks of customer interviews or a 
+pitch‐deck sprint. Observe reliability and communication styles under light pressure. 
+2. Establish shared values early: Draft a one‐page “Team Charter” that lists why the venture 
+matters, how decisions are made, and what behaviors are non‐negotiable (e.g., data 
+privacy, respect for time). Revisit quarterly. 
+3. Create psychological safety: Encourage dissent by rotating the “devil’s advocate” role in 
+meetings and explicitly praising well‐argued counterpoints. This normalizes productive 
+disagreement and prevents groupthink.
+
+--- PAGE 7 ---
+7 | P a g e  
+  
+4. Default to transparency: Maintain a living project board (e.g., Trello, Asana) that makes 
+goals, blockers, and responsibilities visible to everyone. Use weekly retros to surface 
+concerns before they fester. 
+5. Resolve conflicts quickly: Adopt a lightweight dispute‐resolution process—start with 
+one‐on‐one discussion, escalate to a neutral mentor (UMKC Innovation Center offers 
+volunteer advisors), and document any decisions that affect equity or IP. 
+6. Celebrate small wins: Shared rituals—demo days, customer‐interview milestones, 
+monthly lunches—reinforce camaraderie and buffer stress. 
+7. Leverage diversity as an asset: Founding teams with varied domains, genders, and cultural 
+backgrounds generate 30–50 % more patents and venture returns. When recruiting, set 
+explicit diversity goals and tap UMKC networks like Women in STEM, the Bloch School 
+Entrepreneurship Scholars, and KCSourceLink’s Multicultural Business Coalition. 
+ 
+By institutionalizing these practices, founders transform trust from a vague ideal into a measurable 
+advantage. 
+ 
+Structuring Equity & Responsibilities 
+Getting equity right early can prevent costly disputes later. The goal is to align incentives with future 
+value creation, protect the company if someone departs, and leave head-room for future hires and 
+investors. 
+ 
+Guiding Principles 
+• Contribution over credentials: Reward the work founders will do, not just past titles or 
+academic rank. 
+• Simplicity beats precision: An easily understood split that everyone feels is “fair enough” 
+beats a mathematically perfect but convoluted cap table. 
+• Protect the mission: Use vesting and governance safeguards so a founder who disengages 
+cannot block financing or pivots. 
+ 
+Common Split Models 
+No single equity formula fits every founding team; the right model reflects each person’s risk, time 
+commitment, and expected value creation over the next two years. Use the options below as 
+starting points, then adapt to your venture’s realities. 
+ 
+Model When to Use Typical % Allocation 
+Equal Split 
+Founders commit similar time and risk 
+from day one 
+33 / 33 / 33 (three founders) 
+Role-Weighted 
+Founders have clearly different 
+day-to-day load (e.g., CEO full-time, CSO 
+half-time) 
+50 / 30 / 20
+
+--- PAGE 8 ---
+8 | P a g e  
+  
+Dynamic / 
+Milestone 
+Significant uncertainty about who will 
+raise capital or build product 
+Start at 20 / 20 / 20 with additional 
+40 % released on agreed milestones 
+ 
+UMKC Snapshot: LymphFit used a milestone-based approach that released extra shares once the 
+COO secured SBIR Phase I funding. 
+ 
+Vesting Mechanics 
+Equity is a promise of future value; vesting turns that promise into earned ownership by tying shares 
+to ongoing contribution and time in the trenches. The frameworks below outline standard 
+schedules and investor-friendly safeguards. 
+• Standard Vesting: 4-year vest with 1-year cliff; monthly thereafter. 
+• Reverse Vesting: Founders purchase shares up-front but the company can repurchase 
+unvested shares at nominal cost if they leave. 
+• Acceleration Clauses: Single-trigger (change of control) or double-trigger (change of 
+control + termination) acceleration helps founders in an acquisition but can deter investors 
+- use sparingly. 
+ 
+Founder Roles & Decision Rights 
+Agree early on who is CEO (single point for investors) and how major decisions require consent: 
+• Day-to-Day Authority: The CEO manages budget and hiring; CSO leads R&D road-map; 
+COO handles operations. 
+• Reserved Matters: Any new share issuance, IP sale, or debt financing requires unanimous 
+founder approval until Series A. 
+• Board Composition: Start with a three-member board (two founders + one independent 
+advisor) to add external perspective without losing control. 
+ 
+Setting Up an Option Pool 
+Allocate 10–15 % of total shares for future employees, advisors, and the scientific advisory board. 
+Option pools usually sit above founder ownership in pre-money valuation calculations, so plan the 
+pool size before negotiating with investors. 
+ 
+Legal Steps at UMKC 
+Even the fairest equity split can unravel without airtight paperwork; follow these campus-friendly 
+legal checkpoints to lock in ownership, minimize tax surprises, and stay investor-ready. 
+1. Stock Purchase Agreements & 83(b) Election: File within 30 days of share issuance to 
+avoid adverse tax treatment. 
+2. Founder Service Agreements: Spell out roles, time commitment, and IP assignment. 
+3. Local Clinics & Resources: UMKC School of Law Entrepreneur Clinic offers free reviews, 
+and KCSourceLink’s Resource Navigator lists vetted startup attorneys who offer fixed-fee 
+formation packages.
+
+--- PAGE 9 ---
+9 | P a g e  
+  
+With a transparent equity plan, clear governance, and solid legal footing, founders can focus on 
+building value rather than re-litigating who owns what. 
+ 
+Action Steps for UMKC Researchers 
+The preceding sections lay the groundwork; now it’s time to act. Use the checklist below as a 
+30‐day sprint to move your idea from concept toward an investable venture: 
+1. Map your gaps: Use the Core Roles 
+table to identify missing strengths. 
+2. Test culture fit: Run a two-week 
+micro-project with prospective 
+co-founders. 
+3. Draft a Founders’ Agreement: Address 
+IP contributions, decision rights, vesting, 
+and conflict resolution. 
+4. Leverage UMKC Resources: 
+o Office of Commercialization 
+(techcomm@umkc.edu) – 
+market assessments, go-to-
+market strategy. 
+o Office of Technology Transfer 
+(patents@umkc.edu) – 
+disclosures, protection strategy. 
+o Digital Sandbox KC – proof-of-concept grants. 
+o KCSourceLink – community resources for startups. 
+5. Schedule a Venture First-Step Meeting with the Office of Commercialization and Office of 
+Technology Transfer to align on patent strategy. 
+ 
+Conclusion 
+The people involved in moving your work forward will shape whether it reaches meaningful impact 
+beyond the university.  
+ 
+By intentionally balancing expertise, motivation, equity, and by drawing on UMKC’s growing 
+commercialization ecosystem you can transform lab insights into market-ready innovations faster 
+and with less friction. 
+ 
+Key Takeaways 
+• Prioritize people, not positions. Anchor around complementary mindsets—Problem 
+Expert, Technology Developer, and Business Developer—before chasing formal titles. 
+• Commit to trust and transparency. Psychological safety, clear communication, and fast 
+conflict resolution outlast any single grant or prototype. 
+• Design future-focused incentives. Simple equity splits, four-year vesting, and an option 
+pool keep founders, early hires, and investors rowing in the same direction. 
+Guiding Question: 
+Who would need to be 
+involved to move this work 
+beyond the university, and 
+what roles would they need 
+to play?
+
+--- PAGE 10 ---
+10 | P a g e  
+  
+ 
+Your Next Move 
+1. Book a 30-minute consult with the Office of Commercialization to map your current team 
+and identify gaps. 
+2. Run a micro-sprint of two weeks of customer discovery or prototype refinement with at 
+least one potential co-founder to test working chemistry. 
+3. Draft a lightweight Founders’ Agreement using templates from the UMKC Law 
+Entrepreneur Clinic to capture roles, vesting, and IP assignment. 
+ 
+Great companies rarely emerge from lone genius; they grow from small, diverse teams united by 
+purpose and empowered by supportive ecosystems. UMKC’s resources - from mentor networks to 
+prototyping facilities - are here to help you recruit that team, share the risk, and amplify the impact 
+of your research on society. 
+ 
+Resources & Contacts 
+UMKC Office of Commercialization 
+Director: Jeff Blackwood, MBA 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373 
+  Website: www.umkcinnovates.com/tech-commercialization  
+ 
+UMKC Office of Technology Transfer 
+Director: Eric Anderson, JD MBA 
+  Email: ericwa@umkc.edu 
+  Phone: 816-235-5091 
+  Website: https://ori.umkc.edu/facilities-compliance-and-
+commercialization/commercialization/process/submit-an-invention-disclosure.html  
+ 
+• UMKC Innovation Center Workshops: monthly sessions on customer discovery, investor 
+readiness, and founder agreements. 
+• Recommended Reading: Jared Friedman’s How to Spin Your Scientific Research Out of a 
+University (YC), Bart van Grevenhof’s Building Your Startup Team, Robert Strohmeyer’s 
+Finding and Building a Founding Team.
+

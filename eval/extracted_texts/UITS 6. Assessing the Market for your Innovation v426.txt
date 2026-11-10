@@ -1,0 +1,544 @@
+--- PAGE 1 ---
+1 | P a g e  
+ 
+UMKC Impact & Translation Series 
+Assessing the Market for your Innovation 
+Helping you move your work beyond the university  
+ 
+An innovation needs to come out of the lab to make 
+an impact. For universities and research 
+institutions, transforming a groundbreaking idea into 
+real-world use requires careful planning and 
+strategic evaluation.  
+ 
+This whitepaper aims to equip researchers and 
+innovators at UMKC with a framework to assess the 
+market potential of their innovations. Drawing from 
+expert insights, we provide a dynamic guide for 
+market analysis, technology evaluation, and 
+strategic planning. 
+Understanding Market Analysis 
+“Market analysis” is the process of understanding 
+the environment in which an innovation will exist. How you define the market provides a compass to 
+guide your innovation through the competitive landscape and towards real-world use. It combines 
+quantitative data (market size, revenue projections) with qualitative insights (consumer values, 
+buying motives) to forecast the potential impact of your product or service. 
+ 
+A thorough market analysis will identify the following elements: 
+1. Target Industry: Dive deep into industry trends, market size, and the regulatory landscape 
+to understand where your innovation fits. 
+2. Competitive Landscape: Identify key players, analyze their strengths and weaknesses, and 
+uncover opportunities to differentiate your product. 
+3. Identification of Market Gaps: Look for unmet needs and underserved segments that your 
+innovation can address. 
+4. Definition of Target Market: Segment your potential customers based on demographics, 
+psychographics, and behavioral patterns. 
+5. Barriers to Entry: Assess challenges such as startup costs, regulatory requirements, and 
+competitive pressures. 
+6. Sales Forecast: Project future sales to inform your business strategy and attract potential 
+investors. 
+ 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas:  how to assess the 
+market for your innovation.
+
+--- PAGE 2 ---
+2 | P a g e  
+ 
+Conducting Market Research 
+Market research helps test whether your work connects to a real need outside the university. It is 
+your window into the minds of potential customers. By gathering and analyzing data, you can 
+validate your product’s viability and refine your go-to-market strategy. 
+ 
+Market research fits into two categories: 
+- Primary Research: Data collected directly through surveys, focus groups, and interviews to 
+gain first-hand insights. 
+- Secondary Research: Data collected from industry reports, academic studies, and 
+government statistics to inform your analysis. 
+ 
+Primary Research 
+Primary research is used to learn about the specific pain points and needs that relate to values your 
+invention can address. Surveys give statistical backing, focus groups provide collective insights, 
+and interviews offer deep, individualized perspectives. These tools provide quantifiable and 
+qualitative measures for how your invention will solve problems, giving you data to define the 
+commercial potential of your invention. 
+ 
+Developing a Survey 
+Surveys are a cost-effective and easy-to-implement option to create quantifiable data from a broad 
+audience of potential users.  
+ 
+To develop an effective survey, consider these tips: 
+1. Define Objectives Clearly – Identify what specific information you need (e.g., customer 
+pain points, willingness to pay, competitive landscape). 
+2. Keep It Concise – Shorter surveys (5–10 minutes) have higher completion rates. 
+3. Use a Mix of Question Types: 
+a. Closed-ended: Multiple choice, Likert scales (1-5 or 1-7), ranking. (Author’s Note: I 
+recommend an even number of choices on Likert scales. Instead of providing a 
+middle option that is the equivalent of “no choice,” an even number of responses (ie, 
+1-4 or 1-6) forces respondents to choose a positive or negative response, better 
+relating to your evaluation.) 
+b. Open-ended: Allow respondents to provide insights in their own words. 
+4. Avoid Leading Questions – Ensure neutrality in your questions (e.g., "What challenges do 
+you face?" instead of "Do you struggle with X problem?"). Poorly worded or leading 
+questions can lead to skewed results for your survey.  
+5. Segment Your Audience – Identify ideal respondents based on industry, job role, and 
+experience level. Understand the roles these individuals will play in purchasing, using, or 
+benefitting from your invention.
+
+--- PAGE 3 ---
+3 | P a g e  
+ 
+6. Pilot Test the Survey – Run a small test with a sample group before a full launch to identify 
+issues. 
+7. Choose the Right Distribution Method – Email lists, industry forums, LinkedIn groups, or 
+professional associations. UMKC has several survey tools at our disposal; check with your 
+department, IT lead, or contact the University libraries to learn more. 
+8. Offer an Incentive (If Possible) – Small incentives like gift cards or entry into a prize draw 
+improve response rates. It is NOT necessary for them to be expensive; people will complete 
+surveys for a chance to win a $5 gift card. Make it something relevant and valuable for the 
+audience you’re targeting, and you’ll increase the likelihood of hitting response targets.  
+ 
+Leading a Focus Group 
+Focus groups provide qualitative insights and deeper understanding of potential customer 
+perspectives. The goal is to get potential customers to share opinions that could influence their 
+decision to adopt your invention.  
+ 
+To ensure a successful session: 
+1. Select the Right Participants – Aim for 6-10 individuals who represent your target market 
+(diversity in roles and perspectives is beneficial). Seek individuals that could be decision 
+makers, end users, or beneficiaries of your invention and learn what is important to them. 
+2. Define Clear Goals – Outline specific discussion topics (e.g., usability of your invention, 
+market needs, pricing expectations). 
+3. Prepare a Discussion Guide – Structure the conversation with open-ended questions to 
+encourage dialogue. 
+4. Use a Skilled Moderator – Someone experienced in leading discussions should guide the 
+group to prevent bias and dominance by a single voice. 
+5. Encourage Honest Feedback – Create a comfortable environment where participants feel 
+safe sharing honest opinions. 
+6. Record (With Permission) – Video or audio recordings help ensure accurate analysis of 
+responses. 
+7. Synthesize Key Takeaways – Identify recurring themes and actionable insights rather than 
+individual comments. 
+8. Run Multiple Groups (if feasible) – Holding 2-3 groups with different segments of the 
+market can provide more robust validation and different insights based on the group’s 
+composition. 
+ 
+Customer Discovery through Interviews 
+Direct interviews with potential customers offer in-depth qualitative feedback for your invention’s 
+potential impact.  
+ 
+Here’s how to conduct effective customer interviews:
+
+--- PAGE 4 ---
+4 | P a g e  
+ 
+1. Identify the Right Interviewees – Choose people who represent decision-makers, end-
+users, or influencers in the buying process. 
+2. Structure the Interview but Stay Flexible – Prepare a list of key questions but allow room 
+for organic discussion. 
+3. Start Broad, Then Get Specific – Begin with general industry questions before asking about 
+their specific challenges and how your invention might fit. 
+4. Ask Open-Ended Questions – Encourage elaboration (e.g., "Can you describe a recent 
+challenge you faced with [problem your invention solves]?"). 
+5. Actively Listen and Probe Deeper – Follow up on interesting responses with "Can you tell 
+me more about that?" or "Why do you think that happens?" 
+6. Avoid Selling – The goal is to gather insights, not pitch your solution. 
+7. Take Detailed Notes or Record (with consent) – This ensures accuracy and lets you focus 
+on the conversation. 
+8. Analyze Themes and Patterns – After multiple interviews, look for consistent pain points, 
+unmet needs, and potential market opportunities. 
+ 
+Secondary Research 
+Secondary research leverages existing data to analyze market potential, trends, and competitive 
+landscapes.  
+ 
+Defining TAM, SAM and SOM 
+Understanding market size is essential for assessing commercial viability. These three metrics 
+provide a structured approach: 
+1. Total Addressable Market (TAM) – The overall revenue opportunity if 100% of the market 
+adopted your innovation. 
+• Example: If your invention is a novel wound dressing, TAM would include all global 
+wound care product sales. 
+2. Serviceable Available Market (SAM) – The portion of the TAM your company could 
+realistically serve based on geographic, regulatory, or industry constraints. 
+• Example: If your wound dressing is only available in the U.S., your SAM is the U.S. 
+wound care market. 
+3. Serviceable Obtainable Market (SOM) – The fraction of SAM your company can capture, 
+based on competitive positioning and go-to-market strategy. 
+• Example: If your startup can realistically gain 5% of the U.S. market within five years, 
+that’s your SOM. 
+ 
+These metrics can be defined using several methods: 
+1. Use industry reports – Sources like IBISWorld, Gartner, Frost & Sullivan, and Statista 
+provide market size estimates.
+
+--- PAGE 5 ---
+5 | P a g e  
+ 
+2. Analyze government and trade association data – The Census Bureau, FDA, and industry 
+organizations publish relevant market statistics. 
+3. Use competitive benchmarks – Review financial reports from established companies in 
+your space to estimate market share. 
+ 
+Using AI Tools like ChatGPT 
+AI tools like ChatGPT can streamline secondary research by summarizing vast amounts of data, 
+generating insights, and identifying trends, but there are limitations. AI-generated information 
+requires fact checking against reliable sources, as the data sources may be outdated, incomplete, 
+or skewed. 
+ 
+Some methods for using AI tools in market analysis include: 
+1. Industry Trend Analysis - “What are the latest trends in [industry]?” AI can summarize 
+reports, patents, and news to identify emerging technologies. 
+2. Competitor Analysis - “Who are the key competitors in [market]?” AI can help analyze 
+company strategies, funding, and innovations. 
+3. Customer Pain Points - “What are common challenges faced by customers in [industry]?” 
+AI can synthesize customer feedback from reviews, forums, and case studies. 
+4. Generating Hypotheses for Testing - AI can help structure survey questions, interview 
+scripts, and market hypotheses to validate with primary research. 
+ 
+Keep in mind, some AI tools use information you put into their system to train models of data. 
+Before you enter anything that could be considered proprietary, confirm that your AI tools meet 
+required security standards for your department.  
+ 
+Using the Library 
+UMKC’s libraries provide free access to premium databases and expert resources. Librarians are 
+trained to know what resources are available and guide you to the proper tools for your work.  
+ 
+When using the library, consider the following resources:  
+1. Industry & Market Reports - Access reports from IBISWorld, Statista, MarketLine, Frost & 
+Sullivan, and Gartner. Use university subscriptions to analyze market demand and trends. 
+2. Patent & Intellectual Property Research - Use Google Patents, USPTO, WIPO, and 
+university patent databases to check for similar technologies. Review prior art to assess 
+potential barriers to commercialization. 
+3. Academic & Technical Publications - Databases like PubMed, IEEE Xplore, ScienceDirect, 
+and Web of Science help analyze technological developments. 
+4. Business & Economic Data - Use government databases (e.g., Census Bureau, Bureau of 
+Labor Statistics) for industry size and employment trends. Analyze trade association reports 
+for sector-specific insights.
+
+--- PAGE 6 ---
+6 | P a g e  
+ 
+5. Librarian Assistance - University business librarians can guide researchers to the most 
+relevant datasets.  
+ 
+Understanding Competition 
+A critical component of market analysis is understanding competition. Even if an invention is 
+groundbreaking, alternative solutions, substitutes, or indirect competitors exist.  
+ 
+What’s the worst answer you can give? "My solution doesn’t have competition." - it signals a lack of 
+market awareness and a failure to understand customer alternatives.  
+ 
+Understanding competition is part of understanding whether your work is grounded in real-world 
+conditions. Investors, industry partners, and commercialization teams expect a well-researched 
+competitive landscape to assess an invention’s viability, and that includes the customer’s ability to 
+continue life without your invention. 
+ 
+A competitive matrix allows you to demonstrate your research and understanding of how your 
+invention fits in the market. 
+ 
+Developing a Competitive Matrix 
+A competitive matrix is a structured tool to compare key market players and position an invention 
+effectively. It helps identify gaps, strengths, and differentiators. 
+ 
+1. Identify Competitors 
+• Direct competitors - same solution, same market. 
+• Indirect competitors - alternative solutions that solve the same problem (including 
+no solution). 
+• Future competitors - companies developing similar technologies. 
+2. Select Comparison Factors 
+• Features & Functionality – What does each competitor offer? 
+• Pricing & Business Model – How do they charge? What are margins? 
+• Market Share & Customer Base – Who are their primary customers? 
+• Intellectual Property & Innovation – Do they have patents or proprietary technology? 
+• Regulatory Approvals – Are there legal barriers for market entry? 
+• Customer Satisfaction & Reviews – What are common complaints or praises? 
+3. Build the Matrix - Use a simple table to compare competitors across the selected factors: 
+Feature/Factor Competitor A Competitor B Your Invention 
+Price $$$ $$ $$ 
+Ease of Use Medium High High 
+Key Differentiator AI-driven Manual Real-time data
+
+--- PAGE 7 ---
+7 | P a g e  
+ 
+Patent Protection Yes No Yes 
+4. Analyze the Gaps 
+• Find underserved areas in the market where your invention excels. 
+• Identify barriers to entry competitors have already overcome. 
+• Look for differentiation opportunities that set your invention apart. 
+ 
+Defining your Market Position 
+After building a competitive matrix, the next step is positioning. Rather than just being "better," an 
+invention should focus on value creation. 
+ 
+1. Avoid Competing on Price Alone - If an innovation is unique, pricing too low may signal 
+low value. If competitors have lower-cost solutions, emphasize ROI and efficiency rather 
+than just cost. 
+2. Emphasize Unique Strengths - Identify 1-2 key differentiators and focus messaging 
+around them. Examples: 
+• Faster results (e.g., diagnostic tools that reduce waiting time). 
+• Improved accuracy (e.g., AI-driven analytics with 98% precision). 
+• More user-friendly (e.g., a no-code software alternative to complex solutions). 
+3. Leverage Customer Pain Points - Study competitor negative reviews to find pain points 
+customers want solved. Position the invention as an improvement in those areas. 
+4. Consider Go-To-Market Advantages - Speed to market, partnerships, or regulatory fast-
+tracking can be strategic advantages. Example: If competitors require expensive FDA 
+approvals, a non-regulated alternative could be a major selling point. 
+ 
+A strong competitive analysis proves market understanding and guides positioning strategy. The 
+goal is not just to show where an invention fits, but also to demonstrate why it offers a compelling 
+advantage over existing solutions. 
+ 
+Building Barriers to Entry 
+Barriers to entry are obstacles that make it difficult for new entrants to enter a market. 
+Understanding these barriers helps inventors assess the challenges they may face in 
+commercialization and develop strategies to overcome them. Barriers can be structural (inherent to 
+the market) or strategic (imposed by competitors or regulations). 
+ 
+This section outlines key barriers to entry, how they impact commercialization, and strategies for 
+overcoming them.
+
+--- PAGE 8 ---
+8 | P a g e  
+ 
+Key Barriers to Entry 
+1. Regulatory & Legal Barriers - Many industries require compliance with government 
+regulations, certifications, and safety standards before a product can be sold.  
+• Examples: FDA approval for medical devices, environmental and safety regulations 
+for industrial products, data privacy laws (e.g., GDPR, HIPAA) for software solutions. 
+• Impact: Lengthy approval processes can delay commercialization and increase 
+costs. 
+2. Intellectual Property (IP) & Patent Restrictions - Existing patents can block market entry if 
+a similar technology is already protected. Conversely, a lack of IP protection makes an 
+innovation vulnerable to imitation. 
+• Examples: A competitor holds a broad patent that prevents similar innovations, your 
+invention lacks patent protection, making it easy to copy. 
+• Impact: Without a strong IP strategy, investors may see high legal risks. 
+3. High Capital Requirements - Some industries require significant investment in R&D, 
+manufacturing, equipment, or marketing before a product becomes commercially viable. 
+• Examples: Biotech startups needing millions for clinical trials, semiconductor 
+companies requiring expensive fabrication facilities. 
+• Impact: Lack of funding can slow or halt commercialization. 
+4. Market Dominance by Established Competitors - Well-established players often have 
+strong brand recognition, customer loyalty, and economies of scale that make it difficult for 
+new entrants to compete. 
+• Examples: A startup creating a new search engine struggles against Google, a small 
+medical device company competes with Johnson & Johnson. 
+• Impact: Competitors can undercut pricing, block distribution channels, or use legal 
+tactics to deter new entrants. 
+5. Customer Adoption & Trust - Convincing customers to switch to a new, unproven solution 
+can be a major hurdle. 
+• Examples: Hospitals hesitant to adopt a new medical device due to liability 
+concerns, B2B clients unwilling to change existing workflows for a new software 
+tool. 
+• Impact: Slow adoption rates can delay revenue generation. 
+6. Distribution & Supply Chain Barriers - Even if an innovation is ready for market, limited 
+access to distribution channels, supply chains, or retailers can restrict sales. 
+• Examples: Consumer goods startups struggling to secure shelf space at major 
+retailers, a food-tech company unable to meet supply chain requirements for 
+nationwide distribution. 
+• Impact: Limited scalability and growth potential without the right distribution 
+partners. 
+ 
+Identifying barriers to entry helps inventors prepare for challenges before entering the market.
+
+--- PAGE 9 ---
+9 | P a g e  
+ 
+Defining your Target Market 
+A well-defined target market ensures an invention aligns with the right customer needs, increasing 
+the likelihood of successful commercialization. Identifying the right market segment involves 
+analyzing who the customers are, what motivates them, and how they behave. 
+ 
+To effectively define a target market, segmentation should be approached from three perspectives: 
+• Demographics (Who are they?) 
+• Psychographics (Why do they buy?) 
+• Behavioral Patterns (How do they engage with products?) 
+ 
+Segmenting Customers by Demographics 
+Demographic segmentation helps categorize potential customers based on measurable factors. 
+This is useful for B2C (business-to-consumer) and B2B (business-to-business) markets. 
+ 
+For B2C (Individual Customers): 
+1. Age – Are they millennials, Gen X, or baby boomers? Each age group has different 
+purchasing behaviors. 
+2. Gender – Some innovations cater to specific genders (e.g., women’s healthcare devices). 
+3. Income Level – Does the invention serve a premium or budget-conscious audience? 
+4. Education Level – Highly technical products may appeal to an educated customer base. 
+5. Location – Urban vs. rural, domestic vs. international markets. 
+6. Occupation – Professionals, students, or retirees may have different needs. 
+ 
+For B2B (Organizations and Companies): 
+1. Industry – Healthcare, manufacturing, education, etc. 
+2. Company Size – Small startups vs. large enterprises. 
+3. Revenue & Budget – Can they afford premium solutions, or do they need cost-effective 
+options? 
+4. Geographic Reach – Local businesses vs. global corporations. 
+ 
+Example: A smart medical diagnostic tool might target hospitals (B2B) in metropolitan areas that 
+serve high-income patients (B2C) in their 50s and 60s who are proactive about health monitoring. 
+ 
+Segmenting Customers by Psychographics 
+Psychographic segmentation helps understand customer motivations, values, and lifestyle 
+choices. 
+1. Pain Points & Needs – What problems do they experience that the invention solves? 
+2. Values & Beliefs – Are they driven by sustainability, innovation, or cost-effectiveness? 
+3. Lifestyle & Interests – Do they prioritize convenience, health, or technology?
+
+--- PAGE 10 ---
+10 | P a g e  
+ 
+4. Buying Motivations – Are they early adopters of technology, price-sensitive, or brand-loyal? 
+5. Risk Tolerance – Are they comfortable trying new solutions, or do they prefer proven 
+products? 
+ 
+Example: A biodegradable packaging alternative would appeal to eco-conscious consumers and 
+sustainability-driven companies that prioritize reducing their carbon footprint. 
+ 
+Segmenting Customers by Behavioral Patterns 
+Behavioral segmentation categorizes customers based on how they interact with products and 
+make purchasing decisions. 
+1. Usage Frequency – Are they daily users, 
+occasional users, or one-time buyers? 
+2. Purchase Behavior – Do they research 
+extensively before buying, or make 
+impulse decisions? 
+3. Brand Loyalty – Are they brand-
+switchers or committed to long-term 
+relationships? 
+4. Buying Channel Preference – Do they 
+prefer online shopping, in-store 
+purchases, or B2B negotiations? 
+5. Price Sensitivity – Are they bargain 
+hunters or willing to pay a premium for 
+high-quality solutions? 
+ 
+Example: A smart home automation device 
+might target tech-savvy homeowners who are early adopters of new gadgets, purchase online via e-
+commerce platforms, and value convenience and security over price. 
+ 
+Defining a target market is more than just identifying potential buyers—it’s about understanding 
+their needs, behaviors, and decision-making processes. The strongest commercialization 
+strategies combine all three segmentation approaches to refine messaging, pricing, and 
+distribution channels. 
+Using Market Analysis to Develop Sales Forecasts 
+A well-informed sales forecast is a key component of commercialization planning. It allows 
+innovators to estimate future revenue, plan production and distribution, and attract investors by 
+demonstrating potential market success. A strong sales forecast leverages insights from previous 
+market analysis steps, including target market segmentation, competition analysis, and barriers to 
+entry. 
+Guiding Question: 
+If this work were to create 
+impact beyond the 
+university, who would 
+benefit, what problem 
+would it solve, and what 
+would need to be true for it 
+to be adopted or used?
+
+--- PAGE 11 ---
+11 | P a g e  
+ 
+To build a sales forecast, follow these structured steps: 
+1. Define Your Assumptions - Before projecting sales, define the key assumptions that 
+influence your estimates:  
+• Market Penetration Rate – Based on your TAM, SAM, and SOM, estimate what 
+percentage of your obtainable market you can realistically capture. 
+• Customer Acquisition Rate – How quickly can you convert leads into paying 
+customers? 
+• Pricing Strategy – What is your expected price point per unit or service? 
+• Sales Cycle – How long does it take for a customer to go from awareness to 
+purchase? (e.g., enterprise sales may take months, while consumer products may 
+sell instantly). 
+• Seasonality & Trends – Are there expected fluctuations based on industry trends or 
+economic factors? 
+2. Estimate the Number of Potential Customers - Using demographic, psychographic, and 
+behavioral segmentation, determine the number of potential customers in your SOM 
+(Serviceable Obtainable Market).  
+3. Develop a Sales Projection Model - Create a realistic sales projection by estimating the 
+number of units sold or services delivered over a specific period (e.g., monthly, quarterly, or 
+annually). 
+ Example of a first-year sales projection for a B2C product: 
+ 
+ 
+ 
+For B2B models, forecasts should consider: 
+• Number of target companies 
+• Adoption rates for new technology 
+• Contract values and renewal cycles 
+ 
+4. Factor in Barriers to Entry & Competition - Your sales forecast should account for 
+competitive threats and industry barriers: 
+• Regulatory Delays – If approval is needed (e.g., FDA, patents), factor in launch 
+delays. 
+• Competitor Response – If competitors lower prices or improve offerings, market 
+share growth may be slower. 
+• Customer Adoption Curve – If the product requires behavioral change, expect 
+slower early adoption. 
+5. Validate with Sensitivity Analysis – Consider creating three forecast scenarios: 
+• Optimistic: Rapid adoption, high growth, minimal barriers. 
+• Realistic: Expected adoption rate, moderate growth, standard challenges. 
+• Pessimistic: Delays in adoption, regulatory issues, strong competition. 
+Month Estimated Customers Conversion Rate Units Sold Revenue ($) 
+Jan 5,000 2% 100 $10,000 
+Feb 6,000 3% 180 $18,000 
+Mar 7,500 4% 300 $30,000
+
+--- PAGE 12 ---
+12 | P a g e  
+ 
+ 
+This helps prepare for risk and gives investors confidence in the forecast’s robustness. 
+ 
+Note on Investor Expectations and Projections 
+Investors will always discount your projections.  
+When presenting a sales forecast, avoid labeling your estimates as “conservative” or “modest”—
+investors assume projections are optimistic and will automatically adjust them downward based 
+on risk factors, competitive pressures, and market uncertainties. 
+Instead, focus on: 
+• Clearly defining the assumptions behind your forecast. 
+• Using data-driven justifications for your market size and growth rates. 
+• Presenting multiple scenarios (optimistic, realistic, and pessimistic) to demonstrate 
+awareness of market dynamics. 
+Rather than underselling potential growth, provide a realistic yet compelling projection backed by 
+strong market research. Investors are more likely to engage when they see a well-reasoned, data-
+supported outlook rather than an artificially low "conservative" estimate. 
+Summary 
+Moving an innovation beyond the university requires more than just a great idea - it requires 
+strategic market analysis, competitive positioning, and financial forecasting. This whitepaper 
+provided a structured approach to help UMKC faculty researchers and graduate students assess 
+the commercial potential of their innovations. 
+Key takeaways from this framework include: 
+• Market Research Foundations – Conduct primary research (surveys, focus groups, 
+interviews) and leverage secondary research (industry reports, AI tools, library resources). 
+• Competitive Analysis – Develop a competitive matrix to understand industry players and 
+position an innovation effectively. Never assume "no competition" exists—alternative 
+solutions and substitutes always influence the market. 
+• Understanding Barriers to Entry – Identify regulatory, financial, and operational challenges 
+that could impact commercialization and develop mitigation strategies. 
+• Target Market Definition – Segment customers based on demographics, psychographics, 
+and behavioral patterns to refine marketing and sales efforts. 
+• Sales Forecasting – Use TAM, SAM, and SOM data to estimate revenue, account for 
+industry challenges, and build realistic projections for commercialization success. 
+By following this structured approach, innovators can validate their ideas, attract funding, and build 
+a solid commercialization strategy that maximizes the impact of their research.
+
+--- PAGE 13 ---
+13 | P a g e  
+ 
+Resources & Contacts 
+UMKC Office of Commercialization 
+  Website: www.umkcinnovates.com/tech-commercialization 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373
+

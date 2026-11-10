@@ -1,0 +1,729 @@
+--- PAGE 1 ---
+100.020 Invention and Patent
+Regulations
+Home / Rules & Policies / Collected Rules / Business Management /
+Chapter 100: Patent and Copyright Law / 100.020 Invention and Patent Regulations
+Type: 
+Category: 
+Bd. Min. 6-25-71, p. 35,974, Amended 9-17-92, 4-25-96, 4-8-05, 11-29-07, 7-23-10, 6-24-21.
+A. Purpose – These regulations are adopted by The Curators of the University of Missouri in order to:
+B. Application of Regulations – These regulations constitute (1) a term and condition of employment of all
+Employees of the University and form a part of the employment contract, and (2) a term and condition
+of enrollment and attendance at the University by Students. These regulations shall be effective as to all
+Inventions disclosed during any period of employment, enrollment, or attendance from and after the
+date of their adoption.
+C. Definitions
+1. “Chancellor” means the Chancellor of a University campus, and shall include, when applicable, the
+interim Chancellor or acting Chancellor.
+2. “Dean” as used herein means the Dean of the college or school having jurisdiction over the
+Employee or Student, and in case of those Employees not under jurisdiction of any Dean, the
+Employee’s Supervisor shall perform the duties herein prescribed for the Dean.
+3. “Employee” as used herein means (a) any person receiving compensation from the University for
+services rendered, regardless of whether the Employee be full-time or part-time, (b) any person
+receiving compensation paid through the University from any funds placed in its hands for
+COLLECTED RULES & REGULATIONS
+CHAPTER 100: PATENT AND COPYRIGHT LAW
+Secure for the people of the State of Missouri and the United States the full benefits of research and
+investigation performed at the University of Missouri;
+Establish the rights and obligations of Employees with respect to any Invention made or developed
+by them during employment by the University and to establish the definite rights and obligations of
+Students with respect to any Invention made or developed by them during their period of
+enrollment with the University;
+Establish a uniform process by which these rights and obligations may be equitably determined in
+each case;
+Provide for a Patent Committee to assist the University with policy recommendations and to operate
+as a mechanism to advise on resolving disputes;
+Encourage and recognize individual and cooperative achievement in research and investigation; and
+Provide and support a technology transfer office to manage the day-to-day technology transfer
+activities at each campus of the University.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 1/15
+
+--- PAGE 2 ---
+distribution, (c) any person who has voluntarily elected to enter into a written agreement with the
+University in exchange for the University’s agreement to treat such person as an Employee for
+purposes of these regulations, or (d) any person with adjunct, courtesy, emeritus or “no salary”
+appointment (e.g., unpaid leave or unpaid sabbatical) if such person is participating in research and
+investigation with Substantial Use of University Resources except where the University and such
+person have a written agreement whereby the person is paying the University for use of such
+Substantial Use of University Resources. For purposes of the definition of Employee and for the
+avoidance of doubt, Student financial aid including, but not limited to, scholarships, grants, loans,
+tuition waivers and educational fee reductions, generally available to Students and unrelated to any
+provision of services by the Student to the University shall not be interpreted as compensation. Also,
+for purposes of these regulations. Students (including graduate research assistants and graduate
+teaching assistants) receiving compensation from the University shall be considered “Employees” if
+their actual duties and responsibilities include research and investigation or the creation of
+computer software that led to the Invention – regardless of the position title.
+4. "Gross Proceeds" as used herein means money received by the University from third parties (on a
+cash basis, as opposed to an accrual basis) from the sale, assignment, lease, licensing, optioning, or
+other transfer of rights in an Invention to such third parties, including but not limited to license fees,
+option fees, earned royalties, minimum royalties, and milestone payments. Gross Proceeds also
+includes money recovered (on a cash basis, as opposed to an accrual basis) by the University from
+lawsuits or dispute resolutions involving infringement by third parties with respect to the applicable
+Invention. Equity, convertible notes, or other similar ownership interests (or portions thereof)
+obtained by the University shall not be considered Gross Proceeds unless and until the University
+receives money for the equity, convertible notes, or other similar ownership interest (or portions
+thereof); provided that in the event that such equity is readily liquidable (for example, in the case of
+an IPO), then such equity may be considered Gross Proceeds for purposes of distributing the
+Inventor Share such that the Inventors may receive such equity. For clarity, Gross Proceeds does not
+include:
+a. The reimbursement by third parties to the University of any costs, expenses, or fees associated
+with the preparation, filing, prosecution, or maintenance of any Patents or PVP certificates
+owned in whole or in part by the University (whereby such reimbursement may include an
+equity, convertible note, or other similar ownership interest in the third party in consideration
+and in lieu of the University not seeking monetary reimbursement, in whole or in part, of such
+costs, expenses, or fees associated with the preparation, filing, prosecution, or maintenance of
+any Patents or PVP certificates); or
+b. The reimbursement by third parties to the University of any costs, expenses or fees associated
+with investigating, defending, or enforcing a claim or potential claim with respect to the Invention
+or associated license agreement, including but not limited to infringement/non-infringement,
+invalidity/validity, unenforceability/enforceability, and including those before any court,
+administrative tribunal (e.g., United States Patent and Trademark Office), or dispute resolution
+forum (e.g., arbitration or mediation), whether U.S. or foreign; or
+c. Money received by the University for the negotiated indirect cost rate (facilities and
+administration costs) associated with a research agreement or grant from which an Invention,
+was conceived, reduced to practice, or otherwise made; or
+d. Money received by the University for equity, convertible notes, or other similar ownership
+interest (or portions thereof) obtained from third parties in exchange for the University making a
+case investment in the third party or foregoing, in whole or in part, the right to obtain
+reimbursement from the third party for costs, expenses, or fees associated with the preparation,
+filing, prosecution, or maintenance of any Patents or PVP certificates owned in whole or in part
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 2/15
+
+--- PAGE 3 ---
+by the University. Such exchange will be treated as an investment in the third party and any
+proceeds to the University from such investment will not be included in Gross Proceeds.
+5. “Head of the Department” as used herein means the person having charge of the department of
+the Employee reporting the Invention, and in case there be no such head of the department, the
+Dean, or on campuses with no schools and colleges, the Provost shall perform the duties herein
+provided for the Head of the Department.
+6. "Invention" as used herein means any Invention, design, process, machine, manufacture,
+composition of matter, tangible research materials (e.g., cell lines, virus isolates, antibodies,
+prototype devices), whether or not patentable, together with any associated or supporting
+technology, data, know-how, or show-how necessary or useful for the protection, development or
+application of the same, and also includes all Patents or PVP certificates derived therefrom. A "Plant
+Variety" is a type of Invention.
+7. "Inventor" as used herein means an Employee who individually or jointly with others makes an
+Invention. More specifically:
+a. Inventions Covered by a Patent. For Inventions that are the subject of a Patent, "Inventor" refers
+to those Employees who meet the criteria for inventorship under United States patent law and
+are thus named on the applicable Patent. For an Invention covered by a Patent, the Inventors
+may change over time due to the prosecution of the Patent and the possible addition or deletion
+of Inventors from such Patent. Inventorship is a legal determination.
+b. Plant Varieties Covered by a PVP Certificate. For Inventions which are Plant Varieties which are
+not the subject of a Patent but which are covered by a PVP certificate, "Inventor" refers to those
+Employees who meet the criteria for being a plant breeder under United States PVP law.
+c. Unpatented Technologies. For Inventions that are not the subject of a Patent or PVP certificate,
+"Inventor" refers to those Employees who have jointly executed the Invention Disclosure Form
+and contributed to the making or development of the Invention. If one or more Employees
+cannot agree that they are all "Inventors," the matter may be referred to the Patent Committee
+by the Patent Administrator.
+8. "Net Proceeds" as used herein means Gross Proceeds minus the following out-of-pocket expenses,
+costs, fees or other and payments incurred by the University that are associated with the applicable
+Invention:
+a. costs, expenses and fees related to the evaluation, licensing, and protection of the Invention,
+including, but not limited to, those paid to government agencies (e.g., U.S. Patent and Trademark
+Office, European Patent Office) or the University's outside legal counsel associated with the
+preparation, filing, prosecution and maintenance of Patents or PVP certificates for the Invention;
+and
+b. payments made to joint owners or external sponsors of an Invention pursuant to an agreement
+with the joint owners or external sponsors. For the avoidance of doubt, such payments may
+include (1) revenue sharing payments due the joint owner or external sponsor and/or (2) the
+reimbursement to the joint owner or external sponsor of the costs, expenses, or fees related to
+(a) the preparation, filing, prosecution, or maintenance of a Patent or PVP certificate covering the
+applicable Invention; or (b) the investigation, defense, or enforcement of a claim or potential
+claim with respect to the applicable Invention; and
+c. costs, expenses, and fees for investigating, defending or enforcing a claim or potential claim with
+respect to the Invention, including but not limited to infringement/non-infringement,
+invalidity/validity, unenforceability/enforceability, and including those before any court,
+administrative tribunal (e.g., United States Patent and Trademark Office), or dispute resolution
+forum (e.g., arbitration or mediation), whether U.S. or foreign.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 3/15
+
+--- PAGE 4 ---
+9. "Patent" as used herein means any pending patent application (including an unexpired provisional
+patent application) or issued patent anywhere in the world. The term includes both United States
+patent applications and issued patents, as well as patent applications and issued patents from other
+regional patent offices (e.g., a European patent application) or national patent offices (e.g., a
+Canadian patent application). The term also includes pending or issued plant patents under 35 U.S.C.
+§ 161 (which covers asexually reproduced plants, excluding tuber propagated plants), and pending
+or issued utility (non-provisional) patents directed to a Plant Variety. The term also includes design
+patents under 35 U.S.C. § 171.
+10. "Patent Committee" as used herein means the committee referred to in Section G. The Patent
+Committee may also be referred to as the "Patent and Copyright Committee" when dealing with
+copyright matters pursuant to CRR 100.030.
+11. "Plant Variety" as used herein means a plant (including germplasm) which is sexually reproduced or
+tuber propagated and that is eligible from a subject matter standpoint for protection under a PVP
+certificate, regardless of whether PVP protection is actually filed or not. A Plant Variety is a type of
+Invention.
+12. "PVP" as used herein means plant variety protection through a pending application or issued
+certificate under the United States Plant Variety Protection Act or similar protection in a foreign
+country.
+13. “President” as used herein means the President of the University and shall include, when
+applicable, the “Interim” President or “Acting” President.
+14. "Student" as used herein means a person enrolled in the University. The term includes full-time and
+part-time students and both graduate and undergraduate students. The term includes a student
+enrolled for credit and not-for-credit.
+15. "Substantial Use of University Resources" means more than incidental use of University
+resources, facilities, financing, or time by Employees. The following are non-limiting examples of
+Substantial Use of University Resources (in the absence of written agreement or written approval
+from the President or his/her designee that explicitly states they will not be deemed to be
+considered Substantial Use of University Resources or otherwise addresses ownership):
+a. use of funds from an external sponsor;
+b. use of funds from an internal (University) sponsor or account;
+c. use of University-owned intellectual property (unless licensed or otherwise transferred from the
+University to the person or entity using such University-owned intellectual property);
+d. use of University information not available to the public;
+e. use of University support staff;
+f. use of University research, clinical, production, laboratory, studio, specialized computing, or
+other equipment without payment of fees, where such fees are equivalent to those normally
+paid by third parties; and
+g. reduction in levels of teaching, service, or other typical activities (e.g., course load, student
+advising responsibilities, division/department meetings, office hours, administrative
+responsibilities).
+Substantial Use of University Resources does not typically include use of office supplies,
+computers, telephones, utilities, or minimal administrative/clerical support. Substantial Use of
+University Resources does not typically include use of University libraries on a basis similar to
+scholars who have no association with the University.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 4/15
+
+--- PAGE 5 ---
+16. "Supervisor" as used herein means any Employee of the University in charge of an Employee under
+the supervision of the Head of the Department or some other superior officer.
+17. "TTO" means the technology transfer office, department, unit, or other organization designated by
+the President or his/her designee to manage the day-to-day technology transfer activities at each
+campus of the University.
+18. "University" as used herein means The Board of Curators of the University of Missouri. Any action
+or consent on the part of the University herein shall be an action or consent duly taken or given by
+the Board of Curators, or its authorized officer.
+D. Inventions by Employees of the University
+1. Rights of University and of Employees
+a. Assignment by Employees. The University shall have the ownership and control of any Invention
+developed in the course of the Employee’s service to the University. Each Employee hereby
+irrevocably assigns to the University all rights, title and interest in and to Inventions made by the
+Employee within the general scope of his/her duties as an Employee, and ownership of such
+Inventions shall immediately vest in the University. Further, the University may elect to have
+Employees, as a condition of hiring or continued employment (as well as a condition of persons
+with “no salary” appointments participating in research investigation as set forth in Section C.3),
+to sign a written assignment or written acknowledgment of the Invention and Patent Regulations
+(CRR 100.020) and Copyright Regulations (CRR 100.030) prepared by the Office of the General
+Counsel in consultation with the Patent Committee. The written assignment or written
+acknowledgement may contain assignment language directed to Inventions (and associated
+Patents, and PVP protection) owned by the University in accordance with these regulations. The
+failure of an Employee to sign the written assignment or written acknowledgement does not
+relieve the Employee of the Employee’s obligations under these regulations and such Employee
+remains bound by the regulations. Each Employee is further required to execute any and all
+documents the University deems reasonably necessary to evidence such University ownership,
+including but not limited to any confirmatory assignments requested by the University.
+Remuneration to the Employee for such assignment(s) is detailed in Section J.
+b. Scope of Duties. An Invention shall be considered as having been made within the general scope
+of the Employee’s duties for the University if either of the following conditions are met:
+i. Whenever the Employee’s duties include research or investigation, and the Invention arose in
+the course of such research or investigation and is relevant to the Employee’s general field of
+inquiry; or
+ii. Whenever the Invention was made or developed through the Substantial Use of University
+Resources.
+In assessing Section D.1.b.i, the University may take into account the Employee’s
+department/college, other appointments (like joint appointments), classes taught, fields in which
+the Employee advises Students, publications/presentations made by the Employee, conferences
+attended by the Employee, journals/publication in which the Employee provides peer review,
+sponsored projects involving the Employee, grants submitted by the Employee through the
+University, and other relevant factors.
+c. Inventions Made Outside the Scope of Duties. An Employee of the University shall be entitled to
+all rights resulting from any Invention which was made by him/her outside the general scope of
+his/her University duties as defined in Section D.1.b. For example, subject to the Inventor’s
+compliance with the Conflict of Interest Policy set forth in Collected Rule and Regulation 330.015
+(including any applicable Conflict of Interest Management Plan), the University shall have no
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 5/15
+
+--- PAGE 6 ---
+rights to Inventions developed in the course of consulting activities for third parties other than
+the University, and not resulting from Substantial Use of University Resources.
+d. Disposition Rights. Except as provided herein, the President or his/her designee may approve the
+following:
+i. Assignment of Inventions owned by the University
+ii. Optioning of Inventions owned by the University;
+iii. Licensing of Inventions owned by the University;
+iv. Non-Assertion of Rights in Inventions (see Section D.3.);
+v. Waiver (re-assignment) of the Inventions by the University back to the Inventor (see Section
+D.4.); or
+vi. Any other transfer or disposition of Inventions owned by the University.
+In determining whether to approve the foregoing i-vi, the President or his/her designee shall
+consider all relevant factors and be satisfied the action will reasonably and substantially
+discharge the obligations of the University consistent with the University’s missions.
+e. Patent and PVP Filings. An Employee of the University shall not file (or assist others in filing) in
+any domestic or foreign jurisdiction any Patent or PVP certificate relating to an Invention made
+within the general scope of his/her University duties (see Section D.1.b.) without the prior written
+consent of the President or his/her designee. The University’s consent to file shall not constitute
+a waiver of or otherwise affect the University’s ownership interest in the Patent or PVP certificate.
+2. Invention Disclosures.
+a. Every Invention made by an Employee of the University shall be reported by such Employee to
+the TTO in an Invention Disclosure Form, except such report shall not be required in situations in
+which the Employee has a reasonable belief that the Invention was made clearly and
+demonstrably outside the general scope of the Inventor's duties as set forth in D.1.b, but such
+exception shall not apply if (a) the Inventor has any reason to believe that the University may
+have cause to assert ownership of such Invention or (b) the University has requested disclosure
+of the Invention so that the University may make a determination of ownership. Even if an
+Employee does not believe that reporting is required, the Employee shall nonetheless (i)
+promptly notify the TTO whenever any patent application is filed on such Invention naming the
+Employee as an Inventor and (ii) if requested by the TTO, promptly provide the TTO with a
+complete copy of such patent application and any patent office correspondence regarding the
+patent application, if requested by the Employee the University may agree to treat an
+unpublished patent application confidential if such circumstances are warranted. The Patent
+Committee shall prescribe the form and manner of execution of the Invention Disclosure Form,
+and such Invention Disclosure Form shall be treated as restricted/confidential reports of the
+University. The Invention Disclosure Form may include, among other things, confirmatory
+assignment language and recital of the obligations for the Inventors to cooperate with the
+University in filing, prosecuting, and maintaining a Patent or PVP certificate on the Invention. The
+Invention Disclosure Form may also contain language for the Inventors to allocate the Inventor
+Share among Inventors in accordance with Section J.3. The Invention Disclosure Form may also
+be different for different types of Inventions (e.g., engineering vs. software vs. Plant Varieties).
+b. The Invention Disclosure Form shall be made as promptly as possible, taking into consideration
+such factors as possible publication, public use, or sale and the necessity for protecting the
+Inventor’s and the University’s rights in the Invention. If the Invention is reduced to practice,
+modified, or improved upon after the Invention Disclosure Form is submitted by the Inventor,
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 6/15
+
+--- PAGE 7 ---
+the Inventor should promptly notify the TTO and update the Invention Disclosure Form, adding
+any new information, data or developments.
+c. For the protection of the rights of the Inventor and of the University, laboratory notebook-
+diaries, Invention Disclosure Forms, Plant Variety development data and memoranda or
+correspondence concerning them are to be considered University restricted/confidential
+information, and should be so marked by the Inventor.
+3. Request for Non-Assertion of University Rights in Invention (Invention Ownership
+Determination).
+a. Request of Non-Assertion of University Rights
+i. Basis for this Request. If an Inventor reasonably believes an Invention is not subject to the
+University’s ownership rights under these regulations because the Invention was not made or
+developed within the general scope of the Employee’s duties (see Section D.1.b.), then the
+Inventor may request a determination as to whether the University will assert ownership
+rights to the Invention. The initial request should be made by the Inventor to the TTO in
+writing.
+ii. Terms and Conditions for Non-Assertion of University Rights. The University may condition
+agreement to a request for a non-assertion of rights in an Invention on certain terms and
+conditions as determined by the President or his/her designee.
+iii. Scope: Enabled Inventions. If the University makes a determination that the Invention
+described in the Invention Disclosure Form pursuant to Section D.2. is not “enabled” such
+that one skilled in the art can make and use the Invention without undue experimentation
+under U.S. patent law or that the Invention Disclosure Form is premature or incomplete, then
+the University may, in its discretion, elect to (1) defer an ownership dispute resolution
+process under this Section D.3. until such Invention is enabled or more mature/complete or
+(2) proceed with the ownership dispute resolution process under this Section D.3.
+b. Burden of Proof in making the Request of Non-Assertion of University Rights. The Inventor
+asserting that the Invention should not be subject to University ownership shall have the burden
+of showing the same by clear and convincing evidence.
+c. Documentation for the Request of Non-Assertion of University Rights. In connection with the
+request, the Inventor must provide the TTO with all reasonable information needed or requested
+to determine ownership (for example, emails, workbooks, laboratory notebooks). Such
+information may include but is not limited to:
+i. a summary of the circumstances leading to the conception, reduction to practice and
+development of the Invention;
+ii. a summary of any individuals, facilities, equipment, materials, background intellectual
+property, or other resources used to conceive, reduce to practice, or develop the Invention;
+iii. a listing of any possible co-Inventors and their contact information;
+iv. the Inventor’s duties at the time of making the Invention;
+v. whether the Invention was conceived, reduced to practice, or developed under an internal
+funding agreement or funding agreement with an external sponsor;
+vi. a copy of any applicable patent application (in accordance with D.2.a); and
+vii. whether any third parties have a co-ownership interest in the Invention.
+d. Process.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 7/15
+
+--- PAGE 8 ---
+i. After receipt of the information set forth in Section D.3.c, the TTO, in consultation with at
+least the Head of the Department and the Dean, will make a recommendation in writing on
+whether or not the University should assert ownership rights in such Invention. The
+recommendation shall be provided to the President's designee, who shall make a decision on
+whether or not the University will grant the request.
+ii. If the President's designee makes a decision that is adverse to the Inventor, the Inventor may
+appeal the decision in Section D.3.d.i to the Patent Committee by submitting an appeal
+request to the Patent Administrator. If the Inventor elects to appeal, the Inventor shall be
+afforded the opportunity to appear before the Patent Committee to present evidence and
+any information the Patent Committee may request. The Patent Committee, at its discretion,
+may make an independent investigation of the ownership claim. The Patent Committee shall
+provide its findings and recommendations in writing to the President for appropriate action.
+The Inventor shall be afforded a copy of the Patent Committee findings and
+recommendations and shall have an opportunity to respond to the findings of the Patent
+Committee by filing a timely written argument with the President. The President shall make
+the final non-appealable determination with respect to ownership and whether the
+University will assert rights in the Invention.
+iii. In all cases, a decision regarding the non-assertion of rights in an Invention is at the sole
+discretion of the University.
+iv. In the event that the President makes a final determination that the University owns the
+Invention, the refusal of an Inventor to execute a confirmatory assignment to the University
+of such Invention may result in sanctions against the Inventor (see Section K).
+e. Duty to Disclose. For clarity, the Inventor must still disclose the Invention in accordance with
+Section D.2 and provide the requested documentation in accordance with D.3.c of these
+regulations. However, the Inventor need not execute any assignment language in the Invention
+Disclosure Form for so long as there is a legitimate ownership dispute and the Inventor has filed
+a request for non-assertion of rights. In the event that the President makes a final determination
+requesting assignment, then the Inventor shall promptly execute the assignment language in the
+Invention Disclosure Form and any confirmatory assignments requested by the University.
+f. Commercialization Restrictions.
+i. An Inventor who has any reason to believe that that the University has an ownership interest
+in an Invention or the University may assert ownership of the Invention shall not attempt to
+commercialize (e.g., license, sell, lease, assign or otherwise transfer) such Invention or file (or
+assist others to file) a Patent or PVP certificate covering the Invention without a final
+resolution of ownership as set forth in Section D.3 of these regulations, unless prior written
+approval is obtained from the President or his/her designee. In such a case of receiving such
+prior written approval, the Inventor must provide the University with a copy of any such
+patent applications and any patent office correspondence regarding the patent application as
+set forth in Section D.2.a. The University's consent to file shall not constitute a waiver of or
+otherwise affect the University's ownership in the Invention.
+ii. When an Invention is owned by an Employee, the Inventor shall not further create, develop,
+or commercialize an Invention with Substantial Use of University Resources unless pursuant
+to a written agreement with the University executed by the President or his/her designee that
+sets forth the terms and conditions of such Substantial Use of University Resources. A term
+or condition of the written agreement may involve, for example, University ownership of the
+Invention, University/Inventor co-ownership of the Invention, or other revenue sharing with
+the University if such further creation, development, or commercialization of the Invention
+involves Substantial Use of University Resources. By way of example, if an Employee in the
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 8/15
+
+--- PAGE 9 ---
+school of music files a patent application directed to a new engine that is not subject to
+University ownership under Section D.1.b, and the Employee is then desirous of obtaining
+federal funding through the University to build and test the new engine, the University and
+the Employee should enter into a written agreement which provides for University ownership
+of the patent application and Invention so that the University may satisfy its obligations to
+the federal government in accordance with the Bayh-Dole Act. The Substantial Use of
+University Resources should also be reported to the Conflict of Interest Committee and
+subject to a Management Plan in accordance with Collected Rule and Regulation 330.015.
+g. Initiation of Non-Assertion of University Rights in Invention by University. Although the Inventor
+will typically initiate a request for non-assertion of University rights in an Invention, the University
+may elect to not assert rights without such a request if the University finds it is in the University's
+interest to do so.
+4. Inventor Requests for Waiver (Re-Assignment) of University Rights.
+a. Scope.
+i. If the University determines it will not pursue or maintain all Patents or PVPs certificate on an
+Invention and/or will not pursue commercialization of an Invention subject to the University's
+ownership under these regulations or the University otherwise finds it is in the interest of the
+University, the University may consider a written request by the Inventor to waive/re-assign
+the University's ownership interest in the Invention (and any Patents or PVP certificates
+covering only the Invention) arising solely from the Inventor who has made the request. Not
+all Inventors are required to join in the request.
+ii. To the extent that the TTO elects to pursue patent protection on an Invention in some
+countries but not others (for example, the University elects to file and maintain a patent
+application in the United States but elects to forego or abandon foreign filings), the TTO may
+summarily deny a request for waiver from an Inventor directed to Patents in countries where
+the University has not pursued or maintained protection, and the process in Section D.4.d
+does not apply. If the University makes a determination that an Invention is not "enabled"
+such that one skilled in the art can make and use the Invention without undue
+experimentation under U.S. Patent law or that the Invention Disclosure Form is premature or
+incomplete, then the University may, in its discretion, elect to (1) defer the waiver/re-
+assignment process under this Section D.4 until such Invention is enabled or more
+mature/complete or (2) proceed with the waiver/re-assignment process under this Section
+D.4.
+b. The Request for Waiver/Re-Assignment.
+i. Agreement as to the Request by Multiple Inventors. In those instances, in which there are
+multiple Inventors, all Inventors do not need to be in agreement and be a party to such a
+request to waive/re-assign the University's ownership interest in the Invention arising solely
+from the Inventor who has made the request. The Inventor making the request should make
+reasonable attempts to seek unanimous approval of all of the Inventors to make the request.
+If all Inventors do not agree to make the request, then the University may, at its discretion,
+waive/re-assign only an undivided interest to the Inventor who has made the request, and if
+the University does so, the University shall retain an undivided interest in the Invention by
+virtue of the Inventors who have not agreed to the request such that the Invention shall be
+co-owned by the University and the Inventor making the request. In such a case, any Net
+Proceeds received by the University shall be shared with the Inventors who have not joined in
+the request (and not the Inventor making the request) as set forth in Section J of these
+regulations. The University shall have no obligation to market, protect, or license the
+Invention where rights have been waived/re-assigned to less than all of the Inventors.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 9/15
+
+--- PAGE 10 ---
+ii. Terms and Conditions for Waiver/Re-assignment. The University may condition waiver/re-
+assignment of an Invention to the Inventor making the request on certain terms and
+conditions as determined by the President or his/her designee. At a minimum, (1) the
+University must retain an irrevocable non-exclusive, perpetual, worldwide, royalty free
+license to make, use, and otherwise practice the Invention for educational, research, and
+academic purposes; (2) the waiver/re-assignment must comply with applicable law; (3) the
+waiver/re-assignment must be subject to preexisting rights of third parties (including the
+right to approve such waiver/re-assignment where applicable), where such third parties may
+include external sponsors or co-owners of the Invention; and (4) the Inventor making the
+request must assume future expenses and costs related to the patenting and
+commercialization of the Invention.
+c. Documentation for the Request for Waiver (Re-assignment) of Invention from University to
+Inventor. In connection with the request, the Inventor must provide the TTO with all reasonable
+information needed or requested to assess the patentability and commercialization potential of
+the Invention.
+d. Process.
+i. After receipt of the information set forth in Section D.4.c, the TTO, in consultation with at
+least the Head of the Department and the Dean, will make a recommendation in writing on
+whether or not to waive/re-assign rights in the Invention to the Inventor making the request.
+The recommendation shall be provided to the President's designee, who shall make a
+decision on whether or not the University will grant the request in reasonable period of time.
+ii. If the President's designee makes a decision that is adverse to the Inventor making the
+request, the Inventor may appeal the decision in Section D.4.d.i of these regulations to the
+Patent Committee by submitting an appeal request to the Patent Administrator. If the
+Inventor elects to appeal, the Inventor shall be afforded the opportunity to appear before the
+Patent Committee to present evidence and any information the Patent Committee may
+request. The Patent Committee, at its discretion, may make an independent investigation of
+the issue. The Patent Committee shall provide its appropriate findings and recommendations
+in writing to the President of the University for appropriate action. The Inventor shall be
+afforded a copy of the Patent Committee findings and recommendations and shall have an
+opportunity to respond to the findings of the Patent Committee by filing a timely written
+argument with the President. The President shall make the final non-appealable
+determination with respect to the requested waiver/re-assignment of rights.
+iii. In all cases, decisions regarding the waiver/re-assignment in Inventions are at the sole
+discretion of the University.
+5. Publication, Public Use and Sale. If an Invention is described in a printed publication, is in public
+use, is on sale, or is otherwise available to the public before a Patent or PVP certificate is filed, the
+patentability or protection under the Plant Variety Protection Act may be affected. In order to
+preserve possible Patent protection or protection under the Plant Variety Protection Act in the
+Invention, the Inventor (or the Supervisor of the Inventor if the Inventor is not available) must notify
+the TTO of any such events irrespective of whether an Invention Disclosure Form has previously
+been filed. If an Invention Disclosure Form has not been filed, the Inventor shall file the Invention
+Disclosure Form at once. If an Invention is disclosed to any person who is not employed by the
+University, the Employee making such disclosure shall provide the TTO with the date and extent of
+the disclosure, the name and address of the person to whom the disclosure was made, and the
+purpose of the disclosure.
+E. Rights of University and Students
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 10/15
+
+--- PAGE 11 ---
+1. General Rule. In general, Students will be entitled to own any Invention made during their
+enrollment as a Student of the University and will generally not be required to assign his or her
+ownership to the University; however, the foregoing general rule does not apply and the Student will
+be required to assign his or her ownership interest to the University in any circumstance in which the
+Student meets the definition ofEmployee, as defined in Section C.3. hereof provided such Invention
+was developed in the course of the Student-Employee’s service to the University. Should faculty wish
+to have a non-Employee Student work on a research project where University ownership of resulting
+Inventions is desired, faculty are encouraged to work with the TTO to obtain written agreements
+from the Student that address ownership of Inventions made by Student pursuant to Section E.5.
+2. Examples of Student Owned Inventions. Without limiting the language of the foregoing general
+rule or the language of the foregoing exceptions to the general rule, the following are examples of
+fact situations in which, in the absence of a written agreement providing otherwise, the University
+will not claim ownership of an Invention made by a Student of the University:
+a. The Invention was developed by a Student as part of a University class project using no greater
+University resources than those generally available to all other Students within the class or than
+those available to the Student as part of his/her enrollment with the University.
+b. The Invention was developed by a Student as part of a University approved Student competition
+using no greater University resources than those generally available to all other Students within
+the competition or than those available to the Student as part of his/her enrollment with the
+University. The Student shall be entitled to receive any monetary or other prize awarded to the
+Student for his/her performance under such competition in accordance with the rules of the
+competition and such prize shall not be considered compensation under Section C.3. hereof.
+c. The Invention was developed by a Student as part of a University approved extracurricular
+activity, using no greater University resources than those generally available to all other Students
+participating in the activity or than those available to the Student as part of his/her enrollment
+with the University.
+d. The Invention was developed by a Student on his/her own free time, outside of any University
+class or sponsored activity, and using no greater University resources than those generally
+available to all other Students as part of their enrollment with the University.
+e. In determining whether the Invention was developed using no greater University resources than
+those generally available to all other Students within the class/competition/activity or than those
+available to the Student as part of his/her enrollment with the University, factors that the
+University may consider as part of this assessment include:
+i. Whether the University established eligibility criteria for participation;
+ii. Whether the University selects the participants from among those eligible;
+iii. Degree of presence or lack of presence at the project site by a faculty advisor, University
+supervisor, or other University employee;
+iv. Extent of supervision exercised by a faculty advisor, University supervisor, or other University
+employee;
+v. Degree to which University-provided tools, equipment, and supplies were utilized in the
+development of the Invention;
+vi. Degree to which University-provided funds were used in the development of the Invention;
+vii. Whether a University faculty member or other Employee is co-Inventor;
+viii. Existence and terms of any signed agreement required as a condition of participation; and
+ix. Any other relevant factors.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 11/15
+
+--- PAGE 12 ---
+3. Examples of University-Owned Inventions. The following are examples of fact situations in which
+the University may claim ownership of an Invention made by a Student of the University:
+a. The Invention was developed as part of a graduate school thesis/dissertation project by a
+Student-Employee paid under a graduate teaching assistantship. Because the Student is an
+Employee, this section is not applicable and the ownership standards set forth in Section D.1.b
+shall apply.
+b. If a faculty member provides a Student (who is not otherwise an Employee) with a volunteer
+opportunity to work on a project sponsored by an external sponsor (e.g. a governmental or
+industry sponsor) and the Student uses greater University resources than those available to
+other Students enrolled at the University as part of the sponsored project, then the University
+may assert ownership of the Invention made by such Student in order for the University to fulfill
+its contractual obligations to the external sponsor.
+4. Non-Assertion. A Student may, but is not obligated to, make a request for non-assertion of
+University rights in an Invention using the procedures generally set forth in Section D.3.
+5. Treatment of Student as an Employee.
+a. In the event that the University asserts ownership in an Invention made or developed by a
+Student under the foregoing standards set forth in this Section E and the Student is not
+otherwise an Employee under Section C.3(a)-(b), then the University and Student shall typically
+enter into an agreement whereby the Student is treated as an Employee under Section C.3(c),
+wherein such agreement addresses, among other things, the sharing of Net Proceeds (if any)
+with the Student (along with other Inventor-Employees) under Section J.
+b. A Student having ownership over an Invention may, with University consent, elect to assign the
+Student's rights in the Invention to the University. In such a case, the University and Student shall
+typically enter into an agreement whereby the Student is treated as an Employee under Section
+C.3(c), wherein such agreement addresses, among other things, the sharing of Net Proceeds (if
+any) with the Student (along with other Inventor-Employees) under Section J.
+6. Student Policy Information. The Patent Administrator shall implement reasonable procedures
+designed to make Students aware of Section E, and to provide one or more avenues for Students to
+receive information regarding the University’s interpretation of the Student’s rights and obligations
+with respect to Inventions in which a Student may be an Inventor or co-Inventor
+F. Visitors: Rights of Other Institutions. In general, Inventions made or developed by Inventors who are not
+Employees or Students but are otherwise visiting from another institution or company (e.g., visiting
+scientists, visiting scholars) will be treated as having been made or developed by an Employee within the
+general scope of his/her duties for the University. However, the University recognizes that such
+Inventors often are subject to intellectual property polices of their home institutions or employers.
+Accordingly, where it is anticipated that there is a reasonable possibility that a visitor will conceive,
+reduce to practice or develop an Invention while working at or under the auspices of the University, the
+TTO should be contacted so an agreement with the visitor's home institution or employer may be
+executed prior to the start of the visit. In cases in which there are conflicts between the University and
+the home institution or employer of a non-Employee Inventor visitor, such conflicts will be resolved
+through good faith negotiations between the University and such home institution or employer.
+G. The Patent Committee
+1. Appointment
+a. Notwithstanding other regulations affecting University committees, the President of the
+University shall appoint a Patent Committee, which shall include representative voting members
+from each of the campuses. The Patent Administrator or other person designated by the
+President shall be an ex officiomember of the Patent Committee and shall provide a secretary to
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 12/15
+
+--- PAGE 13 ---
+the Patent Committee. The General Counsel or his/her delegate shall also be an ex officio
+member of the Patent Committee. The TTO director(s) shall also be ex officio member(s) of the
+Patent Committee.
+b. The President of the University shall designate the chair of the Patent Committee.
+c. The Patent Committee shall make and keep minutes of all its meetings.
+2. Duties
+a. The Patent Committee shall assist with policy analysis and development relating to these
+regulations.
+b. The Patent Committee shall assist with drafting amendments to these regulations resulting from
+technological and legislative changes affecting Inventions, Patents, and/or PVP rights.
+c. The Patent Committee shall review, report and make recommendations on all matters affecting
+Inventions as may be referred to the Patent Committee by the Patent Administrator (see Section
+H.2.d.).
+d. The Patent Committee will consider such other matters regarding the Inventor’s claims, interest
+or right to patentable findings, as may be referred to it by the Patent Administrator.
+H. The Patent Administrator
+1. Appointment of Patent Administrator – The Patent Administrator will be appointed by the
+President.
+2. Duties of Patent Administrator - The duties of the Patent Administrator shall be prescribed by the
+President or his/her designee from time to time. The duties of the Patent Administrator shall include,
+but not be limited to, a duty to:
+a. Assist with policy analysis and development relating to these regulations;
+b. Assist with drafting amendments to these regulations resulting from technological and legislative
+changes affecting Inventions, Patents, and/or PVP rights;
+c. Implement procedures to advise Students of their intellectual property rights in accordance with
+Section E.6 of these regulations;
+d. Refer matters to the Patent Committee in accordance with these regulations.
+i. If there is a dispute about Inventorship, the Patent Administrator shall refer such claims to
+the Patent Committee in accordance with Section C.7.c.
+ii. If an Inventor shall claim an Invention as his/her own, the Patent Administrator shall refer
+such claims to the Patent Committee in accordance with Section D.3.d.
+iii. If an Inventor shall claim that an Invention should be waived/re-assigned to the Inventor, the
+Patent Administrator shall refer such claims to the Patent Committee in accordance with
+Section D.4.d.
+iv. If there is a dispute about the distribution of Inventor Share of Net Income, the Patent
+Administrator shall refer such claims to the Patent Committee in accordance with Section J.3.
+v. The Patent Administrator may refer other matters to the Patent Committee as he/she deems
+necessary to protect the interests or rights of the Inventor and the University.
+I. TTOs.
+The duties of the TTO shall be prescribed by the President or his/her designee from time to time. The
+duties of the TTO shall include, but not be limited to, receiving Invention Disclosure Forms, determining
+whether to file or maintain any Patents directed to University-owned Inventions, and making
+commercialization decisions with respect to such University-owned Inventions.
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 13/15
+
+--- PAGE 14 ---
+J. Use of Net Proceeds Received By University Relating To Inventions
+1. General Rule.
+a. Net Proceeds received by the University from commercializing a University-owned Invention or
+the copyright in materials subject to Copyright Policy 100.030 shall be distributed as follows;
+i. 33.3 percent shall go to the Inventor(s) for Inventions and authors for copyrightable works
+(“Inventor share”);
+ii. 66.7 percent to the campus from which the Invention originated (“Campus Share”).
+b. To the extent required by applicable law, use of the Campus Share is restricted to support
+scientific research or education. Each campus shall develop a plan for expenditures related to
+the Campus Share. Such plans will be approved by the Chancellor with input from appropriate
+faculty representatives with experience in technology transfer, the campus research office, and
+the TTO.
+c. In the event the Campus Share exceeds $5 million in any given fiscal year, a separate plan shall
+be made for the funds in excess of $5 million and approved by both the Chancellor and the
+President.
+For clarity, the distribution protocols outlined do not apply to personally owned Inventions and
+copyrightable materials but only to those Inventions and copyrightable materials owned by the
+University.
+2. Department of Veteran's Affairs.In the case of Inventions made jointly by University Employee(s)
+and individual(s) employed by the United States Department of Veteran’s Affairs, with or without
+compensation, the President or his/her designee may execute a written agreement with the United
+States Department of Veteran’s Affairs which provides for different division, distribution and
+allocation of Gross Proceeds or Net Proceeds as provided herein.
+3. Inventor Revenue Distribution Agreement. If more than one Inventor is to share in the Inventor
+Share provided in Section J.1 of these regulations, the Inventors entitled to receive payments should
+decide among themselves their respective shares and provide the TTO with a written agreement
+signed by all Inventors. This written agreement may be provided as part of the Invention Disclosure
+Form or may be a separate written agreement. Such written agreement among the Inventors should
+be provided promptly to the TTO after receiving a written request from the TTO for such an
+agreement, at a minimum, and the written agreement should be provided prior to distribution of the
+Net Proceeds. Any such written agreement will be irrevocable unless it is modified in writing by all
+Inventors. In the absence of a written agreement, the University may (1) hold the Inventor Share for
+a reasonable period of time to permit the Inventors to come to an agreement; or (2) after a
+reasonable period of time, divide the Inventor Share equally among the Inventors. If a written
+agreement cannot be reached after good faith efforts by the Inventors, an Inventor may request that
+the matter be referred by the Patent Administrator to the Patent Committee for an equitable
+recommendation to the President. The Inventor shall be provided a copy of the Patent Committee’s
+recommendation and shall have an opportunity to respond by filing a timely written argument to the
+President. The President shall make the final non-appealable determination with respect to the
+distribution of the Inventor Share. The University is not liable for any distribution of Inventor Share
+made in good faith but that was later found to be in error.
+4. Assignment of Inventor Share. An Inventor Share payable to an Inventor cannot be assigned by the
+Inventor to third parties unaffiliated with the University. Notwithstanding the foregoing, prior to the
+receipt of Gross Proceeds by the University, an Inventor may elect in writing to (a) forego his/her
+portion of the Inventor Share such that the University retains the same for general use by the
+University; (b) forego his/her portion of the Inventor Share and direct the same to a University
+account related to further research and development of the Invention; or (c) redirect all or a part of
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 14/15
+
+--- PAGE 15 ---
+his/her portion of the Inventor Share to an Employee or non-Employee Student who made a
+significant, but non-inventive contribution to the development of the Invention and would not
+otherwise be entitled to share in the Inventor Share. With respect to (c) such redirection may be
+made as part of the Inventor Revenue Distribution Agreement referenced in Section J.3 of these
+regulations.
+5. Compliance with the Regulations.
+a. This distribution of the Inventor Share to an applicable Inventor shall be contingent upon the
+Inventor’s compliance with these regulations. For example, in order to qualify for the Inventor
+Share, an Employee must have executed any confirmatory assignments requested by the
+University and must reasonably assist the University with the University’s efforts to
+commercialize the Invention (including but not limited to reasonable input on the filing,
+prosecution, and maintenance of any Patents or PVP certificates related thereto).
+b. In the event that an Inventor does not comply with these regulations (for example, the Inventor
+refuses to sign such a confirmatory assignment and/or does not provide such reasonable
+assistance to the University), no Inventor Share will be allocated to that Inventor and the Inventor
+Share shall be allocated to the other Inventors, and the corresponding Campus Share shall be
+likewise adjusted as if the non-cooperating Inventor did not exist.
+K. Sanctions.
+Conduct by an Employee that violates these regulations shall constitute a breach of the employment
+contract and may lead to disciplinary action. The Patent Committee may make a determination of a
+violation of this policy and will report such violation to the Chancellor. After the finding of a violation, the
+Chancellor of each campus may apply sanctions, including but not limited to, one or more of the
+following:
+1. Letter of warning or admonishment,
+2. Suspension or termination of research compliance committee approvals,
+3. Suspension or termination of the privilege to submit sponsored activity proposals,
+4. Suspension or termination of sponsored research activity spending authority,
+5. Demotion or removal from assigned administrative roles,
+6. Ineligibility for waivers/re-assignments,
+7. Ineligibility to receive an Inventor Share,
+8. Referral to campus Committee on Tenure or other appropriate committee for discipline or dismissal
+for cause of faculty,
+9. Suspension or termination of employment (pursuant and subject to CRR 310.060, Procedures in
+Case of Dismissal for Cause, for those faculty covered by that rule).
+10/29/26, 9:32 PM 100.020 Invention and Patent Regulations | UM System
+https://www.umsystem.edu/policies/collected-rules/business-management/chapter-100-patent-copyright-law/100020-invention-patent-regulations 15/15
+

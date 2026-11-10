@@ -1,0 +1,279 @@
+{
+  "version": "1.0",
+  "task": "Missing-Information Detection Evaluation",
+  "form_reference": "UM System Invention Disclosure Form UM-16C (rev. September 2025)",
+  "categories": {
+    "differentiation": {
+      "name": "Differentiation / Novelty",
+      "official_field_ids": ["difference_from_others", "closest_products"],
+      "description": "How the invention differs from existing technology or improves upon current commercial products."
+    },
+    "public_disclosure": {
+      "name": "Public Disclosure & Timelines",
+      "official_field_ids": ["date_first_public_disclosure", "public_disclosures_list"],
+      "description": "Whether the invention has been publicly disclosed (publications, conferences, thesis, presentations) and key dates."
+    },
+    "inventors": {
+      "name": "Inventorship & Contributors",
+      "official_field_ids": ["potential_inventors", "inventor_contributions"],
+      "description": "Names and affiliations of all individuals who contributed intellectually to the conception of the invention."
+    },
+    "development_stage": {
+      "name": "Development Stage & Testing",
+      "official_field_ids": ["development_stage", "evidence_testing"],
+      "description": "Current physical or experimental stage (concept, simulation, bench prototype, animal/clinical testing)."
+    },
+    "applications": {
+      "name": "Commercial Applications",
+      "official_field_ids": ["applications_users", "commercial_applications"],
+      "description": "Target commercial markets, end users, and practical industry applications."
+    },
+    "funding_support": {
+      "name": "Funding & Sponsorship",
+      "official_field_ids": ["funding"],
+      "description": "Federal grants (e.g. NIH, NSF, DOD), university internal funding, or commercial sponsored research agreements."
+    }
+  },
+  "scenarios": [
+    {
+      "id": "SCEN_01",
+      "group": "relatively_complete",
+      "domain": "Biomedical Research",
+      "title": "Targeted Lipid Nanoparticle for Pancreatic Cancer mRNA Delivery",
+      "description": "We developed a targeted lipid nanoparticle system functionalized with a novel plectin-1 targeting peptide to deliver therapeutic mRNA specifically to pancreatic ductal adenocarcinoma cells. Unlike conventional non-targeted LNPs (such as Onpattro formulations) that accumulate primarily in the liver, our peptide-conjugated formulation achieves a 4.5-fold higher accumulation in pancreatic tumor tissue with negligible liver toxicity. We have validated this in orthotopic mouse xenograft models showing a 60% reduction in tumor volume over 28 days. Our primary commercial application is systemic adjuvant therapy for resectable and metastatic pancreatic cancer in hospital oncology settings. The project was conceived and executed by myself (Dr. Sarah Chen, Associate Professor of Pharmacology) and Dr. Marcus Vance (Postdoctoral Fellow), supported by NIH R01 grant CA248102.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "OMITTED",
+        "inventors": "PROVIDED",
+        "development_stage": "PROVIDED",
+        "applications": "PROVIDED",
+        "funding_support": "PROVIDED"
+      },
+      "notes": "Omits public disclosure history/plans; all other 5 categories thoroughly provided."
+    },
+    {
+      "id": "SCEN_02",
+      "group": "relatively_complete",
+      "domain": "Artificial Intelligence & Healthcare",
+      "title": "Privacy-Preserving Federated Foundation Model for Pediatric Rare Diseases",
+      "description": "I have created 'PediatricNet', a federated self-supervised transformer architecture trained across decentralized electronic health records to detect early-onset lysosomal storage disorders. Current diagnostic algorithms require centralized pooling of patient genomics and clinical notes, which violates HIPAA and cross-institutional privacy agreements; our federated split-learning approach trains model weights across hospital silos without exchanging raw patient data, improving detection F1 score from 0.62 to 0.89. The system is designed for deployment in children's hospital networks and clinical diagnostic genetics laboratories. The algorithm has been benchmarked using multi-institutional retrospective data from 12,000 synthetic patient records with 99.1% mathematical privacy preservation. Development was conducted solely by myself (Dr. Elena Rostova) with no outside research grants or sponsored contracts. We have not submitted any manuscripts or presented this at conferences yet.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "PROVIDED",
+        "inventors": "PROVIDED",
+        "development_stage": "PROVIDED",
+        "applications": "PROVIDED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Explicitly states no public disclosure; omits internal/institutional university funding support details."
+    },
+    {
+      "id": "SCEN_03",
+      "group": "relatively_complete",
+      "domain": "Materials Science & Clean Energy",
+      "title": "Self-Healing Zirconia-Yttria Thermal Barrier Coating for Gas Turbines",
+      "description": "Our team has engineered a self-healing thermal barrier coating (TBC) composed of yttria-stabilized zirconia embedded with encapsulated titanium dioxide healing precursors. Standard plasma-sprayed ceramic coatings crack under severe thermal cycling above 1200°C, causing catastrophic turbine blade degradation; our microencapsulated oxide melts at operating temperatures to autonomously fill micro-fractures, extending blade service life by 300%. We have completed extensive high-temperature burner rig testing at 1350°C through 500 thermal shock cycles. The coating is targeted directly at commercial aviation turbofan manufacturers and stationary power generation turbine operators. The work was developed by Dr. Robert Kim and graduate research assistant Jamal Hayes in the Department of Mechanical Engineering, fully funded by NSF Award DMR-2019482. No public disclosures or conference submissions have been made to date.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "PROVIDED",
+        "inventors": "PROVIDED",
+        "development_stage": "PROVIDED",
+        "applications": "PROVIDED",
+        "funding_support": "PROVIDED"
+      },
+      "notes": "Complete scenario where all 6 categories are explicitly addressed. Tests for false positives."
+    },
+    {
+      "id": "SCEN_04",
+      "group": "relatively_complete",
+      "domain": "Healthcare Technology & Devices",
+      "title": "Continuous Optical Sensor for Intravascular Catheter Sepsis Monitoring",
+      "description": "We have developed an integrated optical surface plasmon resonance (SPR) fiber-optic sensor embedded directly inside the lumen of standard central venous catheters to detect Staphylococcus aureus endotoxins in real time. Unlike intermittent blood cultures that require 24 to 48 hours for laboratory incubation, our inline optical fiber detects bacterial pathogen presence within 15 minutes of colonization. We have validated prototype catheters in circulating benchtop blood-loop bioreactors across 72 continuous hours. The primary application is intensive care units and long-term dialysis facilities to prevent catheter-related bloodstream infections (CRBSIs). The research was carried out by Dr. Anthony Martinez and Dr. Priya Nair, supported by a UMKC School of Medicine internal innovation seed grant.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "OMITTED",
+        "inventors": "PROVIDED",
+        "development_stage": "PROVIDED",
+        "applications": "PROVIDED",
+        "funding_support": "PROVIDED"
+      },
+      "notes": "Omits public disclosure status and upcoming disclosure timelines."
+    },
+    {
+      "id": "SCEN_05",
+      "group": "relatively_complete",
+      "domain": "Agriculture & Environmental Technology",
+      "title": "Biodegradable Chitosan Microspheres for Controlled Micronutrient Release",
+      "description": "Our laboratory developed cross-linked carboxymethyl chitosan microspheres loaded with chelated zinc and iron nanoparticles for controlled soil nutrient release. Unlike standard water-soluble fertilizers that suffer 60-70% nutrient runoff during seasonal heavy rains, our biodegradable shell degrades in response to rhizosphere organic acid secretions, releasing nutrients over a sustained 90-day growth cycle. We tested the microspheres in greenhouse soybean growth trials across three soil pH variants with significant yield increases. Intended commercial users include commercial row-crop agriculture producers and specialty fertilizer formulators. The research was funded by USDA-NIFA Grant 2021-67021-34190. We have not published, presented, or publicly shared any details regarding the chemical cross-linking formulation.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "PROVIDED",
+        "inventors": "OMITTED",
+        "development_stage": "PROVIDED",
+        "applications": "PROVIDED",
+        "funding_support": "PROVIDED"
+      },
+      "notes": "Omits names and roles of contributing inventors and researchers."
+    },
+    {
+      "id": "SCEN_06",
+      "group": "incomplete",
+      "domain": "Computer Science & Cryptography",
+      "title": "Asymmetric Lattice-Based Cryptographic Accelerator for Edge IoT",
+      "description": "I have created an ultra-compact hardware crypto-accelerator architecture specifically optimized for Module-Lattice-Based Key-Encapsulation Mechanisms (ML-KEM/Kyber). It uses a systolic polynomial multiplier that executes post-quantum key exchanges on microcontrollers using only 12 milliwatts of active power, which is ideal for resource-constrained smart grid meters.",
+      "ground_truth": {
+        "differentiation": "OMITTED",
+        "public_disclosure": "OMITTED",
+        "inventors": "OMITTED",
+        "development_stage": "OMITTED",
+        "applications": "PROVIDED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Severely incomplete: omits differentiation vs existing accelerators, public disclosure, inventors, physical stage (FPGA vs simulation), and funding."
+    },
+    {
+      "id": "SCEN_07",
+      "group": "incomplete",
+      "domain": "Engineering & Soft Robotics",
+      "title": "Hydraulically Actuated Compliant Endoscopic Surgical Gripper",
+      "description": "We built a compliant soft robotic surgical gripper fabricated from biocompatible silicone with embedded microfluidic channels. When pressurized with sterile saline, the soft fingers curl inward to grasp delicate gastrointestinal tissue during minimally invasive surgery without causing ischemic pressure necrosis. The prototype was manufactured using multi-material 3D stereolithography and tested on porcine organ tissue.",
+      "ground_truth": {
+        "differentiation": "OMITTED",
+        "public_disclosure": "OMITTED",
+        "inventors": "OMITTED",
+        "development_stage": "PROVIDED",
+        "applications": "PROVIDED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Incomplete: describes prototype stage and surgery use, but omits inventors, prior art comparison, disclosure dates, and funding."
+    },
+    {
+      "id": "SCEN_08",
+      "group": "incomplete",
+      "domain": "Energy & Environmental Technology",
+      "title": "Porous Graphene Aerogel Electrode for Electrosorption Water Desalination",
+      "description": "Our invention is a nitrogen-doped 3D porous graphene aerogel monolith used as a capacitive deionization electrode to remove sodium chloride from brackish water. In our preliminary laboratory flow-cell trials, the electrode demonstrated a salt electrosorption capacity of 24.8 mg/g at 1.2 volts. We developed this in the chemistry department over the past 14 months.",
+      "ground_truth": {
+        "differentiation": "OMITTED",
+        "public_disclosure": "OMITTED",
+        "inventors": "OMITTED",
+        "development_stage": "PROVIDED",
+        "applications": "OMITTED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Incomplete: gives bench metrics, but omits differentiation, applications, disclosure history, inventor names, and funding."
+    },
+    {
+      "id": "SCEN_09",
+      "group": "incomplete",
+      "domain": "Biomedical & Diagnostics",
+      "title": "DNAzyme Molecular Probe for Single-Step Circulating Tumor DNA Detection",
+      "description": "We designed a catalytic DNAzyme beacon that emits a fluorescent signal upon cleaving the specific mutant KRAS G12D circulating tumor DNA sequence found in colorectal cancer liquid biopsies. Traditional digital droplet PCR requires enzymatic thermocycling and 4 hours of processing; our isothermal DNAzyme assay works at room temperature in 20 minutes without fluorescent thermocyclers.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "OMITTED",
+        "inventors": "OMITTED",
+        "development_stage": "OMITTED",
+        "applications": "OMITTED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Incomplete: clearly states technical differentiation vs PCR, but omits whether it is tested on patient blood, applications, inventors, public talks, and funding."
+    },
+    {
+      "id": "SCEN_10",
+      "group": "incomplete",
+      "domain": "Materials Science & Metallurgy",
+      "title": "Ultralight High-Entropy Alloy with Nanotwinned Microstructure",
+      "description": "We synthesized an AlTiVCr high-entropy alloy using spark plasma sintering that achieves a specific yield strength of 310 MPa/(g/cm3) while maintaining 14% tensile ductility. This was produced by Dr. Gregory Vance under funding from the Department of Defense Army Research Office Grant W911NF-20-1-0182.",
+      "ground_truth": {
+        "differentiation": "OMITTED",
+        "public_disclosure": "OMITTED",
+        "inventors": "PROVIDED",
+        "development_stage": "OMITTED",
+        "applications": "OMITTED",
+        "funding_support": "PROVIDED"
+      },
+      "notes": "Incomplete: specifies single inventor and DOD funding, but omits differentiation against standard titanium alloys, stage of testing, commercial use cases, and disclosure status."
+    },
+    {
+      "id": "SCEN_11",
+      "group": "partially_provided",
+      "domain": "Healthcare Technology & Sensors",
+      "title": "Minimally Invasive Microneedle Patch for Interstitial Cortisol Tracking",
+      "description": "We designed a wearable microneedle array with electrochemical aptamer sensors to track interstitial cortisol fluctuations for Addison's disease monitoring. Unlike painful venipunctures that spike cortisol due to stress, our patch continuously samples interstitial fluid painlessly. I gave a brief poster talk at a regional biosensor symposium a couple of weeks ago, and some graduate students in my department assisted with the fabrication steps. We've conducted some preliminary bench testing with synthetic fluid samples.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "PARTIAL",
+        "inventors": "PARTIAL",
+        "development_stage": "PARTIAL",
+        "applications": "PROVIDED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Partially provided: public disclosure mentioned ('poster talk a couple weeks ago') but lacks specific date/venue; inventors mentioned ('some graduate students in my department') without names/contributions; stage mentioned ('some preliminary bench testing') without data."
+    },
+    {
+      "id": "SCEN_12",
+      "group": "partially_provided",
+      "domain": "Artificial Intelligence & Robotics",
+      "title": "Vision-Inertial Simultaneous Localization for GPS-Denied Underground Mining",
+      "description": "Our software system provides real-time SLAM navigation for autonomous mining loaders operating in GPS-denied tunnels. Existing LiDAR systems fail when heavy airborne dust scatters the laser beams; our multi-spectral thermal-inertial fusion algorithm maintains tracking through dense particulate dust. The work is supported by state mining grant funds. We have begun running trials in an abandoned limestone quarry, but we are still analyzing the positioning drift error data. Myself and a colleague at another university drafted the sensor fusion code.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "OMITTED",
+        "inventors": "PARTIAL",
+        "development_stage": "PARTIAL",
+        "applications": "PROVIDED",
+        "funding_support": "PARTIAL"
+      },
+      "notes": "Partially provided: funding ('state mining grant funds') lacks grant number/agency name; inventors ('a colleague at another university') lacks name/institution; testing ('trials in limestone quarry') lacks quantitative results."
+    },
+    {
+      "id": "SCEN_13",
+      "group": "partially_provided",
+      "domain": "Agriculture & Bioengineering",
+      "title": "Engineered Biochar Hydrogel for Arid Soil Moisture Retention",
+      "description": "We developed a pyrolyzed corn-stover biochar impregnated with crosslinked polyacrylamide for soil moisture retention in drought-prone farmland. Existing hydrogels degrade into toxic monomer residues within 6 months, whereas our biochar composite remains active across multiple planting seasons while sequestering carbon. The technology is targeted at industrial corn and wheat farmers. We submitted an abstract to an agronomy journal recently. The lab has tested moisture retention in soil columns in our greenhouse.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "PARTIAL",
+        "inventors": "OMITTED",
+        "development_stage": "PARTIAL",
+        "applications": "PROVIDED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Partially provided: disclosure ('submitted abstract recently') lacks publication status and journal name; stage ('tested moisture retention') lacks duration and quantitative retention metrics."
+    },
+    {
+      "id": "SCEN_14",
+      "group": "partially_provided",
+      "domain": "Energy & Battery Technology",
+      "title": "Non-Aqueous Organic Redox Flow Battery with Quinone-Derivatized Electrolyte",
+      "description": "Our lab formulated a symmetric non-aqueous organic redox flow battery utilizing a functionalized dihydroxyanthraquinone electrolyte for grid-scale renewable energy storage. Compared to commercial vanadium flow batteries that cost over $450/kWh due to raw vanadium pricing, our organic quinones cost under $85/kWh and operate at a higher cell voltage of 2.1V. Development was carried out by Dr. Kevin Patel and several research assistants in the chemistry department with funding from an energy consortium contract. We have built a single-cell test stack that ran for several cycles.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "OMITTED",
+        "inventors": "PARTIAL",
+        "development_stage": "PARTIAL",
+        "applications": "PROVIDED",
+        "funding_support": "PARTIAL"
+      },
+      "notes": "Partially provided: inventors mentions lead Dr. Patel but vague on 'several research assistants'; funding mentions 'energy consortium contract' without sponsor name; development mentions 'ran for several cycles' without cycle life data."
+    },
+    {
+      "id": "SCEN_15",
+      "group": "partially_provided",
+      "domain": "Computer Science & Embedded Systems",
+      "title": "Ultra-Low-Power Neuromorphic Spike Processor for Implantable Cardiac Monitors",
+      "description": "We designed an asynchronous neuromorphic spiking neural network microcontroller that classifies polymorphic ventricular arrhythmias directly on ultra-low-power cardiac loop recorders. Traditional DSP processors consume 80 microwatts of continuous power, draining battery life in under two years; our event-driven spiking architecture operates on less than 3 microwatts, enabling 8-year device longevity. We used the publicly available MIT-BIH arrhythmia benchmark dataset for our validation, and I gave a departmental seminar about the chip architecture last month.",
+      "ground_truth": {
+        "differentiation": "PROVIDED",
+        "public_disclosure": "PARTIAL",
+        "inventors": "OMITTED",
+        "development_stage": "PARTIAL",
+        "applications": "PROVIDED",
+        "funding_support": "OMITTED"
+      },
+      "notes": "Partially provided: disclosure mentions 'departmental seminar last month' (needs public audience check); stage mentions dataset simulations without hardware tapeout validation."
+    }
+  ]
+}

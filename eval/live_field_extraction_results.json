@@ -1,0 +1,708 @@
+{
+  "evaluation_timestamp": "2026-11-10T05:49:00Z",
+  "model_tested": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+  "live_backend": "Spring Boot (port 8081) + MLX (port 8080)",
+  "scenarios_evaluated": 15,
+  "total_field_decisions": 90,
+  "summary": {
+    "overall_precision_pct": 90.2,
+    "overall_recall_pct": 66.1,
+    "overall_f1_pct": 76.3,
+    "overall_accuracy_pct": 74.4
+  },
+  "by_category": [
+    {
+      "id": "applications",
+      "name": "Commercial Applications\n(Form UM-16C \u00a7A.4)",
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1": 100.0,
+      "tp": 12,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3
+    },
+    {
+      "id": "differentiation",
+      "name": "Differentiation & Novelty\n(Form UM-16C \u00a7A.3)",
+      "precision": 100.0,
+      "recall": 100.0,
+      "f1": 100.0,
+      "tp": 11,
+      "fp": 0,
+      "fn": 0,
+      "tn": 4
+    },
+    {
+      "id": "development_stage",
+      "name": "Development Stage & Testing\n(Form UM-16C \u00a7A.2)",
+      "precision": 66.7,
+      "recall": 50.0,
+      "f1": 57.1,
+      "tp": 6,
+      "fp": 3,
+      "fn": 6,
+      "tn": 0
+    },
+    {
+      "id": "inventors",
+      "name": "Inventors & Contributors\n(Form UM-16C \u00a7B.1)",
+      "precision": 100.0,
+      "recall": 37.5,
+      "f1": 54.5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 5,
+      "tn": 7
+    },
+    {
+      "id": "funding_support",
+      "name": "Funding & Grant Support\n(Form UM-16C \u00a7C.1)",
+      "precision": 75.0,
+      "recall": 42.9,
+      "f1": 54.5,
+      "tp": 3,
+      "fp": 1,
+      "fn": 4,
+      "tn": 7
+    },
+    {
+      "id": "public_disclosure",
+      "name": "Public Disclosure History\n(Form UM-16C \u00a7D.1)",
+      "precision": 100.0,
+      "recall": 33.3,
+      "f1": 50.0,
+      "tp": 2,
+      "fp": 0,
+      "fn": 4,
+      "tn": 9
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SCEN_01",
+      "title": "Targeted Lipid Nanoparticle for Pancreatic Cancer mRNA Delivery",
+      "latency": 28.67,
+      "extracted_cats": [
+        "differentiation",
+        "applications"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_02",
+      "title": "Privacy-Preserving Federated Foundation Model for Pediatric Rare Diseases",
+      "latency": 58.36,
+      "extracted_cats": [
+        "differentiation",
+        "funding_support",
+        "applications",
+        "development_stage",
+        "public_disclosure"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": true,
+          "classification": "FP"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        }
+      }
+    },
+    {
+      "id": "SCEN_03",
+      "title": "Self-Healing Zirconia-Yttria Thermal Barrier Coating for Gas Turbines",
+      "latency": 57.98,
+      "extracted_cats": [
+        "differentiation",
+        "funding_support",
+        "applications",
+        "development_stage",
+        "public_disclosure",
+        "inventors"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        }
+      }
+    },
+    {
+      "id": "SCEN_04",
+      "title": "Continuous Optical Sensor for Intravascular Catheter Sepsis Monitoring",
+      "latency": 42.34,
+      "extracted_cats": [
+        "differentiation",
+        "funding_support",
+        "applications"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_05",
+      "title": "Biodegradable Chitosan Microspheres for Controlled Micronutrient Release",
+      "latency": 23.07,
+      "extracted_cats": [
+        "differentiation",
+        "applications",
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_06",
+      "title": "Asymmetric Lattice-Based Cryptographic Accelerator for Edge IoT",
+      "latency": 26.57,
+      "extracted_cats": [
+        "applications",
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "OMITTED",
+          "extracted": true,
+          "classification": "FP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_07",
+      "title": "Hydraulically Actuated Compliant Endoscopic Surgical Gripper",
+      "latency": 15.63,
+      "extracted_cats": [
+        "applications",
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_08",
+      "title": "Porous Graphene Aerogel Electrode for Electrosorption Water Desalination",
+      "latency": 14.92,
+      "extracted_cats": [],
+      "decisions": {
+        "applications": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_09",
+      "title": "DNAzyme Molecular Probe for Single-Step Circulating Tumor DNA Detection",
+      "latency": 14.55,
+      "extracted_cats": [
+        "differentiation",
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "OMITTED",
+          "extracted": true,
+          "classification": "FP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_10",
+      "title": "Ultralight High-Entropy Alloy with Nanotwinned Microstructure",
+      "latency": 13.67,
+      "extracted_cats": [
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "differentiation": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "development_stage": {
+          "ground_truth": "OMITTED",
+          "extracted": true,
+          "classification": "FP"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_11",
+      "title": "Minimally Invasive Microneedle Patch for Interstitial Cortisol Tracking",
+      "latency": 20.77,
+      "extracted_cats": [
+        "differentiation",
+        "inventors",
+        "applications",
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "PARTIAL",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_12",
+      "title": "Vision-Inertial Simultaneous Localization for GPS-Denied Underground Mining",
+      "latency": 18.73,
+      "extracted_cats": [
+        "differentiation",
+        "inventors",
+        "applications"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PARTIAL",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "funding_support": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_13",
+      "title": "Engineered Biochar Hydrogel for Arid Soil Moisture Retention",
+      "latency": 23.54,
+      "extracted_cats": [
+        "differentiation",
+        "applications",
+        "development_stage"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_14",
+      "title": "Non-Aqueous Organic Redox Flow Battery with Quinone-Derivatized Electrolyte",
+      "latency": 30.84,
+      "extracted_cats": [
+        "differentiation",
+        "funding_support",
+        "applications"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "funding_support": {
+          "ground_truth": "PARTIAL",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_15",
+      "title": "Ultra-Low-Power Neuromorphic Spike Processor for Implantable Cardiac Monitors",
+      "latency": 20.32,
+      "extracted_cats": [
+        "differentiation",
+        "applications"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PARTIAL",
+          "extracted": false,
+          "classification": "FN"
+        }
+      }
+    }
+  ]
+}

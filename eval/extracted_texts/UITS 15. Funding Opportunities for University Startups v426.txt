@@ -1,0 +1,391 @@
+--- PAGE 1 ---
+1 | P a g e  
+  
+UMKC Impact & Translation Series 
+Funding to Move Research Toward Real-World Impact 
+Helping you move your work beyond the university  
+ 
+Research with real-world potential often needs 
+resources to move forward. Whether that next step 
+involves technical validation, customer discovery, 
+prototype development, regulatory planning, 
+partnership building, or startup formation, progress 
+usually depends on securing the right support at the 
+right time. 
+ 
+In the UMKC Impact & Translation Series, funding 
+should be understood as a tool for reducing 
+uncertainty and enabling progress. Funding is not 
+the goal by itself. It is one of the mechanisms that 
+can help move research, innovation, and creative 
+work beyond the university and closer to real-world 
+use. 
+ 
+For some projects, that support may come through 
+grants, proof-of-concept funds, or university-backed 
+programs. For others, it may involve angel 
+investment, venture capital, strategic partnerships, or revenue-based approaches. The right source 
+depends on the nature of the work, the pathway to impact, and the milestone that needs to be 
+reached next. 
+ 
+This whitepaper outlines the major categories of funding that may support translation, 
+commercialization, and startup development at UMKC. It is designed to help faculty and graduate 
+students think more clearly about which funding sources fit which stage of progress, what those 
+sources are intended to support, and when it makes sense to engage the Office of 
+Commercialization in exploring next steps. 
+ 
+Grant-Based Funding 
+Grant funding is often the most appropriate early source of support for university-connected 
+innovations because it can help reduce risk without requiring founders to give up ownership. In 
+many cases, grants support the work that must happen before a startup, licensing effort, or external 
+partnership is viable. That may include feasibility studies, prototype development, customer 
+discovery, validation work, or early commercialization planning. 
+UITS Whitepaper 
+This whitepaper is part of the UMKC 
+Impact & Translation Series (UITS) - 
+a set of short videos and supporting 
+materials designed to help faculty 
+think more clearly about how their 
+work can move beyond the university 
+and into real-world use. 
+ 
+The videos introduce core ideas. This 
+document goes deeper on one of 
+those ideas: how different types of 
+funding support the next stage of 
+moving your work toward real-
+world use.
+
+--- PAGE 2 ---
+2 | P a g e  
+  
+Small Business Innovation Research (SBIR) and Small Business 
+Technology Transfer (STTR) Grants 
+The SBIR and STTR programs offer federal funding to small businesses conducting research and 
+development with the potential for commercialization. These grants are highly competitive but 
+provide significant financial support: 
+• Phase I Grants: Typically up to $150,000, supporting feasibility studies. 
+• Phase II Grants: Can reach up to $1 million, funding further development. 
+• Phase III: While no direct funding is provided, businesses that reach this stage often secure 
+contracts with government agencies. 
+ 
+SBIR/STTR grants provide substantial funding without requiring dilution of equity, allowing 
+university-affiliated entrepreneurs to explore market applications of their research.  
+ 
+Additionally, STTR grants require collaboration with a nonprofit research institution, making them 
+ideal for university researchers who want to work with industry partners while maintaining strong 
+ties to their academic work. 
+ 
+Successful SBIR/STTR applications demonstrate: 
+• A clear path to commercialization 
+• Strong market validation 
+• Feasible technical milestones and a well-structured team 
+• Potential customer engagement 
+• Letters of support from industry partners or potential customers 
+ 
+Many faculty researchers seek SBIR/STTR grants to fund technology validation, prototype 
+development, and initial market testing, which are necessary steps before securing private 
+investment or forming a startup. 
+ 
+Government Granting Agencies and the Current Funding Environment 
+Federal agencies such as the National Institutes of Health (NIH), National Science Foundation 
+(NSF), Department of Energy (DOE), and Department of Defense (DOD) provide substantial grant 
+funding for early-stage research and commercialization. These agencies support university-
+affiliated startups, offering both early-stage development grants and later-stage commercialization 
+grants. 
+ 
+However, the landscape of government grant funding is currently in flux. With ongoing shifts in 
+administration policies, research priorities, and budget allocations, funding availability and focus 
+areas may change. Startups should closely monitor federal funding announcements, participate in 
+grant workshops, and leverage university resources to stay ahead of policy changes that might 
+impact their eligibility for funding.
+
+--- PAGE 3 ---
+3 | P a g e  
+  
+Over the last few years, federal funding priorities have shifted to focus on strategic areas that 
+present strong commercialization opportunities. Some notable trends include: 
+• Artificial Intelligence (AI) and Machine Learning: Many federal agencies, including NSF 
+and NIH, are allocating significant funding for AI applications in healthcare, security, and 
+manufacturing. 
+• Climate Tech and Sustainability: DOE and NSF have increased funding for energy storage, 
+renewable energy solutions, and decarbonization technologies. 
+• Biotechnology and Precision Medicine: NIH and DoD are investing in personalized 
+medicine, genomic research, and bioinformatics to advance targeted healthcare solutions. 
+• Supply Chain Resilience: Federal funding programs now emphasize advanced 
+manufacturing and logistics solutions to address global supply chain challenges. 
+ 
+UMKC researchers should consider how their innovations align with these funding priorities when 
+developing grant proposals and commercialization strategies. Engaging with the Missouri SBDC can 
+help navigate these uncertainties and identify the most viable opportunities. 
+ 
+State, University, and Private Foundation Grants 
+Many private foundations and university-backed programs offer funding for early-stage research 
+and commercialization efforts. These grants can provide critical early-stage support, particularly for 
+technologies in the proof-of-concept phase. 
+ 
+Missouri Technology Corporation (MTC) provides state-level support for innovative startups through 
+matching funds that complement federal and private investments. 
+• How It Works: MTC offers funding to startups that have secured other sources of 
+investment, such as SBIR/STTR grants or venture capital. These matching funds help reduce 
+the financial burden on early-stage companies and enable them to accelerate 
+commercialization efforts. 
+• Why It Matters for UMKC Startups: University-affiliated startups can leverage MTC 
+matching funds to expand their research, hire personnel, and advance product 
+development. This additional funding can increase a company’s ability to attract investors 
+by demonstrating strong support from both federal and state sources. 
+ 
+Proof-of-Concept Funds  
+Proof-of-concept (POC) funds are critical resources that help early-stage startups validate their 
+ideas and develop working prototypes before seeking larger investments. These funds provide 
+financial support for activities such as prototype development, market validation, customer 
+discovery, and early-stage business formation. 
+ 
+One such example is Digital Sandbox KC, a program that offers proof-of-concept funding of up to 
+$20,000 to early-stage startups in the Kansas City region. The goal of Digital Sandbox is to reduce 
+the financial risk associated with early-stage innovation by providing grants for critical activities that 
+help move an idea closer to commercialization. Unlike traditional investment sources, Digital
+
+--- PAGE 4 ---
+4 | P a g e  
+  
+Sandbox funding is typically non-dilutive, meaning startups do not have to give up equity in 
+exchange for financial support. 
+ 
+These funds are particularly useful for university-affiliated startups, as they provide a much-needed 
+financial bridge between research and commercialization. Entrepreneurs can use the funding to 
+refine their business model, conduct feasibility studies, and develop minimum viable products 
+(MVPs) that demonstrate the viability of their technology in the real world. 
+ 
+Missouri SBDC and UMKC Entrepreneurship Grants 
+The Missouri Small Business Development Center (SBDC) and UMKC’s Entrepreneurship 
+Innovation Grant provide financial support and mentorship for startups. These resources help 
+entrepreneurs refine their business models and access additional funding sources. 
+ 
+Stages of Equity-Based Funding 
+Equity-based funding involves securing investment from external parties in exchange for partial 
+ownership of the startup. This type of funding is crucial for scaling a business but requires careful 
+negotiation to retain strategic control. 
+ 
+Startups that seek equity-based funding typically progress through several funding stages, each 
+with unique opportunities and challenges.  
+ 
+Funding availability depends on a startup's stage of development. The following table outlines what 
+investors expect at each stage: 
+ 
+Startup Stage Funding Sources Key Milestones 
+Idea/Research Grants, POC Funds Proof of concept, initial research, patent filings 
+Pre-Seed Friends & Family, 
+SBIR/STTR 
+Market validation, early prototype, team formation 
+Seed Angel Investors, 
+Accelerators 
+Minimum viable product (MVP), early customer 
+traction, business model validation 
+Early Stage 
+(Series A) 
+Venture Capital, 
+Incubators 
+Scalable product, growing customer base, revenue 
+generation 
+Growth Stage 
+(Series B/C) 
+Venture Capital, 
+Private Equity 
+Market expansion, strong revenue, profitability 
+pathway 
+Late Stage Private Equity, IPO Market dominance, acquisition or IPO readiness 
+ 
+ 
+Below is an overview of the major funding stages and the available sources of capital for each. 
+ 
+Pre-Seed Funding 
+Pre-seed funding covers early expenses like market research and developing a minimal viable 
+product (MVP). Most pre-seed funding comes from founders’ savings or personal networks.
+
+--- PAGE 5 ---
+5 | P a g e  
+  
+• Bootstrapping: Using personal savings or revenue generated by the business to fund 
+operations is common at this stage. Founders maintain full control, but limited resources 
+can slow growth. 
+• Friends and Family: This form of funding is typically the easiest to secure but requires 
+careful consideration of legal agreements to avoid misunderstandings. Friends and family 
+investors may not expect significant returns but can provide a quick cash infusion. 
+ 
+Seed Funding 
+Seed funding helps startups cover early-stage development costs such as product design and team 
+hiring. 
+• Angel Investors: Wealthy individuals who invest in exchange for equity. In addition to 
+funding, angel investors often offer valuable mentorship and industry connections. 
+• Incubators and Accelerators: Startup accelerators provide funding, mentorship, and 
+networking opportunities to help startups refine their products and scale operations. 
+Incubators add the element of “collision” space, helping startup entrepreneurs benefit from 
+proximity to other growing companies.  
+ 
+Early-Stage Funding 
+Early-stage funding is critical for scaling operations and moving from a prototype to a fully 
+commercialized product. 
+• Venture Capital (VC): Venture capital firms invest in high-growth startups with proven 
+business models. In exchange for equity, VCs provide large sums of money and often take 
+an active role in shaping the company’s direction. Venture capitalists are looking for 
+scalability, a large market opportunity, and a clear exit strategy. 
+• Incubators and Accelerators: These programs not only provide funding but also 
+mentorship, office space, and networking opportunities to help startups scale quickly. 
+Accelerators often take equity in exchange for services and may culminate in a demo day 
+where startups pitch to investors. 
+ 
+Growth Stage Funding 
+Once a startup achieves product-market fit and is ready to scale further, growth-stage funding 
+provides the capital necessary to expand. 
+• Series A, B, and C Funding: As a startup grows, it may go through multiple rounds of 
+venture funding, with each round increasing in size. Series A focuses on scaling operations, 
+while Series B and C target geographic expansion and product diversification. For instance, 
+Series A funding typically ranges from $2 million to $15 million. Later rounds, such as Series 
+B or C, can involve tens of millions of dollars. 
+ 
+Late-Stage Funding 
+For mature startups, late-stage funding helps them expand globally, acquire other companies, or 
+prepare for an IPO.
+
+--- PAGE 6 ---
+6 | P a g e  
+  
+• Private Equity: Private equity funds invest in more established startups, often preparing 
+them for acquisitions or public offerings. These funds typically seek higher returns and a 
+clear exit strategy, either through an acquisition or IPO. 
+• Initial Public Offering (IPO): When a company goes public, it offers shares to the general 
+market. This is a common exit strategy for startups at the peak of their growth but carries 
+significant risks, including market volatility. 
+ 
+Alternative Funding Sources 
+For startups that may not qualify for venture capital or prefer to explore alternative funding options, 
+there are several other sources of capital. 
+• Crowdfunding: Platforms like Kickstarter and Indiegogo allow startups to raise capital by 
+pitching their ideas to the public. This method is particularly useful for consumer-facing 
+products and helps test market demand before full-scale production. Equity crowdfunding 
+platforms such as SeedInvest or Crowdcube allow startups to raise funds in exchange for 
+shares. The most successful crowdfunded businesses have a few things in common: 
+o Don’t start without 75%+ committed – Crowdfunding campaigns rely on the 
+excitement generated around an innovation, and products that show significant 
+jumps in the first 48 hours of the campaign rise to the top of the promotion list.  
+o Set a realistic goal, blow it away – Realize that with most platforms, you won’t 
+receive the funds unless you have met your fundraising goal. So set a realistic goal 
+and hit it as quickly as possible with pre-loaded interest. If there’s enough interest, it 
+may grow to a multiple of your original goal. Know what you need to close versus 
+what you’d like to close.  
+o Promote Aggressively: Use social media, press releases, and influencer 
+partnerships to extend your campaign’s reach. Regular updates keep backers 
+engaged and build trust, increasing the likelihood of additional support and future 
+funding opportunities. Encourage additional funding by offering new incentives 
+when initial goals are met. 
+ 
+• Loans: Startups can apply for small business loans through the Small Business 
+Administration (SBA). SBA loans provide low-interest rates and favorable terms for 
+qualifying startups. Other loan options include credit card loans or short-term loans to 
+cover immediate cash flow needs. The challenge is that banks only loan money if you can 
+demonstrate the ability to pay the loan back; for many pre-profit startups, bank loans are 
+not a viable avenue of funding.  
+ 
+• Pitch Competitions: Pitch competitions provide an excellent opportunity for startups to 
+secure funding while gaining visibility and feedback from investors. UMKC and other 
+organizations host competitions where entrepreneurs pitch their ideas to panels of judges 
+for a chance to win funding and mentorship. Programs such as the Regnier Venture Creation 
+Challenge and national competitions like Rice Business Plan Competition offer cash prizes, 
+networking opportunities, and investor connections to promising startups.
+
+--- PAGE 7 ---
+7 | P a g e  
+  
+UMKC-Specific Resources 
+UMKC offers several tailored resources to help 
+faculty and students navigate the funding 
+landscape. 
+• Office of Commercialization: UMKC’s 
+Office of Commercialization (OC) helps 
+university researchers and 
+entrepreneurs develop business plans, 
+connect with investors, and secure 
+funding. The OC works in tandem with 
+UMKC’s Office of Tech Transfer (OTT) to 
+provide expert guidance on securing 
+intellectual property rights and finding 
+commercialization partners. 
+• Technology Venture Studio: UMKC's Technology Venture Studio (TVS) is part of the UMKC 
+Innovation Center. With programs like Digital Sandbox ($20,000 in proof-of-concept 
+funding), Whiteboard2Boardroom, and the Office of Innovation Impact, TVS provides expert 
+guidance, funding, and access to a network of entrepreneurs and investors. 
+• Missouri SBDC: The Missouri SBDC provides workshops, business counseling, and funding 
+guidance tailored to university entrepreneurs. 
+• Entrepreneurship Innovation Grant: The Entrepreneurship Innovation Grant (EIG) is 
+designed to support innovative university-affiliated startups by offering financial assistance 
+for prototype development, market validation, and business planning. This grant aims to 
+bridge the gap between research and commercialization by providing seed capital to 
+promising entrepreneurial projects. Unlike traditional grant programs focused solely on 
+academic research, this grant emphasizes the commercial potential of innovations, helping 
+faculty and students transition their ideas into viable business opportunities. 
+• Regnier Venture Creation Challenge: UMKC’s Bloch School of Business hosts the annual 
+Regnier Venture Creation Challenge, offering cash prizes and funding for top startup ideas. 
+There are tracks for UMKC students and community entrepreneurs. 
+ 
+Strategies for Securing Funding 
+Successfully securing funding involves more than just identifying the right sources. University 
+startups must develop strong strategies to make their businesses attractive to investors. 
+• Build a Strong Team: Investors look for well-rounded teams with both technical and 
+business expertise. Founders should focus on building teams with a strong "founder-market 
+fit," meaning team members are deeply familiar with the problems they aim to solve. 
+Investors look for well-balanced teams with a mix of technical expertise, business acumen, 
+and execution capability. The ideal startup team includes: 
+o Technical Lead (University Researcher/Inventor): Provides deep expertise in the 
+technology, innovation, and research aspects. 
+Guiding Question: 
+What kind of funding or 
+support would help move my 
+work closer to real-world 
+use, and what milestone 
+would that funding need to 
+accomplish?
+
+--- PAGE 8 ---
+8 | P a g e  
+  
+o Business Lead (CEO or Entrepreneurial Co-Founder): Manages business strategy, 
+fundraising, and market expansion. 
+o Product/Operations Lead: Ensures the product is developed efficiently and 
+delivered to market. 
+o Sales & Marketing Lead: Drives customer acquisition and revenue growth. 
+ 
+Faculty members and graduate students often serve as the technical lead, developing and 
+refining the innovation. However, they may need to partner with experienced business 
+professionals to manage commercialization and investor relations effectively. 
+ 
+• Develop a Clear Exit Strategy: Investors, particularly venture capitalists and angel 
+investors, want to know how and when they will see a return on their investment. A clear 
+path to acquisition, IPO, or licensing deal can be a strong selling point. 
+ 
+• Leverage Grants and University Resources: Securing non-dilutive funding such as SBIR or 
+STTR grants is highly attractive to venture capitalists, as it means the startup requires less 
+external funding and retains more equity. UMKC’s support in grant writing and the 
+availability of internal university funding sources can be invaluable in this respect. 
+ 
+ 
+Conclusion 
+Funding can play an important role in helping research move toward real-world use, but the most 
+useful funding is tied to a specific purpose. In some cases, that purpose is technical validation. In 
+others, it is market discovery, prototype development, team building, partnership readiness, or 
+startup formation. The goal is not simply to secure money. The goal is to reduce uncertainty, reach 
+the next meaningful milestone, and strengthen the pathway through which your work could create 
+impact. 
+ 
+At UMKC, faculty and graduate students do not need to have a company, a polished pitch, or a 
+complete plan in order to begin that conversation. If your work may have potential beyond the 
+university, the Office of Commercialization can help you think through what kind of support makes 
+sense, what stage you are in, and what next step is most worth pursuing. 
+ 
+Resources & Contacts 
+UMKC Office of Commercialization 
+Director: Jeff Blackwood, MBA 
+  Website: www.umkcinnovates.com/tech-commercialization 
+  Email: techcomm@umkc.edu 
+  Phone: 816-235-6373
+
