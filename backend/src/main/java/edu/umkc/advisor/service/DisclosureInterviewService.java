@@ -120,7 +120,8 @@ public final class DisclosureInterviewService {
     /** Conversation order for remaining fields. Public disclosure and funding come after the work itself. */
     private static final List<String> CONVERSATION_ORDER = List.of(
             "technical_description", "problem_solved", "difference_from_others", "evidence_testing", "development_stage",
-            "applications_users", "potential_inventors", "inventor_contributions", "public_disclosures_list", "funding");
+            "applications_users", "potential_inventors", "inventor_contributions", "concept_participants",
+            "inventor_departments", "public_disclosures_list", "funding");
     private static final Pattern CONTRIBUTOR_CUE = Pattern.compile(
             "(?i)\\b(graduate students?|grad students?|post-?docs?|colleagues?|co-?inventor"
           + "|working on this with|worked on this with)\\b");
@@ -282,6 +283,7 @@ public final class DisclosureInterviewService {
             answers.put("potential_inventors", new FieldAnswer(msg.strip(), ResearcherMark.NONE));
             updated.add("potential_inventors");
         }
+        for (String id : FieldSeeding.apply(answers, msg)) if (!updated.contains(id)) updated.add(id);
         if (!answers.getOrDefault("summary_general", FieldAnswer.EMPTY).hasText()
                 && looksLikeWorkDescription(msg)
                 && !looksLikeProcessQuestion(msg)

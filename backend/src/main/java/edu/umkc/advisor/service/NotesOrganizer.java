@@ -71,6 +71,9 @@ public final class NotesOrganizer {
             new TopicHint("funding", Pattern.compile("(?i)\\b(grant|grants|funding|funded|nsf|nih|usda|darpa|sbir|sponsor(?:ed|s)?|outside support|department funds)\\b")),
             new TopicHint("inventor_contributions", Pattern.compile("(?i)\\b(wrote the|designed the|built the|i did the|they did the|contributed)\\b")),
             new TopicHint("potential_inventors", Pattern.compile("(?i)\\b(grad(?:uate)? student|postdoc|professor|colleague|advisor|post-doc|who helped|co-inventor)\\b")),
+            new TopicHint("inventor_departments", Pattern.compile("(?i)^(?=.*\\b(?:department of|school of|college of|chemistry department|engineering department)\\b)(?!.*\\b(?:student|professor|postdoc|colleague|inventor|helped)\\b).{0,120}$")),
+            new TopicHint("concept_participants", Pattern.compile("(?i)\\b(helped shape|core ideas?|came up with the (?:idea|concept))\\b")),
+            new TopicHint("grant_numbers", Pattern.compile("(?i)\\b(?:award|grant)\\s*(?:no\\.?|number|#)\\s*[A-Z0-9]")),
             new TopicHint("evidence_testing", Pattern.compile("(?i)\\b(tested|testing|tests|experiment|trial|samples?|tried it|composted|haven'?t tested)\\b")),
             new TopicHint("preliminary_results", Pattern.compile("(?i)\\b((?:the |our |preliminary )?results (?:showed|were|indicated)|we observed|it seemed to work|picked up)\\b")),
             new TopicHint("development_stage", Pattern.compile("(?i)\\b(design stage|early[- ]stage|nothing built|haven'?t built|working prototype|prototype stage|still (?:an )?idea|proof[- ]of[- ]concept)\\b")),
@@ -223,6 +226,7 @@ public final class NotesOrganizer {
             out.put(id, new FieldAnswer(text, mark));
         }
         applyNamedTitle(out, byId, said.toString());
+        FieldSeeding.apply(out, said.toString());
         rehomeMismatched(out, byId);
         for (String id : List.copyOf(out.keySet())) {
             FieldAnswer a = out.get(id);
@@ -266,7 +270,8 @@ public final class NotesOrganizer {
     }
 
     private static boolean inventorFamily(String id) {
-        return "potential_inventors".equals(id) || "inventor_contributions".equals(id);
+        return "potential_inventors".equals(id) || "inventor_contributions".equals(id)
+                || "concept_participants".equals(id);
     }
 
     /** True when the note is actually about this heading. Headings with no topic hint are left alone. */

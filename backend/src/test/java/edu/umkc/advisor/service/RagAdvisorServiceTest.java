@@ -124,4 +124,13 @@ class RagAdvisorServiceTest {
         assertTrue(r.insufficientEvidence());
         assertFalse(r.citations().isEmpty());
     }
+
+    @Test
+    void aClaimMustBeSupportedByTheCitedChunkNotTheWholePool() {
+        // S1 is the disclosure-contents passage; the evaluation timeline lives in a different chunk.
+        var r = svc(new Fake(ans("Evaluation of a disclosure may take a week to three months [S1].", "[\"S1\"]", true)), 0.1)
+                .generate("What does an invention disclosure describe?");
+        assertEquals(RagAdvisorService.NO_SOURCES_ANSWER, r.text());
+        assertTrue(r.citations().isEmpty());
+    }
 }

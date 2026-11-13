@@ -219,11 +219,39 @@ def evaluate_scenario(scenario: dict, asked_fields: list, assistant_msg: str) ->
     }
 
 
-def run_evaluation():
+def live_response(scenario, turns=3):
+    """Run the interview for several turns so missing-info recall is not a single-question artifact."""
+    token = str(uuid.uuid4())
+    headers = {"Content-Type": "application/json", "X-Owner-Token": token}
+    body = json.dumps({"workflow": "NEW_INVENTION"}).encode()
+    req = urllib.request.Request(f"{API_BASE}/drafts", data=body, headers=headers, method="POST")
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        draft_id = json.loads(resp.read().decode())["draft"]["id"]
+    asked = []
+    message = scenario.get("description") or scenario.get("prompt") or ""
+    last_msg = ""
+    for i in range(max(1, turns)):
+        payload = json.dumps({"message": message}).encode()
+        req = urllib.request.Request(
+            f"{API_BASE}/drafts/{draft_id}/interview/messages",
+            data=payload, headers=headers, method="POST")
+        with urllib.request.urlopen(req, timeout=180) as resp:
+            data = json.loads(resp.read().decode())
+        last_msg = data.get("assistantMessage") or ""
+        asked.extend(data.get("askedFieldIds") or [])
+        message = "That's all I have on that for now."
+    return {"asked_fields": asked, "message": last_msg}
+
+
+def run_evaluation(live=False, turns=3):
     print("=" * 70)
     print("UMKC AI Commercialization Advisor: Missing-Information Detection Eval")
     print(f"Dataset: {BENCHMARK_FILE.name} (15 scenarios across 8 research domains)")
-    print("Source: Real Empirical Live Assistant Responses (localhost:8081)")
+    if live:
+        print(f"Source: LIVE interview on {API_BASE} ({turns} turns / scenario)")
+    else:
+        print("WARNING: using frozen RECORDED_LIVE_RESPONSES (single-turn).")
+        print("Do not put these numbers on the poster. Re-run with --live.")
     print("=" * 70 + "\n")
 
     with open(BENCHMARK_FILE, "r") as f:
@@ -234,7 +262,14 @@ def run_evaluation():
 
     for s in scenarios:
         sid = s["id"]
-        resp_data = RECORDED_LIVE_RESPONSES.get(sid, {"asked_fields": ["technical_description"], "message": ""})
+        if live:
+            try:
+                resp_data = live_response(s, turns=turns)
+            except Exception as e:
+                print(f"  [FAIL] {sid}: {e}")
+                resp_data = {"asked_fields": [], "message": ""}
+        else:
+            resp_data = RECORDED_LIVE_RESPONSES.get(sid, {"asked_fields": ["technical_description"], "message": ""})
         eval_res = evaluate_scenario(s, resp_data["asked_fields"], resp_data["message"])
         results.append(eval_res)
 
@@ -366,10 +401,20 @@ def render_chart(group_stats: dict, turn_p: float):
     print(f"📊 Saved 300 DPI Poster Chart → {CHART_FILE}")
 
     target = ARTIFACTS_DIR / "missing_info_precision_recall.png"
-    with open(CHART_FILE, "rb") as src, open(target, "wb") as dst:
-        dst.write(src.read())
-    print(f"📊 Copied to artifacts → {target}")
+    try:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with open(CHART_FILE, "rb") as src, open(target, "wb") as dst:
+            dst.write(src.read())
+        print(f"Copied to artifacts → {target}")
+    except OSError as e:
+        print(f"Skipping artifacts copy ({e})")
 
 
 if __name__ == "__main__":
-    run_evaluation()
+    live = "--live" in sys.argv
+    turns = 3
+    if "--turns" in sys.argv:
+        i = sys.argv.index("--turns")
+        if i + 1 < len(sys.argv):
+            turns = int(sys.argv[i + 1])
+    run_evaluation(live=live, turns=turns)

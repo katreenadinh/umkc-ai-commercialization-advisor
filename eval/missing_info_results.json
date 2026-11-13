@@ -56,8 +56,8 @@
       "domain": "Biomedical Research",
       "title": "Targeted Lipid Nanoparticle for Pancreatic Cancer mRNA Delivery",
       "raw_response": {
-        "assistant_message": "That's a fascinating project! Your targeted lipid nanoparticle system shows promising results in delivering therapeutic mRNA to pancreatic cancer cells. How does the plectin-1 targeting peptide specifically achieve this targeted delivery?",
-        "actual_question_sentence": "How does the plectin-1 targeting peptide specifically achieve this targeted delivery?",
+        "assistant_message": "Got it. Your notes are saved, and we can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -112,8 +112,8 @@
       "domain": "Artificial Intelligence & Healthcare",
       "title": "Privacy-Preserving Federated Foundation Model for Pediatric Rare Diseases",
       "raw_response": {
-        "assistant_message": "That's a fascinating project, Dr. Rostova. Your federated self-supervised transformer architecture addresses a significant challenge in healthcare privacy while maintaining high diagnostic performance. Could you explain how the model trains across hospital silos without exchanging raw patient data?",
-        "actual_question_sentence": "Could you explain how the model trains across hospital silos without exchanging raw patient data?",
+        "assistant_message": "Got it, Dr. Rostova. Your notes are saved, and we can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -168,8 +168,8 @@
       "domain": "Materials Science & Clean Energy",
       "title": "Self-Healing Zirconia-Yttria Thermal Barrier Coating for Gas Turbines",
       "raw_response": {
-        "assistant_message": "That's a fascinating project! You've developed a self-healing thermal barrier coating that autonomously repairs itself under high-temperature conditions. Could you tell me more about how the coating works, specifically how the titanium dioxide healing precursors are activated and how they fill micro-fractures?",
-        "actual_question_sentence": "Could you tell me more about how the coating works, specifically how the titanium dioxide healing precursors are activated and how they fill micro-fractures?",
+        "assistant_message": "Got it. Your notes are saved, and we can resume this conversation whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "inventor_contributions"
         ]
@@ -224,8 +224,8 @@
       "domain": "Healthcare Technology & Devices",
       "title": "Continuous Optical Sensor for Intravascular Catheter Sepsis Monitoring",
       "raw_response": {
-        "assistant_message": "That's a fascinating project! Your sensor integrates optical surface plasmon resonance (SPR) with fiber-optic technology to detect Staphylococcus aureus endotoxins in real time, which could significantly improve patient outcomes. How does the sensor work to make these real-time detections?",
-        "actual_question_sentence": "How does the sensor work to make these real-time detections?",
+        "assistant_message": "Got it. Your notes are saved. We can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -280,8 +280,8 @@
       "domain": "Agriculture & Environmental Technology",
       "title": "Biodegradable Chitosan Microspheres for Controlled Micronutrient Release",
       "raw_response": {
-        "assistant_message": "That's a fascinating approach! The cross-linked carboxymethyl chitosan microspheres with chelated zinc and iron nanoparticles sound like a promising solution for sustained nutrient release. How does the biodegradable shell degrade in response to rhizosphere organic acid secretions?",
-        "actual_question_sentence": "How does the biodegradable shell degrade in response to rhizosphere organic acid secretions?",
+        "assistant_message": "Got it. Your notes are saved. We can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "previous_public_disclosures"
         ]
@@ -336,8 +336,8 @@
       "domain": "Computer Science & Cryptography",
       "title": "Asymmetric Lattice-Based Cryptographic Accelerator for Edge IoT",
       "raw_response": {
-        "assistant_message": "That's an interesting approach! Your hardware crypto-accelerator architecture sounds like it could be a significant improvement for resource-constrained smart grid meters. Could you explain how the systolic polynomial multiplier executes post-quantum key exchanges on microcontrollers?",
-        "actual_question_sentence": "Could you explain how the systolic polynomial multiplier executes post-quantum key exchanges on microcontrollers?",
+        "assistant_message": "Got it. Your notes are saved, and we can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -392,8 +392,8 @@
       "domain": "Engineering & Soft Robotics",
       "title": "Hydraulically Actuated Compliant Endoscopic Surgical Gripper",
       "raw_response": {
-        "assistant_message": "That's a fascinating project! You've developed a soft robotic gripper that can grasp delicate tissue without causing damage. Could you describe how the microfluidic channels and pressurized saline affect the gripper's behavior?",
-        "actual_question_sentence": "Could you describe how the microfluidic channels and pressurized saline affect the gripper's behavior?",
+        "assistant_message": "Got it. Your notes are saved. We can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -448,8 +448,8 @@
       "domain": "Energy & Environmental Technology",
       "title": "Porous Graphene Aerogel Electrode for Electrosorption Water Desalination",
       "raw_response": {
-        "assistant_message": "That's an interesting approach. You've developed a nitrogen-doped 3D porous graphene aerogel monolith for removing sodium chloride from brackish water. How does the nitrogen-doping and the 3D porous structure contribute to its performance in electrosorption?",
-        "actual_question_sentence": "How does the nitrogen-doping and the 3D porous structure contribute to its performance in electrosorption?",
+        "assistant_message": "Got it. Your notes are saved, and we can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -504,8 +504,8 @@
       "domain": "Biomedical & Diagnostics",
       "title": "DNAzyme Molecular Probe for Single-Step Circulating Tumor DNA Detection",
       "raw_response": {
-        "assistant_message": "That's an interesting approach. Your catalytic DNAzyme beacon sounds like it could offer a faster and more straightforward method for detecting specific mutant DNA sequences. How does the beacon work to emit a fluorescent signal upon cleaving the target sequence?",
-        "actual_question_sentence": "How does the beacon work to emit a fluorescent signal upon cleaving the target sequence?",
+        "assistant_message": "Got it. Your notes are saved. We can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -560,8 +560,8 @@
       "domain": "Materials Science & Metallurgy",
       "title": "Ultralight High-Entropy Alloy with Nanotwinned Microstructure",
       "raw_response": {
-        "assistant_message": "Got it. That's an interesting material with potential for high-strength, high-ductility applications. How does the spark plasma sintering process work to achieve these properties?",
-        "actual_question_sentence": "How does the spark plasma sintering process work to achieve these properties?",
+        "assistant_message": "Got it. Your notes are saved. We can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -616,8 +616,8 @@
       "domain": "Healthcare Technology & Sensors",
       "title": "Minimally Invasive Microneedle Patch for Interstitial Cortisol Tracking",
       "raw_response": {
-        "assistant_message": "That sounds like an innovative approach to monitoring cortisol levels. The wearable microneedle array with electrochemical aptamer sensors is a promising solution for Addison's disease monitoring. How does the electrochemical aptamer sensor work to detect cortisol levels in the interstitial fluid?",
-        "actual_question_sentence": "How does the electrochemical aptamer sensor work to detect cortisol levels in the interstitial fluid?",
+        "assistant_message": "Got it. Your notes are saved, so you won't need to start over. Feel free to return whenever you have more to share or have questions. Have a great day!",
+        "actual_question_sentence": "Have a great day!",
         "asked_field_ids": [
           "inventor_contributions"
         ]
@@ -672,8 +672,8 @@
       "domain": "Artificial Intelligence & Robotics",
       "title": "Vision-Inertial Simultaneous Localization for GPS-Denied Underground Mining",
       "raw_response": {
-        "assistant_message": "That's an interesting approach. How does the algorithm specifically handle the dust and maintain real-time navigation?",
-        "actual_question_sentence": "How does the algorithm specifically handle the dust and maintain real-time navigation?",
+        "assistant_message": "Got it. Your notes are saved. We can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "inventor_contributions"
         ]
@@ -728,8 +728,8 @@
       "domain": "Agriculture & Bioengineering",
       "title": "Engineered Biochar Hydrogel for Arid Soil Moisture Retention",
       "raw_response": {
-        "assistant_message": "That's an interesting approach. You've developed a biochar composite that improves soil moisture retention and carbon sequestration. How does the crosslinked polyacrylamide interact with the pyrolyzed corn-stover biochar to achieve these effects? For example, does it affect the biochar's structure or release water in response to moisture levels?",
-        "actual_question_sentence": "How does the crosslinked polyacrylamide interact with the pyrolyzed corn-stover biochar to achieve these effects? For example, does it affect the biochar's structure or release water in response to moisture levels?",
+        "assistant_message": "Of course. You can return whenever you're ready. What you've shared so far is saved, so you won't need to start over.",
+        "actual_question_sentence": "What you've shared so far is saved, so you won't need to start over.",
         "asked_field_ids": [
           "previous_public_disclosures"
         ]
@@ -784,8 +784,8 @@
       "domain": "Energy & Battery Technology",
       "title": "Non-Aqueous Organic Redox Flow Battery with Quinone-Derivatized Electrolyte",
       "raw_response": {
-        "assistant_message": "That's an exciting project! Your battery uses a functionalized dihydroxyanthraquinone electrolyte, which is a significant improvement over traditional vanadium flow batteries. How does the functionalization of the electrolyte affect the battery's performance, such as its cost and cell voltage?",
-        "actual_question_sentence": "How does the functionalization of the electrolyte affect the battery's performance, such as its cost and cell voltage?",
+        "assistant_message": "Got it. Your notes are saved, and we can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]
@@ -840,8 +840,8 @@
       "domain": "Computer Science & Embedded Systems",
       "title": "Ultra-Low-Power Neuromorphic Spike Processor for Implantable Cardiac Monitors",
       "raw_response": {
-        "assistant_message": "That's an impressive achievement! Your asynchronous neuromorphic spiking neural network microcontroller addresses a significant challenge in cardiac monitoring. Could you describe the key components or mechanisms that enable the low-power operation and high accuracy in classifying ventricular arrhythmias?",
-        "actual_question_sentence": "Could you describe the key components or mechanisms that enable the low-power operation and high accuracy in classifying ventricular arrhythmias?",
+        "assistant_message": "Got it. Your notes are saved, and we can pick up where you left off whenever you're ready. If you have more to share or any questions in the meantime, feel free to reach out.",
+        "actual_question_sentence": "If you have more to share or any questions in the meantime, feel free to reach out.",
         "asked_field_ids": [
           "technical_description"
         ]

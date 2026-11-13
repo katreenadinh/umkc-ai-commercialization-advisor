@@ -3,3 +3,4 @@ spring:
     web-application-type: none
 ingest:
   dir: ../data/imports      # optional local PDF/DOCX/TXT/MD files to add
+  extra-dir: ../eval/extracted_texts   # UITS ethics/funding texts used by the 50-question benchmark

@@ -53,4 +53,12 @@ class OutputGuardTest {
     void trailingPunctuationDoesNotBreakAllowlist() {
         assertFalse(guard.scan("Visit https://example.edu/x.", allowed).violated());
     }
+
+    @Test
+    void stillBlocksALegalDeterminationThatLooksLikeAGroundedRagAnswer() {
+        OutputGuard.Result r = guard.scan(
+                "Based on the retrieved sources [S1], you are the sole inventor of this work.", allowed);
+        assertTrue(r.violated());
+        assertTrue(r.reasons().contains("DEFINITIVE_INVENTORSHIP"));
+    }
 }

@@ -16,12 +16,12 @@ import java.util.regex.Pattern;
 public final class ReferralService {
 
     public record Contact(String officeName, String email, String url) {
-        String render() {
+        public String render() {
             String office = blank(officeName) ? "[CONFIGURE: referral office name]" : officeName.replaceAll("^[\"']|[\"']$", "").trim();
             String mail = blank(email) ? "[CONFIGURE: referral email]" : email.replaceAll("^[\"']|[\"']$", "").trim();
             String mailLink = mail.contains("@") ? "[" + mail + "](mailto:" + mail + ")" : mail;
             String link = blank(url) ? "" : " Learn more on the [UMKC Invention Disclosure Portal](" + url.trim() + ").";
-            return "Start with **Jeff Blackwood** at the Office of Commercialization at " + mailLink + "."+ link;
+            return "Start with **Jeff Blackwood** at the " + office + " at " + mailLink + "." + link;
         }
         private static boolean blank(String s) { return s == null || s.isBlank(); }
     }

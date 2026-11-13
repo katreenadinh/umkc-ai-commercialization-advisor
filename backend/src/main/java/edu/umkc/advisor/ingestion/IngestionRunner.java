@@ -16,7 +16,8 @@ import java.util.stream.Stream;
  * Separate from the request pipeline. Run with:
  *   mvn spring-boot:run -Dspring-boot.run.profiles=ingest
  * Optional notebook handoff: add -Dspring-boot.run.arguments=--ingest.jsonl=../data/chunks.jsonl
- * Fetches sources.json entries and ingests any PDF/DOCX/TXT/MD files found in ingest.dir.
+ * Fetches sources.json entries, then local files in ingest.dir and ingest.extra-dir
+ * (eval/extracted_texts: UITS ethics/funding mirrors not in the five official URLs).
  * Prints extracted-text previews so empty or malformed documents are caught.
  */
 @Component
@@ -24,11 +25,13 @@ import java.util.stream.Stream;
 public class IngestionRunner implements CommandLineRunner {
     private final IngestionPipeline pipeline;
     private final String dir;
+    private final String extraDir;
     private final String jsonl;
 
     public IngestionRunner(IngestionPipeline pipeline, @Value("${ingest.dir:../data/imports}") String dir,
+                           @Value("${ingest.extra-dir:../eval/extracted_texts}") String extraDir,
                            @Value("${ingest.jsonl:}") String jsonl) {
-        this.pipeline = pipeline; this.dir = dir; this.jsonl = jsonl;
+        this.pipeline = pipeline; this.dir = dir; this.extraDir = extraDir; this.jsonl = jsonl;
     }
 
     @Override
@@ -59,12 +62,26 @@ public class IngestionRunner implements CommandLineRunner {
                 for (var r : new JsonlImporter(pipeline).importJsonl(reader)) System.out.printf("JSONL %s: %d chunks%n", r.title(), r.chunks());
             }
         }
-        Path d = Path.of(dir);
-        if (Files.isDirectory(d)) {
-            try (Stream<Path> files = Files.list(d)) {
-                for (Path f : (Iterable<Path>) files::iterator) ingestFile(f);
+        ingestDirectory(Path.of(dir), false);
+        if (extraDir != null && !extraDir.isBlank() && !Path.of(extraDir).normalize().equals(Path.of(dir).normalize())) {
+            ingestDirectory(Path.of(extraDir), true);
+        }
+    }
+
+    private void ingestDirectory(Path d, boolean skipOfficialMirrors) throws Exception {
+        if (!Files.isDirectory(d)) return;
+        try (Stream<Path> files = Files.list(d)) {
+            for (Path f : (Iterable<Path>) files::iterator) {
+                if (skipOfficialMirrors && officialMirror(f.getFileName().toString())) continue;
+                ingestFile(f);
             }
         }
+    }
+
+    /** HTML/DOCX copies of the same CRR 100.020 / UM-16C sources already fetched from sources.json. */
+    static boolean officialMirror(String fileName) {
+        String n = fileName.toLowerCase().replace('_', ' ');
+        return n.contains("100.020") || n.contains("um-16c") || n.contains("um 16c");
     }
 
     private void ingestFile(Path f) {

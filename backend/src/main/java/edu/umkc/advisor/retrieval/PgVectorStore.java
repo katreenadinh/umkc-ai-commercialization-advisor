@@ -56,6 +56,27 @@ public class PgVectorStore implements VectorStore {
     }
 
     @Override
+    public List<ScoredChunk> searchKeyword(String query, int k) {
+        if (query == null || query.isBlank() || k <= 0) return List.of();
+        return jdbc.query("""
+            SELECT c.id AS cid, c.source_id, c.chunk_index, c.section, c.page, c.text,
+                   s.title, s.url, s.source_type, s.content_hash, s.enabled,
+                   ts_rank_cd(c.tsv, plainto_tsquery('english', ?)) AS score
+            FROM chunks c JOIN sources s ON s.id = c.source_id
+            WHERE s.enabled AND c.tsv @@ plainto_tsquery('english', ?)
+            ORDER BY score DESC
+            LIMIT ?
+            """, (rs, n) -> {
+                SourceRecord src = new SourceRecord(rs.getString("source_id"), rs.getString("title"), rs.getString("url"),
+                        rs.getString("source_type"), rs.getString("content_hash"), rs.getBoolean("enabled"));
+                int page = rs.getInt("page");
+                Chunk ch = new Chunk(rs.getString("cid"), rs.getString("source_id"), rs.getInt("chunk_index"),
+                        rs.getString("section"), rs.wasNull() ? null : page, rs.getString("text"));
+                return new ScoredChunk(ch, src, rs.getDouble("score"));
+            }, query, query, k);
+    }
+
+    @Override
     public List<SourceRecord> listSources() {
         return new ArrayList<>(jdbc.query(
             "SELECT id, title, url, source_type, content_hash, enabled FROM sources ORDER BY title",

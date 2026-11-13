@@ -10,7 +10,7 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 1,
-      "latency": 30.35
+      "latency": 37.58
     },
     "norag": {
       "key_facts_total": 4,
@@ -19,7 +19,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 13.58
+      "latency": 13.85
     }
   },
   {
@@ -28,12 +28,12 @@
     "question": "What restrictions exist on how the university campus can spend its share of commercialization proceeds?",
     "rag": {
       "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
+      "key_facts_found": 1,
+      "recall": 0.333,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 3,
-      "latency": 20.88
+      "citation_count": 2,
+      "latency": 20.2
     },
     "norag": {
       "key_facts_total": 3,
@@ -42,7 +42,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.64
+      "latency": 17.63
     }
   },
   {
@@ -56,16 +56,16 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 2,
-      "latency": 20.62
+      "latency": 21.81
     },
     "norag": {
       "key_facts_total": 4,
-      "key_facts_found": 0,
-      "recall": 0.0,
+      "key_facts_found": 1,
+      "recall": 0.25,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 13.96
+      "latency": 13.7
     }
   },
   {
@@ -74,21 +74,21 @@
     "question": "Who is covered by the UM System Invention and Patent Regulations?",
     "rag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 2,
-      "latency": 17.4
+      "latency": 31.64
     },
     "norag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 7.55
+      "latency": 7.93
     }
   },
   {
@@ -102,7 +102,7 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 1,
-      "latency": 18.82
+      "latency": 21.21
     },
     "norag": {
       "key_facts_total": 2,
@@ -111,122 +111,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 6.86
-    }
-  },
-  {
-    "id": "Q06",
-    "category": "UM System Patent & IP Regulations",
-    "question": "Under what conditions does the University of Missouri own an invention created by an employee?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 3,
-      "latency": 20.27
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 12.83
-    }
-  },
-  {
-    "id": "Q07",
-    "category": "UM System Patent & IP Regulations",
-    "question": "Can the university waive or assign patent rights back to the inventor?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
-      "has_citations": true,
-      "has_specific_policy": true,
-      "citation_count": 6,
-      "latency": 23.68
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 13.58
-    }
-  },
-  {
-    "id": "Q08",
-    "category": "UM System Patent & IP Regulations",
-    "question": "When is an employee required to submit an Invention Disclosure Form to the university?",
-    "rag": {
-      "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 5,
-      "latency": 20.5
-    },
-    "norag": {
-      "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 10.98
-    }
-  },
-  {
-    "id": "Q09",
-    "category": "UM System Patent & IP Regulations",
-    "question": "What is the role of the UM System Patent Committee?",
-    "rag": {
-      "key_facts_total": 4,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 8,
-      "latency": 16.32
-    },
-    "norag": {
-      "key_facts_total": 4,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 13.08
-    }
-  },
-  {
-    "id": "Q10",
-    "category": "UM System Patent & IP Regulations",
-    "question": "How are 'Gross Proceeds' and 'Net Proceeds' calculated for royalty distributions?",
-    "rag": {
-      "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 4,
-      "latency": 31.92
-    },
-    "norag": {
-      "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 17.07
+      "latency": 8.69
     }
   },
   {
@@ -240,7 +125,7 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 5,
-      "latency": 17.87
+      "latency": 20.24
     },
     "norag": {
       "key_facts_total": 3,
@@ -249,7 +134,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 2.45
+      "latency": 2.61
     }
   },
   {
@@ -258,12 +143,12 @@
     "question": "What is the legal and confidentiality status of the completed Invention Disclosure Form?",
     "rag": {
       "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
+      "key_facts_found": 1,
+      "recall": 0.333,
+      "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 76.41
+      "citation_count": 3,
+      "latency": 22.67
     },
     "norag": {
       "key_facts_total": 3,
@@ -272,7 +157,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 13.07
+      "latency": 11.71
     }
   },
   {
@@ -286,16 +171,16 @@
       "has_citations": true,
       "has_specific_policy": true,
       "citation_count": 1,
-      "latency": 19.23
+      "latency": 22.85
     },
     "norag": {
       "key_facts_total": 6,
-      "key_facts_found": 2,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 17.26
+      "latency": 17.53
     }
   },
   {
@@ -309,7 +194,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 25.26
+      "latency": 30.0
     },
     "norag": {
       "key_facts_total": 5,
@@ -318,7 +203,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 10.02
+      "latency": 11.08
     }
   },
   {
@@ -332,7 +217,7 @@
       "has_citations": true,
       "has_specific_policy": true,
       "citation_count": 2,
-      "latency": 16.3
+      "latency": 16.16
     },
     "norag": {
       "key_facts_total": 2,
@@ -341,76 +226,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 3.87
-    }
-  },
-  {
-    "id": "Q16",
-    "category": "Invention Disclosure Process & Form UM-16C",
-    "question": "What kinds of disclosures must be reported in Section A.3 of Form UM-16C?",
-    "rag": {
-      "key_facts_total": 4,
-      "key_facts_found": 2,
-      "recall": 0.5,
-      "has_citations": true,
-      "has_specific_policy": true,
-      "citation_count": 2,
-      "latency": 17.96
-    },
-    "norag": {
-      "key_facts_total": 4,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": true,
-      "citation_count": 0,
-      "latency": 11.94
-    }
-  },
-  {
-    "id": "Q17",
-    "category": "Invention Disclosure Process & Form UM-16C",
-    "question": "What contributor and funding information must be recorded on Form UM-16C?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": true,
-      "citation_count": 1,
-      "latency": 28.67
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": true,
-      "citation_count": 0,
-      "latency": 13.99
-    }
-  },
-  {
-    "id": "Q18",
-    "category": "Invention Disclosure Process & Form UM-16C",
-    "question": "Who must sign the completed Invention Disclosure Form before submission to the TTO?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 5,
-      "latency": 21.08
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 2,
-      "recall": 0.667,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 3.55
+      "latency": 4.03
     }
   },
   {
@@ -424,7 +240,7 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 2,
-      "latency": 13.27
+      "latency": 24.61
     },
     "norag": {
       "key_facts_total": 3,
@@ -433,7 +249,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 14.16
+      "latency": 17.48
     }
   },
   {
@@ -442,21 +258,21 @@
     "question": "How does UMKC handle warranties, liability, and sovereign immunity in license agreements?",
     "rag": {
       "key_facts_total": 4,
-      "key_facts_found": 2,
-      "recall": 0.5,
+      "key_facts_found": 3,
+      "recall": 0.75,
       "has_citations": true,
       "has_specific_policy": true,
-      "citation_count": 1,
-      "latency": 12.59
+      "citation_count": 2,
+      "latency": 16.21
     },
     "norag": {
       "key_facts_total": 4,
-      "key_facts_found": 2,
-      "recall": 0.5,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": false,
-      "has_specific_policy": true,
+      "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.05
+      "latency": 19.2
     }
   },
   {
@@ -469,8 +285,8 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 8,
-      "latency": 17.09
+      "citation_count": 4,
+      "latency": 28.91
     },
     "norag": {
       "key_facts_total": 3,
@@ -479,7 +295,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 16.28
+      "latency": 15.27
     }
   },
   {
@@ -488,12 +304,12 @@
     "question": "Can a startup sublicense UMKC-licensed technology to commercial partners?",
     "rag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 1,
-      "latency": 11.61
+      "citation_count": 2,
+      "latency": 20.06
     },
     "norag": {
       "key_facts_total": 3,
@@ -502,7 +318,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 4.85
+      "latency": 10.03
     }
   },
   {
@@ -516,85 +332,16 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 1,
-      "latency": 70.45
+      "latency": 29.77
     },
     "norag": {
       "key_facts_total": 4,
-      "key_facts_found": 2,
-      "recall": 0.5,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 17.04
-    }
-  },
-  {
-    "id": "Q24",
-    "category": "UMKC Startup Licensing Guidelines",
-    "question": "Which terms in a UMKC license agreement are flexible and negotiable for startups?",
-    "rag": {
-      "key_facts_total": 5,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 3,
-      "latency": 28.71
-    },
-    "norag": {
-      "key_facts_total": 5,
       "key_facts_found": 0,
       "recall": 0.0,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.16
-    }
-  },
-  {
-    "id": "Q25",
-    "category": "UMKC Startup Licensing Guidelines",
-    "question": "What should startup founders understand about the difference between core terms and business terms?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 3.93
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 17.02
-    }
-  },
-  {
-    "id": "Q26",
-    "category": "UMKC Startup Licensing Guidelines",
-    "question": "What happens if a startup's technical development plan changes after signing a license?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 1,
-      "latency": 17.71
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 14.73
+      "latency": 19.16
     }
   },
   {
@@ -608,7 +355,7 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 6,
-      "latency": 29.14
+      "latency": 26.22
     },
     "norag": {
       "key_facts_total": 4,
@@ -617,7 +364,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 12.49
+      "latency": 11.48
     }
   },
   {
@@ -630,8 +377,8 @@
       "recall": 0.333,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 1,
-      "latency": 28.01
+      "citation_count": 3,
+      "latency": 22.69
     },
     "norag": {
       "key_facts_total": 3,
@@ -640,7 +387,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 18.2
+      "latency": 18.89
     }
   },
   {
@@ -649,21 +396,21 @@
     "question": "How can researchers discuss their technology with companies before filing a patent without triggering public disclosure?",
     "rag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 6,
-      "latency": 21.99
+      "citation_count": 4,
+      "latency": 21.72
     },
     "norag": {
       "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
+      "key_facts_found": 2,
+      "recall": 0.667,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 15.34
+      "latency": 18.29
     }
   },
   {
@@ -676,17 +423,17 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 5,
-      "latency": 20.66
+      "citation_count": 8,
+      "latency": 25.69
     },
     "norag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 6.23
+      "latency": 5.56
     }
   },
   {
@@ -699,40 +446,17 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 3,
-      "latency": 22.55
+      "citation_count": 1,
+      "latency": 22.81
     },
     "norag": {
       "key_facts_total": 4,
-      "key_facts_found": 0,
-      "recall": 0.0,
+      "key_facts_found": 1,
+      "recall": 0.25,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 16.42
-    }
-  },
-  {
-    "id": "Q32",
-    "category": "Public Disclosure & Patent Timelines",
-    "question": "What are the three core legal requirements for an invention to be patentable under US patent law?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 2,
-      "recall": 0.667,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 2,
-      "latency": 21.19
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 2,
-      "recall": 0.667,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 9.25
+      "latency": 18.98
     }
   },
   {
@@ -745,8 +469,8 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 3,
-      "latency": 28.6
+      "citation_count": 1,
+      "latency": 20.74
     },
     "norag": {
       "key_facts_total": 3,
@@ -755,7 +479,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.56
+      "latency": 17.05
     }
   },
   {
@@ -766,10 +490,10 @@
       "key_facts_total": 3,
       "key_facts_found": 0,
       "recall": 0.0,
-      "has_citations": false,
+      "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 25.11
+      "citation_count": 7,
+      "latency": 41.36
     },
     "norag": {
       "key_facts_total": 3,
@@ -778,7 +502,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 18.09
+      "latency": 17.38
     }
   },
   {
@@ -792,7 +516,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 4.69
+      "latency": 4.95
     },
     "norag": {
       "key_facts_total": 4,
@@ -801,7 +525,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 17.3
+      "latency": 18.4
     }
   },
   {
@@ -810,12 +534,12 @@
     "question": "What is founder equity vesting and what is the purpose of an IRS Section 83(b) election?",
     "rag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
-      "has_citations": true,
-      "has_specific_policy": true,
-      "citation_count": 2,
-      "latency": 30.45
+      "key_facts_found": 0,
+      "recall": 0.0,
+      "has_citations": false,
+      "has_specific_policy": false,
+      "citation_count": 0,
+      "latency": 36.12
     },
     "norag": {
       "key_facts_total": 3,
@@ -824,7 +548,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 17.11
+      "latency": 19.25
     }
   },
   {
@@ -838,7 +562,7 @@
       "has_citations": true,
       "has_specific_policy": false,
       "citation_count": 3,
-      "latency": 15.25
+      "latency": 31.5
     },
     "norag": {
       "key_facts_total": 3,
@@ -847,30 +571,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.01
-    }
-  },
-  {
-    "id": "Q38",
-    "category": "Commercialization Pathways & Startup Formation",
-    "question": "What are Technology Readiness Levels (TRLs) and where does university research typically transition to startup development?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 5,
-      "latency": 43.17
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 14.71
+      "latency": 17.34
     }
   },
   {
@@ -884,7 +585,7 @@
       "has_citations": true,
       "has_specific_policy": true,
       "citation_count": 1,
-      "latency": 17.96
+      "latency": 22.7
     },
     "norag": {
       "key_facts_total": 2,
@@ -893,7 +594,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 12.36
+      "latency": 11.86
     }
   },
   {
@@ -907,7 +608,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 6.07
+      "latency": 6.36
     },
     "norag": {
       "key_facts_total": 2,
@@ -916,7 +617,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 7.88
+      "latency": 7.69
     }
   },
   {
@@ -929,8 +630,8 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": true,
-      "citation_count": 1,
-      "latency": 22.24
+      "citation_count": 2,
+      "latency": 23.95
     },
     "norag": {
       "key_facts_total": 2,
@@ -939,7 +640,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 17.05
+      "latency": 19.12
     }
   },
   {
@@ -953,16 +654,16 @@
       "has_citations": true,
       "has_specific_policy": true,
       "citation_count": 1,
-      "latency": 20.05
+      "latency": 29.71
     },
     "norag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 14.56
+      "latency": 16.64
     }
   },
   {
@@ -976,39 +677,16 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 3.07
+      "latency": 3.41
     },
     "norag": {
       "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
+      "key_facts_found": 1,
+      "recall": 0.5,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.05
-    }
-  },
-  {
-    "id": "Q44",
-    "category": "Federal Funding, SBIR/STTR & Grants",
-    "question": "How do valuation caps and discounts protect early startup angel investors?",
-    "rag": {
-      "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 3.86
-    },
-    "norag": {
-      "key_facts_total": 2,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 17.01
+      "latency": 19.29
     }
   },
   {
@@ -1022,7 +700,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 4.48
+      "latency": 5.06
     },
     "norag": {
       "key_facts_total": 2,
@@ -1031,7 +709,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 16.32
+      "latency": 19.16
     }
   },
   {
@@ -1044,17 +722,17 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 1,
-      "latency": 20.19
+      "citation_count": 2,
+      "latency": 27.01
     },
     "norag": {
       "key_facts_total": 3,
-      "key_facts_found": 1,
-      "recall": 0.333,
+      "key_facts_found": 0,
+      "recall": 0.0,
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.26
+      "latency": 19.68
     }
   },
   {
@@ -1067,8 +745,8 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 4,
-      "latency": 26.88
+      "citation_count": 6,
+      "latency": 27.59
     },
     "norag": {
       "key_facts_total": 3,
@@ -1077,7 +755,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 12.98
+      "latency": 16.48
     }
   },
   {
@@ -1091,7 +769,7 @@
       "has_citations": false,
       "has_specific_policy": true,
       "citation_count": 0,
-      "latency": 3.21
+      "latency": 3.47
     },
     "norag": {
       "key_facts_total": 2,
@@ -1100,7 +778,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 7.38
+      "latency": 8.76
     }
   },
   {
@@ -1113,8 +791,8 @@
       "recall": 0.0,
       "has_citations": true,
       "has_specific_policy": false,
-      "citation_count": 5,
-      "latency": 29.38
+      "citation_count": 4,
+      "latency": 27.88
     },
     "norag": {
       "key_facts_total": 3,
@@ -1123,30 +801,7 @@
       "has_citations": false,
       "has_specific_policy": false,
       "citation_count": 0,
-      "latency": 17.11
-    }
-  },
-  {
-    "id": "Q50",
-    "category": "Ethics, Conflict of Interest & University Facilities",
-    "question": "How do academic researchers balance commercialization activities with university tenure and promotion requirements?",
-    "rag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": true,
-      "has_specific_policy": false,
-      "citation_count": 8,
-      "latency": 18.54
-    },
-    "norag": {
-      "key_facts_total": 3,
-      "key_facts_found": 0,
-      "recall": 0.0,
-      "has_citations": false,
-      "has_specific_policy": false,
-      "citation_count": 0,
-      "latency": 17.1
+      "latency": 19.04
     }
   }
 ]

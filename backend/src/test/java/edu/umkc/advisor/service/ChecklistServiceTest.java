@@ -16,8 +16,8 @@ class ChecklistServiceTest {
     @Test
     void loadsAndRecordsHonestInspectionStatus() {
         assertEquals(55, c.all().size());
-        assertEquals(8, c.coach(Workflow.NEW_INVENTION).size());
-        assertEquals(10, c.coach(Workflow.UPDATE_EXISTING).size());
+        assertEquals(11, c.coach(Workflow.NEW_INVENTION).size());
+        assertEquals(13, c.coach(Workflow.UPDATE_EXISTING).size());
         assertTrue(c.formVersion().contains("UM 16C"));
         assertTrue(c.inspectionStatus().startsWith("PARTIAL"));
         Set<String> ids = new HashSet<>();
@@ -77,6 +77,7 @@ class ChecklistServiceTest {
         assertEquals(List.of("summary_general", "problem_solved", "technical_description", "difference_from_others"), coach.subList(0, 4));
         assertTrue(coach.indexOf("public_disclosures_list") < coach.indexOf("evidence_testing"));
         assertTrue(coach.contains("potential_inventors"));
+        assertTrue(coach.containsAll(List.of("inventor_contributions", "concept_participants", "inventor_departments")));
         assertTrue(coach.contains("funding"));
         assertFalse(coach.contains("keywords"));
         assertTrue(n.indexOf("funding") < n.indexOf("keywords"));

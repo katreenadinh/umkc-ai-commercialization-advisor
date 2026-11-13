@@ -978,9 +978,9 @@
    ],
    "humanReviewNote": "Whether someone legally qualifies as an inventor is a legal determination. The form only asks for potential inventors.",
    "notApplicableAllowed": false,
-   "priority": 4,
+   "priority": 3,
    "order": 21,
-   "inCoach": false
+   "inCoach": true
   },
   {
    "id": "concept_participants",
@@ -998,9 +998,9 @@
    ],
    "humanReviewNote": null,
    "notApplicableAllowed": false,
-   "priority": 4,
+   "priority": 3,
    "order": 22,
-   "inCoach": false
+   "inCoach": true
   },
   {
    "id": "inventor_departments",
@@ -1018,9 +1018,9 @@
    ],
    "humanReviewNote": null,
    "notApplicableAllowed": false,
-   "priority": 4,
+   "priority": 3,
    "order": 23,
-   "inCoach": false
+   "inCoach": true
   },
   {
    "id": "external_sponsors",

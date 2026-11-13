@@ -24,6 +24,25 @@ public final class InMemoryVectorStore implements VectorStore {
         return all.subList(0, Math.min(k, all.size()));
     }
 
+    @Override public synchronized List<ScoredChunk> searchKeyword(String query, int k) {
+        if (query == null || query.isBlank() || k <= 0) return List.of();
+        String[] terms = query.toLowerCase().split("[^a-z0-9]+");
+        List<ScoredChunk> all = new ArrayList<>();
+        for (SourceRecord s : sources.values()) {
+            if (!s.enabled()) continue;
+            List<Chunk> cs = chunks.get(s.id());
+            if (cs == null) continue;
+            for (Chunk c : cs) {
+                String hay = ((c.section() == null ? "" : c.section()) + " " + c.text()).toLowerCase();
+                int hits = 0;
+                for (String t : terms) if (t.length() >= 3 && hay.contains(t)) hits++;
+                if (hits > 0) all.add(new ScoredChunk(c, s, hits / (double) Math.max(1, terms.length)));
+            }
+        }
+        all.sort(Comparator.comparingDouble(ScoredChunk::score).reversed());
+        return all.subList(0, Math.min(k, all.size()));
+    }
+
     @Override public synchronized List<SourceRecord> listSources() { return new ArrayList<>(sources.values()); }
 
     @Override public synchronized List<Chunk> listChunks(String id) {

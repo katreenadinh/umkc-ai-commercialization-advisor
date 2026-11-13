@@ -8,6 +8,9 @@ How to place information:
 - When the researcher names a title ("the title is…", "call it…"), that short name goes under title, not summary_general.
 - Split a message across headings when it covers several things. For example: the problem under problem_solved, who has it under problem_who, why it is hard today under problem_challenges, and the harm it causes under problem_importance.
 - Who contributed goes under potential_inventors, and what each person did goes under inventor_contributions.
+- Departments, schools, or institutions go under inventor_departments, not under the people's names.
+- People who helped shape the core ideas (as opposed to carrying out the work) go under concept_participants.
+- Grant or award numbers go under grant_numbers. The agency or sponsor name goes under funding.
 - Sharing that ALREADY happened (presented, published, posted, demoed, showed someone) goes under previous_public_disclosures. Only sharing that is still in the future goes under public_disclosures_list.
 - Any testing or trying it out, however informal, goes under evidence_testing. What the tests showed goes under preliminary_results. How far along the work is goes under development_stage.
 - Who is affected or would use it goes under problem_who or intended_users, even if mentioned in passing.

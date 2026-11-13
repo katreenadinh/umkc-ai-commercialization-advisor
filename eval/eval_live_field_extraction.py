@@ -47,6 +47,7 @@ FIELD_TO_CAT = {
     "potential_inventors": "inventors",
     "inventor_contributions": "inventors",
     "concept_participants": "inventors",
+    "inventor_departments": "inventors",
     # Funding
     "funding": "funding_support",
     "external_sponsors": "funding_support",
@@ -240,58 +241,72 @@ def run_live_eval():
     generate_figure(cat_summary, overall_prec, overall_rec, overall_f1)
 
 def generate_figure(cat_summary, overall_prec, overall_rec, overall_f1):
-    UMKC_BLUE = "#004b87"
-    UMKC_DARK = "#0a2540"
-    GRAY = "#708090"
+    UMKC_BLUE = "#1e4d7b"
+    UMKC_DARK = "#1e3a5f"
+    GRAY = "#8b9aab"
 
-    labels = [c["name"] for c in cat_summary]
-    precisions = [c["precision"] for c in cat_summary]
-    recalls = [c["recall"] for c in cat_summary]
+    short = {
+        "applications": "Commercial Applications",
+        "differentiation": "Differentiation & Novelty",
+        "development_stage": "Development Stage & Testing",
+        "funding_support": "Funding & Grant Support",
+        "inventors": "Inventors & Contributors",
+        "public_disclosure": "Public Disclosure History",
+    }
+    order = [
+        "applications", "differentiation", "development_stage",
+        "funding_support", "inventors", "public_disclosure",
+    ]
+    by_id = {c["id"]: c for c in cat_summary}
+    labels = ["Overall Performance"] + [short[i] for i in order]
+    precisions = [round(overall_prec, 1)] + [by_id[i]["precision"] for i in order]
+    recalls = [round(overall_rec, 1)] + [by_id[i]["recall"] for i in order]
 
-    fig, ax = plt.subplots(figsize=(10.8, 6.2), dpi=300)
+    fig, ax = plt.subplots(figsize=(11.2, 6.4), dpi=300)
     y = np.arange(len(labels))
-    h = 0.35
-
-    b1 = ax.barh(y + h/2, precisions, h, label="Extraction Precision (Exact Fact Mapping)", color=UMKC_BLUE, zorder=3)
-    b2 = ax.barh(y - h/2, recalls, h, label="Extraction Recall (Information Completeness)", color=GRAY, zorder=3)
+    h = 0.36
+    # After invert_yaxis, smaller y is the top bar → Precision above Recall.
+    b1 = ax.barh(y - h / 2, precisions, h, label="Precision", color=UMKC_BLUE, zorder=3)
+    b2 = ax.barh(y + h / 2, recalls, h, label="Recall", color=GRAY, zorder=3)
 
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=11.5, fontweight="bold", color=UMKC_DARK)
+    ax.set_yticklabels(labels, fontsize=12, fontweight="bold", color=UMKC_DARK)
     ax.invert_yaxis()
-    ax.set_xlim(0, 115)
-    ax.set_xlabel("Field Extraction Accuracy (%)", fontsize=13, fontweight="bold", color=UMKC_DARK, labelpad=10)
-    ax.set_title("Form UM-16C Disclosure Note Extraction Accuracy (Live Qwen2.5-7B, N=15)",
-                 fontsize=15.5, fontweight="bold", color=UMKC_DARK, pad=16, loc="center")
+    ax.set_xlim(0, 112)
+    ax.set_xlabel("Extraction Metric Score (%)", fontsize=13, fontweight="bold", color=UMKC_DARK, labelpad=10)
+    ax.set_title("Disclosure Preparation Note Extraction Accuracy (N=15)",
+                 fontsize=16, fontweight="bold", color=UMKC_DARK, pad=28)
 
-    ax.grid(axis='x', linestyle='--', alpha=0.35, zorder=0)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=2, frameon=False,
+              fontsize=11, handlelength=1.2, columnspacing=1.4)
+    ax.grid(axis="x", linestyle="--", alpha=0.35, zorder=0)
     ax.set_axisbelow(True)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_color('#cbd5e0')
-    ax.spines['bottom'].set_color('#cbd5e0')
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_color("#cbd5e0")
+    ax.spines["bottom"].set_color("#cbd5e0")
+    ax.set_xticks([0, 20, 40, 60, 80, 100])
 
-    for bar, val in zip(b1, precisions):
-        ax.text(val + 1.5, bar.get_y() + bar.get_height() / 2, f"{val:.1f}%",
-                va="center", ha="left", fontsize=10.5, fontweight="bold", color=UMKC_BLUE)
+    def label_bars(bars, values, color):
+        for bar, val in zip(bars, values):
+            x = val + 1.2 if val > 0 else 1.2
+            ax.text(x, bar.get_y() + bar.get_height() / 2, f"{val:.1f}%",
+                    va="center", ha="left", fontsize=10.5, fontweight="bold", color=color)
 
-    for bar, val in zip(b2, recalls):
-        ax.text(val + 1.5, bar.get_y() + bar.get_height() / 2, f"{val:.1f}%",
-                va="center", ha="left", fontsize=10.5, fontweight="bold", color="#4a5568")
+    label_bars(b1, precisions, UMKC_BLUE)
+    label_bars(b2, recalls, "#5c6b7a")
 
-    ax.legend(loc="lower right", frameon=True, framealpha=0.95, facecolor="#ffffff",
-              edgecolor="#e2e8f0", fontsize=11, prop={'weight': 'bold'})
-
-    caption_text = (
-        "Empirical live benchmark of local Qwen2.5-7B-Instruct-4bit populating Form UM-16C preparation notes (Figure 4).\n"
-        f"Aggregate: {overall_prec:.1f}% Precision • {overall_rec:.1f}% Recall • {overall_f1:.1f}% F1-Score across 90 field decisions."
-    )
-    plt.figtext(0.5, -0.05, caption_text, wrap=True, horizontalalignment="center",
-                fontsize=10.0, style="italic", color="#4a5568")
-
-    plt.tight_layout()
-    plt.savefig(CHART_FILE, bbox_inches="tight", dpi=300)
+    fig.tight_layout()
+    fig.savefig(CHART_FILE, bbox_inches="tight", dpi=300, facecolor="white")
     plt.close()
     print(f"Chart saved to {CHART_FILE}")
+    _ = overall_f1
 
 if __name__ == "__main__":
-    run_live_eval()
+    if "--chart-only" in sys.argv:
+        with open(RESULTS_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        s = data["summary"]
+        generate_figure(data["by_category"], s["overall_precision_pct"], s["overall_recall_pct"], s["overall_f1_pct"])
+    else:
+        run_live_eval()

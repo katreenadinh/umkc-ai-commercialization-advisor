@@ -1,14 +1,14 @@
 {
-  "evaluation_timestamp": "2026-11-10T05:49:00Z",
+  "evaluation_timestamp": "2026-11-10T20:11:38Z",
   "model_tested": "mlx-community/Qwen2.5-7B-Instruct-4bit",
   "live_backend": "Spring Boot (port 8081) + MLX (port 8080)",
   "scenarios_evaluated": 15,
   "total_field_decisions": 90,
   "summary": {
-    "overall_precision_pct": 90.2,
-    "overall_recall_pct": 66.1,
-    "overall_f1_pct": 76.3,
-    "overall_accuracy_pct": 74.4
+    "overall_precision_pct": 82.0,
+    "overall_recall_pct": 73.2,
+    "overall_f1_pct": 77.4,
+    "overall_accuracy_pct": 73.3
   },
   "by_category": [
     {
@@ -47,34 +47,34 @@
     {
       "id": "inventors",
       "name": "Inventors & Contributors\n(Form UM-16C \u00a7B.1)",
-      "precision": 100.0,
-      "recall": 37.5,
-      "f1": 54.5,
-      "tp": 3,
-      "fp": 0,
-      "fn": 5,
-      "tn": 7
+      "precision": 57.1,
+      "recall": 100.0,
+      "f1": 72.7,
+      "tp": 8,
+      "fp": 6,
+      "fn": 0,
+      "tn": 1
     },
     {
       "id": "funding_support",
       "name": "Funding & Grant Support\n(Form UM-16C \u00a7C.1)",
-      "precision": 75.0,
-      "recall": 42.9,
-      "f1": 54.5,
-      "tp": 3,
-      "fp": 1,
-      "fn": 4,
-      "tn": 7
+      "precision": 100.0,
+      "recall": 57.1,
+      "f1": 72.7,
+      "tp": 4,
+      "fp": 0,
+      "fn": 3,
+      "tn": 8
     },
     {
       "id": "public_disclosure",
       "name": "Public Disclosure History\n(Form UM-16C \u00a7D.1)",
       "precision": 100.0,
-      "recall": 33.3,
-      "f1": 50.0,
-      "tp": 2,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
       "fp": 0,
-      "fn": 4,
+      "fn": 6,
       "tn": 9
     }
   ],
@@ -82,8 +82,10 @@
     {
       "id": "SCEN_01",
       "title": "Targeted Lipid Nanoparticle for Pancreatic Cancer mRNA Delivery",
-      "latency": 28.67,
+      "latency": 40.29,
       "extracted_cats": [
+        "funding_support",
+        "inventors",
         "differentiation",
         "applications"
       ],
@@ -105,13 +107,13 @@
         },
         "inventors": {
           "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
+          "extracted": true,
+          "classification": "TP"
         },
         "funding_support": {
           "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
+          "extracted": true,
+          "classification": "TP"
         },
         "public_disclosure": {
           "ground_truth": "OMITTED",
@@ -123,57 +125,11 @@
     {
       "id": "SCEN_02",
       "title": "Privacy-Preserving Federated Foundation Model for Pediatric Rare Diseases",
-      "latency": 58.36,
+      "latency": 31.62,
       "extracted_cats": [
-        "differentiation",
-        "funding_support",
-        "applications",
         "development_stage",
-        "public_disclosure"
-      ],
-      "decisions": {
-        "applications": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        },
-        "differentiation": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        },
-        "development_stage": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        },
-        "inventors": {
-          "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
-        },
-        "funding_support": {
-          "ground_truth": "OMITTED",
-          "extracted": true,
-          "classification": "FP"
-        },
-        "public_disclosure": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        }
-      }
-    },
-    {
-      "id": "SCEN_03",
-      "title": "Self-Healing Zirconia-Yttria Thermal Barrier Coating for Gas Turbines",
-      "latency": 57.98,
-      "extracted_cats": [
-        "differentiation",
-        "funding_support",
         "applications",
-        "development_stage",
-        "public_disclosure",
+        "differentiation",
         "inventors"
       ],
       "decisions": {
@@ -198,24 +154,111 @@
           "classification": "TP"
         },
         "funding_support": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        },
+        "public_disclosure": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_03",
+      "title": "Self-Healing Zirconia-Yttria Thermal Barrier Coating for Gas Turbines",
+      "latency": 37.15,
+      "extracted_cats": [
+        "funding_support",
+        "applications",
+        "development_stage",
+        "inventors",
+        "differentiation"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "funding_support": {
           "ground_truth": "PROVIDED",
           "extracted": true,
           "classification": "TP"
         },
         "public_disclosure": {
           "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
+          "extracted": false,
+          "classification": "FN"
         }
       }
     },
     {
       "id": "SCEN_04",
       "title": "Continuous Optical Sensor for Intravascular Catheter Sepsis Monitoring",
-      "latency": 42.34,
+      "latency": 31.66,
       "extracted_cats": [
+        "applications",
         "differentiation",
-        "funding_support",
+        "inventors"
+      ],
+      "decisions": {
+        "applications": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "differentiation": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "development_stage": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "inventors": {
+          "ground_truth": "PROVIDED",
+          "extracted": true,
+          "classification": "TP"
+        },
+        "funding_support": {
+          "ground_truth": "PROVIDED",
+          "extracted": false,
+          "classification": "FN"
+        },
+        "public_disclosure": {
+          "ground_truth": "OMITTED",
+          "extracted": false,
+          "classification": "TN"
+        }
+      }
+    },
+    {
+      "id": "SCEN_05",
+      "title": "Biodegradable Chitosan Microspheres for Controlled Micronutrient Release",
+      "latency": 23.15,
+      "extracted_cats": [
+        "development_stage",
+        "inventors",
+        "differentiation",
         "applications"
       ],
       "decisions": {
@@ -231,55 +274,13 @@
         },
         "development_stage": {
           "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
-        },
-        "inventors": {
-          "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
-        },
-        "funding_support": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        },
-        "public_disclosure": {
-          "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
-        }
-      }
-    },
-    {
-      "id": "SCEN_05",
-      "title": "Biodegradable Chitosan Microspheres for Controlled Micronutrient Release",
-      "latency": 23.07,
-      "extracted_cats": [
-        "differentiation",
-        "applications",
-        "development_stage"
-      ],
-      "decisions": {
-        "applications": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        },
-        "differentiation": {
-          "ground_truth": "PROVIDED",
-          "extracted": true,
-          "classification": "TP"
-        },
-        "development_stage": {
-          "ground_truth": "PROVIDED",
           "extracted": true,
           "classification": "TP"
         },
         "inventors": {
           "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
+          "extracted": true,
+          "classification": "FP"
         },
         "funding_support": {
           "ground_truth": "PROVIDED",
@@ -296,10 +297,10 @@
     {
       "id": "SCEN_06",
       "title": "Asymmetric Lattice-Based Cryptographic Accelerator for Edge IoT",
-      "latency": 26.57,
+      "latency": 15.45,
       "extracted_cats": [
-        "applications",
-        "development_stage"
+        "development_stage",
+        "applications"
       ],
       "decisions": {
         "applications": {
@@ -337,10 +338,11 @@
     {
       "id": "SCEN_07",
       "title": "Hydraulically Actuated Compliant Endoscopic Surgical Gripper",
-      "latency": 15.63,
+      "latency": 17.21,
       "extracted_cats": [
-        "applications",
-        "development_stage"
+        "development_stage",
+        "inventors",
+        "applications"
       ],
       "decisions": {
         "applications": {
@@ -360,8 +362,8 @@
         },
         "inventors": {
           "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
+          "extracted": true,
+          "classification": "FP"
         },
         "funding_support": {
           "ground_truth": "OMITTED",
@@ -378,8 +380,10 @@
     {
       "id": "SCEN_08",
       "title": "Porous Graphene Aerogel Electrode for Electrosorption Water Desalination",
-      "latency": 14.92,
-      "extracted_cats": [],
+      "latency": 15.05,
+      "extracted_cats": [
+        "inventors"
+      ],
       "decisions": {
         "applications": {
           "ground_truth": "OMITTED",
@@ -398,8 +402,8 @@
         },
         "inventors": {
           "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
+          "extracted": true,
+          "classification": "FP"
         },
         "funding_support": {
           "ground_truth": "OMITTED",
@@ -416,10 +420,11 @@
     {
       "id": "SCEN_09",
       "title": "DNAzyme Molecular Probe for Single-Step Circulating Tumor DNA Detection",
-      "latency": 14.55,
+      "latency": 15.83,
       "extracted_cats": [
-        "differentiation",
-        "development_stage"
+        "development_stage",
+        "inventors",
+        "differentiation"
       ],
       "decisions": {
         "applications": {
@@ -439,8 +444,8 @@
         },
         "inventors": {
           "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
+          "extracted": true,
+          "classification": "FP"
         },
         "funding_support": {
           "ground_truth": "OMITTED",
@@ -457,9 +462,11 @@
     {
       "id": "SCEN_10",
       "title": "Ultralight High-Entropy Alloy with Nanotwinned Microstructure",
-      "latency": 13.67,
+      "latency": 14.27,
       "extracted_cats": [
-        "development_stage"
+        "development_stage",
+        "inventors",
+        "funding_support"
       ],
       "decisions": {
         "applications": {
@@ -479,13 +486,13 @@
         },
         "inventors": {
           "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
+          "extracted": true,
+          "classification": "TP"
         },
         "funding_support": {
           "ground_truth": "PROVIDED",
-          "extracted": false,
-          "classification": "FN"
+          "extracted": true,
+          "classification": "TP"
         },
         "public_disclosure": {
           "ground_truth": "OMITTED",
@@ -497,12 +504,12 @@
     {
       "id": "SCEN_11",
       "title": "Minimally Invasive Microneedle Patch for Interstitial Cortisol Tracking",
-      "latency": 20.77,
+      "latency": 22.65,
       "extracted_cats": [
-        "differentiation",
+        "development_stage",
         "inventors",
-        "applications",
-        "development_stage"
+        "differentiation",
+        "applications"
       ],
       "decisions": {
         "applications": {
@@ -540,11 +547,11 @@
     {
       "id": "SCEN_12",
       "title": "Vision-Inertial Simultaneous Localization for GPS-Denied Underground Mining",
-      "latency": 18.73,
+      "latency": 13.65,
       "extracted_cats": [
+        "applications",
         "differentiation",
-        "inventors",
-        "applications"
+        "inventors"
       ],
       "decisions": {
         "applications": {
@@ -582,11 +589,12 @@
     {
       "id": "SCEN_13",
       "title": "Engineered Biochar Hydrogel for Arid Soil Moisture Retention",
-      "latency": 23.54,
+      "latency": 23.18,
       "extracted_cats": [
+        "development_stage",
+        "inventors",
         "differentiation",
-        "applications",
-        "development_stage"
+        "applications"
       ],
       "decisions": {
         "applications": {
@@ -606,8 +614,8 @@
         },
         "inventors": {
           "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
+          "extracted": true,
+          "classification": "FP"
         },
         "funding_support": {
           "ground_truth": "OMITTED",
@@ -624,10 +632,11 @@
     {
       "id": "SCEN_14",
       "title": "Non-Aqueous Organic Redox Flow Battery with Quinone-Derivatized Electrolyte",
-      "latency": 30.84,
+      "latency": 36.47,
       "extracted_cats": [
-        "differentiation",
         "funding_support",
+        "inventors",
+        "differentiation",
         "applications"
       ],
       "decisions": {
@@ -648,8 +657,8 @@
         },
         "inventors": {
           "ground_truth": "PARTIAL",
-          "extracted": false,
-          "classification": "FN"
+          "extracted": true,
+          "classification": "TP"
         },
         "funding_support": {
           "ground_truth": "PARTIAL",
@@ -666,10 +675,11 @@
     {
       "id": "SCEN_15",
       "title": "Ultra-Low-Power Neuromorphic Spike Processor for Implantable Cardiac Monitors",
-      "latency": 20.32,
+      "latency": 20.82,
       "extracted_cats": [
+        "applications",
         "differentiation",
-        "applications"
+        "inventors"
       ],
       "decisions": {
         "applications": {
@@ -689,8 +699,8 @@
         },
         "inventors": {
           "ground_truth": "OMITTED",
-          "extracted": false,
-          "classification": "TN"
+          "extracted": true,
+          "classification": "FP"
         },
         "funding_support": {
           "ground_truth": "OMITTED",

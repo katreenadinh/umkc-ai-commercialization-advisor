@@ -1,16 +1,21 @@
 """
 UMKC AI Commercialization Advisor — RAG vs. No-RAG Evaluation Suite
 =====================================================================
-Benchmarks the 50 official university document questions across:
-  1. RAG Configuration (Spring Boot Knowledge Advisor on :8081)
-  2. No-RAG Baseline   (Direct Qwen2.5-7B-Instruct on :8080)
+Generation-side comparison of grounded answers (with vs without retrieval).
+
+Do not treat missed key-facts as a Qwen failure when the gold document was
+never retrieved. Run eval/eval_retrieval.py for document-level retrieval recall
+before interpreting this script. --simulate numbers must not go on the poster.
 
 Usage:
-  # Full live run against both servers:
-  /opt/homebrew/bin/python3.14 eval/eval_rag_comparison.py
+  # Full live run against both servers (all 50 questions):
+  python3 eval/eval_rag_comparison.py
 
-  # Quick simulation mode to generate poster charts immediately:
-  /opt/homebrew/bin/python3.14 eval/eval_rag_comparison.py --simulate
+  # Five questions from each domain (35 questions). Label the poster N=35:
+  python3 eval/eval_rag_comparison.py --per-category 5
+
+  # Frozen/simulated charts (not for poster metrics):
+  python3 eval/eval_rag_comparison.py --simulate
 
 Outputs:
   eval/rag_vs_norag_results.json
@@ -59,7 +64,7 @@ SAFE_FALLBACK = (
     "Would you like to ask a more general question, or would you like to know how to contact the office?"
 )
 
-ALLOWED_CONTACT_EMAILS = {"ericwa@umkc.edu", "commercialization@umkc.edu"}
+ALLOWED_CONTACT_EMAILS = {"jblackwood@umkc.edu", "ericwa@umkc.edu", "commercialization@umkc.edu"}
 ALLOWED_CONTACT_URLS = {
     "https://ori.umkc.edu/facilities-compliance-and-commercialization/commercialization/process/submit-an-invention-disclosure.php"
 }
@@ -227,15 +232,37 @@ def score_answer(text: str, citations: list, key_facts: list) -> dict:
         "citation_count": len(citations),
     }
 
-def run_evaluation(simulate: bool = False):
+def take_per_category(benchmarks, n):
+    """Keep the first n questions in each domain, in file order."""
+    if n is None:
+        return list(benchmarks)
+    kept, counts = [], {}
+    for b in benchmarks:
+        cat = b["category"]
+        used = counts.get(cat, 0)
+        if used >= n:
+            continue
+        kept.append(b)
+        counts[cat] = used + 1
+    return kept
+
+
+def run_evaluation(simulate: bool = False, per_category=None):
     print("=" * 65)
     print("UMKC Commercialization Advisor — RAG vs. No-RAG Benchmark")
-    print(f"Dataset: 50 Questions from data/imports/ (18 official documents)")
+    print(f"Dataset: {BENCHMARK_FILE.name}")
     print(f"Mode: {'SIMULATED (pre-computed model distributions)' if simulate else 'LIVE (calling localhost:8081 & 8080)'}")
+    if per_category:
+        print(f"Subset: first {per_category} questions per domain")
     print("=" * 65 + "\n")
 
     with open(BENCHMARK_FILE) as f:
         benchmarks = json.load(f)
+    benchmarks = take_per_category(benchmarks, per_category)
+    print(f"Questions in this run: {len(benchmarks)}")
+    for b in benchmarks:
+        print(f"  {b['id']}  {b['category']}")
+    print()
 
     if not simulate:
         print("Checking connections...")
@@ -283,7 +310,7 @@ def run_evaluation(simulate: bool = False):
         q = b["question"]
         facts = b["key_facts"]
 
-        print(f"[{i:02d}/50] [{qid}] ({cat})")
+        print(f"[{i:02d}/{len(benchmarks)}] [{qid}] ({cat})")
         print(f"  Q: {q[:75]}...")
 
         if simulate:
@@ -366,11 +393,11 @@ def generate_comparison_figures(results):
         print("matplotlib not available. Skipping charts.")
         return
 
-    UMKC_BLUE = "#0066cc"
+    UMKC_BLUE = "#1e4d7b"
     UMKC_GOLD = "#ffd52f"
-    UMKC_DARK = "#004b87"
-    GRAY = "#888888"
-    BG = "#f7faff"
+    UMKC_DARK = "#1e3a5f"
+    GRAY = "#8b9aab"
+    BG = "#ffffff"
 
     plt.rcParams.update({
         "font.family": "sans-serif",
@@ -416,12 +443,12 @@ def generate_comparison_figures(results):
     x = np.arange(len(metrics))
     w = 0.34
 
-    b1 = ax.bar(x - w/2, rag_vals, w, yerr=rag_errs, capsize=4, error_kw=dict(elinewidth=1.3, ecolor="#1a365d", capthick=1.3),
+    b1 = ax.bar(x - w/2, rag_vals, w, yerr=rag_errs, capsize=4, error_kw=dict(elinewidth=1.3, ecolor=UMKC_DARK, capthick=1.3),
                 label="RAG (+ Output Guard)", color=UMKC_BLUE, zorder=3)
-    b2 = ax.bar(x + w/2, norag_vals, w, yerr=norag_errs, capsize=4, error_kw=dict(elinewidth=1.3, ecolor="#475569", capthick=1.3),
+    b2 = ax.bar(x + w/2, norag_vals, w, yerr=norag_errs, capsize=4, error_kw=dict(elinewidth=1.3, ecolor="#5c6b7a", capthick=1.3),
                 label="No-RAG Baseline (+ Output Guard)", color=GRAY, zorder=3)
 
-    ax.set_title("Performance Comparison: RAG vs. No-RAG Baseline (N=50)",
+    ax.set_title(f"Performance Comparison: RAG vs. No-RAG Baseline (N={N})",
                  fontsize=16, fontweight="bold", color=UMKC_DARK, pad=18)
     ax.set_ylabel("Score (%)", fontsize=13.5, fontweight="bold", color=UMKC_DARK)
     ax.set_xticks(x)
@@ -440,7 +467,7 @@ def generate_comparison_figures(results):
 
     for bar, val, err in zip(b2, norag_vals, norag_errs):
         ax.text(bar.get_x() + bar.get_width()/2, val + err + 2.0, f"{val:.1f}%",
-                ha="center", va="bottom", fontsize=12.5, fontweight="bold", color="#334155")
+                ha="center", va="bottom", fontsize=12.5, fontweight="bold", color="#5c6b7a")
 
     fig.tight_layout()
     p1 = FIGURES_DIR / "05_rag_vs_norag_accuracy.png"
@@ -451,69 +478,96 @@ def generate_comparison_figures(results):
     # -------------------------------------------------------------
     # Chart 6: Performance by Category (7 Categories)
     # -------------------------------------------------------------
-    ordered_categories = [
-        "Federal Funding, SBIR/STTR & Grants",
-        "Ethics, Conflict of Interest & University Facilities",
-        "Commercialization Pathways & Startup Formation",
-        "UM System Patent & IP Regulations",
-        "Public Disclosure & Patent Timelines",
-        "UMKC Startup Licensing Guidelines",
-        "Invention Disclosure Process & Form UM-16C",
-    ]
-
     category_display = {
-        "Federal Funding, SBIR/STTR & Grants": "Federal Funding & SBIR/STTR\n(n=6)",
-        "Ethics, Conflict of Interest & University Facilities": "Ethics, Conflict of Interest\n& Facilities (n=6)",
-        "Commercialization Pathways & Startup Formation": "Commercialization Pathways\n& Startups (n=6)",
-        "UM System Patent & IP Regulations": "UM System Patent Regulations\n(CRR 100.020, n=10)",
-        "Public Disclosure & Patent Timelines": "Public Disclosure &\nTimelines (n=6)",
-        "UMKC Startup Licensing Guidelines": "UMKC Startup Licensing\nGuidelines (n=8)",
-        "Invention Disclosure Process & Form UM-16C": "Invention Disclosure Process\n& Form UM-16C (n=8)",
+        "Federal Funding, SBIR/STTR & Grants": "Federal Funding & SBIR",
+        "Ethics, Conflict of Interest & University Facilities": "Ethics & Conflict of Interest",
+        "Commercialization Pathways & Startup Formation": "Commercialization & Startups",
+        "UM System Patent & IP Regulations": "Patent Regulations (CRR 100.020)",
+        "Public Disclosure & Patent Timelines": "Public Disclosure & Timelines",
+        "UMKC Startup Licensing Guidelines": "Startup Licensing",
+        "Invention Disclosure Process & Form UM-16C": "Disclosure Process & Form UM-16C",
     }
 
-    rag_cat_recalls = []
-    norag_cat_recalls = []
-    labels = []
-
-    for cat in ordered_categories:
+    rows = []
+    for cat, label in category_display.items():
         sub = [r for r in results if r["category"] == cat]
-        labels.append(category_display[cat])
-        rag_cat_recalls.append(sum(r["rag"]["recall"] for r in sub) / len(sub) * 100)
-        norag_cat_recalls.append(sum(r["norag"]["recall"] for r in sub) / len(sub) * 100)
+        if not sub:
+            continue
+        rag = sum(r["rag"]["recall"] for r in sub) / len(sub) * 100
+        norag = sum(r["norag"]["recall"] for r in sub) / len(sub) * 100
+        gap = round(rag, 1) - round(norag, 1)
+        rows.append({"label": label, "rag": rag, "norag": norag, "gap": gap})
+    # y increases upward, so the largest RAG gain belongs at the highest y.
+    rows.sort(key=lambda r: r["gap"])
 
-    fig, ax = plt.subplots(figsize=(11.0, 6.6))
-    y = np.arange(len(ordered_categories))
-    h = 0.35
+    fig, ax = plt.subplots(figsize=(12.4, 7.1), dpi=300)
+    y = np.arange(len(rows))
+    h = 0.34
+    AXIS_END = 60
+    X_MAX = 70
+    GAP_RIGHT = 69
 
-    b1 = ax.barh(y + h/2, rag_cat_recalls, h, label="RAG (+ Output Guard)", color=UMKC_BLUE, zorder=3)
-    b2 = ax.barh(y - h/2, norag_cat_recalls, h, label="No-RAG Baseline (+ Output Guard)", color=GRAY, zorder=3)
+    rag_vals = [r["rag"] for r in rows]
+    norag_vals = [r["norag"] for r in rows]
+    # Higher y is the top of each pair, so RAG (listed first in the legend) sits above No-RAG.
+    b1 = ax.barh(y + h / 2, rag_vals, h, label="RAG (+ Output Guard)", color=UMKC_BLUE, zorder=3)
+    b2 = ax.barh(y - h / 2, norag_vals, h, label="No-RAG (+ Output Guard)", color=GRAY, zorder=3)
 
-    ax.set_title("Policy Fact Recall by Domain (N=50)",
-                 fontsize=16, fontweight="bold", color=UMKC_DARK, pad=18)
-
-    ax.set_xlabel("Policy Fact Recall (%)", fontsize=13.5, fontweight="bold", color=UMKC_DARK)
+    ax.set_title("Recall by Domain", fontsize=20, fontweight="bold", color=UMKC_DARK, pad=36)
+    ax.set_xlabel("Policy fact recall (%)", fontsize=16, fontweight="bold", color=UMKC_DARK, labelpad=10)
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=12, fontweight="bold", color="#1e293b")
+    ax.set_yticklabels([r["label"] for r in rows], fontsize=15, fontweight="bold", color=UMKC_DARK)
+    ax.set_xlim(0, X_MAX)
+    ax.set_xticks([0, 20, 40, 60])
+    ax.set_xticklabels(["0%", "20%", "40%", "60%"], fontsize=15)
+    ax.grid(False)
+    ax.set_axisbelow(True)
+    for x in (20, 40):
+        ax.axvline(x, color="#cbd5e0", linestyle="--", linewidth=0.9, zorder=1)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_color("#cbd5e0")
+    ax.spines["bottom"].set_color("#cbd5e0")
+    ax.spines["bottom"].set_bounds(0, AXIS_END)
 
-    ax.set_xlim(0, 100)
-    ax.set_xticks([0, 20, 40, 60, 80, 100])
-    ax.set_xticklabels(["0%", "20%", "40%", "60%", "80%", "100%"], fontsize=12)
-    ax.xaxis.grid(True, linestyle="--", alpha=0.5, zorder=0)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.38, 1.0), ncol=2, frameon=False,
+              fontsize=13, handlelength=1.2, columnspacing=1.4)
+    ax.text(GAP_RIGHT, y[-1] + 0.58, "RAG gain (pts)",
+            ha="right", va="bottom", fontsize=12, fontweight="bold", color=UMKC_DARK, clip_on=False)
 
-    ax.legend(frameon=True, facecolor="white", edgecolor="#cbd5e1", loc="lower right",
-              bbox_to_anchor=(0.98, 0.05), fontsize=12)
+    def value_x(val):
+        return 0.7 if val < 0.05 else min(val + 0.8, 52)
 
-    for bar, val in zip(b1, rag_cat_recalls):
-        ax.text(val + 1.2, bar.get_y() + bar.get_height()/2, f"{val:.1f}%",
-                ha="left", va="center", fontsize=12, fontweight="bold", color=UMKC_BLUE)
-
-    for bar, val in zip(b2, norag_cat_recalls):
-        ax.text(val + 1.2, bar.get_y() + bar.get_height()/2, f"{val:.1f}%",
-                ha="left", va="center", fontsize=11.5, color="#334155")
+    both_zero = {
+        i for i, row in enumerate(rows)
+        if row["rag"] < 0.05 and row["norag"] < 0.05
+    }
+    for i in both_zero:
+        ax.text(0.7, i, "0.0% / 0.0%", va="center", ha="left",
+                fontsize=14, fontweight="bold", color="#5c6b7a")
+    for bar, val, i in zip(b1, rag_vals, y):
+        if int(i) in both_zero:
+            continue
+        ax.text(value_x(val), bar.get_y() + bar.get_height() / 2, f"{val:.1f}%",
+                va="center", ha="left", fontsize=15, fontweight="bold", color=UMKC_BLUE)
+    for bar, val, i in zip(b2, norag_vals, y):
+        if int(i) in both_zero:
+            continue
+        ax.text(value_x(val), bar.get_y() + bar.get_height() / 2, f"{val:.1f}%",
+                va="center", ha="left", fontsize=15, fontweight="bold", color="#5c6b7a")
+    for i, row in enumerate(rows):
+        if abs(row["gap"]) < 0.05:
+            gap_text = "0.0"
+        else:
+            gap_text = f"{row['gap']:+.1f}"
+        gap_color = UMKC_DARK if row["gap"] > 0.05 else "#5c6b7a"
+        ax.text(GAP_RIGHT, i, gap_text, va="center", ha="right",
+                fontsize=14, fontweight="bold", color=gap_color, clip_on=False,
+                fontfamily="DejaVu Sans Mono")
 
     fig.tight_layout()
     p2 = FIGURES_DIR / "06_rag_vs_norag_by_category.png"
-    fig.savefig(p2, dpi=300, bbox_inches="tight")
+    fig.savefig(p2, dpi=300, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"📊 Saved Chart 6 → {p2}")
 
@@ -536,14 +590,15 @@ def generate_comparison_figures(results):
     ax.yaxis.grid(True, linestyle="--", alpha=0.5, zorder=0)
     ax.bar_label(bars, fmt="%.1f%%", padding=5, fontweight="bold", fontsize=13)
 
-    ax.annotate("−82.0% Reduction\nin Ungrounded Information",
-                xy=(0, 18), xytext=(0.35, 62),
+    drop = norag_ungrounded - rag_ungrounded
+    ax.annotate(f"−{drop:.1f} pp\nin ungrounded answers",
+                xy=(0, rag_ungrounded), xytext=(0.35, max(rag_ungrounded + 20, 50)),
                 arrowprops=dict(facecolor="#27ae60", shrink=0.08, width=2.5, headwidth=8),
                 fontweight="bold", color="#27ae60", fontsize=12,
                 bbox=dict(boxstyle="round,pad=0.5", fc="#eafaf1", ec="#27ae60", lw=1.5))
 
     ax.text(0.5, -0.16,
-            "*Controlled Study (N=50): 100% of No-RAG answers provided unverified claims with zero source grounding.\nRAG verified 82.0% of responses directly against official UM System and UMKC policy documents.",
+            f"*Live run (N={N}): No-RAG citation rate {norag_cite_rate:.1f}%; RAG citation rate {rag_cite_rate:.1f}%.",
             ha="center", va="top", transform=ax.transAxes, fontsize=9.5, color="#444444", style="italic")
 
     fig.tight_layout()
@@ -586,5 +641,17 @@ def generate_comparison_figures(results):
     print("\n✅ All 4 RAG vs. No-RAG comparison charts saved successfully to eval/figures/")
 
 if __name__ == "__main__":
-    is_sim = "--simulate" in sys.argv or "-s" in sys.argv
-    run_evaluation(simulate=is_sim)
+    if "--chart-only" in sys.argv:
+        with open(RESULTS_FILE, encoding="utf-8") as f:
+            generate_comparison_figures(json.load(f))
+    else:
+        is_sim = "--simulate" in sys.argv or "-s" in sys.argv
+        per_category = None
+        if "--per-category" in sys.argv:
+            i = sys.argv.index("--per-category")
+            if i + 1 >= len(sys.argv):
+                raise SystemExit("usage: python3 eval/eval_rag_comparison.py [--per-category N] [--simulate] [--chart-only]")
+            per_category = int(sys.argv[i + 1])
+            if per_category < 1:
+                raise SystemExit("--per-category must be at least 1")
+        run_evaluation(simulate=is_sim, per_category=per_category)

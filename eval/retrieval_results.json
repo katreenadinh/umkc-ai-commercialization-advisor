@@ -1,0 +1,1271 @@
+{
+  "metric": "retrieval_recall",
+  "definition": "Gold source_document appears in /api/sources/search hits. No LLM.",
+  "git_sha": "8beba5a42ce1c2bd4527e02279898dd175bd36b0",
+  "indexed_source_count": 38,
+  "indexed_titles": [
+    "100.020 Invention and Patent Regulations _ UM System",
+    "invention-disclosure-form-um-16c-final",
+    "UITS 10. Who owns my IP v426",
+    "UITS 10. Who owns my IP v426",
+    "UITS 11. Strategies for IP Protection v426",
+    "UITS 11. Strategies for IP Protection v426",
+    "UITS 12. Regulatory Considerations for University Startups v426",
+    "UITS 12. Regulatory Considerations for University Startups v426",
+    "UITS 13. Forming a business v426",
+    "UITS 13. Forming a business v426",
+    "UITS 14. Finding Your Founding Team v426",
+    "UITS 14. Finding Your Founding Team v426",
+    "UITS 15. Funding Opportunities for University Startups v426",
+    "UITS 15. Funding Opportunities for University Startups v426",
+    "UITS 16. Startup FInance Guide v426",
+    "UITS 16. Startup FInance Guide v426",
+    "UITS 1. Why Commercialize v426",
+    "UITS 1. Why Commercialize v426",
+    "UITS 2. Becoming an Academic Entrepreneur v426",
+    "UITS 2. Becoming an Academic Entrepreneur v426",
+    "UITS 4. Startup or License v426",
+    "UITS 4. Startup or License v426",
+    "UITS 5. Making Sense of TRLs v426",
+    "UITS 5. Making Sense of TRLs v426",
+    "UITS 6. Assessing the Market for your Innovation v426",
+    "UITS 6. Assessing the Market for your Innovation v426",
+    "UITS 7. Communication and Negotiation Skills v426",
+    "UITS 7. Communication and Negotiation Skills v426",
+    "UITS 8. Understanding Public Disclosure v0426",
+    "UITS 8. Understanding Public Disclosure v0426",
+    "UITS 9. Navigating Ethical and Legal Considerations v0426",
+    "UITS 9. Navigating Ethical and Legal Considerations v0426",
+    "UMKC: Commercialization Process",
+    "UMKC: Disclose Your Invention, Software or Creation",
+    "UMKC Guide to Licensing IP for Startups 062426",
+    "UMKC Guide to Licensing IP for Startups 062426",
+    "UMKC: Submit an Invention Disclosure",
+    "UM System: 100.020 Invention and Patent Regulations"
+  ],
+  "n": 50,
+  "hits": 44,
+  "recall": 0.88,
+  "by_category": [
+    {
+      "category": "Commercialization Pathways & Startup Formation",
+      "n": 6,
+      "hits": 4,
+      "recall": 0.667
+    },
+    {
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "n": 6,
+      "hits": 4,
+      "recall": 0.667
+    },
+    {
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "n": 6,
+      "hits": 5,
+      "recall": 0.833
+    },
+    {
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "n": 8,
+      "hits": 8,
+      "recall": 1.0
+    },
+    {
+      "category": "Public Disclosure & Patent Timelines",
+      "n": 6,
+      "hits": 5,
+      "recall": 0.833
+    },
+    {
+      "category": "UM System Patent & IP Regulations",
+      "n": 10,
+      "hits": 10,
+      "recall": 1.0
+    },
+    {
+      "category": "UMKC Startup Licensing Guidelines",
+      "n": 8,
+      "hits": 8,
+      "recall": 1.0
+    }
+  ],
+  "details": [
+    {
+      "id": "Q01",
+      "category": "UM System Patent & IP Regulations",
+      "question": "How are net royalty proceeds distributed between inventors and the university under UM System policy?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ]
+    },
+    {
+      "id": "Q02",
+      "category": "UM System Patent & IP Regulations",
+      "question": "What restrictions exist on how the university campus can spend its share of commercialization proceeds?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ]
+    },
+    {
+      "id": "Q03",
+      "category": "UM System Patent & IP Regulations",
+      "question": "If multiple inventors contributed to an invention, how is the Inventor Share divided among them?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ]
+    },
+    {
+      "id": "Q04",
+      "category": "UM System Patent & IP Regulations",
+      "question": "Who is covered by the UM System Invention and Patent Regulations?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ]
+    },
+    {
+      "id": "Q05",
+      "category": "UM System Patent & IP Regulations",
+      "question": "Does general student financial aid (like scholarships or tuition waivers) make a student subject to university employee patent ownership?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ]
+    },
+    {
+      "id": "Q06",
+      "category": "UM System Patent & IP Regulations",
+      "question": "Under what conditions does the University of Missouri own an invention created by an employee?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ]
+    },
+    {
+      "id": "Q07",
+      "category": "UM System Patent & IP Regulations",
+      "question": "Can the university waive or assign patent rights back to the inventor?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ]
+    },
+    {
+      "id": "Q08",
+      "category": "UM System Patent & IP Regulations",
+      "question": "When is an employee required to submit an Invention Disclosure Form to the university?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "invention-disclosure-form-um-16c-final",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ]
+    },
+    {
+      "id": "Q09",
+      "category": "UM System Patent & IP Regulations",
+      "question": "What is the role of the UM System Patent Committee?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ],
+      "matched_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ]
+    },
+    {
+      "id": "Q10",
+      "category": "UM System Patent & IP Regulations",
+      "question": "How are 'Gross Proceeds' and 'Net Proceeds' calculated for royalty distributions?",
+      "gold_source": "100.020 Invention and Patent Regulations _ UM System.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ],
+      "matched_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ]
+    },
+    {
+      "id": "Q11",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "What is the official form name used across the UM System to disclose a new invention?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "UMKC: Disclose Your Invention, Software or Creation",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UMKC: Submit an Invention Disclosure"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q12",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "What is the legal and confidentiality status of the completed Invention Disclosure Form?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q13",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "What specific information must be provided in the Summary of Invention on Form UM-16C?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q14",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "What key historical dates does Form UM-16C ask the inventors to report?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q15",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "Does Form UM-16C ask about export controls and controlled unclassified information (CUI)?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "invention-disclosure-form-um-16c-final",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 10. Who owns my IP v426"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q16",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "What kinds of disclosures must be reported in Section A.3 of Form UM-16C?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q17",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "What contributor and funding information must be recorded on Form UM-16C?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q18",
+      "category": "Invention Disclosure Process & Form UM-16C",
+      "question": "Who must sign the completed Invention Disclosure Form before submission to the TTO?",
+      "gold_source": "invention-disclosure-form-um-16c-final.docx",
+      "hit": true,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UMKC: Disclose Your Invention, Software or Creation",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ],
+      "matched_titles": [
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final",
+        "invention-disclosure-form-um-16c-final"
+      ]
+    },
+    {
+      "id": "Q19",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "What academic research and publication rights does UMKC always retain in an exclusive license agreement?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q20",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "How does UMKC handle warranties, liability, and sovereign immunity in license agreements?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q21",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "What federal government rights are mandatory in university licenses for federally funded research?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q22",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "Can a startup sublicense UMKC-licensed technology to commercial partners?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q23",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "What rights and obligations does a standard UMKC exclusive license grant to a startup?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q24",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "Which terms in a UMKC license agreement are flexible and negotiable for startups?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q25",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "What should startup founders understand about the difference between core terms and business terms?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UITS 16. Startup FInance Guide v426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q26",
+      "category": "UMKC Startup Licensing Guidelines",
+      "question": "What happens if a startup's technical development plan changes after signing a license?",
+      "gold_source": "UMKC Guide to Licensing IP for Startups 062426.docx",
+      "hit": true,
+      "hit_titles": [
+        "UITS 4. Startup or License v426",
+        "UITS 4. Startup or License v426",
+        "UITS 4. Startup or License v426",
+        "UITS 4. Startup or License v426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UITS 4. Startup or License v426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ]
+    },
+    {
+      "id": "Q27",
+      "category": "Public Disclosure & Patent Timelines",
+      "question": "What activities constitute a 'public disclosure' that can jeopardize patent rights?",
+      "gold_source": "UITS 8. Understanding Public Disclosure v0426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ],
+      "matched_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ]
+    },
+    {
+      "id": "Q28",
+      "category": "Public Disclosure & Patent Timelines",
+      "question": "How does public disclosure affect patent rights in the United States versus internationally?",
+      "gold_source": "UITS 8. Understanding Public Disclosure v0426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UMKC: Submit an Invention Disclosure",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ],
+      "matched_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ]
+    },
+    {
+      "id": "Q29",
+      "category": "Public Disclosure & Patent Timelines",
+      "question": "How can researchers discuss their technology with companies before filing a patent without triggering public disclosure?",
+      "gold_source": "UITS 8. Understanding Public Disclosure v0426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UMKC: Submit an Invention Disclosure",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UMKC: Submit an Invention Disclosure",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ],
+      "matched_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ]
+    },
+    {
+      "id": "Q30",
+      "category": "Public Disclosure & Patent Timelines",
+      "question": "Does submitting a federal grant proposal (e.g., NIH or NSF) count as public disclosure?",
+      "gold_source": "UITS 8. Understanding Public Disclosure v0426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ],
+      "matched_titles": [
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 8. Understanding Public Disclosure v0426"
+      ]
+    },
+    {
+      "id": "Q31",
+      "category": "Public Disclosure & Patent Timelines",
+      "question": "What is a provisional patent application and what timeline does it establish?",
+      "gold_source": "UITS 11. Strategies for IP Protection v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UITS 11. Strategies for IP Protection v426",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 8. Understanding Public Disclosure v0426",
+        "UITS 11. Strategies for IP Protection v426",
+        "UITS 11. Strategies for IP Protection v426",
+        "invention-disclosure-form-um-16c-final",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ],
+      "matched_titles": [
+        "UITS 11. Strategies for IP Protection v426",
+        "UITS 11. Strategies for IP Protection v426",
+        "UITS 11. Strategies for IP Protection v426"
+      ]
+    },
+    {
+      "id": "Q32",
+      "category": "Public Disclosure & Patent Timelines",
+      "question": "What are the three core legal requirements for an invention to be patentable under US patent law?",
+      "gold_source": "UITS 11. Strategies for IP Protection v426.pdf",
+      "hit": false,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "100.020 Invention and Patent Regulations _ UM System"
+      ],
+      "matched_titles": []
+    },
+    {
+      "id": "Q33",
+      "category": "Commercialization Pathways & Startup Formation",
+      "question": "When is licensing to an established company preferable to forming a university startup?",
+      "gold_source": "UITS 4. Startup or License v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 4. Startup or License v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UMKC Guide to Licensing IP for Startups 062426"
+      ],
+      "matched_titles": [
+        "UITS 4. Startup or License v426"
+      ]
+    },
+    {
+      "id": "Q34",
+      "category": "Commercialization Pathways & Startup Formation",
+      "question": "When is creating a startup company the right pathway for university technology?",
+      "gold_source": "UITS 4. Startup or License v426.pdf",
+      "hit": false,
+      "hit_titles": [
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426"
+      ],
+      "matched_titles": []
+    },
+    {
+      "id": "Q35",
+      "category": "Commercialization Pathways & Startup Formation",
+      "question": "Why do venture-backed technology startups typically incorporate as a Delaware C-Corporation rather than an LLC?",
+      "gold_source": "UITS 13. Forming a business v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 13. Forming a business v426"
+      ],
+      "matched_titles": [
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426"
+      ]
+    },
+    {
+      "id": "Q36",
+      "category": "Commercialization Pathways & Startup Formation",
+      "question": "What is founder equity vesting and what is the purpose of an IRS Section 83(b) election?",
+      "gold_source": "UITS 13. Forming a business v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 13. Forming a business v426",
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 13. Forming a business v426"
+      ],
+      "matched_titles": [
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426"
+      ]
+    },
+    {
+      "id": "Q37",
+      "category": "Commercialization Pathways & Startup Formation",
+      "question": "Can full-time university faculty serve as full-time CEO of their university spinout startup?",
+      "gold_source": "UITS 14. Finding Your Founding Team v426.pdf",
+      "hit": false,
+      "hit_titles": [
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426"
+      ],
+      "matched_titles": []
+    },
+    {
+      "id": "Q38",
+      "category": "Commercialization Pathways & Startup Formation",
+      "question": "What are Technology Readiness Levels (TRLs) and where does university research typically transition to startup development?",
+      "gold_source": "UITS 5. Making Sense of TRLs v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426"
+      ],
+      "matched_titles": [
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 5. Making Sense of TRLs v426"
+      ]
+    },
+    {
+      "id": "Q39",
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "question": "What is the critical difference regarding Principal Investigator (PI) employment between SBIR and STTR grants?",
+      "gold_source": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 5. Making Sense of TRLs v426",
+        "UITS 14. Finding Your Founding Team v426"
+      ],
+      "matched_titles": [
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426"
+      ]
+    },
+    {
+      "id": "Q40",
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "question": "What percentage of research work must be conducted by the small business in SBIR vs STTR Phase I grants?",
+      "gold_source": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 13. Forming a business v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426"
+      ],
+      "matched_titles": [
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426"
+      ]
+    },
+    {
+      "id": "Q41",
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "question": "What are the funding amounts and objectives of SBIR/STTR Phase I versus Phase II?",
+      "gold_source": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 13. Forming a business v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 14. Finding Your Founding Team v426"
+      ],
+      "matched_titles": [
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426"
+      ]
+    },
+    {
+      "id": "Q42",
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "question": "What mandatory agreement must be in place between a university and a startup before submitting an STTR proposal?",
+      "gold_source": "UITS 15. Funding Opportunities for University Startups v426.pdf",
+      "hit": false,
+      "hit_titles": [
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UMKC Guide to Licensing IP for Startups 062426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426"
+      ],
+      "matched_titles": []
+    },
+    {
+      "id": "Q43",
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "question": "What is the difference between a Convertible Note and a SAFE note in startup fundraising?",
+      "gold_source": "UITS 16. Startup FInance Guide v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 13. Forming a business v426",
+        "UITS 13. Forming a business v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426"
+      ],
+      "matched_titles": [
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426"
+      ]
+    },
+    {
+      "id": "Q44",
+      "category": "Federal Funding, SBIR/STTR & Grants",
+      "question": "How do valuation caps and discounts protect early startup angel investors?",
+      "gold_source": "UITS 16. Startup FInance Guide v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 13. Forming a business v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 15. Funding Opportunities for University Startups v426",
+        "UITS 14. Finding Your Founding Team v426",
+        "UITS 13. Forming a business v426"
+      ],
+      "matched_titles": [
+        "UITS 16. Startup FInance Guide v426",
+        "UITS 16. Startup FInance Guide v426"
+      ]
+    },
+    {
+      "id": "Q45",
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "question": "What is the difference between a Conflict of Interest (COI) and a Conflict of Commitment (COC)?",
+      "gold_source": "UITS 9. Navigating Ethical and Legal Considerations v0426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 7. Communication and Negotiation Skills v426",
+        "UITS 7. Communication and Negotiation Skills v426",
+        "UITS 7. Communication and Negotiation Skills v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 7. Communication and Negotiation Skills v426"
+      ],
+      "matched_titles": [
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426"
+      ]
+    },
+    {
+      "id": "Q46",
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "question": "What rules protect graduate students when faculty members are involved in a startup company?",
+      "gold_source": "UITS 9. Navigating Ethical and Legal Considerations v0426.pdf",
+      "hit": false,
+      "hit_titles": [
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 12. Regulatory Considerations for University Startups v426"
+      ],
+      "matched_titles": []
+    },
+    {
+      "id": "Q47",
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "question": "Can a university faculty startup freely use university laboratories and equipment?",
+      "gold_source": "UITS 9. Navigating Ethical and Legal Considerations v0426.pdf",
+      "hit": false,
+      "hit_titles": [
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UM System: 100.020 Invention and Patent Regulations"
+      ],
+      "matched_titles": []
+    },
+    {
+      "id": "Q48",
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "question": "Who owns intellectual property created by an undergraduate student during regular coursework?",
+      "gold_source": "UITS 10. Who owns my IP v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426",
+        "100.020 Invention and Patent Regulations _ UM System",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UM System: 100.020 Invention and Patent Regulations",
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426"
+      ],
+      "matched_titles": [
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426",
+        "UITS 10. Who owns my IP v426"
+      ]
+    },
+    {
+      "id": "Q49",
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "question": "What is the Fundamental Research Exclusion in federal export control regulations and how can it be lost?",
+      "gold_source": "UITS 12. Regulatory Considerations for University Startups v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 6. Assessing the Market for your Innovation v426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 13. Forming a business v426",
+        "UITS 9. Navigating Ethical and Legal Considerations v0426"
+      ],
+      "matched_titles": [
+        "UITS 12. Regulatory Considerations for University Startups v426",
+        "UITS 12. Regulatory Considerations for University Startups v426"
+      ]
+    },
+    {
+      "id": "Q50",
+      "category": "Ethics, Conflict of Interest & University Facilities",
+      "question": "How do academic researchers balance commercialization activities with university tenure and promotion requirements?",
+      "gold_source": "UITS 2. Becoming an Academic Entrepreneur v426.pdf",
+      "hit": true,
+      "hit_titles": [
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 1. Why Commercialize v426",
+        "UITS 1. Why Commercialize v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426"
+      ],
+      "matched_titles": [
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426",
+        "UITS 2. Becoming an Academic Entrepreneur v426"
+      ]
+    }
+  ]
+}
